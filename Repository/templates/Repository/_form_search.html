@@ -6,7 +6,7 @@
 	</div>
 	<div class="input-group ">
 		<select value="title" name="query" class="form-control">
-			{% for elem, value in fields_search.items %}
+			{% for elem, value in fields_search %}
 			<option value="{{ elem }}">{{ value|title }}</option>
 			{% endfor %}
 		</select>

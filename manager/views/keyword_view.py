@@ -8,16 +8,18 @@ from django.conf import settings
 
 
 from manager.models import Keyword, Publication
+from manager.models import publication
+from manager.models import keyword
 
 class KeywordListView(ListView):
 	template_name = 'manager/keyword/list.html'
 	paginate_by = settings.PAGINATE_BY
-	fields_search = {"name":_("Name")}
+	fields_search = keyword.FIELDS_SEARCH
 
 	def get_queryset(self):
 		query = self.request.GET.get('query')
 		text = self.request.GET.get('text')
-		if query and query in self.fields_search:
+		if query and query in dict(self.fields_search):
 			kwargs = {("%s__contains" % (query,)):text}
 			return Keyword.objects.filter(** kwargs)
 		return Keyword.objects.all()
@@ -62,13 +64,23 @@ class KeywordDetailView(DetailView):
 class KeywordPublicationsView(SingleObjectMixin, ListView):
 	paginate_by = settings.PAGINATE_BY
 	template_name = 'manager/keyword/publications.html'
+	fields_search = publication.FIELDS_SEARCH
 
 	def get(self, request, * args, ** kwargs):
 		self.object = self.get_object(queryset=Keyword.objects.all())
 		return super(KeywordPublicationsView, self).get(request, * args, ** kwargs)
+	
 	def get_context_data(self, ** kwargs):
 		context = super(KeywordPublicationsView, self).get_context_data( ** kwargs)
 		context['keyword'] = self.object
+		context["fields_search"] = self.fields_search
+		context["url_search"] = reverse_lazy("manager:keyword_publications", kwargs={"slug":self.object.slug, "page":1})
 		return context
+
 	def get_queryset(self):
+		query = self.request.GET.get('query')
+		text = self.request.GET.get('text')
+		if query and query in self.fields_search:
+			kwargs = {("%s__contains" % (query,)):text}
+			return Publication.objects.filter(keywords=self.object.id, ** kwargs)
 		return Publication.objects.filter(keywords=self.object.id)

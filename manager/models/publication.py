@@ -5,6 +5,14 @@ from django.core.urlresolvers import reverse_lazy
 from authentication.models import Profile
 import itertools
 
+FIELDS_SEARCH = (
+	("title", _("Title")), 
+	("address", _("Address")), 
+	("year", _("Year")), 
+	("abstract", _("Abstract")), 
+	("other_abstract", _("Other Abstract")),
+)
+
 TYPOLOGY_CHOICES = (
     (u'article', _(u'Article')),
     (u'book', _(u'Book')),
@@ -69,6 +77,8 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 
 def post_save_receiver(sender, instance, created, ** kwargs):
-	instance.uri = reverse_lazy("manager:publication_uri", kwargs={"pk": instance.pk})
+	if not instance.uri:
+		instance.uri = reverse_lazy("manager:publication_uri", kwargs={"pk": instance.pk})
+		instance.save()
 		
 post_save.connect(post_save_receiver, sender=Publication)

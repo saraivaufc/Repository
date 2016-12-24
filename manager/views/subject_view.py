@@ -6,22 +6,19 @@ from django.core.urlresolvers import reverse_lazy
 from django.contrib.auth.decorators import login_required, permission_required
 from django.conf import settings
 
-
 from manager.models import Subject, Publication
-
-#from django.utils.decorators import method_decorator
-#from django.contrib.auth.decorators import login_required, permission_required
-#@method_decorator(permission_required, 'manager.subject_list')
+from manager.models import publication
+from manager.models import subject
 
 class SubjectListView(ListView):
 	template_name = 'manager/subject/list.html'
 	paginate_by = settings.PAGINATE_BY
-	fields_search = {"name":_("Name")}
+	fields_search = subject.FIELDS_SEARCH
 
 	def get_queryset(self):
 		query = self.request.GET.get('query')
 		text = self.request.GET.get('text')
-		if query and query in self.fields_search:
+		if query and query in dict(self.fields_search):
 			kwargs = {("%s__contains" % (query,)):text}
 			return Subject.objects.filter(** kwargs)
 		return Subject.objects.all()
@@ -66,6 +63,7 @@ class SubjectDetailView(DetailView):
 class SubjectPublicationsView(SingleObjectMixin, ListView):
 	paginate_by = settings.PAGINATE_BY
 	template_name = 'manager/subject/publications.html'
+	fields_search = publication.FIELDS_SEARCH
 
 	def get(self, request, * args, ** kwargs):
 		self.object = self.get_object(queryset=Subject.objects.all())
@@ -73,6 +71,14 @@ class SubjectPublicationsView(SingleObjectMixin, ListView):
 	def get_context_data(self, ** kwargs):
 		context = super(SubjectPublicationsView, self).get_context_data( ** kwargs)
 		context['subject'] = self.object
+		context["fields_search"] = self.fields_search
+		context["url_search"] = reverse_lazy("manager:subject_publications", kwargs={"slug":self.object.slug, "page":1})
 		return context
+
 	def get_queryset(self):
+		query = self.request.GET.get('query')
+		text = self.request.GET.get('text')
+		if query and query in self.fields_search:
+			kwargs = {("%s__contains" % (query,)):text}
+			return Publication.objects.filter(subjects=self.object.id, ** kwargs)
 		return Publication.objects.filter(subjects=self.object.id)

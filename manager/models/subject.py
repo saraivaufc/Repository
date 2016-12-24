@@ -3,6 +3,10 @@ from django.template.defaultfilters import slugify
 from django.db import models
 import itertools
 
+FIELDS_SEARCH = (
+	("name",_("Name")),
+)
+
 class Subject(models.Model):
 	name = models.CharField(verbose_name=_("Name"), max_length=100, null=False, blank=False)
 	slug = models.SlugField(verbose_name=_('slug'), max_length=60, blank=True, unique=True)

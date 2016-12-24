@@ -7,16 +7,18 @@ from django.contrib.auth.decorators import login_required, permission_required
 from django.conf import settings
 
 from manager.models import Community, Collection, Publication
+from manager.models import publication
+from manager.models import community
 
 class CommunityListView(ListView):
 	template_name = 'manager/community/list.html'
 	paginate_by = settings.PAGINATE_BY
-	fields_search = {"name":_("Name"), "acronym":_("Acronym")}
+	fields_search = community.FIELDS_SEARCH
 
 	def get_queryset(self):
 		query = self.request.GET.get('query')
 		text = self.request.GET.get('text')
-		if query and query in self.fields_search:
+		if query and query in dict(self.fields_search):
 			kwargs = {("%s__contains" % (query,)):text}
 			return Community.objects.filter(** kwargs)
 		return Community.objects.all()
@@ -67,6 +69,7 @@ class CommunityDetailView(SingleObjectMixin, ListView):
 class CommunityPublicationsView(SingleObjectMixin, ListView):
 	paginate_by = settings.PAGINATE_BY
 	template_name = 'manager/community/publications.html'
+	fields_search = publication.FIELDS_SEARCH
 
 	def get(self, request, * args, ** kwargs):
 		self.object = self.get_object(queryset=Community.objects.all())
@@ -74,12 +77,24 @@ class CommunityPublicationsView(SingleObjectMixin, ListView):
 	def get_context_data(self, ** kwargs):
 		context = super(CommunityPublicationsView, self).get_context_data( ** kwargs)
 		context['community'] = self.object
+		context["fields_search"] = self.fields_search
+		context["url_search"] = reverse_lazy("manager:community_publications", kwargs={"slug":self.object.slug, "page":1})
 		return context
+
 	def get_queryset(self):
+		query = self.request.GET.get('query')
+		text = self.request.GET.get('text')
 		collections = Collection.objects.filter(community=self.object.id)
 		publications = []
-		for collection in collections:
-			temp_publications = Publication.objects.filter(collection=collection.id)
-			for publication in temp_publications:
-				publications.append(publication)
+		if query and query in self.fields_search:
+			kwargs = {("%s__contains" % (query,)):text}
+			for collection in collections:
+				temp_publications = Publication.objects.filter(collection=collection.id, ** kwargs)
+				for publication in temp_publications:
+					publications.append(publication)
+		else:
+			for collection in collections:
+				temp_publications = Publication.objects.filter(collection=collection.id)
+				for publication in temp_publications:
+					publications.append(publication)
 		return publications

@@ -8,16 +8,17 @@ from django.conf import settings
 import hashlib
 
 from manager.models import Publication
+from manager.models import publication
 
 class PublicationListView(ListView):
 	template_name = 'manager/publication/list.html'
 	paginate_by = settings.PAGINATE_BY
-	fields_search = {"title":_("Title"), "address":_("Address"), "year":_("Year"), "abstract":_("Abstract"), "other_abstract":_("Other Abstract")}
+	fields_search = publication.FIELDS_SEARCH
 
 	def get_queryset(self):
 		query = self.request.GET.get('query')
 		text = self.request.GET.get('text')
-		if query and query in self.fields_search:
+		if query and query in dict(self.fields_search):
 			kwargs = {("%s__contains" % (query,)):text}
 			return Publication.objects.filter(** kwargs)
 		return Publication.objects.all()

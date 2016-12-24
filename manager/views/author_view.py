@@ -8,16 +8,18 @@ from django.conf import settings
 
 
 from manager.models import Author, Publication
+from manager.models import publication
+from manager.models import author
 
 class AuthorListView(ListView):
 	template_name = 'manager/author/list.html'
 	paginate_by = settings.PAGINATE_BY
-	fields_search = {"first_name":_("First Name"), "last_name":_("Last Name")}
+	fields_search = author.FIELDS_SEARCH
 
 	def get_queryset(self):
 		query = self.request.GET.get('query')
 		text = self.request.GET.get('text')
-		if query and query in self.fields_search:
+		if query and query in dict(self.fields_search):
 			kwargs = {("%s__contains" % (query,)):text}
 			return Author.objects.filter(** kwargs)
 		return Author.objects.all()
@@ -62,6 +64,7 @@ class AuthorDetailView(DetailView):
 class AuthorPublicationsView(SingleObjectMixin, ListView):
 	paginate_by = settings.PAGINATE_BY
 	template_name = 'manager/author/publications.html'
+	fields_search = publication.FIELDS_SEARCH
 
 	def get(self, request, * args, ** kwargs):
 		self.object = self.get_object(queryset=Author.objects.all())
@@ -69,6 +72,14 @@ class AuthorPublicationsView(SingleObjectMixin, ListView):
 	def get_context_data(self, ** kwargs):
 		context = super(AuthorPublicationsView, self).get_context_data( ** kwargs)
 		context['author'] = self.object
+		context["fields_search"] = self.fields_search
+		context["url_search"] = reverse_lazy("manager:author_publications", kwargs={"slug":self.object.slug, "page":1})
 		return context
+
 	def get_queryset(self):
+		query = self.request.GET.get('query')
+		text = self.request.GET.get('text')
+		if query and query in self.fields_search:
+			kwargs = {("%s__contains" % (query,)):text}
+			return Publication.objects.filter(authors=self.object.id, ** kwargs)
 		return Publication.objects.filter(authors=self.object.id)

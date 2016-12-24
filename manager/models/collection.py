@@ -3,6 +3,11 @@ from django.template.defaultfilters import slugify
 from django.db import models
 import itertools
 
+FIELDS_SEARCH = (
+	("name", _("Name")), 
+	("description", _("Description")),
+)
+
 class Collection(models.Model):
 	community = models.ForeignKey("Community", verbose_name=_("Community"), null=False, blank=False)
 	name = models.CharField(verbose_name=_("Name"), max_length=100, null=False, blank=False)
