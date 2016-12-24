@@ -1,12 +1,12 @@
 from django.views.generic.list import ListView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from django.views.generic.detail import DetailView
+from django.views.generic.detail import DetailView, SingleObjectMixin
 from django.core.urlresolvers import reverse_lazy
 from django.contrib.auth.decorators import login_required, permission_required
 from django.conf import settings
 
 
-from manager.models import Subject
+from manager.models import Subject, Publication
 
 #from django.utils.decorators import method_decorator
 #from django.contrib.auth.decorators import login_required, permission_required
@@ -51,3 +51,17 @@ class SubjectDetailView(DetailView):
 	def get_context_data(self, ** kwargs):
 		context = super(SubjectDetailView, self).get_context_data( ** kwargs)
 		return context
+
+class SubjectPublicationsView(SingleObjectMixin, ListView):
+	paginate_by = settings.PAGINATE_BY
+	template_name = 'manager/subject/publications.html'
+
+	def get(self, request, * args, ** kwargs):
+		self.object = self.get_object(queryset=Subject.objects.all())
+		return super(SubjectPublicationsView, self).get(request, * args, ** kwargs)
+	def get_context_data(self, ** kwargs):
+		context = super(SubjectPublicationsView, self).get_context_data( ** kwargs)
+		context['subject'] = self.object
+		return context
+	def get_queryset(self):
+		return Publication.objects.filter(subjects=self.object.id)

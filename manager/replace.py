@@ -4,7 +4,7 @@ import os
 import glob
 import re
 
-TEXT = "admin/"
+TEXT = "admin_"
 NEW_TEXT = ""
 FILE_TYPES = ['(.)\.py', ]
 
@@ -47,4 +47,7 @@ def replace(f, text, new_text):
 for fn in find():
 	fn = BASE_DIR + fn
 	if not fn == SELF:
+		print "Ok"
 		replace(fn,TEXT, NEW_TEXT)
+	else:
+		print "Erro"

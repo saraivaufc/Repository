@@ -1,4 +1,4 @@
-{% extends "manager/admin/index.html" %}
+{% extends "manager/index.html" %}
 
 
 {% load i18n static %}
@@ -12,7 +12,7 @@
 
 {% block breadcrumbs %}
 	{{ block.super }}
-	<a href="{% url 'manager:admin_keyword_list' page=1 %}" class="breadcrumb-item" >
+	<a href="{% url 'manager:keyword_list' page=1 %}" class="breadcrumb-item" >
 		<i class="fa fa-users"></i>
 		{% trans "Keywords" %}
 	</a>
@@ -23,7 +23,7 @@
 {% block content_inner %}
 	{% if perms.manager.add_keyword %}
 	<div class="col-md-12">
-		<a href="{% url 'manager:admin_keyword_create' %}" class="btn btn-success">
+		<a href="{% url 'manager:keyword_create' %}" class="btn btn-success">
 			<i class="fa fa-plus"></i>
 			{% trans "Create Keyword" %}
 		</a>
@@ -45,12 +45,13 @@
 						<td>{{ keyword.name }}</td>
 						<td>{{ keyword.registration_date }}</td>
 						<td>
-							<a href="{% url 'manager:admin_keyword_detail' slug=keyword.slug %}" class="btn btn-primary"><i class="fa fa-eye"></i></a>
+							<a href="{% url 'manager:keyword_publications' slug=keyword.slug page=1 %}" class="btn btn-primary"><i class="fa fa-book"></i></a>
+							<a href="{% url 'manager:keyword_detail' slug=keyword.slug %}" class="btn btn-primary"><i class="fa fa-eye"></i></a>
 							{% if perms.manager.change_keyword %}
-							<a href="{% url 'manager:admin_keyword_update' slug=keyword.slug %}" class="btn btn-info"><i class="fa fa-edit"></i></a>
+							<a href="{% url 'manager:keyword_update' slug=keyword.slug %}" class="btn btn-info"><i class="fa fa-edit"></i></a>
 							{% endif %}
 							{% if perms.manager.delete_keyword %}
-							<a href="{% url 'manager:admin_keyword_delete' slug=keyword.slug %}" class="btn btn-danger"><i class="fa fa-remove"></i></a>
+							<a href="{% url 'manager:keyword_delete' slug=keyword.slug %}" class="btn btn-danger"><i class="fa fa-remove"></i></a>
 							{% endif %}
 						</td>
 					</tr>

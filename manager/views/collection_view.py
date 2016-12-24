@@ -1,12 +1,12 @@
 from django.views.generic.list import ListView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from django.views.generic.detail import DetailView
+from django.views.generic.detail import DetailView, SingleObjectMixin
 from django.core.urlresolvers import reverse_lazy
 from django.contrib.auth.decorators import login_required, permission_required
 from django.conf import settings
 
 
-from manager.models import Collection
+from manager.models import Collection, Publication
 
 class CollectionListView(ListView):
 	template_name = 'manager/collection/list.html'
@@ -47,3 +47,17 @@ class CollectionDetailView(DetailView):
 	def get_context_data(self, ** kwargs):
 		context = super(CollectionDetailView, self).get_context_data( ** kwargs)
 		return context
+
+class CollectionPublicationsView(SingleObjectMixin, ListView):
+	paginate_by = settings.PAGINATE_BY
+	template_name = 'manager/collection/publications.html'
+
+	def get(self, request, * args, ** kwargs):
+		self.object = self.get_object(queryset=Collection.objects.all())
+		return super(CollectionPublicationsView, self).get(request, * args, ** kwargs)
+	def get_context_data(self, ** kwargs):
+		context = super(CollectionPublicationsView, self).get_context_data( ** kwargs)
+		context['collection'] = self.object
+		return context
+	def get_queryset(self):
+		return Publication.objects.filter(collection=self.object.id)

@@ -13,7 +13,7 @@
 {% block breadcrumbs %}
 	{{ block.super }}
 	<a href="{% url 'manager:author_list' page=1 %}" class="breadcrumb-item" >
-		<i class="fa fa-users"></i>
+		<i class="fa fa-graduation-cap"></i>
 		{% trans "Authors" %}
 	</a>
 {% endblock %}
@@ -25,7 +25,7 @@
 	<div class="col-md-12">
 		<a href="{% url 'manager:author_create' %}" class="btn btn-success">
 			<i class="fa fa-plus"></i>
-			{% trans "Create Author" %}
+			{% trans "Create Author/Advisor" %}
 		</a>
 	</div>
 	{% endif %}
@@ -47,6 +47,7 @@
 						<td>{{ author.last_name }}</td>
 						<td>{{ author.reference_name }}</td>
 						<td>
+							<a href="{% url 'manager:author_publications' slug=author.slug page=1 %}" class="btn btn-primary"><i class="fa fa-book"></i></a>
 							<a href="{% url 'manager:author_detail' slug=author.slug %}" class="btn btn-primary"><i class="fa fa-eye"></i></a>
 							{% if perms.manager.change_author %}
 							<a href="{% url 'manager:author_update' slug=author.slug %}" class="btn btn-info"><i class="fa fa-edit"></i></a>

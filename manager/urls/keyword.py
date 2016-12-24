@@ -1,5 +1,5 @@
 from django.conf.urls import include, url
-from manager.views import KeywordListView, KeywordCreateView, KeywordUpdateView, KeywordDeleteView, KeywordDetailView
+from manager.views import KeywordListView, KeywordCreateView, KeywordUpdateView, KeywordDeleteView, KeywordDetailView, KeywordPublicationsView
 from django.contrib.auth.decorators import permission_required
 
 urlpatterns = [
@@ -8,4 +8,5 @@ urlpatterns = [
 	url(r'^(?P<slug>[-\w]+)/detail/$', KeywordDetailView.as_view(), name="keyword_detail"),
 	url(r'^(?P<slug>[-\w]+)/edit/$', permission_required('manager.change_keyword')(KeywordUpdateView.as_view()), name="keyword_update"),
 	url(r'^(?P<slug>[-\w]+)/delete/$', permission_required('manager.delete_keyword')(KeywordDeleteView.as_view()), name="keyword_delete"),
+	url(r'^(?P<slug>[-\w]+)/publications/page=(?P<page>[0-9]+)$', KeywordPublicationsView.as_view(), name="keyword_publications"),
 ]

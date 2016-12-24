@@ -1,4 +1,4 @@
-{% extends "manager/admin/publication/list.html" %}
+{% extends "manager/publication/list.html" %}
 
 
 {% load i18n static %}
@@ -10,7 +10,7 @@
 
 {% block breadcrumbs %}
 	{{ block.super }}
-	<a href="{% url 'manager:admin_publication_delete' slug=object.slug %}" class="breadcrumb-item" >
+	<a href="{% url 'manager:publication_delete' slug=object.slug %}" class="breadcrumb-item" >
 		<i class="fa fa-remove"></i>
 		{% trans "Confirm delete" %}
 	</a>
@@ -21,7 +21,7 @@
 {% block content_inner %}
 	<form action="." method="post">{% csrf_token %}
 		<p>{% trans "Are you sure you want to delete" %} "{{ object }}"?</p>
-		<a href="{% url 'manager:admin_publication_list' page=1 %}" class="btn btn-info">{% trans "No" %}</a>
+		<a href="{% url 'manager:publication_list' page=1 %}" class="btn btn-info">{% trans "No" %}</a>
 		<button class="btn btn-primary" type="submit">{% trans "Yes" %}</button>
 	</form>
 {% endblock %}

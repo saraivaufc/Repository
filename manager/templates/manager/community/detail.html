@@ -1,4 +1,4 @@
-{% extends "manager/admin/community/list.html" %}
+{% extends "manager/community/list.html" %}
 
 
 {% load i18n static %}
@@ -10,7 +10,7 @@
 
 {% block breadcrumbs %}
 	{{ block.super }}
-	<a href="{% url 'manager:admin_community_create' %}" class="breadcrumb-item" >
+	<a href="{% url 'manager:community_create' %}" class="breadcrumb-item" >
 		<i class="fa fa-users"></i>
 		{{ object.name }}
 	</a>
@@ -37,7 +37,7 @@
 	</table>
 	<h4>{% trans "Collections" %}:</h4>
 		{% for collection in page_obj %}
-		<a href="{% url 'manager:admin_collection_detail' slug=collection.slug %}" class="list-group-item">
+		<a href="{% url 'manager:collection_detail' slug=collection.slug %}" class="list-group-item">
 			<i class="fa fa-book"></i>
 			{{ collection }}
 		</a>

@@ -1,7 +1,7 @@
-from community_view import CommunityListView, CommunityCreateView, CommunityUpdateView, CommunityDeleteView, CommunityDetailView
-from collection_view import CollectionListView, CollectionCreateView, CollectionUpdateView, CollectionDeleteView, CollectionDetailView
-from subject_view import SubjectListView, SubjectCreateView, SubjectUpdateView, SubjectDeleteView, SubjectDetailView
-from keyword_view import KeywordListView, KeywordCreateView, KeywordUpdateView, KeywordDeleteView, KeywordDetailView
-from author_view import AuthorListView, AuthorCreateView, AuthorUpdateView, AuthorDeleteView, AuthorDetailView
-from publisher_view import PublisherListView, PublisherCreateView, PublisherUpdateView, PublisherDeleteView, PublisherDetailView
+from community_view import CommunityListView, CommunityCreateView, CommunityUpdateView, CommunityDeleteView, CommunityDetailView, CommunityPublicationsView
+from collection_view import CollectionListView, CollectionCreateView, CollectionUpdateView, CollectionDeleteView, CollectionDetailView, CollectionPublicationsView
+from subject_view import SubjectListView, SubjectCreateView, SubjectUpdateView, SubjectDeleteView, SubjectDetailView, SubjectPublicationsView
+from keyword_view import KeywordListView, KeywordCreateView, KeywordUpdateView, KeywordDeleteView, KeywordDetailView, KeywordPublicationsView
+from author_view import AuthorListView, AuthorCreateView, AuthorUpdateView, AuthorDeleteView, AuthorDetailView, AuthorPublicationsView
+from publisher_view import PublisherListView, PublisherCreateView, PublisherUpdateView, PublisherDeleteView, PublisherDetailView, PublisherPublicationsView
 from publication_view import PublicationListView, PublicationCreateView, PublicationUpdateView, PublicationDeleteView, PublicationDetailView

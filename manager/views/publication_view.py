@@ -1,6 +1,6 @@
 from django.views.generic.list import ListView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from django.views.generic.detail import DetailView
+from django.views.generic.detail import DetailView, SingleObjectMixin
 from django.core.urlresolvers import reverse_lazy
 from django.contrib.auth.decorators import login_required, permission_required
 from django.conf import settings

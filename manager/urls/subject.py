@@ -1,5 +1,5 @@
 from django.conf.urls import include, url
-from manager.views import SubjectListView, SubjectCreateView, SubjectUpdateView, SubjectDeleteView, SubjectDetailView
+from manager.views import SubjectListView, SubjectCreateView, SubjectUpdateView, SubjectDeleteView, SubjectDetailView, SubjectPublicationsView
 from django.contrib.auth.decorators import permission_required
 
 urlpatterns = [
@@ -8,4 +8,5 @@ urlpatterns = [
 	url(r'^(?P<slug>[-\w]+)/detail/$', SubjectDetailView.as_view(), name="subject_detail"),
 	url(r'^(?P<slug>[-\w]+)/edit/$', permission_required('manager.change_subject')(SubjectUpdateView.as_view()), name="subject_update"),
 	url(r'^(?P<slug>[-\w]+)/delete/$', permission_required('manager.delete_subject')(SubjectDeleteView.as_view()), name="subject_delete"),
+	url(r'^(?P<slug>[-\w]+)/publications/page=(?P<page>[0-9]+)$', SubjectPublicationsView.as_view(), name="subject_publications"),
 ]

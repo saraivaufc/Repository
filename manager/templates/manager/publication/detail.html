@@ -1,4 +1,4 @@
-{% extends "manager/admin/publication/list.html" %}
+{% extends "manager/publication/list.html" %}
 
 
 {% load i18n static %}
@@ -10,7 +10,7 @@
 
 {% block breadcrumbs %}
 	{{ block.super }}
-	<a href="{% url 'manager:admin_publication_detail' slug=object.slug %}" class="breadcrumb-item" >
+	<a href="{% url 'manager:publication_detail' slug=object.slug %}" class="breadcrumb-item" >
 		<i class="fa fa-users"></i>
 		{{ object.title|truncatewords:"4" }}
 	</a>
@@ -100,7 +100,10 @@
 			<tr>
 				<td>{% trans "File" %}:</td>
 				<td>
-					<a href="{{ object.file.url }}" target="_blank">{% trans "Download" %}</a>
+					<a href="{{ object.file.url }}" target="_blank">
+						<i class="fa fa-download"></i>
+						{% trans "Download" %}
+					</a>
 				</td>
 			</tr>
 		</tbody>

@@ -1,0 +1,34 @@
+{% extends "manager/publication/list.html" %}
+
+{% load i18n static %}
+
+{% block title %}{% endblock %}
+
+{% block stylesheet %}
+{% endblock %}
+
+{% block authors %}active{% endblock %}
+{% block publications %}{% endblock %}
+
+{% block breadcrumbs %}
+	<a href="{% url 'manager:home' %}" class="breadcrumb-item" >
+		<i class="fa fa-home" aria-hidden="true"></i>
+		{% trans "Home" %}
+	</a>
+	<a href="{% url 'manager:author_list' page=1 %}" class="breadcrumb-item" >
+		<i class="fa fa-graduation-cap"></i>
+		{% trans "Authors" %}
+	</a>
+	<a href="{% url 'manager:author_publications' slug=author.slug page=1 %}" class="breadcrumb-item" >
+		<i class="fa fa-book"></i>
+		{% blocktrans with author=author %}
+			Publications of {{ author }}
+		{% endblocktrans %}
+	</a>
+{% endblock %}
+
+{%  block page_title %}
+	{% blocktrans with author=author %}
+		Publications of {{ author }}
+	{% endblocktrans %}
+{% endblock %}

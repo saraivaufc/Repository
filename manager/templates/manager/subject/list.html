@@ -1,4 +1,4 @@
-{% extends "manager/admin/index.html" %}
+{% extends "manager/index.html" %}
 
 
 {% load i18n static %}
@@ -12,8 +12,8 @@
 
 {% block breadcrumbs %}
 	{{ block.super }}
-	<a href="{% url 'manager:admin_subject_list' page=1 %}" class="breadcrumb-item" >
-		<i class="fa fa-users"></i>
+	<a href="{% url 'manager:subject_list' page=1 %}" class="breadcrumb-item" >
+		<i class="fa fa-flag"></i>
 		{% trans "Subjects" %}
 	</a>
 {% endblock %}
@@ -23,7 +23,7 @@
 {% block content_inner %}
 	{% if perms.manager.add_subject %}
 	<div class="col-md-12">
-		<a href="{% url 'manager:admin_subject_create' %}" class="btn btn-success">
+		<a href="{% url 'manager:subject_create' %}" class="btn btn-success">
 			<i class="fa fa-plus"></i>
 			{% trans "Create Subject" %}
 		</a>
@@ -45,12 +45,13 @@
 						<td>{{ subject.name }}</td>
 						<td>{{ subject.registration_date }}</td>
 						<td>
-							<a href="{% url 'manager:admin_subject_detail' slug=subject.slug %}" class="btn btn-primary"><i class="fa fa-eye"></i></a>
+							<a href="{% url 'manager:subject_publications' slug=subject.slug page=1 %}" class="btn btn-primary"><i class="fa fa-book"></i></a>
+							<a href="{% url 'manager:subject_detail' slug=subject.slug %}" class="btn btn-primary"><i class="fa fa-eye"></i></a>
 							{% if perms.manager.change_subject %}
-							<a href="{% url 'manager:admin_subject_update' slug=subject.slug %}" class="btn btn-info"><i class="fa fa-edit"></i></a>
+							<a href="{% url 'manager:subject_update' slug=subject.slug %}" class="btn btn-info"><i class="fa fa-edit"></i></a>
 							{% endif %}
 							{% if perms.manager.delete_subject %}
-							<a href="{% url 'manager:admin_subject_delete' slug=subject.slug %}" class="btn btn-danger"><i class="fa fa-remove"></i></a>
+							<a href="{% url 'manager:subject_delete' slug=subject.slug %}" class="btn btn-danger"><i class="fa fa-remove"></i></a>
 							{% endif %}
 						</td>
 					</tr>

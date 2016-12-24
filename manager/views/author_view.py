@@ -1,12 +1,12 @@
 from django.views.generic.list import ListView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from django.views.generic.detail import DetailView
+from django.views.generic.detail import DetailView, SingleObjectMixin
 from django.core.urlresolvers import reverse_lazy
 from django.contrib.auth.decorators import login_required, permission_required
 from django.conf import settings
 
 
-from manager.models import Author
+from manager.models import Author, Publication
 
 class AuthorListView(ListView):
 	template_name = 'manager/author/list.html'
@@ -47,3 +47,17 @@ class AuthorDetailView(DetailView):
 	def get_context_data(self, ** kwargs):
 		context = super(AuthorDetailView, self).get_context_data( ** kwargs)
 		return context
+
+class AuthorPublicationsView(SingleObjectMixin, ListView):
+	paginate_by = settings.PAGINATE_BY
+	template_name = 'manager/author/publications.html'
+
+	def get(self, request, * args, ** kwargs):
+		self.object = self.get_object(queryset=Author.objects.all())
+		return super(AuthorPublicationsView, self).get(request, * args, ** kwargs)
+	def get_context_data(self, ** kwargs):
+		context = super(AuthorPublicationsView, self).get_context_data( ** kwargs)
+		context['author'] = self.object
+		return context
+	def get_queryset(self):
+		return Publication.objects.filter(authors=self.object.id)

@@ -1,5 +1,5 @@
 from django.conf.urls import include, url
-from manager.views import home
+from django.views.generic.base import TemplateView
 
 urlpatterns = [
 	url(r'^index/$', TemplateView.as_view(template_name="manager/index.html"), name="home"),

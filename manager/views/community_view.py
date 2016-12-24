@@ -6,7 +6,7 @@ from django.contrib.auth.decorators import login_required, permission_required
 from django.conf import settings
 
 
-from manager.models import Community, Collection
+from manager.models import Community, Collection, Publication
 
 #from django.utils.decorators import method_decorator
 #from django.contrib.auth.decorators import login_required, permission_required
@@ -48,8 +48,7 @@ class CommunityDeleteView(DeleteView):
 class CommunityDetailView(SingleObjectMixin, ListView):
 	paginate_by = settings.PAGINATE_BY
 	template_name = 'manager/community/detail.html'
-	#model = Community
-
+	
 	def get(self, request, * args, ** kwargs):
 		self.object = self.get_object(queryset=Community.objects.all())
 		return super(CommunityDetailView, self).get(request, * args, ** kwargs)
@@ -58,4 +57,24 @@ class CommunityDetailView(SingleObjectMixin, ListView):
 		context['community'] = self.object
 		return context
 	def get_queryset(self):
-		return Collection.objects.all()
+		return Collection.objects.filter(community=self.object.id)
+
+class CommunityPublicationsView(SingleObjectMixin, ListView):
+	paginate_by = settings.PAGINATE_BY
+	template_name = 'manager/community/publications.html'
+
+	def get(self, request, * args, ** kwargs):
+		self.object = self.get_object(queryset=Community.objects.all())
+		return super(CommunityPublicationsView, self).get(request, * args, ** kwargs)
+	def get_context_data(self, ** kwargs):
+		context = super(CommunityPublicationsView, self).get_context_data( ** kwargs)
+		context['community'] = self.object
+		return context
+	def get_queryset(self):
+		collections = Collection.objects.filter(community=self.object.id)
+		publications = []
+		for collection in collections:
+			temp_publications = Publication.objects.filter(collection=collection.id)
+			for publication in temp_publications:
+				publications.append(publication)
+		return publications

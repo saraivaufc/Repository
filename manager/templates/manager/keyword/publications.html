@@ -1,0 +1,34 @@
+{% extends "manager/publication/list.html" %}
+
+{% load i18n static %}
+
+{% block title %}{% endblock %}
+
+{% block stylesheet %}
+{% endblock %}
+
+{% block keywords %}active{% endblock %}
+{% block publications %}{% endblock %}
+
+{% block breadcrumbs %}
+	<a href="{% url 'manager:home' %}" class="breadcrumb-item" >
+		<i class="fa fa-home" aria-hidden="true"></i>
+		{% trans "Home" %}
+	</a>
+	<a href="{% url 'manager:keyword_list' page=1 %}" class="breadcrumb-item" >
+		<i class="fa fa-flag"></i>
+		{% trans "Keywords" %}
+	</a>
+	<a href="{% url 'manager:keyword_publications' slug=keyword.slug page=1 %}" class="breadcrumb-item" >
+		<i class="fa fa-book"></i>
+		{% blocktrans with keyword=keyword %}
+			Publications of {{ keyword }}
+		{% endblocktrans %}
+	</a>
+{% endblock %}
+
+{%  block page_title %}
+	{% blocktrans with keyword=keyword %}
+		Publications of {{ keyword }}
+	{% endblocktrans %}
+{% endblock %}

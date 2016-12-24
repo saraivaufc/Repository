@@ -1,4 +1,4 @@
-{% extends "manager/admin/subject/list.html" %}
+{% extends "manager/subject/list.html" %}
 
 
 {% load i18n static %}
@@ -10,10 +10,12 @@
 
 {% block breadcrumbs %}
 	{{ block.super }}
-	<a href="{% url 'manager:admin_subject_create' %}" class="breadcrumb-item" >
+	<a href="{% url 'manager:subject_create' %}" class="breadcrumb-item" >
 		{% trans "Form Subject" %}
 	</a>
 {% endblock %}
+
+{% block page_title %}{% trans "Form Subject" %}{% endblock %}
 
 {% block content_inner %}
 	<form action="." method="post">{% csrf_token %}		

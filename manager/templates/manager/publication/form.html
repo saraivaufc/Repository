@@ -1,4 +1,4 @@
-{% extends "manager/admin/publication/list.html" %}
+{% extends "manager/publication/list.html" %}
 
 
 {% load i18n static %}
@@ -10,7 +10,7 @@
 
 {% block breadcrumbs %}
 	{{ block.super }}
-	<a href="{% url 'manager:admin_publication_create' %}" class="breadcrumb-item" >
+	<a href="{% url 'manager:publication_create' %}" class="breadcrumb-item" >
 		{% trans "Form Publication" %}
 	</a>
 {% endblock %}

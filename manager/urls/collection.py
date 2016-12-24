@@ -1,5 +1,5 @@
 from django.conf.urls import include, url
-from manager.views import CollectionListView, CollectionCreateView, CollectionUpdateView, CollectionDeleteView, CollectionDetailView
+from manager.views import CollectionListView, CollectionCreateView, CollectionUpdateView, CollectionDeleteView, CollectionDetailView, CollectionPublicationsView
 from django.contrib.auth.decorators import permission_required
 
 urlpatterns = [
@@ -8,4 +8,5 @@ urlpatterns = [
 	url(r'^(?P<slug>[-\w]+)/detail/$', CollectionDetailView.as_view(), name="collection_detail"),
 	url(r'^(?P<slug>[-\w]+)/edit/$', permission_required('manager.change_collection')(CollectionUpdateView.as_view()), name="collection_update"),
 	url(r'^(?P<slug>[-\w]+)/delete/$', permission_required('manager.delete_collection')(CollectionDeleteView.as_view()), name="collection_delete"),
+	url(r'^(?P<slug>[-\w]+)/publications/page=(?P<page>[0-9]+)$', CollectionPublicationsView.as_view(), name="collection_publications"),
 ]

@@ -19,52 +19,52 @@
 
 {% block breadcrumbs %}
 	{{ block.super }}
-	<a href="{% url 'manager:admin_home' %}" class="breadcrumb-item" >
+	<a href="{% url 'manager:home' %}" class="breadcrumb-item" >
 		<i class="fa fa-home" aria-hidden="true"></i>
-		{% trans "Repository Admin" %}
+		{% trans "Home" %}
 	</a>
 {% endblock %}
 
-{%  block page_title %}{% trans "Site Administration" %}{% endblock %}
+{%  block page_title %}{% trans "Welcome" %}{% endblock %}
 
 {% block content %}
-	<div class="col-sm-3 col-md-3">
+	<div class="col-sm-2 col-md-2">
 		<div class="row">
 		{% block sidebar %}
 			<div class="list-group sidebar">
 				
-				<a href="{% url 'manager:admin_community_list' page=1 %}" class="list-group-item sidebar-item {% block communities %}{% endblock %}">
-					<i class="fa fa-users"></i>
+				<a href="{% url 'manager:community_list' page=1 %}" class="list-group-item sidebar-item {% block communities %}{% endblock %}">
+					<i class="fa fa-university"></i>
 					{% trans "Communities" %}
 				</a>
 				
-				<a href="{% url 'manager:admin_collection_list' page=1 %}" class="list-group-item sidebar-item {% block collections %}{% endblock %}">
-					<i class="fa fa-book"></i>
+				<a href="{% url 'manager:collection_list' page=1 %}" class="list-group-item sidebar-item {% block collections %}{% endblock %}">
+					<i class="fa fa-object-group"></i>
 					{% trans "Collections" %}
 				</a>
 
-				<a href="{% url 'manager:admin_publisher_list' page=1 %}" class="list-group-item sidebar-item {% block publishers %}{% endblock %}">
+				<a href="{% url 'manager:publisher_list' page=1 %}" class="list-group-item sidebar-item {% block publishers %}{% endblock %}">
 					<i class="fa fa-newspaper-o"></i>
 					{% trans "Publishers" %}
 				</a>
 				
-				<a href="{% url 'manager:admin_subject_list' page=1 %}" class="list-group-item sidebar-item {% block subjects %}{% endblock %}">
-					<i class="fa fa-comment"></i>
+				<a href="{% url 'manager:subject_list' page=1 %}" class="list-group-item sidebar-item {% block subjects %}{% endblock %}">
+					<i class="fa fa-flag"></i>
 					{% trans "Subjects" %}
 				</a>
 
-				<a href="{% url 'manager:admin_keyword_list' page=1 %}" class="list-group-item sidebar-item {% block keywords %}{% endblock %}">
-					<i class="fa fa-key"></i>
+				<a href="{% url 'manager:keyword_list' page=1 %}" class="list-group-item sidebar-item {% block keywords %}{% endblock %}">
+					<i class="fa fa-tags"></i>
 					{% trans "Keywords" %}
 				</a>
 				
-				<a href="{% url 'manager:admin_author_list' page=1 %}" class="list-group-item sidebar-item {% block authors %}{% endblock %}">
+				<a href="{% url 'manager:author_list' page=1 %}" class="list-group-item sidebar-item {% block authors %}{% endblock %}">
 					<i class="fa fa-graduation-cap"></i>
-					{% trans "Authors" %}
+					{% trans "Authors/Advisors" %}
 				</a>
 				
-				<a href="{% url 'manager:admin_publication_list' page=1 %}" class="list-group-item sidebar-item {% block publications %}{% endblock %}">
-					<i class="fa fa-archive"></i>
+				<a href="{% url 'manager:publication_list' page=1 %}" class="list-group-item sidebar-item {% block publications %}{% endblock %}">
+					<i class="fa fa-book"></i>
 					{% trans "Publications" %}
 				</a>
 				
@@ -73,7 +73,7 @@
 		</div>
 	</div>
 
-	<div class="col-sm-9 col-md-9">
+	<div class="col-sm-10 col-md-10">
 		<div class="row">
 		{% block content_inner %}
 			<div class="jumbotron jumbotron-fluid">

@@ -1,4 +1,4 @@
-{% extends "manager/admin/index.html" %}
+{% extends "manager/index.html" %}
 
 
 {% load i18n static %}
@@ -12,8 +12,8 @@
 
 {% block breadcrumbs %}
 	{{ block.super }}
-	<a href="{% url 'manager:admin_publisher_list' page=1 %}" class="breadcrumb-item" >
-		<i class="fa fa-users"></i>
+	<a href="{% url 'manager:publisher_list' page=1 %}" class="breadcrumb-item" >
+		<i class="fa fa-newspaper-o"></i>
 		{% trans "Publishers" %}
 	</a>
 {% endblock %}
@@ -23,7 +23,7 @@
 {% block content_inner %}
 	{% if perms.manager.add_publisher %}
 	<div class="col-md-12">
-		<a href="{% url 'manager:admin_publisher_create' %}" class="btn btn-success">
+		<a href="{% url 'manager:publisher_create' %}" class="btn btn-success">
 			<i class="fa fa-plus"></i>
 			{% trans "Create Publisher" %}
 		</a>
@@ -45,12 +45,13 @@
 						<td>{{ publisher.name }}</td>
 						<td>{{ publisher.registration_date }}</td>
 						<td>
-							<a href="{% url 'manager:admin_publisher_detail' slug=publisher.slug %}" class="btn btn-primary"><i class="fa fa-eye"></i></a>
+							<a href="{% url 'manager:publisher_publications' slug=publisher.slug page=1 %}" class="btn btn-primary"><i class="fa fa-book"></i></a>
+							<a href="{% url 'manager:publisher_detail' slug=publisher.slug %}" class="btn btn-primary"><i class="fa fa-eye"></i></a>
 							{% if perms.manager.change_publisher %}
-							<a href="{% url 'manager:admin_publisher_update' slug=publisher.slug %}" class="btn btn-info"><i class="fa fa-edit"></i></a>
+							<a href="{% url 'manager:publisher_update' slug=publisher.slug %}" class="btn btn-info"><i class="fa fa-edit"></i></a>
 							{% endif %}
 							{% if perms.manager.delete_publisher %}
-							<a href="{% url 'manager:admin_publisher_delete' slug=publisher.slug %}" class="btn btn-danger"><i class="fa fa-remove"></i></a>
+							<a href="{% url 'manager:publisher_delete' slug=publisher.slug %}" class="btn btn-danger"><i class="fa fa-remove"></i></a>
 							{% endif %}
 						</td>
 					</tr>

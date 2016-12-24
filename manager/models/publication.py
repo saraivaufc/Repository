@@ -41,7 +41,7 @@ class Publication(models.Model):
 	language = models.CharField(verbose_name=_("Language"), choices=LANGUAGE_CHOICES, max_length=100, null=False, blank=False)
 	abstract = models.TextField(verbose_name=_("Abstract"), null=False, blank=False)
 	other_abstract = models.TextField(verbose_name=_("Other Abstract"), null=True, blank=True)
-	keywords = models.ManyToManyField("KeyWord", verbose_name=_("Keywords"), related_name=_("Keywords"), null=False, blank=False)
+	keywords = models.ManyToManyField("KeyWord", verbose_name=_("Keywords"), related_name=_("Keywords"), limit_choices_to=5, null=False, blank=False)
 	issue_date = models.DateField(verbose_name=_("Issue Date"), null=False, blank=False, auto_now=False)
 	file = models.FileField(verbose_name=_(u"File"), upload_to='documents/publication/%Y/%m/%d', null=False, blank=False)
 	
