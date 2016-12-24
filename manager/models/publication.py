@@ -13,6 +13,10 @@ TYPOLOGY_CHOICES = (
     (u'incollection', _(u'Incollection')),
     (u'manual', _(u'Manual')),
     (u'mastersthesis', _(u'Masters Thesis')),
+    (u'monography', _(u'Monography')),
+    (u'dissertation', _(u'Dissertation')),
+    (u'abstract', _(u'Abstract')),
+
 )
 
 LANGUAGE_CHOICES = (

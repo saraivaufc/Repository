@@ -1,0 +1,108 @@
+{% extends "manager/admin/publication/list.html" %}
+
+
+{% load i18n static %}
+
+{% block title %}{% endblock %}
+
+{% block stylesheet %}
+{% endblock %}
+
+{% block breadcrumbs %}
+	{{ block.super }}
+	<a href="{% url 'manager:admin_publication_detail' slug=object.slug %}" class="breadcrumb-item" >
+		<i class="fa fa-users"></i>
+		{{ object.title|truncatewords:"4" }}
+	</a>
+{% endblock %}
+
+{%  block page_title %}{{ object.title }}{% endblock %}
+
+{% block content_inner %}
+	<table class="table table-bordered">
+		<tbody>
+			<tr>
+				<td>{% trans "Title" %}:</td>
+				<td>{{ object.title }}</td>
+			</tr>
+			<tr>
+				<td>{% trans "Typology" %}:</td>
+				<td>{{ object.typology }}</td>
+			</tr>
+			<tr>
+				<td>{% trans "Authors" %}:</td>
+				<td>
+					{% for author in object.authors.all %}
+						{{ author.reference_name }};
+					{% endfor %}
+				</td>
+			</tr>
+			<tr>
+				<td>{% trans "Advisors" %}:</td>
+				<td>
+					{% for advisor in object.advisors.all %}
+						{{ advisor.reference_name }};
+					{% endfor %}
+				</td>
+			</tr>
+			<tr>
+				<td>{% trans "Community" %}:</td>
+				<td>{{ object.collection.community }}</td>
+			</tr>
+			<tr>
+				<td>{% trans "Collection" %}:</td>
+				<td>{{ object.collection }}</td>
+			</tr>
+			<tr>
+				<td>{% trans "Publisher" %}:</td>
+				<td>{{ object.publisher }}</td>
+			</tr>
+			<tr>
+				<td>{% trans "address" %}:</td>
+				<td>{{ object.address }}</td>
+			</tr>
+			<tr>
+				<td>{% trans "Year" %}:</td>
+				<td>{{ object.year }}</td>
+			</tr>
+			<tr>
+				<td>{% trans "Reference" %}:</td>
+				<td>{{ object.reference }}</td>
+			</tr>
+			<tr>
+				<td>{% trans "uri" %}:</td>
+				<td><a href="{{ object.uri }}">{{ object.uri }}</a></td>
+			</tr>
+			<tr>
+				<td>{% trans "Language" %}:</td>
+				<td>{{ object.language }}</td>
+			</tr>
+			<tr>
+				<td>{% trans "Abstract" %}:</td>
+				<td>{{ object.abstract }}</td>
+			</tr>
+			<tr>
+				<td>{% trans "Other Abstract" %}:</td>
+				<td>{{ object.other_abstract }}</td>
+			</tr>
+			<tr>
+				<td>{% trans "Keywords" %}:</td>
+				<td>
+					{% for keyword in object.keywords.all %}
+					{{ keyword }}.
+					{% endfor %}
+				</td>
+			</tr>
+			<tr>
+				<td>{% trans "Issue Date" %}:</td>
+				<td>{{ object.issue_date }}</td>
+			</tr>
+			<tr>
+				<td>{% trans "File" %}:</td>
+				<td>
+					<a href="{{ object.file.url }}" target="_blank">{% trans "Download" %}</a>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+{% endblock %}

@@ -1,6 +1,17 @@
+{% load i18n %}
+
+<div class="form-group">
 {% include 'Repository/fields/caption.html' %}
 {% include 'Repository/fields/errors.html' %}
-<div class="input-control text" data-role="datepicker">
-    {{ field }}
-    <button class="button"><span class="mif-calendar"></span></button>
+	<input data-toggle="tooltip" data-placement="top" title="{{ field.help_text }}"
+		{% if field.field.required %}
+			data-validate-func="required"
+			data-validate-hint="{% trans "This field can not be empty" %}"
+		{% endif %}
+		class="form-control"
+		name="{% if form.prefix %}{{form.prefix}}-{% endif %}{{ field.name }}"
+		type="datetime" id="{{ field.auto_id }}"
+		{% if field.value %}value="{{ field.value }}"{% endif %}
+		{% include 'Repository/fields/attrs.html' %}
+	/>
 </div>

@@ -19,3 +19,7 @@ class Profile(User):
 	class Meta:
 		verbose_name = _(u'Profile')
 		verbose_name_plural = _(u'Profile')
+
+		permissions = (
+			("access_manager_admin", "Access Manager Admin"),
+		)

@@ -1,11 +1,7 @@
-from django.shortcuts import render
-
-from manager.models import Community
-from public import *
-from admin import *
-
-def home(request):
-	if request.user.has_perm('manager.access_admin_site'):
-		return render(request, 'manager/admin/index.html', {'request': request})
-	else:
-		return render(request, 'manager/public/index.html', {'request': request})
+from community_view import CommunityListView, CommunityCreateView, CommunityUpdateView, CommunityDeleteView, CommunityDetailView
+from collection_view import CollectionListView, CollectionCreateView, CollectionUpdateView, CollectionDeleteView, CollectionDetailView
+from subject_view import SubjectListView, SubjectCreateView, SubjectUpdateView, SubjectDeleteView, SubjectDetailView
+from keyword_view import KeywordListView, KeywordCreateView, KeywordUpdateView, KeywordDeleteView, KeywordDetailView
+from author_view import AuthorListView, AuthorCreateView, AuthorUpdateView, AuthorDeleteView, AuthorDetailView
+from publisher_view import PublisherListView, PublisherCreateView, PublisherUpdateView, PublisherDeleteView, PublisherDetailView
+from publication_view import PublicationListView, PublicationCreateView, PublicationUpdateView, PublicationDeleteView, PublicationDetailView

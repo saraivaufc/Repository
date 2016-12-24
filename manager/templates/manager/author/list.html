@@ -1,0 +1,71 @@
+{% extends "manager/index.html" %}
+
+
+{% load i18n static %}
+
+{% block title %}{% endblock %}
+
+{% block stylesheet %}
+{% endblock %}
+
+{% block authors %}active{% endblock %}
+
+{% block breadcrumbs %}
+	{{ block.super }}
+	<a href="{% url 'manager:author_list' page=1 %}" class="breadcrumb-item" >
+		<i class="fa fa-users"></i>
+		{% trans "Authors" %}
+	</a>
+{% endblock %}
+
+{%  block page_title %}{% trans "List of Authors" %}{% endblock %}
+
+{% block content_inner %}
+	{% if perms.manager.add_author %}
+	<div class="col-md-12">
+		<a href="{% url 'manager:author_create' %}" class="btn btn-success">
+			<i class="fa fa-plus"></i>
+			{% trans "Create Author" %}
+		</a>
+	</div>
+	{% endif %}
+	<div class="col-md-12">
+		<table class="table table-bordered dataTable">
+			<thead class="thead-inverse">
+				<tr>
+					<th>{% trans "First Name" %}</th>
+					<th>{% trans "Last Name" %}</th>
+					<th>{% trans "Reference Name" %}</th>
+					<th>{% trans "Options" %}</th>
+				</tr>
+			</thead>
+
+			<tbody>
+				{% for author in object_list %}
+					<tr>
+						<td>{{ author.first_name }}</td>
+						<td>{{ author.last_name }}</td>
+						<td>{{ author.reference_name }}</td>
+						<td>
+							<a href="{% url 'manager:author_detail' slug=author.slug %}" class="btn btn-primary"><i class="fa fa-eye"></i></a>
+							{% if perms.manager.change_author %}
+							<a href="{% url 'manager:author_update' slug=author.slug %}" class="btn btn-info"><i class="fa fa-edit"></i></a>
+							{% endif %}
+							{% if perms.manager.delete_author %}
+							<a href="{% url 'manager:author_delete' slug=author.slug %}" class="btn btn-danger"><i class="fa fa-remove"></i></a>
+							{% endif %}
+						</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+	<div class="col-md-12">
+		{% include "Repository/_paginate.html" %}
+	</div>
+{% endblock %}
+
+{% block scripts %}
+	{{ block.super }}
+	{% include "Repository/imports/dataTable.html" %}
+{% endblock %}

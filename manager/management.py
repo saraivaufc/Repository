@@ -7,9 +7,11 @@ from django.db.models.signals import post_save
 
 group_permissions = {
 	"default": [
-		#community
+		#Access
 	],
 	"admin": [
+		#Access
+		"access_manager_admin",
 		#community
 		"add_community",
 		"change_community",

@@ -6,7 +6,20 @@
     	{% trans "RIUFC" %}
   	</a>
 	<ul class="nav navbar-nav">
-		<li class="nav-item active">
+		<li class="nav-item dropdown">
+			<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				{% trans "Modules" %}
+			</a>
+			<div class="dropdown-menu">
+				<a class="dropdown-item" href="{% url 'manager:public_home' %}">
+					{% trans "Repository" %}
+				</a>
+				{% if perms.authentication.access_manager_admin %}
+					<a class="dropdown-item" href="{% url 'manager:admin_home' %}">
+						{% trans "Repository Admin" %}
+					</a>
+				{% endif %}
+			</div>
 		</li>
 	</ul>
 
@@ -15,7 +28,7 @@
 		<li class="dropdown">
 			<a href="#"  class="nav-link dropdown-toggle" aria-labelledby="user" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ request.user.username  }} <span class="caret"></span></a>
 			<div class="dropdown-menu">
-				<a  class="dropdown-item" href="{% url 'authentication:logout' %}">{% trans "Logout" %}</a>
+				<a class="dropdown-item" href="{% url 'authentication:logout' %}" class="nav-item">{% trans "Logout" %}</a>
 			</div>
 		</li>
 		{% else %}

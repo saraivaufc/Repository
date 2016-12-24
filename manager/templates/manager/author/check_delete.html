@@ -1,0 +1,27 @@
+{% extends "manager/author/list.html" %}
+
+
+{% load i18n static %}
+
+{% block title %}{% endblock %}
+
+{% block stylesheet %}
+{% endblock %}
+
+{% block breadcrumbs %}
+	{{ block.super }}
+	<a href="{% url 'manager:author_delete' slug=object.slug %}" class="breadcrumb-item" >
+		<i class="fa fa-remove"></i>
+		{% trans "Confirm delete" %}
+	</a>
+{% endblock %}
+
+{%  block page_title %}{% trans "Confirm delete" %}{% endblock %}
+
+{% block content_inner %}
+	<form action="." method="post">{% csrf_token %}
+		<p>{% trans "Are you sure you want to delete" %} "{{ object }}"?</p>
+		<a href="{% url 'manager:author_list' page=1 %}" class="btn btn-info">{% trans "No" %}</a>
+		<button class="btn btn-primary" type="submit">{% trans "Yes" %}</button>
+	</form>
+{% endblock %}

@@ -8,7 +8,7 @@ urlpatterns = [
 		{'template_name': 'authentication/account/login.html',}, 
 		name="login"),
 	url(r'^logout/$', auth_views.logout, 
-		{'next_page': reverse_lazy("authentication:login")}, 
+		{'next_page': reverse_lazy("authentication:login")},
 		name="logout"),
 	url(r'^register/$', ProfileCreate.as_view(), name="register"),
 	url(r'^password/reset/$', auth_views.password_reset, 

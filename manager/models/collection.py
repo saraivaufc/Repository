@@ -20,7 +20,7 @@ class Collection(models.Model):
 		super(Collection, self).save(*args, **kwargs)
 
 	def __unicode__(self):
-		return self.name
+		return unicode(self.community) + " - " + self.name
 
 	class Meta:
 		ordering = ['-registration_date']
