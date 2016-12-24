@@ -1,3 +1,4 @@
+from django.utils.translation import ugettext_lazy as _
 from django.views.generic.list import ListView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic.detail import DetailView, SingleObjectMixin
@@ -15,10 +16,20 @@ from manager.models import Subject, Publication
 class SubjectListView(ListView):
 	template_name = 'manager/subject/list.html'
 	paginate_by = settings.PAGINATE_BY
-	queryset = Subject.objects.all()
+	fields_search = {"name":_("Name")}
+
+	def get_queryset(self):
+		query = self.request.GET.get('query')
+		text = self.request.GET.get('text')
+		if query and query in self.fields_search:
+			kwargs = {("%s__contains" % (query,)):text}
+			return Subject.objects.filter(** kwargs)
+		return Subject.objects.all()
 
 	def get_context_data(self, ** kwargs):
 		context = super(SubjectListView, self).get_context_data( ** kwargs)
+		context["fields_search"] = self.fields_search
+		context["url_search"] = reverse_lazy("manager:subject_list", kwargs={"page":1})
 		return context
 
 class SubjectCreateView(CreateView):

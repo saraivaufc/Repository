@@ -21,38 +21,50 @@
 {%  block page_title %}{% trans "List of Keywords" %}{% endblock %}
 
 {% block content_inner %}
+	<div class="col-md-4">
 	{% if perms.manager.add_keyword %}
-	<div class="col-md-12">
 		<a href="{% url 'manager:keyword_create' %}" class="btn btn-success">
 			<i class="fa fa-plus"></i>
 			{% trans "Create Keyword" %}
 		</a>
-	</div>
 	{% endif %}
+	</div>
+	<div class="col-md-8">
+		{% include "Repository/_form_search.html" %}
+	</div>
 	<div class="col-md-12">
-		<table class="table table-bordered dataTable">
+		<table class="table table-bordered">
 			<thead class="thead-inverse">
 				<tr>
-					<th>{% trans "Name" %}</th>
-					<th>{% trans "Registration Date" %}</th>
-					<th>{% trans "Options" %}</th>
+					<th class="col-md-10">{% trans "Name" %}</th>
+					<th class="col-md-2">{% trans "Options" %}</th>
 				</tr>
 			</thead>
 
 			<tbody>
 				{% for keyword in object_list %}
 					<tr>
-						<td>{{ keyword.name }}</td>
-						<td>{{ keyword.registration_date }}</td>
-						<td>
-							<a href="{% url 'manager:keyword_publications' slug=keyword.slug page=1 %}" class="btn btn-primary"><i class="fa fa-book"></i></a>
-							<a href="{% url 'manager:keyword_detail' slug=keyword.slug %}" class="btn btn-primary"><i class="fa fa-eye"></i></a>
-							{% if perms.manager.change_keyword %}
-							<a href="{% url 'manager:keyword_update' slug=keyword.slug %}" class="btn btn-info"><i class="fa fa-edit"></i></a>
-							{% endif %}
-							{% if perms.manager.delete_keyword %}
-							<a href="{% url 'manager:keyword_delete' slug=keyword.slug %}" class="btn btn-danger"><i class="fa fa-remove"></i></a>
-							{% endif %}
+						<td class="col-md-10">
+							<a href="{% url 'manager:keyword_detail' slug=keyword.slug %}">
+								{{ keyword.name }}
+							</a>
+						</td>
+						<td class="col-md-2">
+							<div class="btn-group" role="group">
+								<a href="{% url 'manager:keyword_publications' slug=keyword.slug page=1 %}" class="btn btn-primary btn-sm" title="{% trans "Publications" %}">
+									<i class="fa fa-book"></i>
+								</a>
+								{% if perms.manager.change_keyword %}
+								<a href="{% url 'manager:keyword_update' slug=keyword.slug %}" class="btn btn-info btn-sm" title="{% trans "Edit" %}">
+									<i class="fa fa-edit"></i>
+								</a>
+								{% endif %}
+								{% if perms.manager.delete_keyword %}
+								<a href="{% url 'manager:keyword_delete' slug=keyword.slug %}" class="btn btn-danger btn-sm" title="{% trans "Delete" %}">
+									<i class="fa fa-remove"></i>
+								</a>
+								{% endif %}
+							</div>
 						</td>
 					</tr>
 				{% endfor %}
@@ -62,9 +74,4 @@
 	<div class="col-md-12">
 		{% include "Repository/_paginate.html" %}
 	</div>
-{% endblock %}
-
-{% block scripts %}
-	{{ block.super }}
-	{% include "Repository/imports/dataTable.html" %}
 {% endblock %}

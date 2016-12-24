@@ -71,7 +71,9 @@
 			</tr>
 			<tr>
 				<td>{% trans "uri" %}:</td>
-				<td><a href="{{ object.uri }}">{{ object.uri }}</a></td>
+				<td>
+					<a href="{{ request.get_host }}{{ object.uri }}">{{ request.get_host }}{{ object.uri }}</a>
+				</td>
 			</tr>
 			<tr>
 				<td>{% trans "Language" %}:</td>

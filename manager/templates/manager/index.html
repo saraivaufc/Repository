@@ -32,6 +32,16 @@
 		<div class="row">
 		{% block sidebar %}
 			<div class="list-group sidebar">
+
+				<a href="{% url 'manager:publication_list' page=1 %}" class="list-group-item sidebar-item {% block publications %}{% endblock %}">
+					<i class="fa fa-book"></i>
+					{% trans "Publications" %}
+				</a>
+
+				<a href="{% url 'manager:author_list' page=1 %}" class="list-group-item sidebar-item {% block authors %}{% endblock %}">
+					<i class="fa fa-graduation-cap"></i>
+					{% trans "Authors/Advisors" %}
+				</a>
 				
 				<a href="{% url 'manager:community_list' page=1 %}" class="list-group-item sidebar-item {% block communities %}{% endblock %}">
 					<i class="fa fa-university"></i>
@@ -57,17 +67,7 @@
 					<i class="fa fa-tags"></i>
 					{% trans "Keywords" %}
 				</a>
-				
-				<a href="{% url 'manager:author_list' page=1 %}" class="list-group-item sidebar-item {% block authors %}{% endblock %}">
-					<i class="fa fa-graduation-cap"></i>
-					{% trans "Authors/Advisors" %}
-				</a>
-				
-				<a href="{% url 'manager:publication_list' page=1 %}" class="list-group-item sidebar-item {% block publications %}{% endblock %}">
-					<i class="fa fa-book"></i>
-					{% trans "Publications" %}
-				</a>
-				
+			
 			</div>
 		{% endblock %}
 		</div>

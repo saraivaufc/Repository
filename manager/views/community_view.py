@@ -1,3 +1,4 @@
+from django.utils.translation import ugettext_lazy as _
 from django.views.generic.list import ListView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic.detail import DetailView, SingleObjectMixin
@@ -5,21 +6,25 @@ from django.core.urlresolvers import reverse_lazy
 from django.contrib.auth.decorators import login_required, permission_required
 from django.conf import settings
 
-
 from manager.models import Community, Collection, Publication
-
-#from django.utils.decorators import method_decorator
-#from django.contrib.auth.decorators import login_required, permission_required
-#@method_decorator(permission_required, 'manager.community_list')
-
 
 class CommunityListView(ListView):
 	template_name = 'manager/community/list.html'
 	paginate_by = settings.PAGINATE_BY
-	queryset = Community.objects.all()
+	fields_search = {"name":_("Name"), "acronym":_("Acronym")}
+
+	def get_queryset(self):
+		query = self.request.GET.get('query')
+		text = self.request.GET.get('text')
+		if query and query in self.fields_search:
+			kwargs = {("%s__contains" % (query,)):text}
+			return Community.objects.filter(** kwargs)
+		return Community.objects.all()
 
 	def get_context_data(self, ** kwargs):
 		context = super(CommunityListView, self).get_context_data( ** kwargs)
+		context["fields_search"] = self.fields_search
+		context["url_search"] = reverse_lazy("manager:community_list", kwargs={"page":1})
 		return context
 
 class CommunityCreateView(CreateView):

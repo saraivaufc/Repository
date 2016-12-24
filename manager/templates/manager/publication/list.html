@@ -21,36 +21,52 @@
 {%  block page_title %}{% trans "List of Publications" %}{% endblock %}
 
 {% block content_inner %}
+	<div class="col-md-4">
 	{% if perms.manager.add_publication %}
-	<div class="col-md-12">
 		<a href="{% url 'manager:publication_create' %}" class="btn btn-success">
 			<i class="fa fa-plus"></i>
 			{% trans "Create Publication" %}
 		</a>
-	</div>
 	{% endif %}
+	</div>
+	<div class="col-md-8">
+		{% include "Repository/_form_search.html" %}
+	</div>
 	<div class="col-md-12">
-		<table class="table table-bordered dataTable">
+		<table class="table table-bordered">
 			<thead class="thead-inverse">
 				<tr>
-					<th>{% trans "Title" %}</th>
-					<th>{% trans "Options" %}</th>
+					<th class="col-md-10">{% trans "Title" %}</th>
+					{% if perms.manager.change_publication or perms.manager.delete_publication %}
+					<th class="col-md-2">{% trans "Options" %}</th>
+					{% endif %}
 				</tr>
 			</thead>
 
 			<tbody>
 				{% for publication in object_list %}
 					<tr>
-						<td>{{ publication.title }}</td>
-						<td>
-							<a href="{% url 'manager:publication_detail' slug=publication.slug %}" class="btn btn-primary"><i class="fa fa-eye"></i></a>
-							{% if perms.manager.change_publication %}
-							<a href="{% url 'manager:publication_update' slug=publication.slug %}" class="btn btn-info"><i class="fa fa-edit"></i></a>
-							{% endif %}
-							{% if perms.manager.delete_publication %}
-							<a href="{% url 'manager:publication_delete' slug=publication.slug %}" class="btn btn-danger"><i class="fa fa-remove"></i></a>
-							{% endif %}
+						<td class="col-md-10">
+							<a href="{% url 'manager:publication_detail' slug=publication.slug %}">
+								{{ publication.title }}	
+							</a>
 						</td>
+						{% if perms.manager.change_publication or perms.manager.delete_publication %}
+						<td class="col-md-2">
+							<div class="btn-group" role="group">
+								{% if perms.manager.change_publication %}
+								<a href="{% url 'manager:publication_update' slug=publication.slug %}" class="btn btn-info btn-sm" title="{% trans "Edit" %}">
+									<i class="fa fa-edit"></i>
+								</a>
+								{% endif %}
+								{% if perms.manager.delete_publication %}
+								<a href="{% url 'manager:publication_delete' slug=publication.slug %}" class="btn btn-danger btn-sm" title="{% trans "Delete" %}">
+									<i class="fa fa-remove"></i>
+								</a>
+								{% endif %}
+							</div>
+						</td>
+						{% endif %}
 					</tr>
 				{% endfor %}
 			</tbody>
@@ -59,9 +75,4 @@
 	<div class="col-md-12">
 		{% include "Repository/_paginate.html" %}
 	</div>
-{% endblock %}
-
-{% block scripts %}
-	{{ block.super }}
-	{% include "Repository/imports/dataTable.html" %}
 {% endblock %}

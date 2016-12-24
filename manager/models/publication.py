@@ -1,6 +1,7 @@
 from django.utils.translation import ugettext_lazy as _
 from django.template.defaultfilters import slugify
 from django.db import models
+from django.core.urlresolvers import reverse_lazy
 from authentication.models import Profile
 import itertools
 
@@ -41,7 +42,7 @@ class Publication(models.Model):
 	language = models.CharField(verbose_name=_("Language"), choices=LANGUAGE_CHOICES, max_length=100, null=False, blank=False)
 	abstract = models.TextField(verbose_name=_("Abstract"), null=False, blank=False)
 	other_abstract = models.TextField(verbose_name=_("Other Abstract"), null=True, blank=True)
-	keywords = models.ManyToManyField("KeyWord", verbose_name=_("Keywords"), related_name=_("Keywords"), limit_choices_to=5, null=False, blank=False)
+	keywords = models.ManyToManyField("KeyWord", verbose_name=_("Keywords"), related_name=_("Keywords"), null=False, blank=False)
 	issue_date = models.DateField(verbose_name=_("Issue Date"), null=False, blank=False, auto_now=False)
 	file = models.FileField(verbose_name=_(u"File"), upload_to='documents/publication/%Y/%m/%d', null=False, blank=False)
 	
@@ -54,7 +55,6 @@ class Publication(models.Model):
 				if not Publication.objects.filter(slug=self.slug).exists():
 					break
 				self.slug = "%s-%d" % (orig, x)
-		self.uri = "http://www.google.com"
 		super(Publication, self).save(*args, **kwargs)
 
 	def __unicode__(self):
@@ -64,3 +64,11 @@ class Publication(models.Model):
 		ordering = ['-registration_date']
 		verbose_name = _(u"Publication")
 		verbose_name_plural = _(u"Publications")
+
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+
+def post_save_receiver(sender, instance, created, ** kwargs):
+	instance.uri = reverse_lazy("manager:publication_uri", kwargs={"pk": instance.pk})
+		
+post_save.connect(post_save_receiver, sender=Publication)
