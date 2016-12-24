@@ -1,0 +1,29 @@
+{% load i18n %}
+
+<footer>
+	<nav class="nav nav-inline">
+		<a class="nav-link active" href="#">&copy; Saraiva Company</a>
+		<a class="nav-link" href="#">{% trans "About" %}</a>
+		<a class="nav-link" href="#">{% trans "Terms of Use" %}</a>
+		<a class="nav-link" href="#">{% trans "Privacy Policy" %}</a>
+		<a class="nav-link" href="#">{% trans "Contact Us" %}</a>
+		<div class="nav-link">
+		{% comment %}
+			<form action="{% url 'set_language' %}" method="post">
+			{% csrf_token %}
+			<input name="next" type="hidden" value="{{ redirect_to }}" />
+			<select name="language">
+				{% get_current_language as LANGUAGE_CODE %}
+				{% get_available_languages as LANGUAGES %}
+				{% for lang in LANGUAGES %}
+				<option value="{{ lang.0 }}" {% if lang.0 == LANGUAGE_CODE %} selected="selected"{% endif %}>
+					{{ lang.1 }} ({{ lang.0 }})
+				</option>
+				{% endfor %}
+			</select>
+			<input type="submit" value="{% trans "Go" %}" />
+			</form>
+		{% endcomment %}
+		</div>
+	</nav>
+</footer>

@@ -1,0 +1,69 @@
+{% extends "manager/admin/index.html" %}
+
+
+{% load i18n static %}
+
+{% block title %}{% endblock %}
+
+{% block stylesheet %}
+{% endblock %}
+
+{% block keywords %}active{% endblock %}
+
+{% block breadcrumbs %}
+	{{ block.super }}
+	<a href="{% url 'manager:admin_keyword_list' page=1 %}" class="breadcrumb-item" >
+		<i class="fa fa-users"></i>
+		{% trans "Keywords" %}
+	</a>
+{% endblock %}
+
+{%  block page_title %}{% trans "List of Keywords" %}{% endblock %}
+
+{% block content_inner %}
+	{% if perms.manager.add_keyword %}
+	<div class="col-md-12">
+		<a href="{% url 'manager:admin_keyword_create' %}" class="btn btn-success">
+			<i class="fa fa-plus"></i>
+			{% trans "Create Keyword" %}
+		</a>
+	</div>
+	{% endif %}
+	<div class="col-md-12">
+		<table class="table table-bordered dataTable">
+			<thead class="thead-inverse">
+				<tr>
+					<th>{% trans "Name" %}</th>
+					<th>{% trans "Registration Date" %}</th>
+					<th>{% trans "Options" %}</th>
+				</tr>
+			</thead>
+
+			<tbody>
+				{% for keyword in object_list %}
+					<tr>
+						<td>{{ keyword.name }}</td>
+						<td>{{ keyword.registration_date }}</td>
+						<td>
+							<a href="{% url 'manager:admin_keyword_detail' slug=keyword.slug %}" class="btn btn-primary"><i class="fa fa-eye"></i></a>
+							{% if perms.manager.change_keyword %}
+							<a href="{% url 'manager:admin_keyword_update' slug=keyword.slug %}" class="btn btn-info"><i class="fa fa-edit"></i></a>
+							{% endif %}
+							{% if perms.manager.delete_keyword %}
+							<a href="{% url 'manager:admin_keyword_delete' slug=keyword.slug %}" class="btn btn-danger"><i class="fa fa-remove"></i></a>
+							{% endif %}
+						</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+	<div class="col-md-12">
+		{% include "Repository/_paginate.html" %}
+	</div>
+{% endblock %}
+
+{% block scripts %}
+	{{ block.super }}
+	{% include "Repository/imports/dataTable.html" %}
+{% endblock %}

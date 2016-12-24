@@ -1,0 +1,16 @@
+{% load i18n static %}
+
+<link rel="stylesheet" type="text/css" href="{% static "Repository/packages/DataTables-1.10.13/media/css/dataTables.bootstrap4.css" %}">
+
+<script src="{% static "Repository/packages/DataTables-1.10.13/media/js/jquery.dataTables.min.js" %}"></script>
+<script src="{% static "Repository/packages/DataTables-1.10.13/media/js/dataTables.bootstrap4.min.js" %}"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$('.dataTable').DataTable({
+			"searching": false,
+			"paging": false,
+			"ordering": true,
+			"info": false,
+		});
+	});
+</script>

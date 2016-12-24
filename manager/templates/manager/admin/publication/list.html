@@ -1,0 +1,67 @@
+{% extends "manager/admin/index.html" %}
+
+
+{% load i18n static %}
+
+{% block title %}{% endblock %}
+
+{% block stylesheet %}
+{% endblock %}
+
+{% block publications %}active{% endblock %}
+
+{% block breadcrumbs %}
+	{{ block.super }}
+	<a href="{% url 'manager:admin_publication_list' page=1 %}" class="breadcrumb-item" >
+		<i class="fa fa-users"></i>
+		{% trans "Publications" %}
+	</a>
+{% endblock %}
+
+{%  block page_title %}{% trans "List of Publications" %}{% endblock %}
+
+{% block content_inner %}
+	{% if perms.manager.add_publication %}
+	<div class="col-md-12">
+		<a href="{% url 'manager:admin_publication_create' %}" class="btn btn-success">
+			<i class="fa fa-plus"></i>
+			{% trans "Create Publication" %}
+		</a>
+	</div>
+	{% endif %}
+	<div class="col-md-12">
+		<table class="table table-bordered dataTable">
+			<thead class="thead-inverse">
+				<tr>
+					<th>{% trans "Title" %}</th>
+					<th>{% trans "Options" %}</th>
+				</tr>
+			</thead>
+
+			<tbody>
+				{% for publication in object_list %}
+					<tr>
+						<td>{{ publication.title }}</td>
+						<td>
+							<a href="{% url 'manager:admin_publication_detail' slug=publication.slug %}" class="btn btn-primary"><i class="fa fa-eye"></i></a>
+							{% if perms.manager.change_publication %}
+							<a href="{% url 'manager:admin_publication_update' slug=publication.slug %}" class="btn btn-info"><i class="fa fa-edit"></i></a>
+							{% endif %}
+							{% if perms.manager.delete_publication %}
+							<a href="{% url 'manager:admin_publication_delete' slug=publication.slug %}" class="btn btn-danger"><i class="fa fa-remove"></i></a>
+							{% endif %}
+						</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+	<div class="col-md-12">
+		{% include "Repository/_paginate.html" %}
+	</div>
+{% endblock %}
+
+{% block scripts %}
+	{{ block.super }}
+	{% include "Repository/imports/dataTable.html" %}
+{% endblock %}

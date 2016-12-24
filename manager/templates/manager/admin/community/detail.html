@@ -1,0 +1,49 @@
+{% extends "manager/admin/community/list.html" %}
+
+
+{% load i18n static %}
+
+{% block title %}{% endblock %}
+
+{% block stylesheet %}
+{% endblock %}
+
+{% block breadcrumbs %}
+	{{ block.super }}
+	<a href="{% url 'manager:admin_community_create' %}" class="breadcrumb-item" >
+		<i class="fa fa-users"></i>
+		{{ object.name }}
+	</a>
+{% endblock %}
+
+{%  block page_title %}{{ object.name }}{% endblock %}
+
+{% block content_inner %}
+	<table class="table table-bordered">
+		<tbody>
+			<tr>
+				<td>{% trans "Name" %}:</td>
+				<td>{{ object.name }}</td>
+			</tr>
+			<tr>
+				<td>{% trans "Acronym" %}:</td>
+				<td>{{ object.acronym }}</td>
+			</tr>
+			<tr>
+				<td>{% trans "Registration date" %}:</td>
+				<td>{{ object.registration_date }}</td>
+			</tr>
+		</tbody>
+	</table>
+	<h4>{% trans "Collections" %}:</h4>
+		{% for collection in page_obj %}
+		<a href="{% url 'manager:admin_collection_detail' slug=collection.slug %}" class="list-group-item">
+			<i class="fa fa-book"></i>
+			{{ collection }}
+		</a>
+	{% endfor %}
+	
+	<div class="col-md-12">
+		{% include "Repository/_paginate.html" %}
+	</div>
+{% endblock %}

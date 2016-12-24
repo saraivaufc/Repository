@@ -1,0 +1,69 @@
+{% extends "manager/admin/index.html" %}
+
+
+{% load i18n static %}
+
+{% block title %}{% endblock %}
+
+{% block stylesheet %}
+{% endblock %}
+
+{% block subjects %}active{% endblock %}
+
+{% block breadcrumbs %}
+	{{ block.super }}
+	<a href="{% url 'manager:admin_subject_list' page=1 %}" class="breadcrumb-item" >
+		<i class="fa fa-users"></i>
+		{% trans "Subjects" %}
+	</a>
+{% endblock %}
+
+{%  block page_title %}{% trans "List of Subjects" %}{% endblock %}
+
+{% block content_inner %}
+	{% if perms.manager.add_subject %}
+	<div class="col-md-12">
+		<a href="{% url 'manager:admin_subject_create' %}" class="btn btn-success">
+			<i class="fa fa-plus"></i>
+			{% trans "Create Subject" %}
+		</a>
+	</div>
+	{% endif %}
+	<div class="col-md-12">
+		<table class="table table-bordered dataTable">
+			<thead class="thead-inverse">
+				<tr>
+					<th>{% trans "Name" %}</th>
+					<th>{% trans "Registration Date" %}</th>
+					<th>{% trans "Options" %}</th>
+				</tr>
+			</thead>
+
+			<tbody>
+				{% for subject in object_list %}
+					<tr>
+						<td>{{ subject.name }}</td>
+						<td>{{ subject.registration_date }}</td>
+						<td>
+							<a href="{% url 'manager:admin_subject_detail' slug=subject.slug %}" class="btn btn-primary"><i class="fa fa-eye"></i></a>
+							{% if perms.manager.change_subject %}
+							<a href="{% url 'manager:admin_subject_update' slug=subject.slug %}" class="btn btn-info"><i class="fa fa-edit"></i></a>
+							{% endif %}
+							{% if perms.manager.delete_subject %}
+							<a href="{% url 'manager:admin_subject_delete' slug=subject.slug %}" class="btn btn-danger"><i class="fa fa-remove"></i></a>
+							{% endif %}
+						</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+	<div class="col-md-12">
+		{% include "Repository/_paginate.html" %}
+	</div>
+{% endblock %}
+
+{% block scripts %}
+	{{ block.super }}
+	{% include "Repository/imports/dataTable.html" %}
+{% endblock %}

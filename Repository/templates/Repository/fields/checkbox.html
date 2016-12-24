@@ -1,0 +1,16 @@
+{% load i18n %}
+
+<div class="form-check">
+{% include 'Repository/fields/caption.html' %}
+{% include 'Repository/fields/errors.html' %}
+	<label class="form-check-label">
+	     <input id="{{ field.auto_id }}"
+	     class="form-check-input"
+		type="checkbox"
+		name="{% if form.prefix %}{{form.prefix}}-{% endif %}{{ field.name }}"
+		title="{{ field.help_text }}"
+		{% if field.field.required %}required{% endif %}
+		{% if field.value == True or field.initial == True %}checked{% endif %}
+		{% include 'Repository/fields/attrs.html' %} />
+	</label>
+</div>

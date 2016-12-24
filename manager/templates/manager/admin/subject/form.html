@@ -1,0 +1,23 @@
+{% extends "manager/admin/subject/list.html" %}
+
+
+{% load i18n static %}
+
+{% block title %}{% endblock %}
+
+{% block stylesheet %}
+{% endblock %}
+
+{% block breadcrumbs %}
+	{{ block.super }}
+	<a href="{% url 'manager:admin_subject_create' %}" class="breadcrumb-item" >
+		{% trans "Form Subject" %}
+	</a>
+{% endblock %}
+
+{% block content_inner %}
+	<form action="." method="post">{% csrf_token %}		
+		{% include "Repository/_form.html" %}
+		<button type="submit" class="btn btn-primary">{% trans "Submit" %}</button>
+	</form>
+{% endblock %}

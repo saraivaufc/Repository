@@ -1,0 +1,26 @@
+{% extends "authentication/account/index.html" %}
+
+{% load i18n static %}
+
+{% block title %}{% endblock %}
+
+{% block stylesheet %}
+{% endblock %}
+
+{% block breadcrumbs %}
+	{{ block.super }}
+	<a href="#" class="breadcrumb-item" >
+		<i class="fa fa-users"></i>
+		{% trans "Register" %}
+	</a>
+{% endblock %}
+
+{%  block page_title %}{% trans "Register" %}{% endblock %}
+
+{% block content %}
+	<form action="{% url 'authentication:register' %}" method="post">{% csrf_token %}		
+		{% include "Repository/_form.html" %}
+		<button type="submit" class="btn btn-primary">{% trans "Submit" %}</button>
+		<input type="hidden" name="next" value="{{ next }}" />
+	</form>
+{% endblock %}

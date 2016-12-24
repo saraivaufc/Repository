@@ -1,0 +1,38 @@
+{% extends "authentication/account/index.html" %}
+
+{% load i18n static %}
+
+{% block title %}{% endblock %}
+
+{% block stylesheet %}
+{% endblock %}
+
+{% block breadcrumbs %}
+	{{ block.super }}
+	<a href="#" class="breadcrumb-item" >
+		<i class="fa fa-users"></i>
+		{% trans "Login" %}
+	</a>
+{% endblock %}
+
+{%  block page_title %}{% trans "Login" %}{% endblock %}
+
+{% block content %}
+	{% if form.errors %}
+	<p>{% trans "Your username and password didn't match. Please try again." %}</p>
+	{% endif %}
+	{% if next %}
+		{% if user.is_authenticated %}
+			<p>{% trans "Your account doesn't have access to this page. To proceed, please login with an account that has access." %}</p>
+		{% else %}
+			<p>{% trans "Please login to see this page." %}</p>
+		{% endif %}
+	{% endif %}
+	<form action="{% url 'authentication:django.contrib.auth.views.login' %}" method="post">{% csrf_token %}		
+		{% include "Repository/_form.html" %}
+		<button type="submit" class="btn btn-primary">{% trans "Submit" %}</button>
+		<input type="hidden" name="next" value="{{ next }}" />
+	</form>
+	<p><a href="{% url 'authentication:password_reset' %}">{% trans "Lost password?" %}</a></p>
+	<p><a href="{% url 'authentication:register' %}">{% trans "Register" %}</a></p>
+{% endblock %}

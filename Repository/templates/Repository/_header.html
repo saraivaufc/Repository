@@ -1,0 +1,27 @@
+{% load i18n static %}
+
+<nav class="navbar navbar-dark bg-primary bg-faded" style="width: 100%;">
+	<a class="navbar-brand" href="">
+    	<img src="{% static "Repository/img/logo.png" %}" width="30" height="30" alt="">
+    	{% trans "RIUFC" %}
+  	</a>
+	<ul class="nav navbar-nav">
+		<li class="nav-item active">
+		</li>
+	</ul>
+
+	<ul class="nav navbar-nav float-xs-right">
+		{% if request.user.is_authenticated %}
+		<li class="dropdown">
+			<a href="#"  class="nav-link dropdown-toggle" aria-labelledby="user" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ request.user.username  }} <span class="caret"></span></a>
+			<div class="dropdown-menu">
+				<a  class="dropdown-item" href="{% url 'authentication:logout' %}">{% trans "Logout" %}</a>
+			</div>
+		</li>
+		{% else %}
+			<li class="nav-item ">
+				<a href="{% url 'authentication:login' %}" class="nav-link">{% trans "Login" %}</a>
+			</li>
+		{% endif %}
+	</ul>
+</nav>
