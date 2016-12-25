@@ -22,6 +22,7 @@
 
 {% block content_inner %}
 	<div class="col-md-4">
+	<div class="row">
 	{% if perms.manager.add_publication %}
 		<a href="{% url 'manager:publication_create' %}" class="btn btn-success">
 			<i class="fa fa-plus"></i>
@@ -29,14 +30,26 @@
 		</a>
 	{% endif %}
 	</div>
+	</div>
+
 	<div class="col-md-8">
+	<div class="row float-xs-right">
 		{% include "Repository/_form_search.html" %}
 	</div>
+	</div>
+
 	<div class="col-md-12">
+	<div class="row">
 		<table class="table table-bordered">
 			<thead class="thead-inverse">
 				<tr>
-					<th class="col-md-10">{% trans "Title" %}</th>
+					{% if perms.manager.change_publication or perms.manager.delete_publication %}
+					<th class="col-md-10">
+					{% else %}
+					<th class="col-md-12">
+					{% endif %}
+						{% trans "Title" %}
+					</th>
 					{% if perms.manager.change_publication or perms.manager.delete_publication %}
 					<th class="col-md-2">{% trans "Options" %}</th>
 					{% endif %}
@@ -46,7 +59,11 @@
 			<tbody>
 				{% for publication in object_list %}
 					<tr>
+						{% if perms.manager.change_publication or perms.manager.delete_publication %}
 						<td class="col-md-10">
+						{% else %}
+						<td class="col-md-12">
+						{% endif %}
 							<a href="{% url 'manager:publication_detail' slug=publication.slug %}">
 								{{ publication.title }}	
 							</a>
@@ -72,7 +89,11 @@
 			</tbody>
 		</table>
 	</div>
+	</div>
+
 	<div class="col-md-12">
+	<div class="row">
 		{% include "Repository/_paginate.html" %}
+	</div>
 	</div>
 {% endblock %}

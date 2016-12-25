@@ -22,6 +22,7 @@
 
 {% block content_inner %}
 	<div class="col-md-4">
+	<div class="row">
 	{% if perms.manager.add_community %}
 		<a href="{% url 'manager:community_create' %}" class="btn btn-success">
 			<i class="fa fa-plus"></i>
@@ -29,10 +30,16 @@
 		</a>
 	{% endif %}
 	</div>
+	</div>
+
 	<div class="col-md-8">
+	<div class="row float-xs-right">
 		{% include "Repository/_form_search.html" %}
 	</div>
+	</div>
+
 	<div class="col-md-12">
+	<div class="row">
 		<table class="table table-bordered">
 			<thead class="thead-inverse">
 				<tr>
@@ -71,7 +78,11 @@
 			</tbody>
 		</table>
 	</div>
+	</div>
+
 	<div class="col-md-12">
+	<div class="row">
 		{% include "Repository/_paginate.html" %}
+	</div>
 	</div>
 {% endblock %}
