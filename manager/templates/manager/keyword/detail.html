@@ -16,7 +16,21 @@
 	</a>
 {% endblock %}
 
-{%  block page_title %}{{ object.name }}{% endblock %}
+{%  block page_title %}
+	{{ object.name }}
+	<div class="float-xs-right">
+		{% if perms.manager.change_keyword %}
+		<a href="{% url 'manager:keyword_update' slug=keyword.slug %}" class="btn btn-info" data-toggle="tooltip" title="{% trans "Edit" %}">
+			<i class="fa fa-edit"></i>
+		</a>
+		{% endif %}
+		{% if perms.manager.delete_keyword %}
+		<a href="{% url 'manager:keyword_delete' slug=keyword.slug %}" class="btn btn-danger" data-toggle="tooltip" title="{% trans "Delete" %}">
+			<i class="fa fa-remove"></i>
+		</a>
+		{% endif %}
+	</div>
+{% endblock %}
 
 {% block content_inner %}
 	<table class="table table-bordered">
@@ -24,6 +38,15 @@
 			<tr>
 				<td>{% trans "Name" %}:</td>
 				<td>{{ object.name }}</td>
+			</tr>
+			<tr>
+				<td>{% trans "Publications" %}:</td>
+				<td>
+					<a href="{% url 'manager:keyword_publications' slug=keyword.slug page=1 %}" data-toggle="tooltip" title="{% trans "See Publications" %}">
+						<i class="fa fa-book"></i>
+						{% trans "See Publications" %}
+					</a>
+				</td>
 			</tr>
 			<tr>
 				<td>{% trans "Registration date" %}:</td>

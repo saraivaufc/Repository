@@ -40,7 +40,7 @@ class Publication(models.Model):
 	typology = models.CharField(verbose_name=_("Typology"), choices=TYPOLOGY_CHOICES, max_length=100, null=False, blank=False)
 	subjects = models.ManyToManyField("Subject", verbose_name=_("Subjects"), null=False, blank=False)
 	authors = models.ManyToManyField("Author", verbose_name=_("Authors"), related_name=_("Authors"), null=False, blank=False)
-	advisors = models.ManyToManyField("Author", verbose_name=_("Advisors"), related_name=_("Advisors"), null=True, blank=True)
+	community = models.ForeignKey("Community", verbose_name=_("Community"), null=False, blank=False)
 	collection = models.ForeignKey("Collection", verbose_name=_("Collection"), null=False, blank=False)
 	publisher = models.ForeignKey("Publisher", verbose_name=_("Publisher"), null=True, blank=True)
 	address = models.CharField(verbose_name=_("Address"), max_length=100, null=False, blank=False)

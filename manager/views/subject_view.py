@@ -78,7 +78,7 @@ class SubjectPublicationsView(SingleObjectMixin, ListView):
 	def get_queryset(self):
 		query = self.request.GET.get('query')
 		text = self.request.GET.get('text')
-		if query and query in self.fields_search:
+		if query and query in dict(self.fields_search):
 			kwargs = {("%s__contains" % (query,)):text}
 			return Publication.objects.filter(subjects=self.object.id, ** kwargs)
 		return Publication.objects.filter(subjects=self.object.id)

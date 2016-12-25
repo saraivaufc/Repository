@@ -16,7 +16,21 @@
 	</a>
 {% endblock %}
 
-{%  block page_title %}{{ object.title }}{% endblock %}
+{%  block page_title %}
+	{{ object.title }}
+	<div class="float-xs-right">
+		{% if perms.manager.change_publication %}
+		<a href="{% url 'manager:publication_update' slug=publication.slug %}" class="btn btn-info" data-toggle="tooltip" title="{% trans "Edit" %}">
+			<i class="fa fa-edit"></i>
+		</a>
+		{% endif %}
+		{% if perms.manager.delete_publication %}
+		<a href="{% url 'manager:publication_delete' slug=publication.slug %}" class="btn btn-danger" data-toggle="tooltip" title="{% trans "Delete" %}">
+			<i class="fa fa-remove"></i>
+		</a>
+		{% endif %}
+	</div>
+{% endblock %}
 
 {% block content_inner %}
 	<table class="table table-bordered">
@@ -33,7 +47,9 @@
 				<td>{% trans "Authors" %}:</td>
 				<td>
 					{% for author in object.authors.all %}
-						{{ author.reference_name }};
+						<a href="{% url 'manager:author_detail' slug=author.slug %}">
+							{{ author.reference_name }}	
+						</a>;
 					{% endfor %}
 				</td>
 			</tr>
@@ -41,21 +57,35 @@
 				<td>{% trans "Advisors" %}:</td>
 				<td>
 					{% for advisor in object.advisors.all %}
-						{{ advisor.reference_name }};
+						<a href="{% url 'manager:author_detail' slug=advisor.slug %}">
+							{{ advisor.reference_name }}	
+						</a>;
 					{% endfor %}
 				</td>
 			</tr>
 			<tr>
 				<td>{% trans "Community" %}:</td>
-				<td>{{ object.collection.community }}</td>
+				<td>
+					<a href="{% url 'manager:community_detail' slug=object.community.slug page=1 %}">
+						{{ object.community }}		
+					</a>
+				</td>
 			</tr>
 			<tr>
 				<td>{% trans "Collection" %}:</td>
-				<td>{{ object.collection }}</td>
+				<td>
+					<a href="{% url 'manager:collection_detail' slug=object.collection.slug %}">
+						{{ object.collection }}		
+					</a>
+				</td>
 			</tr>
 			<tr>
 				<td>{% trans "Publisher" %}:</td>
-				<td>{{ object.publisher }}</td>
+				<td>
+					<a href="{% url 'manager:publisher_detail' slug=object.publisher.slug %}">
+						{{ object.publisher }}		
+					</a>
+				</td>
 			</tr>
 			<tr>
 				<td>{% trans "address" %}:</td>
@@ -91,7 +121,9 @@
 				<td>{% trans "Keywords" %}:</td>
 				<td>
 					{% for keyword in object.keywords.all %}
-					{{ keyword }}.
+					<a href="{% url 'manager:keyword_detail' slug=keyword.slug %}">
+						{{ keyword }}
+					</a>.
 					{% endfor %}
 				</td>
 			</tr>

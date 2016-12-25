@@ -16,7 +16,21 @@
 	</a>
 {% endblock %}
 
-{%  block page_title %}{{ object.name }}{% endblock %}
+{%  block page_title %}
+	{{ object.name }}
+	<div class="float-xs-right">
+		{% if perms.manager.change_community %}
+		<a href="{% url 'manager:community_update' slug=community.slug %}" class="btn btn-info" data-toggle="tooltip" title="{% trans "Edit" %}">
+			<i class="fa fa-edit"></i>
+		</a>
+		{% endif %}
+		{% if perms.manager.delete_community %}
+		<a href="{% url 'manager:community_delete' slug=community.slug %}" class="btn btn-danger" data-toggle="tooltip" title="{% trans "Delete" %}">
+			<i class="fa fa-remove"></i>
+		</a>
+		{% endif %}
+	</div>
+{% endblock %}
 
 {% block content_inner %}
 	<table class="table table-bordered">
@@ -30,20 +44,34 @@
 				<td>{{ object.acronym }}</td>
 			</tr>
 			<tr>
+				<td>{% trans "Collections" %}:</td>
+				<td>
+					{% for collection in page_obj %}
+					<a href="{% url 'manager:collection_detail' slug=collection.slug %}" class="tag tag-primary">
+						<i class="fa fa-object-group"></i>
+						{{ collection }}
+					</a>
+					{% endfor %}
+					<div class="col-md-12">
+					<div class="row">
+					{% include "Repository/_paginate.html" %}
+					</div>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td>{% trans "Publications" %}:</td>
+				<td>
+					<a href="{% url 'manager:community_publications' slug=community.slug page=1 %}" data-toggle="tooltip" title="{% trans "See Publications" %}">
+						<i class="fa fa-book"></i>
+						{% trans "See Publications" %}
+					</a>
+				</td>
+			</tr>
+			<tr>
 				<td>{% trans "Registration date" %}:</td>
 				<td>{{ object.registration_date }}</td>
 			</tr>
 		</tbody>
 	</table>
-	<h4>{% trans "Collections" %}:</h4>
-		{% for collection in page_obj %}
-		<a href="{% url 'manager:collection_detail' slug=collection.slug %}" class="list-group-item">
-			<i class="fa fa-book"></i>
-			{{ collection }}
-		</a>
-	{% endfor %}
-	
-	<div class="col-md-12">
-		{% include "Repository/_paginate.html" %}
-	</div>
 {% endblock %}

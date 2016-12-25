@@ -44,7 +44,7 @@
 			<thead class="thead-inverse">
 				<tr>
 					<th class="col-md-10">{% trans "Name" %}</th>
-					<th class="col-md-2">{% trans "Options" %}</th>
+					<th class="col-md-2">{% trans "Publications" %}</th>
 				</tr>
 			</thead>
 
@@ -56,23 +56,16 @@
 								{{ subject.name }}	
 							</a>
 						</td>
-						<td class="col-md-2">							
-							<div class="btn-group" role="group">
-								<a href="{% url 'manager:subject_publications' slug=subject.slug page=1 %}" class="btn btn-primary btn-sm" title="{% trans "Publications" %}">
-									<i class="fa fa-book"></i>
-								</a>
-								{% if perms.manager.change_subject %}
-								<a href="{% url 'manager:subject_update' slug=subject.slug %}" class="btn btn-info btn-sm" title="{% trans "Edit" %}">
-									<i class="fa fa-edit"></i>
-								</a>
-								{% endif %}
-								{% if perms.manager.delete_subject %}
-								<a href="{% url 'manager:subject_delete' slug=subject.slug %}" class="btn btn-danger btn-sm" title="{% trans "Delete" %}">
-									<i class="fa fa-remove"></i>
-								</a>
-								{% endif %}
-							</div>
+						<td class="col-md-2">					
+							<a href="{% url 'manager:subject_publications' slug=subject.slug page=1 %}" data-toggle="tooltip" title="{% trans "See Publications" %}">
+								<i class="fa fa-book"></i>
+								{% trans "See Publications" %}
+							</a>
 						</td>
+					</tr>
+				{% empty %}
+					<tr>
+						<td class="text-xs-center">{% trans "No Subject found!" %}</td>
 					</tr>
 				{% endfor %}
 			</tbody>

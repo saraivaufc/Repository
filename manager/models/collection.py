@@ -9,7 +9,7 @@ FIELDS_SEARCH = (
 )
 
 class Collection(models.Model):
-	community = models.ForeignKey("Community", verbose_name=_("Community"), null=False, blank=False)
+	communities = models.ManyToManyField("Community", verbose_name=_("Communities"), null=False, blank=False)
 	name = models.CharField(verbose_name=_("Name"), max_length=100, null=False, blank=False)
 	description = models.TextField(verbose_name=_("description"), null=False, blank=False)
 	slug = models.SlugField(verbose_name=_('slug'), max_length=60, blank=True, unique=True)
@@ -25,7 +25,7 @@ class Collection(models.Model):
 		super(Collection, self).save(*args, **kwargs)
 
 	def __unicode__(self):
-		return unicode(self.community) + " - " + self.name
+		return self.name
 
 	class Meta:
 		ordering = ['-registration_date']

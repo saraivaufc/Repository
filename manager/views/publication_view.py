@@ -32,7 +32,7 @@ class PublicationListView(ListView):
 class PublicationCreateView(CreateView):
 	template_name = 'manager/publication/form.html'
 	model = Publication
-	fields = ['title', 'typology', 'subjects', 'authors', 'advisors', 
+	fields = ['title', 'typology', 'subjects', 'authors', 'community',
 			  'collection', 'publisher', 'address', 'year', 'reference','language', 
 			  'abstract', 'other_abstract', 'keywords', 'issue_date', 'file']
 	success_url = reverse_lazy('manager:publication_list', kwargs={'page': 1})
@@ -43,7 +43,7 @@ class PublicationCreateView(CreateView):
 class PublicationUpdateView(UpdateView):
 	template_name = 'manager/publication/form.html'
 	model = Publication
-	fields = ['title', 'typology', 'subjects', 'authors', 'advisors', 
+	fields = ['title', 'typology', 'subjects', 'authors', 'community',
 			  'collection', 'publisher', 'address', 'year', 'reference','language', 
 			  'abstract', 'other_abstract', 'keywords', 'issue_date', 'file']
 	success_url = reverse_lazy('manager:publication_list', kwargs={'page': 1})

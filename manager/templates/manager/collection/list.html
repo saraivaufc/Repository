@@ -44,8 +44,8 @@
 			<thead class="thead-inverse">
 				<tr>
 					<th class="col-md-5">{% trans "Name" %}</th>
-					<th class="col-md-5">{% trans "Community" %}</th>
-					<th class="col-md-2">{% trans "Options" %}</th>
+					<th class="col-md-5">{% trans "Communities" %}</th>
+					<th class="col-md-2">{% trans "Publications" %}</th>
 				</tr>
 			</thead>
 
@@ -57,24 +57,23 @@
 								{{ collection.name }}
 							</a>
 						</td>
-						<td class="col-md-5">{{ collection.community }}</td>
-						<td class="col-md-2">
-							<div class="btn-group" role="group">
-								<a href="{% url 'manager:collection_publications' slug=collection.slug page=1 %}" class="btn btn-primary btn-sm" title="{% trans "Publications" %}">
-									<i class="fa fa-book"></i>
+						<td class="col-md-5">
+							{% for community in collection.communities.all %}
+								<a class="tag tag-primary" href="{% url 'manager:community_detail' slug=community.slug page=1 %}">
+									{{ community }}
 								</a>
-								{% if perms.manager.change_collection %}
-								<a href="{% url 'manager:collection_update' slug=collection.slug %}" class="btn btn-info btn-sm" title="{% trans "Edit" %}">
-									<i class="fa fa-edit"></i>
-								</a>
-								{% endif %}
-								{% if perms.manager.delete_collection %}
-								<a href="{% url 'manager:collection_delete' slug=collection.slug %}" class="btn btn-danger btn-sm" title="{% trans "Delete" %}">
-									<i class="fa fa-remove"></i>
-								</a>
-								{% endif %}
-							</div>
+							{% endfor %}
 						</td>
+						<td class="col-md-2">
+							<a href="{% url 'manager:collection_publications' slug=collection.slug page=1 %}"  data-toggle="tooltip" title="{% trans "See Publications" %}">
+								<i class="fa fa-book"></i>
+								{% trans "See Publications" %}
+							</a>
+						</td>
+					</tr>
+				{% empty %}
+					<tr>
+						<td class="text-xs-center">{% trans "No Collection found!" %}</td>
 					</tr>
 				{% endfor %}
 			</tbody>

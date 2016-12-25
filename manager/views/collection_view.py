@@ -33,7 +33,7 @@ class CollectionListView(ListView):
 class CollectionCreateView(CreateView):
 	template_name = 'manager/collection/form.html'
 	model = Collection
-	fields = ['community','name', 'description']
+	fields = ['communities','name', 'description']
 	success_url = reverse_lazy('manager:collection_list', kwargs={'page': 1})
 
 	def form_valid(self, form):
@@ -42,7 +42,7 @@ class CollectionCreateView(CreateView):
 class CollectionUpdateView(UpdateView):
 	template_name = 'manager/collection/form.html'
 	model = Collection
-	fields = ['community','name', 'description']
+	fields = ['communities','name', 'description']
 	success_url = reverse_lazy('manager:collection_list', kwargs={'page': 1})
 	
 	def form_valid(self, form):
@@ -79,7 +79,7 @@ class CollectionPublicationsView(SingleObjectMixin, ListView):
 	def get_queryset(self):
 		query = self.request.GET.get('query')
 		text = self.request.GET.get('text')
-		if query and query in self.fields_search:
+		if query and query in dict(self.fields_search):
 			kwargs = {("%s__contains" % (query,)):text}
 			return Publication.objects.filter(collection=self.object.id, ** kwargs)
 		return Publication.objects.filter(collection=self.object.id)

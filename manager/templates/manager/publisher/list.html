@@ -44,7 +44,7 @@
 			<thead class="thead-inverse">
 				<tr>
 					<th class="col-md-10">{% trans "Name" %}</th>
-					<th class="col-md-2">{% trans "Options" %}</th>
+					<th class="col-md-2">{% trans "Publications" %}</th>
 				</tr>
 			</thead>
 
@@ -57,22 +57,15 @@
 							</a>
 						</td>
 						<td class="col-md-2">
-							<div class="btn-group" role="group">
-								<a href="{% url 'manager:publisher_publications' slug=publisher.slug page=1 %}" class="btn btn-primary btn-sm" title="{% trans "Publications" %}">
-									<i class="fa fa-book"></i>
-								</a>
-								{% if perms.manager.change_publisher %}
-								<a href="{% url 'manager:publisher_update' slug=publisher.slug %}" class="btn btn-info btn-sm" title="{% trans "Edit" %}">
-									<i class="fa fa-edit"></i>
-								</a>
-								{% endif %}
-								{% if perms.manager.delete_publisher %}
-								<a href="{% url 'manager:publisher_delete' slug=publisher.slug %}" class="btn btn-danger btn-sm" title="{% trans "Delete" %}">
-									<i class="fa fa-remove"></i>
-								</a>
-								{% endif %}
-							</div>
+							<a href="{% url 'manager:publisher_publications' slug=publisher.slug page=1 %}" data-toggle="tooltip" title="{% trans "See Publications" %}">
+								<i class="fa fa-book"></i>
+								{% trans "See Publications" %}
+							</a>
 						</td>
+					</tr>
+				{% empty %}
+					<tr>
+						<td class="text-xs-center">{% trans "No Publisher found!" %}</td>
 					</tr>
 				{% endfor %}
 			</tbody>

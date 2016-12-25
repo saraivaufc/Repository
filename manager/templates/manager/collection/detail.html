@@ -16,14 +16,35 @@
 	</a>
 {% endblock %}
 
-{%  block page_title %}{{ object.name }}{% endblock %}
+{%  block page_title %}
+	{{ object.name }}
+		<div class="float-xs-right">
+		{% if perms.manager.change_collection %}
+		<a href="{% url 'manager:collection_update' slug=collection.slug %}" class="btn btn-info"  data-toggle="tooltip" title="{% trans "Edit" %}">
+			<i class="fa fa-edit"></i>
+		</a>
+		{% endif %}
+		{% if perms.manager.delete_collection %}
+		<a href="{% url 'manager:collection_delete' slug=collection.slug %}" class="btn btn-danger" data-toggle="tooltip"  title="{% trans "Delete" %}">
+			<i class="fa fa-remove"></i>
+		</a>
+		{% endif %}
+	</div>
+{% endblock %}
 
 {% block content_inner %}
 	<table class="table table-bordered">
 		<tbody>
 			<tr>
-				<td>{% trans "Community" %}:</td>
-				<td>{{ object.community }}</td>
+				<td>{% trans "Communities" %}:</td>
+				<td>
+					{% for community in object.communities.all %}
+					<a href="{% url 'manager:community_detail' slug=community.slug page=1 %}" class="tag tag-primary">
+						<i class="fa fa-university"></i>
+						{{ community }}
+					</a>
+					{% endfor %}
+				</td>
 			</tr>
 			<tr>
 				<td>{% trans "Name" %}:</td>
@@ -32,6 +53,15 @@
 			<tr>
 				<td>{% trans "Description" %}:</td>
 				<td>{{ object.description }}</td>
+			</tr>
+			<tr>
+				<td>{% trans "Publications" %}:</td>
+				<td>
+					<a href="{% url 'manager:collection_publications' slug=collection.slug page=1 %}" data-toggle="tooltip" title="{% trans "See Publications" %}">
+						<i class="fa fa-book"></i>
+						{% trans "See Publications" %}
+					</a>
+				</td>
 			</tr>
 			<tr>
 				<td>{% trans "Registration date" %}:</td>

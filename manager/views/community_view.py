@@ -64,7 +64,7 @@ class CommunityDetailView(SingleObjectMixin, ListView):
 		context['community'] = self.object
 		return context
 	def get_queryset(self):
-		return Collection.objects.filter(community=self.object.id)
+		return Collection.objects.filter(communities=self.object.id)
 
 class CommunityPublicationsView(SingleObjectMixin, ListView):
 	paginate_by = settings.PAGINATE_BY
@@ -84,9 +84,9 @@ class CommunityPublicationsView(SingleObjectMixin, ListView):
 	def get_queryset(self):
 		query = self.request.GET.get('query')
 		text = self.request.GET.get('text')
-		collections = Collection.objects.filter(community=self.object.id)
+		collections = Collection.objects.filter(communities=self.object.id)
 		publications = []
-		if query and query in self.fields_search:
+		if query and query in dict(self.fields_search):
 			kwargs = {("%s__contains" % (query,)):text}
 			for collection in collections:
 				temp_publications = Publication.objects.filter(collection=collection.id, ** kwargs)

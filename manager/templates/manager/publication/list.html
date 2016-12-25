@@ -43,47 +43,34 @@
 		<table class="table table-bordered">
 			<thead class="thead-inverse">
 				<tr>
-					{% if perms.manager.change_publication or perms.manager.delete_publication %}
-					<th class="col-md-10">
-					{% else %}
-					<th class="col-md-12">
-					{% endif %}
+					<th>
 						{% trans "Title" %}
 					</th>
-					{% if perms.manager.change_publication or perms.manager.delete_publication %}
-					<th class="col-md-2">{% trans "Options" %}</th>
-					{% endif %}
+					<th>
+						{% trans "Authors" %}
+					</th>
 				</tr>
 			</thead>
 
 			<tbody>
 				{% for publication in object_list %}
 					<tr>
-						{% if perms.manager.change_publication or perms.manager.delete_publication %}
-						<td class="col-md-10">
-						{% else %}
-						<td class="col-md-12">
-						{% endif %}
+						<td>
 							<a href="{% url 'manager:publication_detail' slug=publication.slug %}">
 								{{ publication.title }}	
 							</a>
 						</td>
-						{% if perms.manager.change_publication or perms.manager.delete_publication %}
-						<td class="col-md-2">
-							<div class="btn-group" role="group">
-								{% if perms.manager.change_publication %}
-								<a href="{% url 'manager:publication_update' slug=publication.slug %}" class="btn btn-info btn-sm" title="{% trans "Edit" %}">
-									<i class="fa fa-edit"></i>
+						<td>
+							{% for author in publication.authors.all %}
+								<a href="{% url 'manager:author_detail' slug=author.slug %}" class="tag tag-primary">
+									{{ author.reference_name }}
 								</a>
-								{% endif %}
-								{% if perms.manager.delete_publication %}
-								<a href="{% url 'manager:publication_delete' slug=publication.slug %}" class="btn btn-danger btn-sm" title="{% trans "Delete" %}">
-									<i class="fa fa-remove"></i>
-								</a>
-								{% endif %}
-							</div>
+							{% endfor %}
 						</td>
-						{% endif %}
+					</tr>
+				{% empty %}
+					<tr>
+						<td class="text-xs-center">{% trans "No Publication found!" %}</td>
 					</tr>
 				{% endfor %}
 			</tbody>
