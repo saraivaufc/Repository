@@ -6,12 +6,19 @@ from django.db.models import signals
 from django.db.models.signals import post_save
 
 group_permissions = {
-	"default": [
-		#Access
+	"participant": [
+		#submission
+		"add_submission",
+		"change_submission",
+		"delete_submission",
 	],
-	"admin": [
-		#Access
-		"access_manager_admin",
+	"reviser": [
+		#submission
+		"add_submission",
+		"change_submission",
+		"delete_submission",
+	],
+	"administrator": [
 		#community
 		"add_community",
 		"change_community",
@@ -40,6 +47,14 @@ group_permissions = {
 		"add_subject",
 		"change_subject",
 		"delete_subject",
+		#event
+		"add_event",
+		"change_event",
+		"delete_event",
+		#submission
+		"add_submission",
+		"change_submission",
+		"delete_submission",
 	]
 }
 
@@ -54,7 +69,11 @@ def create_user_groups(app, created_models, verbosity, **kwargs):
 		if verbosity > 1 and created:
 			print 'Creating group', group
 		for perm in group_permissions[group]:
-			perm = Permission.objects.get(codename=perm)
+			try:
+				perm = Permission.objects.get(codename=perm)
+			except:
+				print perm
+				continue
 			role.permissions.add(perm)
 			if verbosity > 1:
 				print 'Permitting', group, 'to', perm

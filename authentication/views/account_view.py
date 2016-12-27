@@ -2,15 +2,17 @@ from django.contrib.auth.forms import AuthenticationForm, PasswordChangeForm, Pa
 from django.views.generic.edit import CreateView
 from django.core.urlresolvers import reverse_lazy
 from django.contrib.auth import authenticate, login, logout
-from authentication.models import Profile
+from authentication.models import User
+from django.conf import settings
 
-class ProfileCreate(CreateView):
+class UserCreate(CreateView):
 	template_name = 'authentication/account/register.html'
-	model = Profile
-	fields=["first_name", "last_name","username","email", "password"]
+	model = User
+	fields=["first_name", "last_name","email", "password"]
 	success_url = reverse_lazy('authentication:login')
 
 	def form_valid(self, form):
-		profile = form.save()
-		print profile.email
-		return super(ProfileCreate, self).form_valid(form)
+		user = form.save(commit=False)
+		user.set_password(user.password)
+		user.save(group="participant")
+		return super(UserCreate, self).form_valid(form)

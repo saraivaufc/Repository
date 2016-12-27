@@ -1,9 +1,9 @@
 from django.contrib import admin
 from django.contrib.auth.models import Permission
-from authentication.models import (Profile,)
+from authentication.models import (User,)
 
-@admin.register(Profile)
-class ProfileAdmin(admin.ModelAdmin):
+@admin.register(User)
+class UserAdmin(admin.ModelAdmin):
 	pass
 
 @admin.register(Permission)

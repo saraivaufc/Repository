@@ -1,23 +1,42 @@
 {% load i18n static %}
 
-<nav class="navbar navbar-dark bg-primary bg-faded" style="width: 100%;">
+<nav class="navbar navbar-dark nav-pills bg-primary bg-faded" style="width: 100%;">
 	<a class="navbar-brand" href="">
     	<img src="{% static "Repository/img/logo.png" %}" width="30" height="30" alt="">
     	{% trans "RIUFC" %}
   	</a>
 	<ul class="nav navbar-nav">
-		
+		<li class="nav-item active">
+			<a class="nav-link" href="/manager/index">
+				<i class="fa fa-home"></i>
+				{% trans "Home" %}
+			</a>
+		</li>
+		<li class="nav-item dropdown active">
+			<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
+				<i class="fa fa-toggle-down"></i>
+				{% trans "Modules" %}
+			</a>
+			<div class="dropdown-menu">
+				<a class="dropdown-item" href="{% url 'submission:home' %}" >
+					{% trans "Submission" %}
+				</a>
+				<a class="dropdown-item" href="{% url 'manager:home' %}">
+					{% trans "Manager" %}
+				</a>
+			</div>
+		</li>
 	</ul>
 
 	<ul class="nav navbar-nav float-xs-right">
 		{% if request.user.is_authenticated %}
-		<li class="dropdown">
+		<li class="nav-item dropdown active">
 			<a href="#"  class="nav-link dropdown-toggle" data-toggle="dropdown">
 				<i class="fa fa-user-circle"></i>
-				{{ request.user.username  }}
+				{{ request.user.get_full_name  }}
 			</a>
 			<div class="dropdown-menu">
-				<a class="dropdown-item" href="{% url 'authentication:logout' %}" class="nav-item">{% trans "Logout" %}</a>
+				<a class="dropdown-item" href="{% url 'authentication:logout' %}">{% trans "Logout" %}</a>
 			</div>
 		</li>
 		{% else %}

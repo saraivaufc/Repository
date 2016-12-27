@@ -31,7 +31,8 @@ ALLOWED_HOSTS = []
 
 # Authentication
 
-AUTH_PROFILE_MODULE = 'authentication.Profile'
+AUTH_PROFILE_MODULE = 'authentication.User'
+AUTH_USER_MODEL = 'authentication.User'
 
 # Application definition
 
@@ -45,7 +46,9 @@ INSTALLED_APPS = (
     'django.contrib.humanize',
     'rosetta',
     'authentication',
+    'submission',
     'manager',
+ 
 )
 
 MIDDLEWARE_CLASSES = (
@@ -64,7 +67,7 @@ ROOT_URLCONF = 'Repository.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['Repository/templates','manager/templates',],
+        'DIRS': ['Repository/templates','manager/templates', 'submission/templates',],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -101,9 +104,17 @@ DATABASES = {
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
 
+
+FORMAT_MODULE_PATH = [
+    'Repository.formats',
+]
+
+from Repository.formats.pt_BR.formats import * #GAMBI
+
 LOCALE_PATHS = (
     os.path.join(PROJECT_DIR, '../manager/locale'),
     os.path.join(PROJECT_DIR, '../authentication/locale'),
+    os.path.join(PROJECT_DIR, '../submission/locale'),
     '/var/local/translations/locale',
 )
 
@@ -135,5 +146,6 @@ MEDIA_URL = '/media/'
 
 STATIC_ROOT = os.path.join(PROJECT_DIR, '.')
 STATICFILES_DIRS = (os.path.join(PROJECT_DIR, '../Repository/static'), 
-                    os.path.join(PROJECT_DIR, '../manager/static'), 
+                    os.path.join(PROJECT_DIR, '../manager/static'),
+                    os.path.join(PROJECT_DIR, '../submission/static'), 
                     os.path.join(PROJECT_DIR, '../authentication/static'),)

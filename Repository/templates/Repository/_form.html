@@ -22,6 +22,8 @@
 		{% include 'Repository/fields/number.html' %}
 	{% elif field|is_date %}
 		{% include 'Repository/fields/date.html' %}
+	{% elif field|is_datetime %}
+		{% include 'Repository/fields/datetime.html' %}
 	{% elif field|is_password %}
 		{% include 'Repository/fields/password.html' %}
 	{% else %}

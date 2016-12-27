@@ -1,0 +1,31 @@
+{% extends "submission/submission/list.html" %}
+
+
+{% load i18n static %}
+
+{% block title %}{% endblock %}
+
+{% block stylesheet %}
+{% endblock %}
+
+{% block breadcrumbs %}
+	{{ block.super }}
+	<a href="{% url 'submission:event_create' %}" class="breadcrumb-item" >
+		{% trans "Form Event" %}
+	</a>
+{% endblock %}
+
+{% block page_title %}{% trans "Form Event" %}{% endblock %}
+
+{% block content_inner %}
+	<form action="." method="post" enctype="multipart/form-data">{% csrf_token %}		
+		{% include "Repository/_form.html" %}
+		<button type="submit" class="btn btn-primary">{% trans "Submit" %}</button>
+	</form>
+{% endblock %}
+
+{% block scripts %}
+	{{ block.super }}
+	{% include "Repository/imports/mask.html" %}
+	{% include "Repository/imports/select2.html" %}
+{% endblock %}

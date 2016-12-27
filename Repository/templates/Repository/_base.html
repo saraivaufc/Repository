@@ -63,11 +63,9 @@
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-md-12">
-				{% block footer %}
-					{% include "Repository/_footer.html" %}
-				{% endblock %}
-			</div>
+			{% block footer %}
+				{% include "Repository/_footer.html" %}
+			{% endblock %}
 		</div>
 	</div>
 	{% block js %}

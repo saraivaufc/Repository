@@ -81,5 +81,5 @@ class PublisherPublicationsView(SingleObjectMixin, ListView):
 		text = self.request.GET.get('text')
 		if query and query in dict(self.fields_search):
 			kwargs = {("%s__contains" % (query,)):text}
-			return Publication.objects.filter(publisher=self.object.id, ** kwargs)
-		return Publication.objects.filter(publisher=self.object.id)
+			return Publication.objects.filter(is_final=True, publisher=self.object.id, ** kwargs)
+		return Publication.objects.filter(is_final=True, publisher=self.object.id)

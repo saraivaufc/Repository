@@ -1,5 +1,5 @@
 from django.conf.urls import include, url
-from authentication.views import ProfileCreate
+from authentication.views import UserCreate
 from django.contrib.auth import views as auth_views
 from django.core.urlresolvers import reverse_lazy
 
@@ -10,7 +10,7 @@ urlpatterns = [
 	url(r'^logout/$', auth_views.logout, 
 		{'next_page': reverse_lazy("authentication:login")},
 		name="logout"),
-	url(r'^register/$', ProfileCreate.as_view(), name="register"),
+	url(r'^register/$', UserCreate.as_view(), name="register"),
 	url(r'^password/reset/$', auth_views.password_reset, 
 	 	{'template_name': 'authentication/account/password_reset_form.html',
 	 	'post_reset_redirect': '/authentication/password_reset/done/',

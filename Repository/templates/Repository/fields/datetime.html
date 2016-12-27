@@ -3,7 +3,7 @@
 <div class="form-group">
 {% include 'Repository/fields/caption.html' %}
 {% include 'Repository/fields/errors.html' %}
-	<input data-toggle="tooltip" data-placement="top" title="{{ field.help_text }}"
+	<input data-toggle="tooltip" data-placement="top" placeholder="xx/xx/xxxx xx:xx:xx" title="{{ field.help_text }}"
 		{% if field.field.required %}
 			data-validate-func="required"
 			data-validate-hint="{% trans "This field can not be empty" %}"

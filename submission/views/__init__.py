@@ -1,0 +1,2 @@
+from event_view import EventListView, EventCreateView, EventUpdateView, EventDeleteView, EventDetailView
+from submission_view import SubmissionListView, SubmissionCreateView, SubmissionUpdateView, SubmissionDeleteView, SubmissionDetailView

@@ -1,0 +1,76 @@
+{% extends "submission/event/detail.html" %}
+
+
+{% load i18n static %}
+
+{% block title %}{% endblock %}
+
+{% block stylesheet %}
+{% endblock %}
+
+{% block submissions %}active{% endblock %}
+
+{% block breadcrumbs %}
+	{{ block.super }}
+	<a href="{% url 'submission:submission_list' event_slug=event.slug page=1 %}" class="breadcrumb-item" >
+		<i class="fa fa-upload"></i>
+		{% trans "Submissions" %}
+	</a>
+{% endblock %}
+
+{%  block page_title %}{% trans "List of Submissions" %}{% endblock %}
+
+{% block content_inner %}
+	<div class="col-md-4">
+	<div class="row">
+	{% if perms.submission.add_submission %}
+		<a href="{% url 'submission:submission_create' event_slug=event.slug %}" class="btn btn-success">
+			<i class="fa fa-plus"></i>
+			{% trans "Create Submission" %}
+		</a>
+	{% endif %}
+	</div>
+	</div>
+	
+	<div class="col-md-12">
+	<div class="row">
+		<table class="table table-bordered">
+			<thead class="thead-inverse">
+				<tr>
+					<th>{% trans "Submission" %}</th>
+					<th>{% trans "Authors" %}</th>
+				</tr>
+			</thead>
+
+			<tbody>
+				{% for submission in object_list %}
+					<tr>
+						<td>
+							<a href="{% url 'submission:submission_detail' event_slug=submission.event.slug slug=submission.slug %}">
+								{{ submission.publication.title }}
+							</a>
+						</td>
+						<td>
+							{% for author in submission.publication.authors.all %}
+								<a href="{% url 'manager:author_detail' slug=author.slug %}" class="tag tag-primary">
+									{{ author.reference_name }}
+								</a>
+							{% endfor %}
+						</td>
+					</tr>
+				{% empty %}
+					<tr>
+						<td class="text-xs-center">{% trans "No Submission found!" %}</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+	</div>
+
+	<div class="col-md-12">
+	<div class="row">
+		{% include "Repository/_paginate.html" %}
+	</div>
+	</div>
+{% endblock %}

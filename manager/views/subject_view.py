@@ -80,5 +80,5 @@ class SubjectPublicationsView(SingleObjectMixin, ListView):
 		text = self.request.GET.get('text')
 		if query and query in dict(self.fields_search):
 			kwargs = {("%s__contains" % (query,)):text}
-			return Publication.objects.filter(subjects=self.object.id, ** kwargs)
-		return Publication.objects.filter(subjects=self.object.id)
+			return Publication.objects.filter(is_final=True, subjects=self.object.id, ** kwargs)
+		return Publication.objects.filter(is_final=True, subjects=self.object.id)

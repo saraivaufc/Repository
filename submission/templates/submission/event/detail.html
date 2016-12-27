@@ -1,0 +1,108 @@
+{% extends "submission/event/list.html" %}
+
+
+{% load i18n static %}
+
+{% block title %}{% endblock %}
+
+{% block stylesheet %}
+{% endblock %}
+
+{% block breadcrumbs %}
+	{{ block.super }}
+	<a href="{% url 'submission:event_detail' slug=event.slug %}" class="breadcrumb-item" >
+		<i class="fa fa-wpforms"></i>
+		{{ event.name }}
+	</a>
+{% endblock %}
+
+{%  block page_title %}
+	{{ event.name }}
+	<div class="float-xs-right">
+		{% if perms.submission.change_event %}
+		<a href="{% url 'submission:event_update' slug=event.slug %}" class="btn btn-info" data-toggle="tooltip" title="{% trans "Edit" %}">
+			<i class="fa fa-edit"></i>
+		</a>
+		{% endif %}
+		{% if perms.submission.delete_event %}
+		<a href="{% url 'submission:event_delete' slug=event.slug %}" class="btn btn-danger" data-toggle="tooltip" title="{% trans "Delete" %}">
+			<i class="fa fa-remove"></i>
+		</a>
+		{% endif %}
+	</div>
+{% endblock %}
+
+{% block content_inner %}
+	<div class="col-md-12">
+		<div class="row">	
+			<p class="lead text-justify">
+				<img src="{{ event.image.url }}" width="200px" style="float: left; margin: 0px 10px 10px 0px ;" class="img-thumbnail" />
+				{{ event.description }}
+			</p>
+		</div>
+	</div>
+	<hr class="divider"/>
+	<div class="col-md-6">
+		<dl class="row">
+			<dt class="col-sm-3">{% trans "Community" %}:</dt>
+			<dd class="col-sm-9">
+				<a href="{% url 'manager:community_detail' slug=event.community.slug page=1 %}" class="tag tag-primary">
+					<i class="fa fa-university"></i>
+					{{ event.community }}
+				</a>
+			</dd>
+
+			<dt class="col-sm-3">{% trans "Collection" %}:</dt>
+			<dd class="col-sm-9">
+				<a href="{% url 'manager:collection_detail' slug=event.collection.slug %}" class="tag tag-primary">
+					<i class="fa fa-object-group"></i>
+					{{ event.collection }}
+				</a>
+			</dd>
+
+			<dt class="col-sm-3">{% trans "Publisher" %}:</dt>
+			<dd class="col-sm-9">
+				<a href="{% url 'manager:publisher_detail' slug=event.publisher.slug %}" class="tag tag-primary">
+					<i class="fa fa fa-newspaper-o"></i>
+					{{ event.publisher }}
+				</a>
+			</dd>
+
+			<dt class="col-sm-3">{% trans "Date" %}:</dt>
+			<dd class="col-sm-9">{{ event.date }}</dd>
+
+			<dt class="col-sm-3">{% trans "Address" %}:</dt>
+			<dd class="col-sm-9">{{ event.address }}</dd>
+
+			<dt class="col-sm-3">{% trans "Year" %}:</dt>
+			<dd class="col-sm-9">{{ event.year }}</dd>
+		</dl>
+	</div>
+	<div class="col-md-6" style="border: 1px solid #000000;">
+		<h5 class="text-xs-center">{% trans "Submissions dates" %}</h5>
+		<dl class="row">
+			<dt class="col-sm-5">{% trans "Submission 1" %}:</dt>
+			<dd class="col-sm-7">
+				{{ event.submission_1_open }} -- {{ event.submission_1_close }}
+			</dd>
+
+			<dt class="col-sm-5">{% trans "Review" %}:</dt>
+			<dd class="col-sm-7">
+				{{ event.review_open }} -- {{ event.review_close }}
+			</dd>
+
+			<dt class="col-sm-5">{% trans "Submission 2" %}:</dt>
+			<dd class="col-sm-7">
+				{{ event.submission_2_open }} -- {{ event.submission_2_close }}
+			</dd>
+		</dl>
+		{% if event.stage.type == 'before_period' %}
+			{{ event.submission_1_open }}
+		{% else %}
+			<a href="{% url 'submission:submission_list' event_slug=event.slug page=1 %}" data-toggle="tooltip" title="{% trans "My Submissions" %}">
+				<i class="fa fa-upload"></i>
+				{% trans "My Submissions" %}
+			</a>
+		{% endif %}
+	</div>
+{% endblock %}

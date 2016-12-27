@@ -20,8 +20,8 @@ class PublicationListView(ListView):
 		text = self.request.GET.get('text')
 		if query and query in dict(self.fields_search):
 			kwargs = {("%s__contains" % (query,)):text}
-			return Publication.objects.filter(** kwargs)
-		return Publication.objects.all()
+			return Publication.objects.filter(is_final=True, ** kwargs)
+		return Publication.objects.filter(is_final=True)
 
 	def get_context_data(self, ** kwargs):
 		context = super(PublicationListView, self).get_context_data( ** kwargs)
@@ -38,6 +38,7 @@ class PublicationCreateView(CreateView):
 	success_url = reverse_lazy('manager:publication_list', kwargs={'page': 1})
 
 	def form_valid(self, form):
+		form.instance.is_final=True
 		return super(PublicationCreateView, self).form_valid(form)
 
 class PublicationUpdateView(UpdateView):
@@ -45,10 +46,11 @@ class PublicationUpdateView(UpdateView):
 	model = Publication
 	fields = ['title', 'typology', 'subjects', 'authors', 'community',
 			  'collection', 'publisher', 'address', 'year', 'reference','language', 
-			  'abstract', 'other_abstract', 'keywords', 'issue_date', 'file']
+			  'abstract', 'other_abstract', 'keywords', 'issue_date', 'file',]
 	success_url = reverse_lazy('manager:publication_list', kwargs={'page': 1})
 	
 	def form_valid(self, form):
+		form.instance.is_final=True
 		return super(PublicationUpdateView, self).form_valid(form)
 
 class PublicationDeleteView(DeleteView):

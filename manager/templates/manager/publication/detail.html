@@ -54,16 +54,6 @@
 				</td>
 			</tr>
 			<tr>
-				<td>{% trans "Advisors" %}:</td>
-				<td>
-					{% for advisor in object.advisors.all %}
-						<a href="{% url 'manager:author_detail' slug=advisor.slug %}">
-							{{ advisor.reference_name }}	
-						</a>;
-					{% endfor %}
-				</td>
-			</tr>
-			<tr>
 				<td>{% trans "Community" %}:</td>
 				<td>
 					<a href="{% url 'manager:community_detail' slug=object.community.slug page=1 %}">

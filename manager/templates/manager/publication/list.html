@@ -47,6 +47,9 @@
 						{% trans "Title" %}
 					</th>
 					<th>
+						{% trans "Typology" %}
+					</th>
+					<th>
 						{% trans "Authors" %}
 					</th>
 				</tr>
@@ -59,6 +62,9 @@
 							<a href="{% url 'manager:publication_detail' slug=publication.slug %}">
 								{{ publication.title }}	
 							</a>
+						</td>
+						<td>
+							{{ publication.typology|title }}	
 						</td>
 						<td>
 							{% for author in publication.authors.all %}

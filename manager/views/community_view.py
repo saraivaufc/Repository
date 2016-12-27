@@ -89,12 +89,12 @@ class CommunityPublicationsView(SingleObjectMixin, ListView):
 		if query and query in dict(self.fields_search):
 			kwargs = {("%s__contains" % (query,)):text}
 			for collection in collections:
-				temp_publications = Publication.objects.filter(collection=collection.id, ** kwargs)
+				temp_publications = Publication.objects.filter(is_final=True, collection=collection.id, ** kwargs)
 				for publication in temp_publications:
 					publications.append(publication)
 		else:
 			for collection in collections:
-				temp_publications = Publication.objects.filter(collection=collection.id)
+				temp_publications = Publication.objects.filter(is_final=True, collection=collection.id)
 				for publication in temp_publications:
 					publications.append(publication)
 		return publications

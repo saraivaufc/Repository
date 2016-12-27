@@ -1,1 +1,1 @@
-from account_view import ProfileCreate
+from account_view import UserCreate

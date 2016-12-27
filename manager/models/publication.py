@@ -2,7 +2,6 @@ from django.utils.translation import ugettext_lazy as _
 from django.template.defaultfilters import slugify
 from django.db import models
 from django.core.urlresolvers import reverse_lazy
-from authentication.models import Profile
 import itertools
 
 FIELDS_SEARCH = (
@@ -40,9 +39,9 @@ class Publication(models.Model):
 	typology = models.CharField(verbose_name=_("Typology"), choices=TYPOLOGY_CHOICES, max_length=100, null=False, blank=False)
 	subjects = models.ManyToManyField("Subject", verbose_name=_("Subjects"), null=False, blank=False)
 	authors = models.ManyToManyField("Author", verbose_name=_("Authors"), related_name=_("Authors"), null=False, blank=False)
-	community = models.ForeignKey("Community", verbose_name=_("Community"), null=False, blank=False)
-	collection = models.ForeignKey("Collection", verbose_name=_("Collection"), null=False, blank=False)
-	publisher = models.ForeignKey("Publisher", verbose_name=_("Publisher"), null=True, blank=True)
+	community = models.ForeignKey("Community", verbose_name=_("Community"), null=False, blank=True)
+	collection = models.ForeignKey("Collection", verbose_name=_("Collection"), null=False, blank=True)
+	publisher = models.ForeignKey("Publisher", verbose_name=_("Publisher"), null=False, blank=False)
 	address = models.CharField(verbose_name=_("Address"), max_length=100, null=False, blank=False)
 	year = models.IntegerField(verbose_name=_("Year"), null=False, blank=False)
 	reference = models.CharField(verbose_name=_("Reference"), max_length=1000, null=False, blank=False)
@@ -53,8 +52,8 @@ class Publication(models.Model):
 	keywords = models.ManyToManyField("KeyWord", verbose_name=_("Keywords"), related_name=_("Keywords"), null=False, blank=False)
 	issue_date = models.DateField(verbose_name=_("Issue Date"), null=False, blank=False, auto_now=False)
 	file = models.FileField(verbose_name=_(u"File"), upload_to='documents/publication/%Y/%m/%d', null=False, blank=False)
-	
 	registration_date = models.DateTimeField(verbose_name=_("Registration Date"), auto_now_add=True, auto_now=False)
+	is_final =  models.BooleanField(verbose_name=_(u"Is Final"), default=False,)
 
 	def save(self, *args, **kwargs):
 		if not self.id:
