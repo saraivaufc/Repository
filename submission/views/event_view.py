@@ -6,12 +6,12 @@ from django.core.urlresolvers import reverse_lazy
 from django.contrib.auth.decorators import login_required, permission_required
 from django.conf import settings
 
-from submission.models import Event, event
+from submission.models import Event
 
 class EventListView(ListView):
 	template_name = 'submission/event/list.html'
 	paginate_by = settings.PAGINATE_BY
-	fields_search = event.FIELDS_SEARCH
+	fields_search = Event.FIELDS_SEARCH
 
 	def get_queryset(self):
 		query = self.request.GET.get('query')

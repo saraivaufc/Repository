@@ -8,13 +8,11 @@ from django.conf import settings
 
 
 from manager.models import Collection, Publication
-from manager.models import publication
-from manager.models import collection
 
 class CollectionListView(ListView):
 	template_name = 'manager/collection/list.html'
 	paginate_by = settings.PAGINATE_BY
-	fields_search = collection.FIELDS_SEARCH
+	fields_search = Collection.FIELDS_SEARCH
 
 	def get_queryset(self):
 		query = self.request.GET.get('query')
@@ -64,7 +62,7 @@ class CollectionDetailView(DetailView):
 class CollectionPublicationsView(SingleObjectMixin, ListView):
 	paginate_by = settings.PAGINATE_BY
 	template_name = 'manager/collection/publications.html'
-	fields_search = publication.FIELDS_SEARCH
+	fields_search = Publication.FIELDS_SEARCH
 
 	def get(self, request, * args, ** kwargs):
 		self.object = self.get_object(queryset=Collection.objects.all())

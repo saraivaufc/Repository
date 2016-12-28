@@ -6,17 +6,16 @@ import datetime
 
 from manager.models import Community, Collection, Publisher
 
-FIELDS_SEARCH = (
-	("name", _("Name")),
-	("description", _("Description")),
-)
-
-TYPOLOGY_CHOICES = (
-    (u'conference', _(u'Conference')),
-    (u'workshop', _(u'Workshop')),
-)
-
 class Event(models.Model):
+	FIELDS_SEARCH = (
+		("name", _("Name")),
+		("description", _("Description")),
+	)
+
+	TYPOLOGY_CHOICES = (
+		(u'conference', _(u'Conference')),
+		(u'workshop', _(u'Workshop')),
+	)
 	slug = models.SlugField(verbose_name=_('Slug'), max_length=500, blank=True, unique=True)
 	name = models.CharField(verbose_name=_("Name"), max_length=100, null=False, blank=False)
 	description = models.TextField(verbose_name=_("Description"), null=False, blank=False)

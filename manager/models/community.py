@@ -3,12 +3,11 @@ from django.template.defaultfilters import slugify
 from django.db import models
 import itertools
 
-FIELDS_SEARCH = (
-	("name", _("Name")), 
-	("acronym", _("Acronym")),
-)
-
 class Community(models.Model):
+	FIELDS_SEARCH = (
+		("name", _("Name")), 
+		("acronym", _("Acronym")),
+	)
 	name = models.CharField(verbose_name=_("Name"), max_length=100, null=False, blank=False)
 	acronym = models.CharField(verbose_name=_("Acronym"), max_length=100, null=False, blank=False)
 	slug = models.SlugField(_('slug'), max_length=60, blank=True, unique=True)

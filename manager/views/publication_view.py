@@ -8,12 +8,11 @@ from django.conf import settings
 import hashlib
 
 from manager.models import Publication
-from manager.models import publication
 
 class PublicationListView(ListView):
 	template_name = 'manager/publication/list.html'
 	paginate_by = settings.PAGINATE_BY
-	fields_search = publication.FIELDS_SEARCH
+	fields_search = Publication.FIELDS_SEARCH
 
 	def get_queryset(self):
 		query = self.request.GET.get('query')

@@ -8,13 +8,11 @@ from django.conf import settings
 
 
 from manager.models import Keyword, Publication
-from manager.models import publication
-from manager.models import keyword
 
 class KeywordListView(ListView):
 	template_name = 'manager/keyword/list.html'
 	paginate_by = settings.PAGINATE_BY
-	fields_search = keyword.FIELDS_SEARCH
+	fields_search = Keyword.FIELDS_SEARCH
 
 	def get_queryset(self):
 		query = self.request.GET.get('query')
@@ -64,7 +62,7 @@ class KeywordDetailView(DetailView):
 class KeywordPublicationsView(SingleObjectMixin, ListView):
 	paginate_by = settings.PAGINATE_BY
 	template_name = 'manager/keyword/publications.html'
-	fields_search = publication.FIELDS_SEARCH
+	fields_search = Publication.FIELDS_SEARCH
 
 	def get(self, request, * args, ** kwargs):
 		self.object = self.get_object(queryset=Keyword.objects.all())

@@ -9,14 +9,14 @@ from datetime import datetime
 from django.http import HttpResponseRedirect
 
 from authentication.models import User
-from submission.models import Submission, submission, Event
+from submission.models import Submission, Event
 from manager.models import Publication
 
 
 class SubmissionListView(ListView):
 	template_name = 'submission/submission/list.html'
 	paginate_by = settings.PAGINATE_BY
-	fields_search = submission.FIELDS_SEARCH
+	fields_search = Submission.FIELDS_SEARCH
 
 	def get_queryset(self):
 		event = Event.objects.filter(slug=self.kwargs['event_slug']).first()
@@ -33,7 +33,7 @@ class SubmissionListView(ListView):
 class SubmissionsToReviewListView(ListView):
 	template_name = 'submission/submission/list_all.html'
 	paginate_by = settings.PAGINATE_BY
-	fields_search = submission.FIELDS_SEARCH
+	fields_search = Submission.FIELDS_SEARCH
 
 	def get_queryset(self):
 		event = Event.objects.filter(slug=self.kwargs['event_slug']).first()

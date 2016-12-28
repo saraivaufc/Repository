@@ -3,12 +3,11 @@ from django.template.defaultfilters import slugify
 from django.db import models
 import itertools
 
-FIELDS_SEARCH = (
-	("first_name", _("First Name")), 
-	("last_name", _("Last Name")),
-)
-
 class Author(models.Model):
+	FIELDS_SEARCH = (
+		("first_name", _("First Name")), 
+		("last_name", _("Last Name")),
+	)
 	first_name = models.CharField(verbose_name=_("First name"), max_length=100, null=False, blank=False)
 	last_name = models.CharField(verbose_name=_("Last name"), max_length=100, null=False, blank=False)
 	reference_name = models.CharField(verbose_name=_("Reference name"), max_length=200, null=True, blank=True)

@@ -4,36 +4,32 @@ from django.db import models
 from django.core.urlresolvers import reverse_lazy
 import itertools
 
-FIELDS_SEARCH = (
-	("title", _("Title")), 
-	("address", _("Address")), 
-	("year", _("Year")), 
-	("abstract", _("Abstract")), 
-	("other_abstract", _("Other Abstract")),
-)
-
-TYPOLOGY_CHOICES = (
-    (u'article', _(u'Article')),
-    (u'book', _(u'Book')),
-    (u'booklet', _(u'Booklet')),
-    (u'conference', _(u'Conference')),
-    (u'inbook', _(u'Inbook')),
-    (u'incollection', _(u'Incollection')),
-    (u'manual', _(u'Manual')),
-    (u'mastersthesis', _(u'Masters Thesis')),
-    (u'monography', _(u'Monography')),
-    (u'dissertation', _(u'Dissertation')),
-    (u'abstract', _(u'Abstract')),
-
-)
-
-LANGUAGE_CHOICES = (
-    (u'pt_BR', _(u'Brazilian Portuguese')),
-    (u'en', _(u'English')),
- 	(u'es', _(u'Spanish')),   
-)
-
 class Publication(models.Model):
+	FIELDS_SEARCH = (
+		("title", _("Title")), 
+		("address", _("Address")), 
+		("year", _("Year")), 
+		("abstract", _("Abstract")), 
+		("other_abstract", _("Other Abstract")),
+	)
+	TYPOLOGY_CHOICES = (
+	    (u'article', _(u'Article')),
+	    (u'book', _(u'Book')),
+	    (u'booklet', _(u'Booklet')),
+	    (u'conference', _(u'Conference')),
+	    (u'inbook', _(u'Inbook')),
+	    (u'incollection', _(u'Incollection')),
+	    (u'manual', _(u'Manual')),
+	    (u'mastersthesis', _(u'Masters Thesis')),
+	    (u'monography', _(u'Monography')),
+	    (u'dissertation', _(u'Dissertation')),
+	    (u'abstract', _(u'Abstract')),
+	)
+	LANGUAGE_CHOICES = (
+	    (u'pt_BR', _(u'Brazilian Portuguese')),
+	    (u'en', _(u'English')),
+	 	(u'es', _(u'Spanish')),   
+	)
 	title = models.CharField(verbose_name=_("Title"), max_length=500, null=False, blank=False)
 	slug = models.SlugField(_('slug'), max_length=60, blank=True, unique=True)
 	typology = models.CharField(verbose_name=_("Typology"), choices=TYPOLOGY_CHOICES, max_length=100, null=False, blank=False)

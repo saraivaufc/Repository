@@ -8,13 +8,11 @@ from django.conf import settings
 
 
 from manager.models import Author, Publication
-from manager.models import publication
-from manager.models import author
 
 class AuthorListView(ListView):
 	template_name = 'manager/author/list.html'
 	paginate_by = settings.PAGINATE_BY
-	fields_search = author.FIELDS_SEARCH
+	fields_search = Author.FIELDS_SEARCH
 
 	def get_queryset(self):
 		query = self.request.GET.get('query')
@@ -64,7 +62,7 @@ class AuthorDetailView(DetailView):
 class AuthorPublicationsView(SingleObjectMixin, ListView):
 	paginate_by = settings.PAGINATE_BY
 	template_name = 'manager/author/publications.html'
-	fields_search = publication.FIELDS_SEARCH
+	fields_search = Publication.FIELDS_SEARCH
 
 	def get(self, request, * args, ** kwargs):
 		self.object = self.get_object(queryset=Author.objects.all())

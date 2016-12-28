@@ -3,12 +3,11 @@ from django.template.defaultfilters import slugify
 from django.db import models
 import itertools
 
-FIELDS_SEARCH = (
-	("name", _("Name")), 
-	("description", _("Description")),
-)
-
 class Collection(models.Model):
+	FIELDS_SEARCH = (
+		("name", _("Name")), 
+		("description", _("Description")),
+	)
 	communities = models.ManyToManyField("Community", verbose_name=_("Communities"), null=False, blank=False)
 	name = models.CharField(verbose_name=_("Name"), max_length=100, null=False, blank=False)
 	description = models.TextField(verbose_name=_("description"), null=False, blank=False)

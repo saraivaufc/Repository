@@ -7,13 +7,11 @@ from django.contrib.auth.decorators import login_required, permission_required
 from django.conf import settings
 
 from manager.models import Community, Collection, Publication
-from manager.models import publication
-from manager.models import community
 
 class CommunityListView(ListView):
 	template_name = 'manager/community/list.html'
 	paginate_by = settings.PAGINATE_BY
-	fields_search = community.FIELDS_SEARCH
+	fields_search = Community.FIELDS_SEARCH
 
 	def get_queryset(self):
 		query = self.request.GET.get('query')
@@ -69,7 +67,7 @@ class CommunityDetailView(SingleObjectMixin, ListView):
 class CommunityPublicationsView(SingleObjectMixin, ListView):
 	paginate_by = settings.PAGINATE_BY
 	template_name = 'manager/community/publications.html'
-	fields_search = publication.FIELDS_SEARCH
+	fields_search = Publication.FIELDS_SEARCH
 
 	def get(self, request, * args, ** kwargs):
 		self.object = self.get_object(queryset=Community.objects.all())

@@ -6,15 +6,12 @@ from django.core.urlresolvers import reverse_lazy
 from django.contrib.auth.decorators import login_required, permission_required
 from django.conf import settings
 
-
 from manager.models import Publisher, Publication
-from manager.models import publication
-from manager.models import publisher
 
 class PublisherListView(ListView):
 	template_name = 'manager/publisher/list.html'
 	paginate_by = settings.PAGINATE_BY
-	fields_search = publisher.FIELDS_SEARCH
+	fields_search = Publisher.FIELDS_SEARCH
 
 	def get_queryset(self):
 		query = self.request.GET.get('query')
@@ -64,7 +61,7 @@ class PublisherDetailView(DetailView):
 class PublisherPublicationsView(SingleObjectMixin, ListView):
 	paginate_by = settings.PAGINATE_BY
 	template_name = 'manager/publisher/publications.html'
-	fields_search = publication.FIELDS_SEARCH
+	fields_search = Publication.FIELDS_SEARCH
 
 	def get(self, request, * args, ** kwargs):
 		self.object = self.get_object(queryset=Publisher.objects.all())

@@ -7,13 +7,11 @@ from django.contrib.auth.decorators import login_required, permission_required
 from django.conf import settings
 
 from manager.models import Subject, Publication
-from manager.models import publication
-from manager.models import subject
 
 class SubjectListView(ListView):
 	template_name = 'manager/subject/list.html'
 	paginate_by = settings.PAGINATE_BY
-	fields_search = subject.FIELDS_SEARCH
+	fields_search = Subject.FIELDS_SEARCH
 
 	def get_queryset(self):
 		query = self.request.GET.get('query')
@@ -63,7 +61,7 @@ class SubjectDetailView(DetailView):
 class SubjectPublicationsView(SingleObjectMixin, ListView):
 	paginate_by = settings.PAGINATE_BY
 	template_name = 'manager/subject/publications.html'
-	fields_search = publication.FIELDS_SEARCH
+	fields_search = Publication.FIELDS_SEARCH
 
 	def get(self, request, * args, ** kwargs):
 		self.object = self.get_object(queryset=Subject.objects.all())

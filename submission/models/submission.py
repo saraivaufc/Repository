@@ -7,12 +7,11 @@ import itertools
 from manager.models import Publication
 from authentication.models import User
 
-FIELDS_SEARCH = (
-	("publication.title", _("Title")), 
-	("publication.description", _("Description")),
-)
-
 class Submission(models.Model):
+	FIELDS_SEARCH = (
+		("publication.title", _("Title")), 
+		("publication.description", _("Description")),
+	)
 	slug = models.SlugField(verbose_name=_('Slug'), max_length=500, blank=True, unique=True)
 	event = models.ForeignKey("Event", verbose_name=_("Event"), null=False, blank=False)
 	user = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name=_("User"), related_name="User", null=False, blank=False)
