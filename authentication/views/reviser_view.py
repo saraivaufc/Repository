@@ -7,12 +7,12 @@ from django.conf import settings
 from django.http import HttpResponseRedirect
 from django.contrib.auth.models import Group
 
-from authentication.models import User, user
+from authentication.models import User
 
 class ReviserListView(ListView):
-	template_name = 'submission/reviser/list.html'
+	template_name = 'authentication/reviser/list.html'
 	paginate_by = settings.PAGINATE_BY
-	fields_search = user.FIELDS_SEARCH
+	fields_search = User.FIELDS_SEARCH
 
 	def get_queryset(self):
 		query = self.request.GET.get('query')
@@ -25,16 +25,16 @@ class ReviserListView(ListView):
 	def get_context_data(self, ** kwargs):
 		context = super(ReviserListView, self).get_context_data( ** kwargs)
 		context["fields_search"] = self.fields_search
-		context["url_search"] = reverse_lazy("submission:reviser_list", kwargs={"page":1})
+		context["url_search"] = reverse_lazy("authentication:reviser_list", kwargs={"page":1})
 		return context
 
 class ReviserCreateView(CreateView):
-	template_name = 'submission/reviser/form.html'
+	template_name = 'authentication/reviser/form.html'
 	model = User
 	fields = ['email']
 
 	def get_success_url(self):
-		return reverse_lazy('submission:reviser_list', kwargs={'page':1})
+		return reverse_lazy('authentication:reviser_list', kwargs={'page':1})
 
 	def post(self, request, * args, ** kwargs):
 		email = self.request.POST.get('email')
@@ -54,9 +54,9 @@ class ReviserCreateView(CreateView):
 		return super(ReviserCreateView, self).form_valid(form)
 
 class ReviserDeleteView(DeleteView):
-	template_name = 'submission/reviser/check_delete.html'
+	template_name = 'authentication/reviser/check_delete.html'
 	model = User
-	success_url = reverse_lazy('submission:reviser_list', kwargs={'page': 1})
+	success_url = reverse_lazy('authentication:reviser_list', kwargs={'page': 1})
 
 	def post(self, request, * args, ** kwargs):
 		group = Group.objects.get(name="reviser")

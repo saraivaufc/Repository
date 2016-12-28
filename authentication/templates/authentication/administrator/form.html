@@ -1,0 +1,26 @@
+{% extends "authentication/administrator/list.html" %}
+
+
+{% load i18n static %}
+
+{% block title %}{% endblock %}
+
+{% block stylesheet %}
+{% endblock %}
+
+{% block breadcrumbs %}
+	{{ block.super }}
+	<a href="{% url 'authentication:administrator_create' %}" class="breadcrumb-item" >
+		<i class="fa fa-user-plus"></i>
+		{% trans "Create Administrator" %}
+	</a>
+{% endblock %}
+
+{% block page_title %}{% trans "Form Administrator" %}{% endblock %}
+
+{% block content %}
+	<form action="." method="post" enctype="multipart/form-data">{% csrf_token %}		
+		{% include "Repository/_form.html" %}
+		<button type="submit" class="btn btn-primary">{% trans "Submit" %}</button>
+	</form>
+{% endblock %}

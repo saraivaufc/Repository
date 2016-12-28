@@ -1,4 +1,4 @@
-{% extends "submission/reviser/list.html" %}
+{% extends "authentication/reviser/list.html" %}
 
 
 {% load i18n static %}
@@ -10,22 +10,17 @@
 
 {% block breadcrumbs %}
 	{{ block.super }}
-	<a href="{% url 'submission:event_create' %}" class="breadcrumb-item" >
-		{% trans "Form Event" %}
+	<a href="{% url 'authentication:reviser_create' %}" class="breadcrumb-item" >
+		<i class="fa fa-user-plus"></i>
+		{% trans "Form Administrator" %}
 	</a>
 {% endblock %}
 
-{% block page_title %}{% trans "Form Event" %}{% endblock %}
+{% block page_title %}{% trans "Form Administrator" %}{% endblock %}
 
-{% block content_inner %}
+{% block content %}
 	<form action="." method="post" enctype="multipart/form-data">{% csrf_token %}		
 		{% include "Repository/_form.html" %}
 		<button type="submit" class="btn btn-primary">{% trans "Submit" %}</button>
 	</form>
-{% endblock %}
-
-{% block scripts %}
-	{{ block.super }}
-	{% include "Repository/imports/mask.html" %}
-	{% include "Repository/imports/select2.html" %}
 {% endblock %}

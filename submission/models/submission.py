@@ -43,7 +43,4 @@ class Submission(models.Model):
 		verbose_name_plural = _(u'Submission')
 		permissions = (
 			("list_all_submissions", "List all submissions"),
-			("list_reviser", "List Reviser"),
-			("add_reviser", "Add Reviser"),
-			("delete_reviser", "Delete Reviser"),
 		)

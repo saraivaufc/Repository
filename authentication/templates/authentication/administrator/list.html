@@ -1,4 +1,4 @@
-{% extends "submission/index.html" %}
+{% extends "authentication/index.html" %}
 
 
 {% load i18n static %}
@@ -8,25 +8,25 @@
 {% block stylesheet %}
 {% endblock %}
 
-{% block revisers %}active{% endblock %}
+{% block administrators %}active{% endblock %}
 
 {% block breadcrumbs %}
 	{{ block.super }}
-	<a href="{% url 'submission:reviser_list' page=1 %}" class="breadcrumb-item" >
+	<a href="{% url 'authentication:administrator_list' page=1 %}" class="breadcrumb-item" >
 		<i class="fa fa-wpforms"></i>
-		{% trans "Revisers" %}
+		{% trans "Administrators" %}
 	</a>
 {% endblock %}
 
-{%  block page_title %}{% trans "List of Revisers" %}{% endblock %}
+{%  block page_title %}{% trans "List of Administrators" %}{% endblock %}
 
-{% block content_inner %}
+{% block content %}
 	<div class="col-md-4">
 	<div class="row">
-	{% if perms.submission.add_reviser %}
-		<a href="{% url 'submission:reviser_create'  %}" class="btn btn-success">
-			<i class="fa fa-plus"></i>
-			{% trans "Create Reviser" %}
+	{% if perms.authentication.add_administrator %}
+		<a href="{% url 'authentication:administrator_create'  %}" class="btn btn-success">
+			<i class="fa fa-user-plus"></i>
+			{% trans "Create Administrator" %}
 		</a>
 	{% endif %}
 	</div>
@@ -46,27 +46,27 @@
 					<th>{% trans "First Name" %}</th>
 					<th>{% trans "Last Name" %}</th>
 					<th>{% trans "Email" %}</th>
-					{% if perms.submission.delete_reviser %}
+					{% if perms.authentication.delete_administrator %}
 					<th>{% trans "Options" %}</th>
 					{% endif %}
 				</tr>
 			</thead>
 
 			<tbody>
-				{% for reviser in object_list %}
+				{% for administrator in object_list %}
 					<tr>
 						<td>
-							{{ reviser.first_name }}	
+							{{ administrator.first_name }}	
 						</td>
 						<td>
-							{{ reviser.last_name }}	
+							{{ administrator.last_name }}	
 						</td>
 						<td>
-							{{ reviser.email }}	
+							{{ administrator.email }}	
 						</td>
-						{% if perms.submission.delete_reviser %}
+						{% if perms.authentication.delete_administrator %}
 						<td>
-							<a href="{% url 'submission:reviser_delete' pk=reviser.pk  %}" class="btn btn-link">
+							<a href="{% url 'authentication:administrator_delete' pk=administrator.pk  %}" class="btn btn-link">
 								<i class="fa fa-remove"></i>
 								{% trans "Remove" %}
 							</a>
@@ -75,7 +75,7 @@
 					</tr>
 				{% empty %}
 					<tr>
-						<td class="text-xs-center">{% trans "No Reviser found!" %}</td>
+						<td class="text-xs-center">{% trans "No Administrator found!" %}</td>
 					</tr>
 				{% endfor %}
 			</tbody>

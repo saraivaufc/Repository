@@ -9,5 +9,5 @@ urlpatterns = [
 	url(r'^(?P<slug>[-\w]+)/detail/$', SubmissionDetailView.as_view(), name="submission_detail"),
 	url(r'^(?P<slug>[-\w]+)/edit/$', permission_required('submission.change_submission')(SubmissionUpdateView.as_view()), name="submission_update"),
 	url(r'^(?P<slug>[-\w]+)/delete/$', permission_required('submission.delete_submission')(SubmissionDeleteView.as_view()), name="submission_delete"),
-	url(r'^(?P<slug>[-\w]+)/add_reviser/$', permission_required('submission.change_reviser')(SubmissionChangeReviser.as_view()), name="submission_change_reviser"),
+	url(r'^(?P<slug>[-\w]+)/add_reviser/$', permission_required('authentication.change_reviser')(SubmissionChangeReviser.as_view()), name="submission_change_reviser"),
 ]

@@ -89,8 +89,8 @@ class Migration(migrations.Migration):
                 ('registration_date', models.DateTimeField(auto_now_add=True, verbose_name='Registration Date')),
                 ('is_final', models.BooleanField(default=False, verbose_name='Is Final')),
                 ('authors', models.ManyToManyField(related_name='Authors', verbose_name='Authors', to='manager.Author')),
-                ('collection', models.ForeignKey(verbose_name='Collection', to='manager.Collection')),
-                ('community', models.ForeignKey(verbose_name='Community', to='manager.Community')),
+                ('collection', models.ForeignKey(verbose_name='Collection', blank=True, to='manager.Collection')),
+                ('community', models.ForeignKey(verbose_name='Community', blank=True, to='manager.Community')),
                 ('keywords', models.ManyToManyField(related_name='Keywords', verbose_name='Keywords', to='manager.Keyword')),
             ],
             options={
@@ -130,7 +130,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='publication',
             name='publisher',
-            field=models.ForeignKey(verbose_name='Publisher', blank=True, to='manager.Publisher', null=True),
+            field=models.ForeignKey(verbose_name='Publisher', to='manager.Publisher'),
         ),
         migrations.AddField(
             model_name='publication',

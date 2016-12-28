@@ -20,6 +20,8 @@ class Migration(migrations.Migration):
                 ('slug', models.SlugField(unique=True, max_length=500, verbose_name='Slug', blank=True)),
                 ('name', models.CharField(max_length=100, verbose_name='Name')),
                 ('description', models.TextField(verbose_name='Description')),
+                ('address', models.CharField(max_length=100, verbose_name='Address')),
+                ('year', models.IntegerField(verbose_name='Year')),
                 ('image', models.FileField(upload_to=b'documents/event/images/%Y/%m/%d', verbose_name='Image')),
                 ('typology', models.CharField(max_length=100, verbose_name='Typology', choices=[('conference', 'Conference'), ('workshop', 'Workshop')])),
                 ('date', models.DateField(verbose_name='Date')),
@@ -32,12 +34,22 @@ class Migration(migrations.Migration):
                 ('registration_date', models.DateTimeField(auto_now_add=True, verbose_name='Registration Date')),
                 ('collection', models.ForeignKey(verbose_name='Collection', to='manager.Collection')),
                 ('community', models.ForeignKey(verbose_name='Community', to='manager.Community')),
+                ('publisher', models.ForeignKey(verbose_name='Publisher', to='manager.Publisher')),
             ],
             options={
                 'ordering': ['-date'],
                 'verbose_name': 'Event',
                 'verbose_name_plural': 'Event',
             },
+        ),
+        migrations.CreateModel(
+            name='Review',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('slug', models.SlugField(unique=True, max_length=500, verbose_name='Slug', blank=True)),
+                ('review_available_in', models.BooleanField(default=False, verbose_name='Review Available')),
+                ('registration_date', models.DateTimeField(auto_now_add=True, verbose_name='Registration Date')),
+            ],
         ),
         migrations.CreateModel(
             name='Submission',
@@ -48,11 +60,13 @@ class Migration(migrations.Migration):
                 ('registration_date', models.DateTimeField(auto_now_add=True, verbose_name='Registration Date')),
                 ('event', models.ForeignKey(verbose_name='Event', to='submission.Event')),
                 ('publication', models.ForeignKey(verbose_name='Publication', blank=True, to='manager.Publication', null=True)),
-                ('user', models.ForeignKey(verbose_name='User', to=settings.AUTH_USER_MODEL)),
+                ('reviser', models.ForeignKey(related_name='Reviser', verbose_name='Reviser', blank=True, to=settings.AUTH_USER_MODEL, null=True)),
+                ('user', models.ForeignKey(related_name='User', verbose_name='User', to=settings.AUTH_USER_MODEL)),
             ],
             options={
                 'verbose_name': 'Submission',
                 'verbose_name_plural': 'Submission',
+                'permissions': (('list_all_submissions', 'List all submissions'),),
             },
         ),
     ]

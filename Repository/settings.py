@@ -45,9 +45,9 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.humanize',
     'rosetta',
-    'authentication',
     'submission',
     'manager',
+    'authentication',
  
 )
 

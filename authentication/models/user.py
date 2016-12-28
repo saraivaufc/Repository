@@ -5,12 +5,6 @@ from django.contrib.auth.models import ( BaseUserManager, AbstractBaseUser, Perm
 from django.utils import timezone
 from django.template.defaultfilters import slugify
 
-FIELDS_SEARCH = (
-	("email", _("email")),
-	("first_name", _("First Name")),
-	("last_name", _("Last Name")),
-)
-
 class UserManager(BaseUserManager):
 	def create_user(self, email, password, group='participant'):
 		if not email:
@@ -33,6 +27,11 @@ class UserManager(BaseUserManager):
 
 
 class User(AbstractBaseUser, PermissionsMixin):
+	FIELDS_SEARCH = (
+		("email", _("email")),
+		("first_name", _("First Name")),
+		("last_name", _("Last Name")),
+	)
 	first_name = models.CharField(verbose_name=_(u"First Name "), max_length=100, blank=True, null=True, help_text=_(u'Please enter you first name.'), )
 	last_name = models.CharField(verbose_name=_(u"Last Name "), max_length=100, blank=True, null=True, help_text=_(u'Please enter you last name.'), )
 	email = models.EmailField(verbose_name=_(u"Email"), max_length=254, unique=True,  null=False, blank=False, help_text=_(u'Please enter you email.'), )
@@ -68,3 +67,12 @@ class User(AbstractBaseUser, PermissionsMixin):
 	class Meta:
 		verbose_name = _(u'User')
 		verbose_name_plural = _(u'User')
+		permissions = (
+			("list_reviser", "List Reviser"),
+			("add_reviser", "Add Reviser"),
+			("change_reviser", "Change Reviser"),
+			("delete_reviser", "Delete Reviser"),
+			("list_administrator", "List Administrator"),
+			("add_administrator", "Add Administrator"),		
+			("delete_administrator", "Delete Administrator"),
+		)

@@ -1,6 +1,7 @@
 import models
+from authentication.models import User
 from django.contrib.auth.models import Permission
-from django.contrib.auth.models import User, Group
+from django.contrib.auth.models import Group
 from django.contrib.contenttypes.models import ContentType
 from django.db.models import signals
 from django.db.models.signals import post_save
@@ -64,7 +65,12 @@ group_permissions = {
 		#Reviser
 		"list_reviser",
 		"add_reviser",
+		"change_reviser",
 		"delete_reviser",
+		#Administrator
+		"list_administrator",
+		"add_administrator",
+		"delete_administrator",
 	]
 }
 
@@ -81,8 +87,8 @@ def create_user_groups(app, created_models, verbosity, **kwargs):
 		for perm in group_permissions[group]:
 			try:
 				perm = Permission.objects.get(codename=perm)
-			except:
-				print perm
+			except Exception, e:
+				print e, ">>" ,perm
 				continue
 			role.permissions.add(perm)
 			if verbosity > 1:
@@ -100,5 +106,5 @@ post_save.connect(default_group, sender=User)
 signals.post_syncdb.connect(
 	create_user_groups,
 	sender=models,
-	dispatch_uid='manager.models.create_user_groups'
+	dispatch_uid='authentication.models.create_user_groups'
 )
