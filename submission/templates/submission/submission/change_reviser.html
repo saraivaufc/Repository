@@ -1,4 +1,4 @@
-{% extends "submission/submission/list.html" %}
+{% extends "submission/submission/list_all.html" %}
 
 
 {% load i18n static %}
@@ -10,7 +10,7 @@
 
 {% block breadcrumbs %}
 	{{ block.super }}
-	<a href="{% url 'submission:submission_create' event_slug=event.slug %}" class="breadcrumb-item" >
+	<a href="{% url 'submission:submission_change_reviser' event_slug=submission.event.slug slug=submission.slug %}" class="breadcrumb-item" >
 		{% trans "Form Submission" %}
 	</a>
 {% endblock %}

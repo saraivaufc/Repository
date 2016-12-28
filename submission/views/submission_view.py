@@ -8,8 +8,10 @@ from django.conf import settings
 from datetime import datetime
 from django.http import HttpResponseRedirect
 
+from authentication.models import User
 from submission.models import Submission, submission, Event
 from manager.models import Publication
+
 
 class SubmissionListView(ListView):
 	template_name = 'submission/submission/list.html'
@@ -22,6 +24,25 @@ class SubmissionListView(ListView):
 
 	def get_context_data(self, ** kwargs):
 		context = super(SubmissionListView, self).get_context_data( ** kwargs)
+		event = Event.objects.filter(slug=self.kwargs['event_slug']).first()
+		context["event"] = event
+		context["fields_search"] = self.fields_search
+		context["url_search"] = reverse_lazy("submission:submission_list", kwargs={"event_slug": event.slug,"page":1})
+		return context
+
+class SubmissionsToReviewListView(ListView):
+	template_name = 'submission/submission/list_all.html'
+	paginate_by = settings.PAGINATE_BY
+	fields_search = submission.FIELDS_SEARCH
+
+	def get_queryset(self):
+		event = Event.objects.filter(slug=self.kwargs['event_slug']).first()
+		if self.request.user.is_reviser:
+			return Submission.objects.filter(event=event,reviser=self.request.user)
+		return Submission.objects.filter(event=event)
+
+	def get_context_data(self, ** kwargs):
+		context = super(SubmissionsToReviewListView, self).get_context_data( ** kwargs)
 		event = Event.objects.filter(slug=self.kwargs['event_slug']).first()
 		context["event"] = event
 		context["fields_search"] = self.fields_search
@@ -94,6 +115,25 @@ class SubmissionUpdateView(UpdateView):
 		publication.issue_date = datetime.today()
 		publication.save()
 		return super(SubmissionUpdateView, self).form_valid(form)
+
+class SubmissionChangeReviser(UpdateView):
+	template_name = 'submission/submission/change_reviser.html'
+	model = Submission
+	fields = ['reviser',]
+	
+	def get_success_url(self):
+		event = Event.objects.filter(slug=self.kwargs['event_slug']).first()
+		return reverse_lazy('submission:submission_list_all', kwargs={'event_slug':event.slug, 'page': 1})
+
+	def get_context_data(self, ** kwargs):
+		event = Event.objects.filter(slug=self.kwargs['event_slug']).first()
+		context = super(SubmissionChangeReviser, self).get_context_data( ** kwargs)	
+		context['event'] = event
+		return context
+
+	def form_valid(self, form):
+		event = Event.objects.filter(slug=self.kwargs['event_slug']).first()
+		return super(SubmissionChangeReviser, self).form_valid(form)
 
 class SubmissionDeleteView(DeleteView):
 	template_name = 'submission/submission/check_delete.html'

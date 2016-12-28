@@ -17,6 +17,11 @@ group_permissions = {
 		"add_submission",
 		"change_submission",
 		"delete_submission",
+		"list_all_submissions",
+
+		"add_review",
+		"change_review",
+		"delete_review",
 	],
 	"administrator": [
 		#community
@@ -55,6 +60,11 @@ group_permissions = {
 		"add_submission",
 		"change_submission",
 		"delete_submission",
+		"list_all_submissions",
+		#Reviser
+		"list_reviser",
+		"add_reviser",
+		"delete_reviser",
 	]
 }
 

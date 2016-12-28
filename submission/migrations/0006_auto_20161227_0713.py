@@ -7,12 +7,12 @@ from django.db import models, migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('authentication', '0001_initial'),
+        ('submission', '0005_event_year'),
     ]
 
     operations = [
         migrations.AlterModelOptions(
-            name='user',
-            options={'verbose_name': 'User', 'verbose_name_plural': 'User'},
+            name='submission',
+            options={'verbose_name': 'Submission', 'verbose_name_plural': 'Submission', 'permissions': (('see_all_submissions', 'See all submissions'),)},
         ),
     ]

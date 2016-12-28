@@ -55,7 +55,7 @@ class Event(models.Model):
 		elif self.submission_2_open <= now <= self.submission_2_close:
 			return {'type': 'submission_open', 'text': _('Submission open')}
 		elif now > self.submission_2_close:
-			return {'type': 'submission_close', 'text': _('Submission close')}
+			return {'type': 'submission_complete', 'text': _('Submission Complete')}
 		else:
 			return {'type': 'out_of_period', 'text': _('Out of period')}
 

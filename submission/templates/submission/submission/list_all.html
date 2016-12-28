@@ -12,26 +12,15 @@
 
 {% block breadcrumbs %}
 	{{ block.super }}
-	<a href="{% url 'submission:submission_list' event_slug=event.slug page=1 %}" class="breadcrumb-item" >
+	<a href="{% url 'submission:submission_list_all' event_slug=event.slug page=1 %}" class="breadcrumb-item" >
 		<i class="fa fa-upload"></i>
-		{% trans "My Submissions" %}
+		{% trans "To Revission" %}
 	</a>
 {% endblock %}
 
-{%  block page_title %}{% trans "List of My Submissions" %}{% endblock %}
+{%  block page_title %}{% trans "List of Submissions to Revission" %}{% endblock %}
 
-{% block content_inner %}
-	<div class="col-md-4">
-	<div class="row">
-	{% if perms.submission.add_submission %}
-		<a href="{% url 'submission:submission_create' event_slug=event.slug %}" class="btn btn-success">
-			<i class="fa fa-plus"></i>
-			{% trans "Create Submission" %}
-		</a>
-	{% endif %}
-	</div>
-	</div>
-	
+{% block content_inner %}	
 	<div class="col-md-12">
 	<div class="row">
 		<table class="table table-bordered">
@@ -39,6 +28,7 @@
 				<tr>
 					<th>{% trans "Submission" %}</th>
 					<th>{% trans "Authors" %}</th>
+					<th>{% trans "Reviser" %}</th>
 				</tr>
 			</thead>
 
@@ -56,6 +46,25 @@
 									{{ author.reference_name }}
 								</a>
 							{% endfor %}
+						</td>
+						<td>
+							{% if submission.reviser %}
+								{{ submission.reviser }}
+								{% if perms.authentication.change_reviser %}
+									<a href="{% url 'submission:submission_change_reviser' event_slug=submission.event.slug slug=submission.slug %}" class="btn btn-link">
+										<i class="fa fa-edit"></i>
+										{% trans "Change Reviser" %}
+									</a>
+								{% endif %}
+							{% else %}
+								{% trans "No Reviser" %}
+								{% if perms.authentication.add_reviser %}
+								<a href="{% url 'submission:submission_change_reviser' event_slug=submission.event.slug slug=submission.slug %}" class="btn btn-link btn-sm">
+									<i class="fa fa-plus"></i>
+									{% trans "Add Reviser" %}
+								</a>
+								{% endif %}
+							{% endif %}
 						</td>
 					</tr>
 				{% empty %}

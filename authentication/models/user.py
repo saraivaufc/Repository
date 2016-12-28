@@ -3,8 +3,13 @@ from django.db import models
 from django.contrib.auth.models import Group
 from django.contrib.auth.models import ( BaseUserManager, AbstractBaseUser, PermissionsMixin)
 from django.utils import timezone
-from django.db.models.signals import post_save
-from django.dispatch import receiver
+from django.template.defaultfilters import slugify
+
+FIELDS_SEARCH = (
+	("email", _("email")),
+	("first_name", _("First Name")),
+	("last_name", _("Last Name")),
+)
 
 class UserManager(BaseUserManager):
 	def create_user(self, email, password, group='participant'):
@@ -28,13 +33,14 @@ class UserManager(BaseUserManager):
 
 
 class User(AbstractBaseUser, PermissionsMixin):
-	first_name = models.CharField(verbose_name=_(u"First Name "), max_length=100, blank=False, null=False, help_text=_(u'Please enter you first name.'), )
-	last_name = models.CharField(verbose_name=_(u"Last Name "), max_length=100, blank=False, null=False, help_text=_(u'Please enter you last name.'), )
+	first_name = models.CharField(verbose_name=_(u"First Name "), max_length=100, blank=True, null=True, help_text=_(u'Please enter you first name.'), )
+	last_name = models.CharField(verbose_name=_(u"Last Name "), max_length=100, blank=True, null=True, help_text=_(u'Please enter you last name.'), )
 	email = models.EmailField(verbose_name=_(u"Email"), max_length=254, unique=True,  null=False, blank=False, help_text=_(u'Please enter you email.'), )
-	is_active = models.BooleanField(verbose_name=_('active'), default=True, help_text=_(u'Designates whether this user should be treated as active. Unselect this instead of deleting accounts.'))
-	date_joined = models.DateTimeField(verbose_name=_(u'date joined'), default=timezone.now)
-	is_moderator = models.BooleanField(_('moderator status'), default=False, blank=True)
-	is_staff = models.BooleanField(_(u'staff status'), default=False,)
+	is_active = models.BooleanField(verbose_name=_('Active'), default=True, help_text=_(u'Designates whether this user should be treated as active. Unselect this instead of deleting accounts.'))
+	date_joined = models.DateTimeField(verbose_name=_(u'Date joined'), default=timezone.now)
+	is_moderator = models.BooleanField(_('Moderator Status'), default=False, blank=True)
+	is_staff = models.BooleanField(_(u'Staff Status'), default=False,)
+	is_reviser = models.BooleanField(_(u'Reviser Status'), default=False,)
 
 	REQUIRED_FIELDS =[]
 	USERNAME_FIELD = 'email'

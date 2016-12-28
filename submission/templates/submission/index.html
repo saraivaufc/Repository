@@ -37,6 +37,14 @@
 					{% trans "Events" %}
 				</a>
 			</div>
+			{% if perms.authentication.list_reviser %}
+			<div class="list-group sidebar">
+				<a href="{% url 'submission:reviser_list' page=1 %}" class="list-group-item sidebar-item {% block revisers %}{% endblock %}">
+					<i class="fa fa-thumbs-up"></i>
+					{% trans "Revisers" %}
+				</a>
+			</div>
+			{% endif %}
 		{% endblock %}
 		</div>
 	</div>

@@ -104,5 +104,12 @@
 				{% trans "My Submissions" %}
 			</a>
 		{% endif %}
+		{% if perms.submission.list_all_submissions and event.stage.type == 'submission_complete' %}
+								/
+			<a href="{% url 'submission:submission_list_all' event_slug=event.slug page=1 %}" data-toggle="tooltip" title="{% trans "All Submissions" %}">
+				<i class="fa fa-upload"></i>
+				{% trans "To Revission" %}
+			</a>
+		{% endif %}
 	</div>
 {% endblock %}
