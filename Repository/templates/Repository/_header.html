@@ -1,7 +1,7 @@
 {% load i18n static %}
 
 <nav class="navbar navbar-dark nav-pills bg-primary bg-faded" style="width: 100%;">
-	<a class="navbar-brand" href="">
+	<a class="navbar-brand" href="{% url 'manager:home' %}">
     	<img src="{% static "Repository/img/logo.png" %}" width="30" height="30" alt="">
     	{% trans "RIUFC" %}
   	</a>

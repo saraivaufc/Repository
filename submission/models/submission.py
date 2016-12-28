@@ -17,6 +17,7 @@ class Submission(models.Model):
 	user = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name=_("User"), related_name="User", null=False, blank=False)
 	publication = models.ForeignKey(Publication, verbose_name=_("Publication"), null=True, blank=True)
 	reviser = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name=_("Reviser"), related_name="Reviser", limit_choices_to={'is_reviser': True}, null=True, blank=True)
+	review = models.ForeignKey("Review", verbose_name=_("Review"), null=True, blank=True)
 	review_available = models.BooleanField(default=False, verbose_name=_(u"Review Available"))
 	
 	registration_date = models.DateTimeField(verbose_name=_("Registration Date"), auto_now_add=True, auto_now=False)
@@ -41,5 +42,5 @@ class Submission(models.Model):
 		verbose_name = _(u'Submission')
 		verbose_name_plural = _(u'Submission')
 		permissions = (
-			("list_all_submissions", "List all submissions"),
+			("list_submission_to_review", "List Submission To  Review"),
 		)

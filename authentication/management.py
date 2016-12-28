@@ -18,7 +18,7 @@ group_permissions = {
 		"add_submission",
 		"change_submission",
 		"delete_submission",
-		"list_all_submissions",
+		"list_submission_to_review",
 
 		"add_review",
 		"change_review",
@@ -61,7 +61,7 @@ group_permissions = {
 		"add_submission",
 		"change_submission",
 		"delete_submission",
-		"list_all_submissions",
+		"list_submission_to_review",
 		#Reviser
 		"list_reviser",
 		"add_reviser",

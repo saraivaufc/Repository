@@ -30,25 +30,6 @@ class SubmissionListView(ListView):
 		context["url_search"] = reverse_lazy("submission:submission_list", kwargs={"event_slug": event.slug,"page":1})
 		return context
 
-class SubmissionsToReviewListView(ListView):
-	template_name = 'submission/submission/list_all.html'
-	paginate_by = settings.PAGINATE_BY
-	fields_search = Submission.FIELDS_SEARCH
-
-	def get_queryset(self):
-		event = Event.objects.filter(slug=self.kwargs['event_slug']).first()
-		if self.request.user.is_reviser:
-			return Submission.objects.filter(event=event,reviser=self.request.user)
-		return Submission.objects.filter(event=event)
-
-	def get_context_data(self, ** kwargs):
-		context = super(SubmissionsToReviewListView, self).get_context_data( ** kwargs)
-		event = Event.objects.filter(slug=self.kwargs['event_slug']).first()
-		context["event"] = event
-		context["fields_search"] = self.fields_search
-		context["url_search"] = reverse_lazy("submission:submission_list", kwargs={"event_slug": event.slug,"page":1})
-		return context
-
 class SubmissionCreateView(CreateView):
 	template_name = 'submission/submission/form.html'
 	model = Publication
@@ -123,7 +104,7 @@ class SubmissionChangeReviser(UpdateView):
 	
 	def get_success_url(self):
 		event = Event.objects.filter(slug=self.kwargs['event_slug']).first()
-		return reverse_lazy('submission:submission_list_all', kwargs={'event_slug':event.slug, 'page': 1})
+		return reverse_lazy('submission:submission_list_to_review', kwargs={'event_slug':event.slug, 'page': 1})
 
 	def get_context_data(self, ** kwargs):
 		event = Event.objects.filter(slug=self.kwargs['event_slug']).first()
@@ -171,3 +152,35 @@ class SubmissionDetailView(DetailView):
 		if not Submission.objects.filter(event=event, user=self.request.user,publication=self.get_object().publication):
 			return HttpResponseRedirect(reverse_lazy('submission:submission_list', kwargs={'event_slug':event.slug, 'page': 1}))
 		return super(SubmissionDetailView, self).get(request)
+
+
+class SubmissionsToReviewListView(ListView):
+	template_name = 'submission/submission/list_to_review.html'
+	paginate_by = settings.PAGINATE_BY
+	fields_search = Submission.FIELDS_SEARCH
+
+	def get_queryset(self):
+		event = Event.objects.filter(slug=self.kwargs['event_slug']).first()
+		if self.request.user.is_reviser:
+			return Submission.objects.filter(event=event,reviser=self.request.user)
+		return Submission.objects.filter(event=event)
+
+	def get_context_data(self, ** kwargs):
+		context = super(SubmissionsToReviewListView, self).get_context_data( ** kwargs)
+		event = Event.objects.filter(slug=self.kwargs['event_slug']).first()
+		context["event"] = event
+		context["fields_search"] = self.fields_search
+		context["url_search"] = reverse_lazy("submission:submission_list", kwargs={"event_slug": event.slug,"page":1})
+		return context
+
+class SubmissionToReviewDetailView(DetailView):
+	template_name = 'submission/submission/detail_to_review.html'
+	model = Submission
+
+	def get_context_data(self, ** kwargs):
+		event = Event.objects.filter(slug=self.kwargs['event_slug']).first()
+		context = super(SubmissionToReviewDetailView, self).get_context_data( ** kwargs)
+		context['event'] = event
+		context['publication'] = self.object.publication
+		context['submission'] = self.object
+		return context

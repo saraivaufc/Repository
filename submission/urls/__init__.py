@@ -5,4 +5,5 @@ urlpatterns = [
 	url(r'^index/$', TemplateView.as_view(template_name="submission/index.html"), name="home"),
 	url(r'^event/', include('submission.urls.event')),
 	url(r'^event/(?P<event_slug>[-\w]+)/submission/', include('submission.urls.submissions')),
+	#url(r'^event/(?P<event_slug>[-\w]+)/submission/(?P<submission_slug>[-\w]+)/', include('submission.urls.review')),
 ]

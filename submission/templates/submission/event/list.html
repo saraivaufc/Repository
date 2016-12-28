@@ -79,11 +79,11 @@
 									{% trans "My Submissions" %}
 								</a>
 							{% endif %}
-							{% if perms.submission.list_all_submissions and event.stage.type == 'submission_complete' %}
+							{% if perms.submission.list_submission_to_review and event.stage.type == 'reviewing' %}
 								/
-								<a href="{% url 'submission:submission_list_all' event_slug=event.slug page=1 %}" data-toggle="tooltip" title="{% trans "All Submissions" %}">
-									<i class="fa fa-upload"></i>
-									{% trans "To revision" %}
+								<a href="{% url 'submission:submission_list_to_review' event_slug=event.slug page=1 %}" data-toggle="tooltip" title="{% trans "To Review" %}">
+									<i class="fa fa-wrench"></i>
+									{% trans "To Review" %}
 								</a>
 							{% endif %}
 						</td>
