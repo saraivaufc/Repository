@@ -11,8 +11,8 @@
 {% block breadcrumbs %}
 	{{ block.super }}
 	<a href="{% url 'submission:submission_detail' event_slug=event.slug slug=submission.slug %}" class="breadcrumb-item" >
-		<i class="fa fa-upload"></i>
-		{{ publication.title|truncatechars:20 }}
+		<i class="fa fa-book"></i>
+		{{ publication.title|truncatewords:6 }}
 	</a>
 {% endblock %}
 
@@ -32,66 +32,64 @@
 	</div>
 {% endblock %}
 
-{% block content_inner %}
-	<table class="table table-bordered">
-		<tbody>
-			<tr>
-				<td>{% trans "Title" %}:</td>
-				<td>{{ publication.title }}</td>
-			</tr>
-			<tr>
-				<td>{% trans "Typology" %}:</td>
-				<td>{{ publication.typology }}</td>
-			</tr>
-			<tr>
-				<td>{% trans "Authors" %}:</td>
-				<td>
-					{% for author in publication.authors.all %}
-						<a href="{% url 'manager:author_detail' slug=author.slug %}">
-							{{ author.reference_name }}	
-						</a>;
-					{% endfor %}
-				</td>
-			</tr>
-			<tr>
-				<td>{% trans "Reference" %}:</td>
-				<td>{{ publication.reference }}</td>
-			</tr>
-			<tr>
-				<td>{% trans "Language" %}:</td>
-				<td>{{ publication.language }}</td>
-			</tr>
-			<tr>
-				<td>{% trans "Abstract" %}:</td>
-				<td>{{ publication.abstract }}</td>
-			</tr>
-			<tr>
-				<td>{% trans "Other Abstract" %}:</td>
-				<td>{{ publication.other_abstract }}</td>
-			</tr>
-			<tr>
-				<td>{% trans "Keywords" %}:</td>
-				<td>
-					{% for keyword in publication.keywords.all %}
-					<a href="{% url 'manager:keyword_detail' slug=keyword.slug %}">
-						{{ keyword }}
-					</a>.
-					{% endfor %}
-				</td>
-			</tr>
-			<tr>
-				<td>{% trans "Issue Date" %}:</td>
-				<td>{{ publication.issue_date }}</td>
-			</tr>
-			<tr>
-				<td>{% trans "File" %}:</td>
-				<td>
-					<a href="{{ publication.file.url }}" target="_blank">
-						<i class="fa fa-download"></i>
-						{% trans "Download" %}
-					</a>
-				</td>
-			</tr>
-		</tbody>
-	</table>
+{% block content %}
+	<dl class="definition">
+		<dt class="col-sm-2">{% trans "Title" %}:</dt>
+		<dd class="col-sm-10">{{ publication.title }}</dd>
+
+		<dt class="col-sm-2">{% trans "Typology" %}:</dt>
+		<dd class="col-sm-10">{{ publication.typology|title }}</dd>
+
+		<dt class="col-sm-2">{% trans "Authors" %}:</dt>
+		<dd class="col-sm-10">
+			{% for author in publication.authors.all %}
+				<a class="tag tag-primary" href="{% url 'manager:author_detail' slug=author.slug %}">
+					<i class="fa fa-graduation-cap"></i>
+					{{ author.reference_name }}	
+				</a>
+			{% endfor %}
+		</dd>
+
+		<dt class="col-sm-2">{% trans "Collection" %}:</dt>
+		<dd class="col-sm-10">
+			<a class="tag tag-primary" href="{% url 'manager:collection_detail' slug=publication.collection.slug %}">
+				<i class="fa fa-object-group"></i>
+				{{ publication.collection }}		
+			</a>
+		</dd>
+
+		<dt class="col-sm-2">{% trans "Reference" %}:</dt>
+		<dd class="col-sm-10">{{ publication.reference }}</dd>
+
+		<dt class="col-sm-2">{% trans "Language" %}:</dt>
+		<dd class="col-sm-10">{{ publication.language }}</dd>
+
+		<dt class="col-sm-2">{% trans "Abstract" %}:</dt>
+		<dd class="col-sm-10">{{ publication.abstract }}</dd>
+
+		<dt class="col-sm-2">{% trans "Other Abstract" %}:</dt>
+		<dd class="col-sm-10">{{ publication.other_abstract }}</dd>
+
+		<dt class="col-sm-2">{% trans "Keywords" %}:</dt>
+		<dd class="col-sm-10">
+			{% for keyword in publication.keywords.all %}
+			<a class="tag tag-primary" href="{% url 'manager:keyword_detail' slug=keyword.slug %}">
+				<i class="fa fa-tags"></i>
+				{{ keyword }}
+			</a>
+			{% endfor %}
+		</dd>
+
+		<dt class="col-sm-2">{% trans "Issue Date" %}:</dt>
+		<dd class="col-sm-10">{{ publication.issue_date }}</dd>
+
+		<dt class="col-sm-2">{% trans "File" %}:</dt>
+		<dd class="col-sm-10">
+			<a href="{{ publication.file.url }}" target="_blank">
+				<i class="fa fa-download"></i>
+				{% trans "Download" %}
+			</a>
+		</dd>
+
+	</dl>
 {% endblock %}

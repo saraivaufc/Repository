@@ -32,31 +32,23 @@
 	</div>
 {% endblock %}
 
-{% block content_inner %}
+{% block content %}
 	<div class="col-md-12">
 		<div class="row">	
 			<p class="lead text-justify">
-				<img src="{{ event.image.url }}" width="200px" style="float: left; margin: 0px 10px 10px 0px ;" class="img-thumbnail" />
+				<img src="{{ event.image.url }}" width="300px" height="200px" style="float: left; margin: 0px 10px 10px 0px ;" />
 				{{ event.description }}
 			</p>
 		</div>
 	</div>
 	<hr class="divider"/>
 	<div class="col-md-6">
-		<dl class="row">
+		<dl class="definition">
 			<dt class="col-sm-3">{% trans "Community" %}:</dt>
 			<dd class="col-sm-9">
 				<a href="{% url 'manager:community_detail' slug=event.community.slug page=1 %}" class="tag tag-primary">
 					<i class="fa fa-university"></i>
 					{{ event.community }}
-				</a>
-			</dd>
-
-			<dt class="col-sm-3">{% trans "Collection" %}:</dt>
-			<dd class="col-sm-9">
-				<a href="{% url 'manager:collection_detail' slug=event.collection.slug %}" class="tag tag-primary">
-					<i class="fa fa-object-group"></i>
-					{{ event.collection }}
 				</a>
 			</dd>
 

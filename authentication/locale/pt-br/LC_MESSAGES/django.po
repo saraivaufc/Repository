@@ -1,0 +1,309 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-12-29 01:12-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: authentication/models/user.py:31
+msgid "email"
+msgstr ""
+
+#: authentication/models/user.py:32
+#: authentication/templates/authentication/administrator/list.html:46
+#: authentication/templates/authentication/reviser/list.html:46
+msgid "First Name"
+msgstr ""
+
+#: authentication/models/user.py:33
+#: authentication/templates/authentication/administrator/list.html:47
+#: authentication/templates/authentication/reviser/list.html:47
+msgid "Last Name"
+msgstr ""
+
+#: authentication/models/user.py:35
+msgid "First Name "
+msgstr ""
+
+#: authentication/models/user.py:35
+msgid "Please enter you first name."
+msgstr ""
+
+#: authentication/models/user.py:36
+msgid "Last Name "
+msgstr ""
+
+#: authentication/models/user.py:36
+msgid "Please enter you last name."
+msgstr ""
+
+#: authentication/models/user.py:37
+#: authentication/templates/authentication/administrator/list.html:48
+#: authentication/templates/authentication/reviser/list.html:48
+msgid "Email"
+msgstr ""
+
+#: authentication/models/user.py:37
+msgid "Please enter you email."
+msgstr ""
+
+#: authentication/models/user.py:38
+msgid "Active"
+msgstr ""
+
+#: authentication/models/user.py:38
+msgid ""
+"Designates whether this user should be treated as active. Unselect this "
+"instead of deleting accounts."
+msgstr ""
+
+#: authentication/models/user.py:39
+msgid "Date joined"
+msgstr ""
+
+#: authentication/models/user.py:40
+msgid "Moderator Status"
+msgstr ""
+
+#: authentication/models/user.py:41
+msgid "Staff Status"
+msgstr ""
+
+#: authentication/models/user.py:42
+msgid "Reviser Status"
+msgstr ""
+
+#: authentication/models/user.py:68 authentication/models/user.py:69
+msgid "User"
+msgstr ""
+
+#: authentication/templates/authentication/account/login.html:14
+#: authentication/templates/authentication/account/login.html:18
+msgid "Login"
+msgstr ""
+
+#: authentication/templates/authentication/account/login.html:22
+msgid "Your username and password didn't match. Please try again."
+msgstr ""
+
+#: authentication/templates/authentication/account/login.html:26
+msgid ""
+"Your account doesn't have access to this page. To proceed, please login with "
+"an account that has access."
+msgstr ""
+
+#: authentication/templates/authentication/account/login.html:28
+msgid "Please login to see this page."
+msgstr ""
+
+#: authentication/templates/authentication/account/login.html:33
+#: authentication/templates/authentication/account/password_reset_confirm.html:12
+#: authentication/templates/authentication/account/password_reset_form.html:22
+#: authentication/templates/authentication/account/register.html:23
+#: authentication/templates/authentication/administrator/form.html:24
+#: authentication/templates/authentication/reviser/form.html:24
+msgid "Submit"
+msgstr ""
+
+#: authentication/templates/authentication/account/login.html:36
+msgid "Lost password?"
+msgstr ""
+
+#: authentication/templates/authentication/account/login.html:37
+#: authentication/templates/authentication/account/register.html:14
+#: authentication/templates/authentication/account/register.html:18
+msgid "Register"
+msgstr ""
+
+#: authentication/templates/authentication/account/password_change_done.html:8
+msgid "Password Reset Change"
+msgstr ""
+
+#: authentication/templates/authentication/account/password_change_done.html:14
+msgid "Password change successful"
+msgstr ""
+
+#: authentication/templates/authentication/account/password_change_done.html:16
+msgid "Your password was changed."
+msgstr ""
+
+#: authentication/templates/authentication/account/password_change_form.html:8
+msgid "Password Change Form"
+msgstr ""
+
+#: authentication/templates/authentication/account/password_change_form.html:14
+msgid "Password reset"
+msgstr ""
+
+#: authentication/templates/authentication/account/password_change_form.html:16
+msgid "Forgotten your password? Enter your email addess below"
+msgstr ""
+
+#: authentication/templates/authentication/account/password_change_form.html:22
+msgid "Change my password"
+msgstr ""
+
+#: authentication/templates/authentication/account/password_reset_complete.html:8
+msgid "Your password has been set.  You may go ahead and log in now."
+msgstr ""
+
+#: authentication/templates/authentication/account/password_reset_complete.html:10
+msgid "Log in"
+msgstr ""
+
+#: authentication/templates/authentication/account/password_reset_confirm.html:8
+msgid ""
+"Please enter your new password twice so we can verify you typed it in "
+"correctly."
+msgstr ""
+
+#: authentication/templates/authentication/account/password_reset_confirm.html:16
+msgid "Password reset unsuccessful"
+msgstr ""
+
+#: authentication/templates/authentication/account/password_reset_confirm.html:17
+msgid ""
+"The password reset link was invalid, possibly because it has already been "
+"used.  Please request a new password reset."
+msgstr ""
+
+#: authentication/templates/authentication/account/password_reset_done.html:8
+msgid ""
+"We've emailed you instructions for setting your password, if an account "
+"exists with the email you entered. You should receive them shortly."
+msgstr ""
+
+#: authentication/templates/authentication/account/password_reset_done.html:10
+msgid ""
+"If you don't receive an email, please make sure you've entered the address "
+"you registered with, and check your spam folder."
+msgstr ""
+
+#: authentication/templates/authentication/account/password_reset_email.html:2
+#, python-format
+msgid ""
+"You're receiving this email because you requested a password reset for your "
+"user account at %(site_name)s."
+msgstr ""
+
+#: authentication/templates/authentication/account/password_reset_email.html:4
+msgid "Please go to the following page and choose a new password:"
+msgstr ""
+
+#: authentication/templates/authentication/account/password_reset_email.html:8
+msgid "Your username, in case you've forgotten:"
+msgstr ""
+
+#: authentication/templates/authentication/account/password_reset_email.html:10
+msgid "Thanks for using our site!"
+msgstr ""
+
+#: authentication/templates/authentication/account/password_reset_email.html:12
+#, python-format
+msgid "The %(site_name)s team"
+msgstr ""
+
+#: authentication/templates/authentication/account/password_reset_form.html:8
+msgid "Password Reset"
+msgstr ""
+
+#: authentication/templates/authentication/account/password_reset_form.html:12
+msgid "Recover Password"
+msgstr ""
+
+#: authentication/templates/authentication/account/password_reset_form.html:16
+msgid ""
+"Forgotten your password? Enter your email address below, and we'll email "
+"instructions for setting a new one."
+msgstr ""
+
+#: authentication/templates/authentication/administrator/check_delete.html:15
+#: authentication/templates/authentication/administrator/check_delete.html:19
+#: authentication/templates/authentication/reviser/check_delete.html:15
+#: authentication/templates/authentication/reviser/check_delete.html:19
+msgid "Confirm delete"
+msgstr ""
+
+#: authentication/templates/authentication/administrator/check_delete.html:25
+#: authentication/templates/authentication/reviser/check_delete.html:25
+msgid "Are you sure you want to delete"
+msgstr ""
+
+#: authentication/templates/authentication/administrator/check_delete.html:26
+#: authentication/templates/authentication/reviser/check_delete.html:26
+msgid "No"
+msgstr ""
+
+#: authentication/templates/authentication/administrator/check_delete.html:27
+#: authentication/templates/authentication/reviser/check_delete.html:27
+msgid "Yes"
+msgstr ""
+
+#: authentication/templates/authentication/administrator/form.html:15
+#: authentication/templates/authentication/administrator/list.html:29
+msgid "Create Administrator"
+msgstr ""
+
+#: authentication/templates/authentication/administrator/form.html:19
+#: authentication/templates/authentication/reviser/form.html:15
+#: authentication/templates/authentication/reviser/form.html:19
+msgid "Form Administrator"
+msgstr ""
+
+#: authentication/templates/authentication/administrator/list.html:17
+msgid "Administrators"
+msgstr ""
+
+#: authentication/templates/authentication/administrator/list.html:21
+msgid "List of Administrators"
+msgstr ""
+
+#: authentication/templates/authentication/administrator/list.html:50
+#: authentication/templates/authentication/reviser/list.html:50
+msgid "Options"
+msgstr ""
+
+#: authentication/templates/authentication/administrator/list.html:71
+#: authentication/templates/authentication/reviser/list.html:71
+msgid "Remove"
+msgstr ""
+
+#: authentication/templates/authentication/administrator/list.html:78
+msgid "No Administrator found!"
+msgstr ""
+
+#: authentication/templates/authentication/index.html:24
+msgid "Home"
+msgstr ""
+
+#: authentication/templates/authentication/index.html:28
+msgid "Site Administration"
+msgstr ""
+
+#: authentication/templates/authentication/reviser/list.html:17
+msgid "Revisers"
+msgstr ""
+
+#: authentication/templates/authentication/reviser/list.html:21
+msgid "List of Revisers"
+msgstr ""
+
+#: authentication/templates/authentication/reviser/list.html:29
+msgid "Create Reviser"
+msgstr ""
+
+#: authentication/templates/authentication/reviser/list.html:78
+msgid "No Reviser found!"
+msgstr ""

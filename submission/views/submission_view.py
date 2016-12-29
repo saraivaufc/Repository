@@ -33,7 +33,7 @@ class SubmissionListView(ListView):
 class SubmissionCreateView(CreateView):
 	template_name = 'submission/submission/form.html'
 	model = Publication
-	fields = ['title', 'typology', 'subjects', 'authors', 'reference','language', 'abstract', 'other_abstract', 'keywords', 'file']
+	fields = ['title', 'typology', 'subjects', 'authors', 'collection', 'reference','language', 'abstract', 'other_abstract', 'keywords', 'file']
 
 	def get_success_url(self):
 		event = Event.objects.filter(slug=self.kwargs['event_slug']).first()
@@ -51,8 +51,7 @@ class SubmissionCreateView(CreateView):
 		publication = form.save(commit=False)
 		publication.address = event.address
 		publication.year = event.year
-		publication.community = event.community 
-		publication.collection = event.collection
+		publication.community = event.community
 		publication.publisher = event.publisher
 		publication.issue_date = datetime.today()
 		publication.save()
@@ -66,7 +65,7 @@ class SubmissionCreateView(CreateView):
 class SubmissionUpdateView(UpdateView):
 	template_name = 'submission/submission/form.html'
 	model = Publication
-	fields = ['title', 'typology', 'subjects', 'authors', 'reference','language', 'abstract', 'other_abstract', 'keywords', 'file']
+	fields = ['title', 'typology', 'subjects', 'authors', 'collection', 'reference','language', 'abstract', 'other_abstract', 'keywords', 'file']
 	
 	def get_success_url(self):
 		event = Event.objects.filter(slug=self.kwargs['event_slug']).first()

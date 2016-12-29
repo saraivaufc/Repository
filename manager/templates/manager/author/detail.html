@@ -33,33 +33,25 @@
 {% endblock %}
 
 {% block content_inner %}
-	<table class="table table-bordered">
-		<tbody>
-			<tr>
-				<td>{% trans "First Name" %}:</td>
-				<td>{{ object.first_name }}</td>
-			</tr>
-			<tr>
-				<td>{% trans "Last Name" %}:</td>
-				<td>{{ object.last_name }}</td>
-			</tr>
-			<tr>
-				<td>{% trans "Reference Name" %}:</td>
-				<td>{{ object.reference_name }}</td>
-			</tr>
-			<tr>
-				<td>{% trans "Publications" %}:</td>
-				<td>
-					<a href="{% url 'manager:author_publications' slug=author.slug page=1 %}" data-toggle="tooltip" title="{% trans "See Publications" %}">
-						<i class="fa fa-book"></i>
-						{% trans "See Publications" %}
-					</a>
-				</td>
-			</tr>
-			<tr>
-				<td>{% trans "Registration date" %}:</td>
-				<td>{{ object.registration_date }}</td>
-			</tr>
-		</tbody>
-	</table>
+	<dl class="definition">
+		<dt class="col-sm-3">{% trans "First Name" %}:</dt>
+		<dd class="col-sm-9">{{ object.first_name }}</dd>
+
+		<dt class="col-sm-3">{% trans "Last Name" %}:</dt>
+		<dd class="col-sm-9">{{ object.last_name }}</dd>
+
+		<dt class="col-sm-3">{% trans "Reference Name" %}:</dt>
+		<dd class="col-sm-9">{{ object.reference_name }}</dd>
+
+		<dt class="col-sm-3">{% trans "Publications" %}:</dt>
+		<dd class="col-sm-9">
+			<a href="{% url 'manager:author_publications' slug=author.slug page=1 %}" data-toggle="tooltip" title="{% trans "See Publications" %}">
+				<i class="fa fa-book"></i>
+				{% trans "See Publications" %}
+			</a>
+		</dd>
+
+		<dt class="col-sm-3">{% trans "Registration date" %}:</dt>
+		<dd class="col-sm-9">{{ object.registration_date }}</dd>
+	</dl>
 {% endblock %}

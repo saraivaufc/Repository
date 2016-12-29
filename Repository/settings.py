@@ -60,6 +60,9 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
+    #add to translate
+    'django.middleware.locale.LocaleMiddleware',
+    
 )
 
 ROOT_URLCONF = 'Repository.urls'
@@ -119,19 +122,19 @@ LOCALE_PATHS = (
 )
 
 LANGUAGES = (
-    ('pt_BR', _('Brazilian Portuguese')),
+    ('pt-br', _('Brazilian Portuguese')),
     ('en', _('English')),
     ('es', _('Spanish')),
 )
 
-LANGUAGE_CODE = 'pt_BR'
+LANGUAGE_CODE = 'en'
 
 
 TIME_ZONE = 'America/Fortaleza'
 
 USE_I18N = True
 
-USE_L10N = True
+USE_L10N = False
 
 USE_TZ = True
 

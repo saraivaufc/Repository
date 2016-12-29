@@ -1,7 +1,7 @@
 {% load i18n static %}
 <!DOCTYPE html>
-
-<html>
+{% get_current_language as LANGUAGE_CODE %}
+<html lang="{{ LANGUAGE_CODE }}">
 <head>
 	<title>{% block title %}{% endblock %}</title>
 	
@@ -56,9 +56,13 @@
 			</div>
 			<div class="row">
 				<div class="page-container">
-					{% block content %}
+					<div class="col-sm-12 col-md-12">
+						<div class="row">
+							{% block content %}
 
-					{% endblock %}
+							{% endblock %}
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>

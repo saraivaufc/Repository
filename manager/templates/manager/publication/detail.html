@@ -10,14 +10,14 @@
 
 {% block breadcrumbs %}
 	{{ block.super }}
-	<a href="{% url 'manager:publication_detail' slug=object.slug %}" class="breadcrumb-item" >
+	<a href="{% url 'manager:publication_detail' slug=publication.slug %}" class="breadcrumb-item" >
 		<i class="fa fa-users"></i>
-		{{ object.title|truncatewords:"4" }}
+		{{ publication.title|truncatewords:"4" }}
 	</a>
 {% endblock %}
 
 {%  block page_title %}
-	{{ object.title }}
+	{{ publication.title }}
 	<div class="float-xs-right">
 		{% if perms.manager.change_publication %}
 		<a href="{% url 'manager:publication_update' slug=publication.slug %}" class="btn btn-info" data-toggle="tooltip" title="{% trans "Edit" %}">
@@ -33,103 +33,93 @@
 {% endblock %}
 
 {% block content_inner %}
-	<table class="table table-bordered">
-		<tbody>
-			<tr>
-				<td>{% trans "Title" %}:</td>
-				<td>{{ object.title }}</td>
-			</tr>
-			<tr>
-				<td>{% trans "Typology" %}:</td>
-				<td>{{ object.typology }}</td>
-			</tr>
-			<tr>
-				<td>{% trans "Authors" %}:</td>
-				<td>
-					{% for author in object.authors.all %}
-						<a href="{% url 'manager:author_detail' slug=author.slug %}">
-							{{ author.reference_name }}	
-						</a>;
-					{% endfor %}
-				</td>
-			</tr>
-			<tr>
-				<td>{% trans "Community" %}:</td>
-				<td>
-					<a href="{% url 'manager:community_detail' slug=object.community.slug page=1 %}">
-						{{ object.community }}		
-					</a>
-				</td>
-			</tr>
-			<tr>
-				<td>{% trans "Collection" %}:</td>
-				<td>
-					<a href="{% url 'manager:collection_detail' slug=object.collection.slug %}">
-						{{ object.collection }}		
-					</a>
-				</td>
-			</tr>
-			<tr>
-				<td>{% trans "Publisher" %}:</td>
-				<td>
-					<a href="{% url 'manager:publisher_detail' slug=object.publisher.slug %}">
-						{{ object.publisher }}		
-					</a>
-				</td>
-			</tr>
-			<tr>
-				<td>{% trans "address" %}:</td>
-				<td>{{ object.address }}</td>
-			</tr>
-			<tr>
-				<td>{% trans "Year" %}:</td>
-				<td>{{ object.year }}</td>
-			</tr>
-			<tr>
-				<td>{% trans "Reference" %}:</td>
-				<td>{{ object.reference }}</td>
-			</tr>
-			<tr>
-				<td>{% trans "uri" %}:</td>
-				<td>
-					<a href="{{ request.get_host }}{{ object.uri }}">{{ request.get_host }}{{ object.uri }}</a>
-				</td>
-			</tr>
-			<tr>
-				<td>{% trans "Language" %}:</td>
-				<td>{{ object.language }}</td>
-			</tr>
-			<tr>
-				<td>{% trans "Abstract" %}:</td>
-				<td>{{ object.abstract }}</td>
-			</tr>
-			<tr>
-				<td>{% trans "Other Abstract" %}:</td>
-				<td>{{ object.other_abstract }}</td>
-			</tr>
-			<tr>
-				<td>{% trans "Keywords" %}:</td>
-				<td>
-					{% for keyword in object.keywords.all %}
-					<a href="{% url 'manager:keyword_detail' slug=keyword.slug %}">
-						{{ keyword }}
-					</a>.
-					{% endfor %}
-				</td>
-			</tr>
-			<tr>
-				<td>{% trans "Issue Date" %}:</td>
-				<td>{{ object.issue_date }}</td>
-			</tr>
-			<tr>
-				<td>{% trans "File" %}:</td>
-				<td>
-					<a href="{{ object.file.url }}" target="_blank">
-						<i class="fa fa-download"></i>
-						{% trans "Download" %}
-					</a>
-				</td>
-			</tr>
-		</tbody>
-	</table>
+
+	<dl class="definition">
+		<dt class="col-sm-2">{% trans "Title" %}:</dt>
+		<dd class="col-sm-10">{{ publication.title }}</dd>
+
+		<dt class="col-sm-2">{% trans "Typology" %}:</dt>
+		<dd class="col-sm-10">{{ publication.typology }}</dd>
+
+		<dt class="col-sm-2">{% trans "Authors" %}:</dt>
+		<dd class="col-sm-10">
+			{% for author in publication.authors.all %}
+				<a class="tag tag-primary" href="{% url 'manager:author_detail' slug=author.slug %}">
+					<i class="fa fa-graduation-cap"></i>
+					{{ author.reference_name }}	
+				</a>
+			{% endfor %}
+		</dd>
+
+		<dt class="col-sm-2">{% trans "Community" %}:</dt>
+		<dd class="col-sm-10">
+			<a class="tag tag-primary" href="{% url 'manager:community_detail' slug=publication.community.slug page=1 %}">
+				<i class="fa fa-university"></i>
+				{{ publication.community }}		
+			</a>
+		</dd>
+
+		<dt class="col-sm-2">{% trans "Collection" %}:</dt>
+		<dd class="col-sm-10">
+			<a class="tag tag-primary" href="{% url 'manager:collection_detail' slug=publication.collection.slug %}">
+				<i class="fa fa-object-group"></i>
+				{{ publication.collection }}		
+			</a>
+		</dd>
+
+		<dt class="col-sm-2">{% trans "Publisher" %}:</dt>
+		<dd class="col-sm-10">
+			<a class="tag tag-primary" href="{% url 'manager:publisher_detail' slug=publication.publisher.slug %}">
+				<i class="fa fa-newspaper-o"></i>
+				{{ publication.publisher }}
+			</a>
+		</dd>
+
+		<dt class="col-sm-2">{% trans "Address" %}:</dt>
+		<dd class="col-sm-10">{{ publication.address }}</dd>
+
+		<dt class="col-sm-2">{% trans "Year" %}:</dt>
+		<dd class="col-sm-10">{{ publication.year }}</dd>
+
+		<dt class="col-sm-2">{% trans "Reference" %}:</dt>
+		<dd class="col-sm-10">{{ publication.reference }}</dd>
+
+		<dt class="col-sm-2">{% trans "URI" %}:</dt>
+		<dd class="col-sm-10">
+			<a href="{{ request.get_host }}{{ publication.uri }}">
+				{{ request.get_host }}{{ publication.uri }}
+			</a>
+		</dd>
+
+		<dt class="col-sm-2">{% trans "Language" %}:</dt>
+		<dd class="col-sm-10">{{ publication.language }}</dd>
+
+		<dt class="col-sm-2">{% trans "Abstract" %}:</dt>
+		<dd class="col-sm-10">{{ publication.abstract }}</dd>
+
+		<dt class="col-sm-2">{% trans "Other Abstract" %}:</dt>
+		<dd class="col-sm-10">{{ publication.other_abstract }}</dd>
+
+		<dt class="col-sm-2">{% trans "Keywords" %}:</dt>
+		<dd class="col-sm-10">
+			{% for keyword in publication.keywords.all %}
+			<a class="tag tag-primary" href="{% url 'manager:keyword_detail' slug=keyword.slug %}">
+				<i class="fa fa-tags"></i>
+				{{ keyword }}
+			</a>
+			{% endfor %}
+		</dd>
+
+		<dt class="col-sm-2">{% trans "Issue Date" %}:</dt>
+		<dd class="col-sm-10">{{ publication.issue_date }}</dd>
+
+		<dt class="col-sm-2">{% trans "File" %}:</dt>
+		<dd class="col-sm-10">
+			<a href="{{ publication.file.url }}" target="_blank">
+				<i class="fa fa-download"></i>
+				{% trans "Download" %}
+			</a>
+		</dd>
+
+	</dl>
 {% endblock %}

@@ -12,12 +12,12 @@
 	{{ block.super }}
 	<a href="{% url 'manager:keyword_create' %}" class="breadcrumb-item" >
 		<i class="fa fa-users"></i>
-		{{ object.name }}
+		{{ keyword.name }}
 	</a>
 {% endblock %}
 
 {%  block page_title %}
-	{{ object.name }}
+	{{ keyword.name }}
 	<div class="float-xs-right">
 		{% if perms.manager.change_keyword %}
 		<a href="{% url 'manager:keyword_update' slug=keyword.slug %}" class="btn btn-info" data-toggle="tooltip" title="{% trans "Edit" %}">
@@ -33,25 +33,19 @@
 {% endblock %}
 
 {% block content_inner %}
-	<table class="table table-bordered">
-		<tbody>
-			<tr>
-				<td>{% trans "Name" %}:</td>
-				<td>{{ object.name }}</td>
-			</tr>
-			<tr>
-				<td>{% trans "Publications" %}:</td>
-				<td>
-					<a href="{% url 'manager:keyword_publications' slug=keyword.slug page=1 %}" data-toggle="tooltip" title="{% trans "See Publications" %}">
-						<i class="fa fa-book"></i>
-						{% trans "See Publications" %}
-					</a>
-				</td>
-			</tr>
-			<tr>
-				<td>{% trans "Registration date" %}:</td>
-				<td>{{ object.registration_date }}</td>
-			</tr>
-		</tbody>
-	</table>
+	<dl class="definition">
+		<dt class="col-sm-2">{% trans "Name" %}:</dt>
+		<dd class="col-sm-10">{{ keyword.name }}</dd>
+
+		<dt class="col-sm-2">{% trans "Publications" %}:</dt>
+		<dd class="col-sm-10">
+			<a href="{% url 'manager:keyword_publications' slug=keyword.slug page=1 %}" data-toggle="tooltip" title="{% trans "See Publications" %}">
+				<i class="fa fa-book"></i>
+				{% trans "See Publications" %}
+			</a>
+		</dd>
+
+		<dt class="col-sm-2">{% trans "Registration date" %}:</dt>
+		<dd class="col-sm-10">{{ keyword.registration_date }}</dd>
+	</dl>
 {% endblock %}

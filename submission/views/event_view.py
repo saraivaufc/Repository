@@ -30,7 +30,7 @@ class EventListView(ListView):
 class EventCreateView(CreateView):
 	template_name = 'submission/event/form.html'
 	model = Event
-	fields = ['name','description','address', 'year', 'image', 'typology', 'community', 'collection', 'publisher', 'date', 
+	fields = ['name', 'description', 'address', 'year', 'image', 'typology', 'community', 'publisher', 'date', 
 	'submission_1_open', 'submission_1_close', 'review_open', 'review_close', 'submission_2_open', 'submission_2_close']
 
 	def get_success_url(self):
@@ -42,7 +42,7 @@ class EventCreateView(CreateView):
 class EventUpdateView(UpdateView):
 	template_name = 'submission/event/form.html'
 	model = Event
-	fields = ['name', 'description', 'address','year', 'image', 'typology', 'community', 'collection', 'publisher', 'date', 
+	fields = ['name', 'description', 'address','year', 'image', 'typology', 'community', 'publisher', 'date', 
 	'submission_1_open', 'submission_1_close', 'review_open', 'review_close', 'submission_2_open', 'submission_2_close']
 	
 	def get_success_url(self):

@@ -1,0 +1,445 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-12-29 01:12-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: submission/models/event.py:11 submission/models/event.py:20
+msgid "Name"
+msgstr ""
+
+#: submission/models/event.py:12 submission/models/submission.py:13
+msgid "Description"
+msgstr ""
+
+#: submission/models/event.py:16
+msgid "Conference"
+msgstr ""
+
+#: submission/models/event.py:17
+msgid "Workshop"
+msgstr ""
+
+#: submission/models/event.py:19 submission/models/review.py:15
+#: submission/models/submission.py:15
+msgid "Slug"
+msgstr ""
+
+#: submission/models/event.py:21
+msgid "description"
+msgstr ""
+
+#: submission/models/event.py:22
+#: submission/templates/submission/event/detail.html:74
+#: submission/templates/submission/event/list.html:50
+msgid "Address"
+msgstr ""
+
+#: submission/models/event.py:23
+#: submission/templates/submission/event/detail.html:77
+msgid "Year"
+msgstr ""
+
+#: submission/models/event.py:24
+msgid "Image"
+msgstr ""
+
+#: submission/models/event.py:25
+#: submission/templates/submission/submission/detail.html:43
+#: submission/templates/submission/submission/detail_to_review.html:43
+msgid "Typology"
+msgstr ""
+
+#: submission/models/event.py:26
+#: submission/templates/submission/event/detail.html:47
+msgid "Community"
+msgstr ""
+
+#: submission/models/event.py:27
+#: submission/templates/submission/event/detail.html:55
+msgid "Collection"
+msgstr ""
+
+#: submission/models/event.py:28
+#: submission/templates/submission/event/detail.html:63
+msgid "Publisher"
+msgstr ""
+
+#: submission/models/event.py:29
+#: submission/templates/submission/event/detail.html:71
+#: submission/templates/submission/event/list.html:49
+msgid "Date"
+msgstr ""
+
+#: submission/models/event.py:31
+msgid "Submission 1 Open"
+msgstr ""
+
+#: submission/models/event.py:32
+msgid "Submission 1 Close"
+msgstr ""
+
+#: submission/models/event.py:34
+msgid "Review Open"
+msgstr ""
+
+#: submission/models/event.py:35
+msgid "Review Close"
+msgstr ""
+
+#: submission/models/event.py:37
+msgid "Submission 2 Open"
+msgstr ""
+
+#: submission/models/event.py:38
+msgid "Submission 2 Close"
+msgstr ""
+
+#: submission/models/event.py:40 submission/models/review.py:38
+#: submission/models/submission.py:23
+msgid "Registration Date"
+msgstr ""
+
+#: submission/models/event.py:45
+msgid "Before the period"
+msgstr ""
+
+#: submission/models/event.py:47 submission/models/event.py:55
+msgid "Submission open"
+msgstr ""
+
+#: submission/models/event.py:49
+msgid "Submission close"
+msgstr ""
+
+#: submission/models/event.py:51
+msgid "Reviewing..."
+msgstr ""
+
+#: submission/models/event.py:53
+msgid "Reviewed!"
+msgstr ""
+
+#: submission/models/event.py:57
+msgid "Submission Complete"
+msgstr ""
+
+#: submission/models/event.py:59
+msgid "Out of period"
+msgstr ""
+
+#: submission/models/event.py:75 submission/models/event.py:76
+#: submission/models/submission.py:16
+msgid "Event"
+msgstr ""
+
+#: submission/models/review.py:8
+msgid "Bad"
+msgstr ""
+
+#: submission/models/review.py:9
+msgid "Fragile"
+msgstr ""
+
+#: submission/models/review.py:10
+msgid "Average"
+msgstr ""
+
+#: submission/models/review.py:11
+msgid "Good"
+msgstr ""
+
+#: submission/models/review.py:12
+msgid "Fantastic"
+msgstr ""
+
+#: submission/models/review.py:17
+msgid "Originality"
+msgstr ""
+
+#: submission/models/review.py:18
+msgid "Originality observation"
+msgstr ""
+
+#: submission/models/review.py:20
+msgid "Technical Merit"
+msgstr ""
+
+#: submission/models/review.py:21
+msgid "Technical Merit observation"
+msgstr ""
+
+#: submission/models/review.py:23
+msgid "Clarity"
+msgstr ""
+
+#: submission/models/review.py:24
+msgid "Clarity observation"
+msgstr ""
+
+#: submission/models/review.py:26
+msgid "Text Quality"
+msgstr ""
+
+#: submission/models/review.py:27
+msgid "Text Quality Observation"
+msgstr ""
+
+#: submission/models/review.py:29
+msgid "Relevance"
+msgstr ""
+
+#: submission/models/review.py:30
+msgid "Relevance Observation"
+msgstr ""
+
+#: submission/models/review.py:32
+msgid "Knowledge Level Revisor"
+msgstr ""
+
+#: submission/models/review.py:33
+msgid "Knowledge Level Revisor Observation"
+msgstr ""
+
+#: submission/models/review.py:35
+msgid "General"
+msgstr ""
+
+#: submission/models/review.py:36
+msgid "General Observation"
+msgstr ""
+
+#: submission/models/submission.py:12
+#: submission/templates/submission/submission/detail.html:39
+#: submission/templates/submission/submission/detail_to_review.html:39
+msgid "Title"
+msgstr ""
+
+#: submission/models/submission.py:17
+msgid "User"
+msgstr ""
+
+#: submission/models/submission.py:18
+msgid "Publication"
+msgstr ""
+
+#: submission/models/submission.py:19
+#: submission/templates/submission/submission/list_to_review.html:31
+msgid "Reviser"
+msgstr ""
+
+#: submission/models/submission.py:20
+#: submission/templates/submission/event/detail.html:89
+#: submission/templates/submission/event/list.html:74
+#: submission/templates/submission/submission/detail_to_review.html:96
+msgid "Review"
+msgstr ""
+
+#: submission/models/submission.py:21
+msgid "Review Available"
+msgstr ""
+
+#: submission/models/submission.py:42 submission/models/submission.py:43
+#: submission/templates/submission/submission/list.html:40
+#: submission/templates/submission/submission/list_to_review.html:29
+msgid "Submission"
+msgstr ""
+
+#: submission/templates/submission/event/check_delete.html:15
+#: submission/templates/submission/event/check_delete.html:19
+#: submission/templates/submission/submission/check_delete.html:15
+#: submission/templates/submission/submission/check_delete.html:19
+msgid "Confirm delete"
+msgstr ""
+
+#: submission/templates/submission/event/check_delete.html:25
+#: submission/templates/submission/submission/check_delete.html:25
+msgid "Are you sure you want to delete"
+msgstr ""
+
+#: submission/templates/submission/event/check_delete.html:26
+#: submission/templates/submission/submission/check_delete.html:26
+msgid "No"
+msgstr ""
+
+#: submission/templates/submission/event/check_delete.html:27
+#: submission/templates/submission/submission/check_delete.html:27
+msgid "Yes"
+msgstr ""
+
+#: submission/templates/submission/event/detail.html:23
+#: submission/templates/submission/submission/detail.html:23
+#: submission/templates/submission/submission/detail_to_review.html:23
+msgid "Edit"
+msgstr ""
+
+#: submission/templates/submission/event/detail.html:28
+#: submission/templates/submission/submission/detail.html:28
+#: submission/templates/submission/submission/detail_to_review.html:28
+msgid "Delete"
+msgstr ""
+
+#: submission/templates/submission/event/detail.html:82
+msgid "Submissions dates"
+msgstr ""
+
+#: submission/templates/submission/event/detail.html:84
+msgid "Submission 1"
+msgstr ""
+
+#: submission/templates/submission/event/detail.html:94
+msgid "Submission 2"
+msgstr ""
+
+#: submission/templates/submission/event/detail.html:102
+#: submission/templates/submission/event/detail.html:104
+#: submission/templates/submission/event/list.html:66
+#: submission/templates/submission/event/list.html:68
+#: submission/templates/submission/submission/list.html:17
+msgid "My Submissions"
+msgstr ""
+
+#: submission/templates/submission/event/detail.html:109
+#: submission/templates/submission/event/detail.html:111
+#: submission/templates/submission/event/list.html:72
+msgid "To Review"
+msgstr ""
+
+#: submission/templates/submission/event/form.html:14
+#: submission/templates/submission/event/form.html:18
+msgid "Form Event"
+msgstr ""
+
+#: submission/templates/submission/event/form.html:23
+#: submission/templates/submission/submission/change_reviser.html:23
+#: submission/templates/submission/submission/form.html:23
+msgid "Submit"
+msgstr ""
+
+#: submission/templates/submission/event/list.html:13
+msgid "List of Events"
+msgstr ""
+
+#: submission/templates/submission/event/list.html:21
+msgid "Create Event"
+msgstr ""
+
+#: submission/templates/submission/event/list.html:52
+msgid "Stage"
+msgstr ""
+
+#: submission/templates/submission/index.html:24
+msgid "Home"
+msgstr ""
+
+#: submission/templates/submission/index.html:28
+msgid "Welcome"
+msgstr ""
+
+#: submission/templates/submission/submission/change_reviser.html:14
+#: submission/templates/submission/submission/change_reviser.html:18
+#: submission/templates/submission/submission/form.html:14
+#: submission/templates/submission/submission/form.html:18
+msgid "Form Submission"
+msgstr ""
+
+#: submission/templates/submission/submission/detail.html:47
+#: submission/templates/submission/submission/detail_to_review.html:47
+#: submission/templates/submission/submission/list.html:41
+#: submission/templates/submission/submission/list_to_review.html:30
+msgid "Authors"
+msgstr ""
+
+#: submission/templates/submission/submission/detail.html:57
+#: submission/templates/submission/submission/detail_to_review.html:57
+msgid "Reference"
+msgstr ""
+
+#: submission/templates/submission/submission/detail.html:61
+#: submission/templates/submission/submission/detail_to_review.html:61
+msgid "Language"
+msgstr ""
+
+#: submission/templates/submission/submission/detail.html:65
+#: submission/templates/submission/submission/detail_to_review.html:65
+msgid "Abstract"
+msgstr ""
+
+#: submission/templates/submission/submission/detail.html:69
+#: submission/templates/submission/submission/detail_to_review.html:69
+msgid "Other Abstract"
+msgstr ""
+
+#: submission/templates/submission/submission/detail.html:73
+#: submission/templates/submission/submission/detail_to_review.html:73
+msgid "Keywords"
+msgstr ""
+
+#: submission/templates/submission/submission/detail.html:83
+#: submission/templates/submission/submission/detail_to_review.html:83
+msgid "Issue Date"
+msgstr ""
+
+#: submission/templates/submission/submission/detail.html:87
+#: submission/templates/submission/submission/detail_to_review.html:87
+msgid "File"
+msgstr ""
+
+#: submission/templates/submission/submission/detail.html:91
+#: submission/templates/submission/submission/detail_to_review.html:91
+msgid "Download"
+msgstr ""
+
+#: submission/templates/submission/submission/detail_to_review.html:101
+msgid "See review"
+msgstr ""
+
+#: submission/templates/submission/submission/detail_to_review.html:106
+msgid "Add Review"
+msgstr ""
+
+#: submission/templates/submission/submission/list.html:21
+msgid "List of My Submissions"
+msgstr ""
+
+#: submission/templates/submission/submission/list.html:29
+msgid "Create Submission"
+msgstr ""
+
+#: submission/templates/submission/submission/list.html:63
+#: submission/templates/submission/submission/list_to_review.html:72
+msgid "No Submission found!"
+msgstr ""
+
+#: submission/templates/submission/submission/list_to_review.html:17
+msgid "To Revission"
+msgstr ""
+
+#: submission/templates/submission/submission/list_to_review.html:21
+msgid "List of Submissions to Revission"
+msgstr ""
+
+#: submission/templates/submission/submission/list_to_review.html:56
+msgid "Change"
+msgstr ""
+
+#: submission/templates/submission/submission/list_to_review.html:60
+msgid "No Reviser"
+msgstr ""
+
+#: submission/templates/submission/submission/list_to_review.html:64
+msgid "Add Reviser"
+msgstr ""

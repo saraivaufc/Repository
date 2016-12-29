@@ -20,7 +20,7 @@
 
 {%  block page_title %}{% trans "List of Submissions to Revission" %}{% endblock %}
 
-{% block content_inner %}	
+{% block content %}	
 	<div class="col-md-12">
 	<div class="row">
 		<table class="table table-bordered">
@@ -50,7 +50,7 @@
 						<td>
 							{% if submission.reviser %}
 								{{ submission.reviser }}
-								{% if perms.authentication.change_reviser %}
+								{% if perms.authentication.change_reviser and event.stage.type == 'reviewing' %}
 									<a href="{% url 'submission:submission_change_reviser' event_slug=submission.event.slug slug=submission.slug %}" class="btn btn-link">
 										<i class="fa fa-edit"></i>
 										{% trans "Change" %}
@@ -58,7 +58,7 @@
 								{% endif %}
 							{% else %}
 								{% trans "No Reviser" %}
-								{% if perms.authentication.add_reviser %}
+								{% if perms.authentication.add_reviser and event.stage.type == 'reviewing' %}
 								<a href="{% url 'submission:submission_change_reviser' event_slug=submission.event.slug slug=submission.slug %}" class="btn btn-link btn-sm">
 									<i class="fa fa-plus"></i>
 									{% trans "Add Reviser" %}
