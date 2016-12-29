@@ -68,6 +68,7 @@ class User(AbstractBaseUser, PermissionsMixin):
 		verbose_name = _(u'User')
 		verbose_name_plural = _(u'User')
 		permissions = (
+			("list_participant", "List Participant"),
 			("list_reviser", "List Reviser"),
 			("add_reviser", "Add Reviser"),
 			("change_reviser", "Change Reviser"),

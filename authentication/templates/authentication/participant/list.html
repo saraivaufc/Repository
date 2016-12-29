@@ -1,0 +1,72 @@
+{% extends "authentication/index.html" %}
+
+
+{% load i18n static %}
+
+{% block title %}{% endblock %}
+
+{% block stylesheet %}
+{% endblock %}
+
+{% block administrators %}active{% endblock %}
+
+{% block breadcrumbs %}
+	{{ block.super }}
+	<a href="{% url 'authentication:participant_list' page=1 %}" class="breadcrumb-item" >
+		<i class="fa fa-wpforms"></i>
+		{% trans "Participants" %}
+	</a>
+{% endblock %}
+
+{%  block page_title %}{% trans "List of Participants" %}{% endblock %}
+
+{% block content %}
+	<div class="col-md-4">
+	</div>
+
+	<div class="col-md-8">
+	<div class="row float-xs-right">
+		{% include "Repository/_form_search.html" %}
+	</div>
+	</div>
+
+	<div class="col-md-12">
+	<div class="row">
+		<table class="table table-bordered">
+			<thead class="thead-inverse">
+				<tr>
+					<th>{% trans "First Name" %}</th>
+					<th>{% trans "Last Name" %}</th>
+					<th>{% trans "Email" %}</th>
+				</tr>
+			</thead>
+
+			<tbody>
+				{% for administrator in object_list %}
+					<tr>
+						<td>
+							{{ administrator.first_name }}	
+						</td>
+						<td>
+							{{ administrator.last_name }}	
+						</td>
+						<td>
+							{{ administrator.email }}	
+						</td>
+					</tr>
+				{% empty %}
+					<tr>
+						<td class="text-xs-center">{% trans "No Administrator found!" %}</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+	</div>
+
+	<div class="col-md-12">
+	<div class="row">
+		{% include "Repository/_paginate.html" %}
+	</div>
+	</div>
+{% endblock %}

@@ -43,7 +43,7 @@ class Publication(models.Model):
 	reference = models.CharField(verbose_name=_("Reference"), max_length=1000, null=False, blank=False)
 	uri = models.URLField(verbose_name=_("URI"), max_length=500, null=False, blank=True)
 	language = models.CharField(verbose_name=_("Language"), choices=LANGUAGE_CHOICES, max_length=100, null=False, blank=False)
-	abstract = models.TextField(verbose_name=_("Abstract"), null=False, blank=False)
+	abstract = models.TextField(verbose_name=_("Abstract"), null=True, blank=True)
 	other_abstract = models.TextField(verbose_name=_("Other Abstract"), null=True, blank=True)
 	keywords = models.ManyToManyField("KeyWord", verbose_name=_("Keywords"), related_name="Keywords", null=False, blank=False)
 	issue_date = models.DateField(verbose_name=_("Issue Date"), null=False, blank=False, auto_now=False)

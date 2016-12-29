@@ -65,3 +65,9 @@ dl.definition > dt, dl.definition > dd{
 	padding: 10px;
 	border-top: 1px solid #333;
 }
+
+.card{
+	margin-left: 4px;
+	margin-right: 4px;
+	margin-bottom: 4px;
+}

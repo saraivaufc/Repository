@@ -25,6 +25,11 @@
 				{% trans "Users" %}
 			</a>
 			<div class="dropdown-menu" aria-labelledby="users">
+				{% if perms.authentication.list_participant %}
+					<a class="dropdown-item" href="{% url 'authentication:participant_list' page=1 %}">
+						{% trans "Participants" %}
+					</a>
+				{% endif %}
 				{% if perms.authentication.list_administrator %}
 					<a class="dropdown-item" href="{% url 'authentication:administrator_list' page=1 %}">
 						{% trans "Administrators" %}

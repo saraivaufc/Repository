@@ -71,6 +71,8 @@ group_permissions = {
 		"list_administrator",
 		"add_administrator",
 		"delete_administrator",
+		#Participant
+		"list_participant",
 	]
 }
 
