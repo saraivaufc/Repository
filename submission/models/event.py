@@ -43,15 +43,13 @@ class Event(models.Model):
 		if now < self.submission_1_open:
 			return {'type': 'before_period', 'text': _('Before the period')}
 		elif self.submission_1_open <= now <= self.submission_1_close:
-			return {'type': 'submission_open', 'text': _('Submission open')}
+			return {'type': 'submission_open_1', 'text': _('Submission Open 1')}
 		elif self.submission_1_close < now < self.review_open:
 			return {'type': 'submission_close', 'text': _('Submission close')}
-		elif self.review_open <= now <= self.review_close:
+		elif self.review_open <= now  < self.submission_2_open:
 			return {'type': 'reviewing', 'text': _('Reviewing...')}
-		elif self.review_close < now < self.submission_2_open:
-			return {'type': 'reviewed', 'text': _('Reviewed!')}
 		elif self.submission_2_open <= now <= self.submission_2_close:
-			return {'type': 'submission_open', 'text': _('Submission open')}
+			return {'type': 'submission_open_2', 'text': _('Submission Open 2')}
 		elif now > self.submission_2_close:
 			return {'type': 'submission_complete', 'text': _('Submission Complete')}
 		else:

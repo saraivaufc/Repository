@@ -1,0 +1,109 @@
+{% load i18n static %}
+
+<dl class="definition" itemscope>
+	<dt class="col-sm-2">{% trans "Originality" %}:</dt>
+	<dd class="col-sm-10" itemprop="originality">
+		<div class="col-sm-2">
+			{{ review.originality }}	
+		</div>
+		<div class="col-sm-10">
+			<label class="font-weight-bold">{% trans "Observation" %}:</label class="font-weight-bold">
+			{% if review.originality_observation %}
+				{{ review.originality_observation }}
+			{% else %}
+				{% trans "Without Observation" %}
+			{% endif %}
+		</div>
+	</dd>
+
+	<dt class="col-sm-2">{% trans "Technical Merit" %}:</dt>
+	<dd class="col-sm-10" itemprop="technical_merit">
+		<div class="col-sm-2">
+			{{ review.technical_merit }}	
+		</div>
+		<div class="col-sm-10">
+			<label class="font-weight-bold">{% trans "Observation" %}:</label class="font-weight-bold">
+			{% if review.technical_merit_observation %}
+				{{ review.technical_merit_observation }}
+			{% else %}
+				{% trans "Without Observation" %}
+			{% endif %}
+		</div>
+	</dd>
+
+	<dt class="col-sm-2">{% trans "Clarity" %}:</dt>
+	<dd class="col-sm-10" itemprop="clarity">
+		<div class="col-sm-2">
+			{{ review.clarity }}	
+		</div>
+		<div class="col-sm-10">
+			<label class="font-weight-bold">{% trans "Observation" %}:</label class="font-weight-bold">
+			{% if review.clarity_observation %}
+				{{ review.clarity_observation }}
+			{% else %}
+				{% trans "Without Observation" %}
+			{% endif %}
+		</div>
+	</dd>
+
+	<dt class="col-sm-2">{% trans "Text Quality" %}:</dt>
+	<dd class="col-sm-10" itemprop="text_quality">
+		<div class="col-sm-2">
+			{{ review.text_quality }}	
+		</div>
+		<div class="col-sm-10">
+			<label class="font-weight-bold">{% trans "Observation" %}:</label class="font-weight-bold">
+			{% if review.text_quality_observation %}
+				{{ review.text_quality_observation }}
+			{% else %}
+				{% trans "Without Observation" %}
+			{% endif %}
+		</div>
+	</dd>
+
+	<dt class="col-sm-2">{% trans "Relevance" %}:</dt>
+	<dd class="col-sm-10" itemprop="relevance">
+		<div class="col-sm-2">
+			{{ review.relevance }}	
+		</div>
+		<div class="col-sm-10">
+			<label class="font-weight-bold">{% trans "Observation" %}:</label class="font-weight-bold">
+			{% if review.relevance_observation %}
+				{{ review.relevance_observation }}
+			{% else %}
+				{% trans "Without Observation" %}
+			{% endif %}
+		</div>
+	</dd>
+
+	<dt class="col-sm-2">{% trans "Knowledge Level Revisor" %}:</dt>
+	<dd class="col-sm-10" itemprop="knowledge_level_revisor">
+		<div class="col-sm-2">
+			{{ review.knowledge_level_revisor }}	
+		</div>
+		<div class="col-sm-10">
+			<label class="font-weight-bold">{% trans "Observation" %}:</label class="font-weight-bold">
+			{% if review.knowledge_level_revisor_observation %}
+				{{ review.knowledge_level_revisor_observation }}
+			{% else %}
+				{% trans "Without Observation" %}
+			{% endif %}
+		</div>
+	</dd>
+
+	<dt class="col-sm-2">{% trans "General" %}:</dt>
+	<dd class="col-sm-10" itemprop="general">
+		<div class="col-sm-2">
+			{{ review.general }}	
+		</div>
+		<div class="col-sm-10">
+			<label class="font-weight-bold">{% trans "Observation" %}:</label class="font-weight-bold">
+			{% if review.general_observation %}
+				{{ review.general_observation }}
+			{% else %}
+				{% trans "Without Observation" %}
+			{% endif %}
+		</div>
+	</dd>
+
+	</dl>

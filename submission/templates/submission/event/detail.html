@@ -43,9 +43,9 @@
 	</div>
 	<hr class="divider"/>
 	<div class="col-md-6">
-		<dl class="definition">
+		<dl class="definition" itemscope>
 			<dt class="col-sm-3">{% trans "Community" %}:</dt>
-			<dd class="col-sm-9">
+			<dd class="col-sm-9" itemprop="community">
 				<a href="{% url 'manager:community_detail' slug=event.community.slug page=1 %}" class="tag tag-primary">
 					<i class="fa fa-university"></i>
 					{{ event.community }}
@@ -53,7 +53,7 @@
 			</dd>
 
 			<dt class="col-sm-3">{% trans "Publisher" %}:</dt>
-			<dd class="col-sm-9">
+			<dd class="col-sm-9" itemprop="publisher">
 				<a href="{% url 'manager:publisher_detail' slug=event.publisher.slug %}" class="tag tag-primary">
 					<i class="fa fa fa-newspaper-o"></i>
 					{{ event.publisher }}
@@ -61,13 +61,13 @@
 			</dd>
 
 			<dt class="col-sm-3">{% trans "Date" %}:</dt>
-			<dd class="col-sm-9">{{ event.date }}</dd>
+			<dd class="col-sm-9" itemprop="date">{{ event.date }}</dd>
 
 			<dt class="col-sm-3">{% trans "Address" %}:</dt>
-			<dd class="col-sm-9">{{ event.address }}</dd>
+			<dd class="col-sm-9" itemprop="address">{{ event.address }}</dd>
 
 			<dt class="col-sm-3">{% trans "Year" %}:</dt>
-			<dd class="col-sm-9">{{ event.year }}</dd>
+			<dd class="col-sm-9" itemprop="year">{{ event.year }}</dd>
 		</dl>
 	</div>
 	<div class="col-md-6" style="border: 1px solid #000000;">
@@ -99,8 +99,8 @@
 		{% if perms.submission.list_all_submissions and event.stage.type == 'reviewing' %}
 								/
 			<a href="{% url 'submission:submission_list_to_review' event_slug=event.slug page=1 %}" data-toggle="tooltip" title="{% trans "To Review" %}">
-				<i class="fa fa-wrench"></i>
-				{% trans "To Review" %}
+				<i class="fa fa-file-text-o"></i>
+				{% trans "Reviews" %}
 			</a>
 		{% endif %}
 	</div>

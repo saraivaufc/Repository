@@ -1,18 +1,12 @@
 {% load i18n %}
 
 <form action="{{ url_search }}" method="GET" class="form-inline">
-	<div class="input-group">
-		<label class="h5" class="form-control">{% trans "Search by:" %}</label>
-	</div>
 	<div class="input-group ">
 		<select value="title" name="query" class="form-control">
 			{% for elem, value in fields_search %}
 			<option value="{{ elem }}">{{ value|title }}</option>
 			{% endfor %}
 		</select>
-	</div>
-	<div class="input-group">
-		<label class="h5" class="form-control">{% trans "With:" %}</label>
 	</div>
 	<div class="input-group">
 		<input type="text" name="text" class="form-control" />

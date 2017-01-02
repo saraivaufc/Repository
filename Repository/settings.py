@@ -46,6 +46,7 @@ INSTALLED_APPS = (
     'django.contrib.humanize',
     'rosetta',
     'submission',
+    'chat',
     'manager',
     'authentication',
  

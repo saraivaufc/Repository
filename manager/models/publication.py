@@ -60,6 +60,18 @@ class Publication(models.Model):
 				self.slug = "%s-%d" % (orig, x)
 		super(Publication, self).save(*args, **kwargs)
 
+	def get_typology(self):
+		for elem in list(self.TYPOLOGY_CHOICES):
+			if elem[0] == self.typology:
+				return elem[1]
+		return self.typology
+
+	def get_language(self):
+		for elem in list(self.LANGUAGE_CHOICES):
+			if elem[0] == self.language:
+				return elem[1]
+		return self.language
+
 	def __unicode__(self):
 		return self.title
 

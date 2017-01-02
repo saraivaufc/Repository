@@ -1,23 +1,27 @@
 {% load i18n static %}
+ <ul class="pagination pagination-sm">
+	{% if page_obj.has_previous %}
+	<li class="page-item">
+	 	<a class="page-link" href="page={{ page_obj.previous_page_number }}" tabindex="-1" aria-label="{% trans 'Previous' %}">
+			<span aria-hidden="true">&laquo;</span>
+			<span class="sr-only">{% trans 'Previous' %}</span>
+		</a>
+	</li>
 
-<div class="pagination">
-	<span class="step-links">
-		{% if page_obj.has_previous %}
-			<a href="page={{ page_obj.previous_page_number }}">
-				<i class="fa fa-arrow-left"></i>
-				{% trans "Previous" %}
-			</a>
-		{% endif %}
-		<span class="current">
-			{% blocktrans with page_number=page_obj.number num_pages=paginator.num_pages %}
-			Page {{ page_number }} of {{ num_pages }}.
-			{% endblocktrans %}
-		</span>
-		{% if page_obj.has_next %}
-			<a href="page={{ page_obj.next_page_number }}">
-				{% trans "Next" %}
-				<i class="fa fa-arrow-right"></i>
-			</a>
-		{% endif %}
-	</span>
-</div>
+	{% endif %}
+	{% for page in page_obj.paginator.page_range %}
+		<li class="page-item {% if page_obj.number == page %}active{% endif %}">
+		  <a class="page-link" href="page={{ page }}">
+		  	{{ page }} 
+		  </a>
+		</li>
+	{% endfor %}
+	{% if page_obj.has_next %}
+	<li class="page-item">
+	  <a class="page-link" href="page={{ page_obj.next_page_number }}" aria-label="{% trans 'Next' %}">
+		<span aria-hidden="true">&raquo;</span>
+		<span class="sr-only">{% trans 'Next' %}</span>
+	  </a>
+	</li>
+	{% endif %}
+</ul>

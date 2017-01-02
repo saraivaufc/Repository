@@ -1,0 +1,39 @@
+{% extends "submission/submission/detail_to_review.html" %}
+
+
+{% load i18n static %}
+
+{% block title %}{% endblock %}
+
+{% block stylesheet %}
+{% endblock %}
+
+{% block breadcrumbs %}
+	{{ block.super }}
+	<a href="{% url 'submission:review_detail_to_review' event_slug=event.slug submission_slug=submission.slug pk=review.pk %}" class="breadcrumb-item" >
+		<i class="fa fa-file-text-o"></i>
+		{% trans "Review" %}
+	</a>
+{% endblock %}
+
+{%  block page_title %}
+	{% blocktrans with publication=publication.title %}
+		Review of {{ publication }}
+	{% endblocktrans %}
+	<div class="float-xs-right">
+		{% if perms.submission.change_review and event.stage.type == 'reviewing' and request.user == submission.reviser %}
+		<a href="{% url 'submission:review_update' event_slug=event.slug submission_slug=submission.slug pk=review.pk %}" class="btn btn-info" data-toggle="tooltip" title="{% trans "Edit" %}">
+			<i class="fa fa-edit"></i>
+		</a>
+		{% endif %}
+		{% if perms.submission.delete_review and event.stage.type == 'reviewing' and request.user == submission.reviser %}
+		<a href="{% url 'submission:review_delete' event_slug=event.slug submission_slug=submission.slug pk=review.pk %}" class="btn btn-danger" data-toggle="tooltip" title="{% trans "Delete" %}">
+			<i class="fa fa-remove"></i>
+		</a>
+		{% endif %}
+	</div>
+{% endblock %}
+
+{% block content %}
+	{% include 'submission/review/_render_review.html' %}
+{% endblock %}

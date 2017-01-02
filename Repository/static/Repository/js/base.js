@@ -1,7 +1,8 @@
 $(function () {
 	$('[data-toggle="tooltip"]').tooltip();
 
-	$(".boxer").boxer({
+	/* $(".boxer").boxer({
 	    mobile: true
 	});
+	*/
 });

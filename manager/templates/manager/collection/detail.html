@@ -11,7 +11,7 @@
 {% block breadcrumbs %}
 	{{ block.super }}
 	<a href="{% url 'manager:collection_create' %}" class="breadcrumb-item" >
-		<i class="fa fa-collection-group"></i>
+		<i class="fa fa-object-group"></i>
 		{{ collection.name }}
 	</a>
 {% endblock %}
@@ -33,9 +33,9 @@
 {% endblock %}
 
 {% block content_inner %}
-	<dl class="definition">
+	<dl class="definition" itemscope>
 		<dt class="col-sm-2">{% trans "Communities" %}:</dt>
-		<dd class="col-sm-10">
+		<dd class="col-sm-10" itemprop="communities">
 			{% for community in collection.communities.all %}
 			<a href="{% url 'manager:community_detail' slug=community.slug page=1 %}" class="tag tag-primary">
 				<i class="fa fa-university"></i>
@@ -47,13 +47,13 @@
 		</dd>
 
 		<dt class="col-sm-2">{% trans "Name" %}:</dt>
-		<dd class="col-sm-10">{{ collection.name }}</dd>
+		<dd class="col-sm-10" itemprop="name">{{ collection.name }}</dd>
 
 		<dt class="col-sm-2">{% trans "Description" %}:</dt>
-		<dd class="col-sm-10">{{ collection.description }}</dd>
+		<dd class="col-sm-10" itemprop="description">{{ collection.description }}</dd>
 
 		<dt class="col-sm-2">{% trans "Publications" %}:</dt>
-		<dd class="col-sm-10">
+		<dd class="col-sm-10" itemprop="publications">
 			<a href="{% url 'manager:collection_publications' slug=collection.slug page=1 %}" data-toggle="tooltip" title="{% trans "See Publications" %}">
 				<i class="fa fa-book"></i>
 				{% trans "See Publications" %}
@@ -61,6 +61,6 @@
 		</dd>
 
 		<dt class="col-sm-2">{% trans "Registration date" %}:</dt>
-		<dd class="col-sm-10">{{ collection.registration_date }}</dd>
+		<dd class="col-sm-10" itemprop="registration_date">{{ collection.registration_date }}</dd>
 	</dl>
 {% endblock %}

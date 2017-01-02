@@ -19,8 +19,8 @@ class AdministratorListView(ListView):
 		text = self.request.GET.get('text')
 		if query and query in dict(self.fields_search):
 			kwargs = {("%s__contains" % (query,)):text}
-			return User.objects.filter(is_moderator=True, is_staff=True, ** kwargs)
-		return User.objects.filter(is_moderator=True, is_staff=True)
+			return User.objects.filter(is_staff=True, ** kwargs)
+		return User.objects.filter(is_staff=True)
 
 	def get_context_data(self, ** kwargs):
 		context = super(AdministratorListView, self).get_context_data( ** kwargs)
@@ -40,7 +40,6 @@ class AdministratorCreateView(CreateView):
 		email = self.request.POST.get('email')
 		group = Group.objects.get(name="administrator")
 		for user in User.objects.filter(email=email):
-			user.is_moderator = True
 			user.is_staff = True
 			user.groups.add(group)
 			user.save()
@@ -49,7 +48,6 @@ class AdministratorCreateView(CreateView):
 
 	def form_valid(self, form):
 		user = form.save(commit=False)
-		user.is_moderator = True
 		user.is_staff = True
 		user.set_password(user.email)
 		user.save(group="administrator")
@@ -63,7 +61,6 @@ class AdministratorDeleteView(DeleteView):
 	def post(self, request, * args, ** kwargs):
 		group = Group.objects.get(name="administrator")
 		for user in User.objects.filter(pk=self.get_object().pk):
-			user.is_moderator = False
 			user.is_staff = False
 			user.groups.remove(group)
 			user.save()

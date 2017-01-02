@@ -17,8 +17,6 @@
 
 <body class="max-height">
 
-<!-- Container -->
-
 	{% block messages %}
 		{% if messages %}
 			<ul class="messagelist">
@@ -29,53 +27,45 @@
 		{% endif %}
 	{% endblock messages %}
 
-	<div class="container-fluid ">
-		<div class="row">
-			<div class="col-md-12">
-				<div class="row">
-					{% include "Repository/_header.html" %}
-				</div>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-md-12">
-				<div class="row">
-					<nav class="breadcrumb" style="width: 100%;">
-				        {% block breadcrumbs %}
-				        
-				 	   {% endblock %}
-					</nav>
-				</div>
-			</div>
-		</div>
+	<div class="col-md-12">
+		<header class="row">
+			{% include "Repository/_header.html" %}
+		</header>
+	</div>
+	<div class="col-md-12">
+		<section class="row">
+			<nav class="breadcrumb" style="width: 100%;">
+		        {% block breadcrumbs %}
+		        
+		 	   {% endblock %}
+			</nav>
+		</section>
+	</div>
+
+	<div class="col-sm-12 col-md-12">
 		<div class="container-fluid">
 			<div class="row">
-				<h3 class="text-md-center page-title">
-					{%  block page_title %}{% endblock %}
-				</h3>
-			</div>
-			<div class="row">
-				<div class="page-container">
-					<div class="col-sm-12 col-md-12">
-						<div class="row">
-							{% block content %}
+				{% block site %}
+					<h3 class="text-xs-center text-sm-center text-md-center page-title">
+						{%  block page_title %}{% endblock %}
+					</h3>
+					<section class="page-container">
+					{% block content %}
 
-							{% endblock %}
-						</div>
-					</div>
-				</div>
+					{% endblock %}
+					</section>
+				{% endblock %}
 			</div>
-		</div>
-		<div class="row">
-			{% block footer %}
-				{% include "Repository/_footer.html" %}
-			{% endblock %}
 		</div>
 	</div>
-	{% block js %}
-	
+	{% block footer %}
+		{% include "Repository/_footer.html" %}
 	{% endblock %}
-	
+
+	{% block js %}
+
+	{% endblock %}
+
 	{% block scripts %}
 	
 	{% endblock %}

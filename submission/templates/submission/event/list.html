@@ -18,7 +18,7 @@
 	{% if perms.submission.add_event %}
 		<a href="{% url 'submission:event_create'  %}" class="btn btn-success">
 			<i class="fa fa-plus"></i>
-			{% trans "Create Event" %}
+			{% trans "New Event" %}
 		</a>
 	{% endif %}
 	</div>
@@ -34,7 +34,7 @@
 	<div class="row">
 		<div class="card-group">
 		{% for event in object_list %}
-		{% if forloop.revcounter == 2 %}
+		{% if forloop.counter0|divisibleby:4 %}
 			</div>
 			<div class="card-group">
 		{% endif %}
@@ -53,28 +53,31 @@
 				<li class="list-group-item">{% trans "Date" %}: {{ event.date }}</li>
 				<li class="list-group-item">
 					{% trans "Stage" %}: 
-					{% if event.stage.type == 'submission_open' %}
-					<label class="tag tag-success">{{ event.stage.text }}</label>
+					{% if event.stage.type == 'before_period' %}
+					<label class="tag tag-info">
+					{% elif event.stage.type == 'submission_open_1' or event.stage.type == 'submission_open_2'  %}
+					<label class="tag tag-success">
 					{% elif event.stage.type == 'submission_close'  %}
-					<label class="tag tag-danger">{{ event.stage.text }}</label>
+					<label class="tag tag-danger">
 					{% else %}
-					<label class="tag tag-primary">{{ event.stage.text }}</label>
+					<label class="tag tag-primary">
 					{% endif %}
+					{{ event.stage.text }}</label>
 				</li>
 			</ul>
 			<div class="card-block">
 				{% if event.stage.type == 'before_period' %}
 					{{ event.submission_1_open }}
 				{% else %}
-					<a href="{% url 'submission:submission_list' event_slug=event.slug page=1 %}" data-toggle="tooltip" class="card-link" title="{% trans "My Submissions" %}">
+					<a href="{% url 'submission:submission_list' event_slug=event.slug page=1 %}" data-toggle="tooltip" class="card-link" title="{% trans "Submissions" %}">
 						<i class="fa fa-upload"></i>
-						{% trans "My Submissions" %}
+						{% trans "Submissions" %}
 					</a>
 				{% endif %}
 				{% if perms.submission.list_submission_to_review and event.stage.type == 'reviewing' %}
-					<a href="{% url 'submission:submission_list_to_review' event_slug=event.slug page=1 %}" data-toggle="tooltip" class="card-link" title="{% trans "To Review" %}">
-						<i class="fa fa-wrench"></i>
-						{% trans "Review" %}
+					<a href="{% url 'submission:submission_list_to_review' event_slug=event.slug page=1 %}" data-toggle="tooltip" class="card-link" title="{% trans "Reviews" %}">
+						<i class="fa fa-file-text-o"></i>
+						{% trans "Reviews" %}
 					</a>
 				{% endif %}
 			</div>

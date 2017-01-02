@@ -29,6 +29,7 @@
 					<th>{% trans "Submission" %}</th>
 					<th>{% trans "Authors" %}</th>
 					<th>{% trans "Reviser" %}</th>
+					<th>{% trans "Review" %}</th>
 				</tr>
 			</thead>
 
@@ -49,11 +50,12 @@
 						</td>
 						<td>
 							{% if submission.reviser %}
-								{{ submission.reviser }}
+								<label>
+									{{ submission.reviser }}
+								</label>
 								{% if perms.authentication.change_reviser and event.stage.type == 'reviewing' %}
 									<a href="{% url 'submission:submission_change_reviser' event_slug=submission.event.slug slug=submission.slug %}" class="btn btn-link">
 										<i class="fa fa-edit"></i>
-										{% trans "Change" %}
 									</a>
 								{% endif %}
 							{% else %}
@@ -64,6 +66,19 @@
 									{% trans "Add Reviser" %}
 								</a>
 								{% endif %}
+							{% endif %}
+						</td>
+						<td>
+							{% if submission.review %}
+								<a href="{% url 'submission:review_detail_to_review' event_slug=event.slug submission_slug=submission.slug pk=submission.review.pk %}">
+									<i class="fa fa-file-text-o"></i>
+									{% trans "Review" %}
+								</a>
+							{% else %}
+								<a href="{% url 'submission:review_create' event_slug=event.slug submission_slug=submission.slug %}">
+									<i class="fa fa-plus"></i>
+									{% trans "Add Review" %}
+								</a>
 							{% endif %}
 						</td>
 					</tr>

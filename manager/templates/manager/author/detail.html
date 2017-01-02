@@ -33,18 +33,18 @@
 {% endblock %}
 
 {% block content_inner %}
-	<dl class="definition">
+	<dl class="definition" itemscope>
 		<dt class="col-sm-3">{% trans "First Name" %}:</dt>
-		<dd class="col-sm-9">{{ object.first_name }}</dd>
+		<dd class="col-sm-9" itemprop="first_name">{{ object.first_name }}</dd>
 
 		<dt class="col-sm-3">{% trans "Last Name" %}:</dt>
-		<dd class="col-sm-9">{{ object.last_name }}</dd>
+		<dd class="col-sm-9" itemprop="last_name">{{ object.last_name }}</dd>
 
 		<dt class="col-sm-3">{% trans "Reference Name" %}:</dt>
-		<dd class="col-sm-9">{{ object.reference_name }}</dd>
+		<dd class="col-sm-9" itemprop="reference_name">{{ object.reference_name }}</dd>
 
 		<dt class="col-sm-3">{% trans "Publications" %}:</dt>
-		<dd class="col-sm-9">
+		<dd class="col-sm-9" itemprop="publications">
 			<a href="{% url 'manager:author_publications' slug=author.slug page=1 %}" data-toggle="tooltip" title="{% trans "See Publications" %}">
 				<i class="fa fa-book"></i>
 				{% trans "See Publications" %}
@@ -52,6 +52,6 @@
 		</dd>
 
 		<dt class="col-sm-3">{% trans "Registration date" %}:</dt>
-		<dd class="col-sm-9">{{ object.registration_date }}</dd>
+		<dd class="col-sm-9" itemprop="registration_date">{{ object.registration_date }}</dd>
 	</dl>
 {% endblock %}

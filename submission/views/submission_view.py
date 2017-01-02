@@ -57,8 +57,7 @@ class SubmissionCreateView(CreateView):
 		publication.save()
 		submission = Submission(event=event,
 								user=self.request.user, 
-								publication=publication, 
-								review_available=False)
+								publication=publication,)
 		submission.save()
 		return super(SubmissionCreateView, self).form_valid(form)
 

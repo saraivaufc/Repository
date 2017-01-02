@@ -1,2 +1,3 @@
 1) Adicionar o Boxer nas fotos, já que ele está com problemas.
 2) Realizar a tradução para português e espanhol.
+3) Criar RSS

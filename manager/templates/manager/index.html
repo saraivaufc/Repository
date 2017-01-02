@@ -25,9 +25,7 @@
 	</a>
 {% endblock %}
 
-{%  block page_title %}{% trans "Welcome" %}{% endblock %}
-
-{% block content %}
+{% block site %}
 	<div class="col-sm-2 col-md-2">
 		<div class="row">
 		{% block sidebar %}
@@ -75,14 +73,19 @@
 
 	<div class="col-sm-10 col-md-10">
 		<div class="row">
-		{% block content_inner %}
-			<div class="jumbotron jumbotron-fluid">
-				<div class="container-fluid">
-					<h1 class="display-4">{% trans "Institutional Repository UFC" %}</h1>
-					<p class="lead">{% trans "Aims to store, preserve, disseminate and allow open access to scientific, academic, artistic, technical and administrative documents produced by UFC researchers and students." %}</p>
+			<h3 class="text-xs-center text-sm-center text-md-center page-title">
+				{%  block page_title %}{% trans "Welcome" %}{% endblock %}
+			</h3>
+			<section class="page-container">
+			{% block content_inner %}
+				<div class="jumbotron jumbotron-fluid">
+					<div class="container-fluid">
+						<h1 class="display-4">{% trans "Institutional Repository UFC" %}</h1>
+						<p class="lead">{% trans "Aims to store, preserve, disseminate and allow open access to scientific, academic, artistic, technical and administrative documents produced by UFC researchers and students." %}</p>
+					</div>
 				</div>
-			</div>
-		{% endblock %}
+			{% endblock %}
+			</section>
 		</div>
 	</div>
 {% endblock %}

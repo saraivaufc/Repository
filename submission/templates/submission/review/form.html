@@ -1,0 +1,29 @@
+{% extends "submission/submission/detail_to_review.html" %}
+
+{% load i18n static %}
+
+{% block title %}{% endblock %}
+
+{% block stylesheet %}
+{% endblock %}
+
+{% block breadcrumbs %}
+	{{ block.super }}
+	<a href="{% url 'submission:review_create' event_slug=event.slug submission_slug=submission.slug %}" class="breadcrumb-item" >
+		{% trans "Form Review" %}
+	</a>
+{% endblock %}
+
+{% block page_title %}{% trans "Form Review" %}{% endblock %}
+
+{% block content %}
+	<form action="." method="post" enctype="multipart/form-data">{% csrf_token %}		
+		{% include "Repository/_form.html" %}
+		<button type="submit" class="btn btn-primary">{% trans "Submit" %}</button>
+	</form>
+{% endblock %}
+
+{% block scripts %}
+	{{ block.super }}
+	{% include "Repository/imports/select2.html" %}
+{% endblock %}

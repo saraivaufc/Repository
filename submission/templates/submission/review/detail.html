@@ -1,0 +1,27 @@
+{% extends "submission/submission/detail.html" %}
+
+
+{% load i18n static %}
+
+{% block title %}{% endblock %}
+
+{% block stylesheet %}
+{% endblock %}
+
+{% block breadcrumbs %}
+	{{ block.super }}
+	<a href="{% url 'submission:review_detail' event_slug=event.slug submission_slug=submission.slug pk=review.pk %}" class="breadcrumb-item" >
+		<i class="fa fa-file-text-o"></i>
+		{% trans "Review" %}
+	</a>
+{% endblock %}
+
+{%  block page_title %}
+	{% blocktrans with publication=publication.title %}
+		Review of {{ publication }}
+	{% endblocktrans %}
+{% endblock %}
+
+{% block content %}
+	{% include 'submission/review/_render_review.html' %}
+{% endblock %}
