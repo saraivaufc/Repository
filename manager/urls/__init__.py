@@ -1,5 +1,6 @@
 from django.conf.urls import include, url
 from django.views.generic.base import TemplateView
+from manager.feed import PublicationsLatests
 
 urlpatterns = [
 	url(r'^index/$', TemplateView.as_view(template_name="manager/index.html"), name="home"),
@@ -10,4 +11,5 @@ urlpatterns = [
 	url(r'^keyword/', include('manager.urls.keyword')),
 	url(r'^author/', include('manager.urls.author')),
 	url(r'^publication/', include('manager.urls.publication')),
+	url(r'^feed/$', PublicationsLatests(), name="feed"),
 ]

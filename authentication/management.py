@@ -62,6 +62,7 @@ group_permissions = {
 		"change_submission",
 		"delete_submission",
 		"list_submission_to_review",
+		"submit_final",
 		#Reviser
 		"list_reviser",
 		"add_reviser",

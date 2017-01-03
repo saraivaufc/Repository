@@ -4,8 +4,8 @@ import os
 import glob
 import re
 
-TEXT = "content_inner"
-NEW_TEXT = "content"
+TEXT = 'class="definition"'
+NEW_TEXT = 'class="definition text"'
 FILE_TYPES = ['(.)\.html', ]
 
 rexs = []

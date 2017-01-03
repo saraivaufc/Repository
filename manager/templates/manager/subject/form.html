@@ -17,7 +17,7 @@
 
 {% block page_title %}{% trans "Form Subject" %}{% endblock %}
 
-{% block content_inner %}
+{% block content %}
 	<form action="." method="post">{% csrf_token %}		
 		{% include "Repository/_form.html" %}
 		<button type="submit" class="btn btn-primary">{% trans "Submit" %}</button>

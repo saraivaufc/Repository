@@ -42,4 +42,5 @@ class Submission(models.Model):
 		verbose_name_plural = _(u'Submission')
 		permissions = (
 			("list_submission_to_review", "List Submission To  Review"),
+			("submit_final", "Submit Final"),
 		)

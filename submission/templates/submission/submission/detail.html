@@ -17,7 +17,7 @@
 {% endblock %}
 
 {%  block page_title %}
-	{{ publication.title }}
+	{{ publication.title|truncatewords:"6" }}
 	<div class="float-xs-right">
 		{% if perms.submission.change_submission and event.stage.type == 'submission_open_1' or event.stage.type == 'submission_open_2'  %}
 		<a href="{% url 'submission:submission_update' event_slug=event.slug slug=submission.publication.slug %}" class="btn btn-info" data-toggle="tooltip" title="{% trans "Edit" %}">

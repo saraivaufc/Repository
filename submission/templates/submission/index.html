@@ -5,18 +5,6 @@
 
 {% block title %}{% endblock %}
 
-{% block css %}
-	{{block.super}}
-	<link rel="stylesheet" type="text/css" href="{% static "Repository/packages/bootstrap-4.0.0-alpha.5/dist/css/bootstrap.min.css" %}" />
-	<link rel="stylesheet" type="text/css" href="{% static "Repository/packages/bootstrap-4.0.0-alpha.5/dist/css/bootstrap-flex.min.css" %}" />
-	<link rel="stylesheet" type="text/css" href="{% static "Repository/packages/bootstrap-4.0.0-alpha.5/dist/css/bootstrap-grid.min.css" %}" />
-	<link rel="stylesheet" type="text/css" href="{% static "Repository/packages/font-awesome-4.7.0/css/font-awesome.min.css" %}" />
-	<link rel="stylesheet" type="text/css" href="{% static "Repository/css/base.css" %}" />
-{% endblock %}
-
-{% block stylesheet %}
-{% endblock %}
-
 {% block breadcrumbs %}
 	{{ block.super }}
 	<a href="{% url 'submission:home' %}" class="breadcrumb-item" >
@@ -25,13 +13,42 @@
 	</a>
 {% endblock %}
 
-{% block js %}
-	{{ block.super }}
-	<script src="{% static "Repository/packages/jquery-3.1.1.js" %}"></script>
-	<script src="{% static "Repository/packages/tether.min.js" %}"></script>
-	<script src="{% static "Repository/packages/bootstrap-4.0.0-alpha.5/dist/js/bootstrap.min.js" %}"></script>
-	<script src="{% static "Repository/js/base.js" %}"></script>
-{% endblock %}
 
-{% block scripts %}
+{% block site %}
+	<div class="col-sm-2 col-md-2">
+		<div class="row">
+		{% block sidebar %}
+			<div class="list-group sidebar">
+
+				<a href="{% url 'submission:event_list' page=1 %}" class="list-group-item sidebar-item {% block events %}{% endblock %}">
+					<i class="fa fa-book"></i>
+					{% trans "Events" %}
+				</a>
+			
+			</div>
+		{% endblock %}
+		</div>
+	</div>
+
+	<div class="col-sm-10 col-md-10">
+		<div class="row">
+			<label class="h4 text-xs-center text-sm-center text-md-center page-title">
+				{%  block page_title %}{% trans "Welcome" %}{% endblock %}
+			</label>
+			<section class="page-container">
+				<div class="container-fluid">
+					<div class="row">
+					{% block content %}
+						<div class="jumbotron jumbotron-fluid">
+							<div class="container-fluid">
+								<h1 class="display-4">{% trans "Submission System UFC" %}</h1>
+								<p class="lead">{% trans "Aims to store, preserve, disseminate and allow open access to scientific, academic, artistic, technical and administrative documents produced by UFC researchers and students." %}</p>
+							</div>
+						</div>
+					{% endblock %}
+					</div>
+				</div>
+			</section>
+		</div>
+	</div>
 {% endblock %}

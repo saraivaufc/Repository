@@ -34,7 +34,7 @@
 	
 	<div class="col-md-12">
 	<div class="row">
-		<table class="table table-bordered">
+		<table class="table table-bordered table-striped table-hover">
 			<thead class="thead-inverse">
 				<tr>
 					<th>{% trans "Submission" %}</th>
@@ -76,11 +76,6 @@
 				{% endfor %}
 			</tbody>
 		</table>
-	</div>
-	</div>
-
-	<div class="col-md-12">
-	<div class="row">
 		{% include "Repository/_paginate.html" %}
 	</div>
 	</div>

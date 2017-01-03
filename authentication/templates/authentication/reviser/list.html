@@ -26,7 +26,7 @@
 	{% if perms.authentication.add_reviser %}
 		<a href="{% url 'authentication:reviser_create'  %}" class="btn btn-success">
 			<i class="fa fa-user-plus"></i>
-			{% trans "Create Reviser" %}
+			{% trans "New Reviser" %}
 		</a>
 	{% endif %}
 	</div>
@@ -40,7 +40,7 @@
 
 	<div class="col-md-12">
 	<div class="row">
-		<table class="table table-bordered">
+		<table class="table table-bordered table-striped table-hover">
 			<thead class="thead-inverse">
 				<tr>
 					<th>{% trans "First Name" %}</th>
@@ -80,11 +80,6 @@
 				{% endfor %}
 			</tbody>
 		</table>
-	</div>
-	</div>
-
-	<div class="col-md-12">
-	<div class="row">
 		{% include "Repository/_paginate.html" %}
 	</div>
 	</div>

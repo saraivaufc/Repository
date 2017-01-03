@@ -4,10 +4,10 @@
 	<div class="container-fluid">
 		<nav class="nav nav-inline">
 			<a class="nav-link active" href="#">&copy; Saraiva Company</a>
-			<a class="nav-link" href="#">{% trans "About" %}</a>
-			<a class="nav-link" href="#">{% trans "Terms of Use" %}</a>
-			<a class="nav-link" href="#">{% trans "Privacy Policy" %}</a>
-			<a class="nav-link" href="#">{% trans "Contact Us" %}</a>
+			<a class="nav-link" href="{% url 'about' %}">{% trans "About" %}</a>
+			<a class="nav-link" href="{% url 'terms' %}">{% trans "Terms of Use" %}</a>
+			<a class="nav-link" href="{% url 'policies' %}">{% trans "Privacy Policy" %}</a>
+			<a class="nav-link" href="{% url 'contact_us' %}">{% trans "Contact Us" %}</a>
 			<div class="nav-link">
 				<form action="{% url 'set_language' %}" method="post">{% csrf_token %}
 				<input name="next" type="hidden" value="{{ redirect_to }}" />
@@ -24,6 +24,14 @@
 				<input type="submit" class="btn btn-primary btn-sm" value="{% trans 'Go' %}" />
 				</form>
 			</div>
+			<a class="nav-link" href="{% url 'manager:feed' %}">
+				<i class="fa fa-feed"></i>
+				{% trans "Publications" %}
+			</a>
+			<a class="nav-link" href="{% url 'submission:feed' %}">
+				<i class="fa fa-feed"></i>
+				{% trans "Events" %}
+			</a>
 		</nav>
 	</div>
 </footer>

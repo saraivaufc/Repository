@@ -32,20 +32,6 @@
 	</div>
 {% endblock %}
 
-{% block content_inner %}
-	<dl class="definition" itemscope>
-		<dt class="col-sm-2">{% trans "Name" %}:</dt>
-		<dd class="col-sm-10" itemprop="name">{{ subject.name }}</dd>
-
-		<dt class="col-sm-2">{% trans "Publications" %}:</dt>
-		<dd class="col-sm-10" itemprop="publications">
-			<a href="{% url 'manager:subject_publications' slug=subject.slug page=1 %}" data-toggle="tooltip" title="{% trans "See Publications" %}">
-				<i class="fa fa-book"></i>
-				{% trans "See Publications" %}
-			</a>
-		</dd>
-
-		<dt class="col-sm-2">{% trans "Registration date" %}:</dt>
-		<dd class="col-sm-10" itemprop="registration_date">{{ subject.registration_date }}</dd>
-	</dl>
+{% block content %}
+	{% include 'manager/subject/_render.html' %}
 {% endblock %}

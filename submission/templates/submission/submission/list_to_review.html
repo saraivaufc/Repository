@@ -23,13 +23,16 @@
 {% block content %}	
 	<div class="col-md-12">
 	<div class="row">
-		<table class="table table-bordered">
+		<table class="table table-bordered table-striped table-hover">
 			<thead class="thead-inverse">
 				<tr>
 					<th>{% trans "Submission" %}</th>
 					<th>{% trans "Authors" %}</th>
 					<th>{% trans "Reviser" %}</th>
 					<th>{% trans "Review" %}</th>
+					{% if event.stage.type == 'submission_complete' %}
+					<th>{% trans "Final" %}</th>
+					{% endif %}
 				</tr>
 			</thead>
 
@@ -74,13 +77,24 @@
 									<i class="fa fa-file-text-o"></i>
 									{% trans "Review" %}
 								</a>
-							{% else %}
+							{% elif submission.reviser == request.user %}
 								<a href="{% url 'submission:review_create' event_slug=event.slug submission_slug=submission.slug %}">
 									<i class="fa fa-plus"></i>
 									{% trans "Add Review" %}
 								</a>
+							{% else %}
+								{% trans "Without Review" %}
 							{% endif %}
 						</td>
+						{% if event.stage.type == 'submission_complete' %}
+						<td>
+						<div class="form-check has-success">
+						  <a href="{% url 'submission:submission_submit_final' event_slug=event.slug slug=submission.slug %}" class="form-check-label">
+						    <input type="checkbox" class="form-check-input" {% if submission.publication.is_final %}checked{% endif %}>
+						  </a>
+						</div>
+						</td>
+						{% endif %}
 					</tr>
 				{% empty %}
 					<tr>
@@ -89,11 +103,6 @@
 				{% endfor %}
 			</tbody>
 		</table>
-	</div>
-	</div>
-
-	<div class="col-md-12">
-	<div class="row">
 		{% include "Repository/_paginate.html" %}
 	</div>
 	</div>

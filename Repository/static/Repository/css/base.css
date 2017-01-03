@@ -12,13 +12,16 @@ body{
 .page-title{
 	font-family:"Trebuchet MS", Helvetica, sans-serif;
 	color:#FFF;
-	background-color: #4390df;
+	background-color: #0275d8;
+	border-color: #0275d8;
+	border-top-right-radius: .25rem;
+	border-top-left-radius: .25rem;
 	margin: auto;
 	margin-top: 0px;
-	padding: 5px ;
+	padding: 5px;
+	font-weight: bold;
 	width: 100%;
 	line-height: 1.5;
-
 }
 
 .page-container{
@@ -29,10 +32,6 @@ body{
 
 table{
 	background-color: #fff;
-}
-
-footer{
-	margin: 30px 0px 20px 0px;
 }
 
 .full-width{
@@ -48,9 +47,13 @@ footer{
 	margin-top: 15px;
 }
 
+.text{
+	background-color: #fff;
+	padding: 10px;
+}
+
 dl.definition{
 	width: 100%;
-	background-color: #ffffff;
 }
 
 dl.definition > dt, dl.definition > dd{
@@ -59,7 +62,5 @@ dl.definition > dt, dl.definition > dd{
 }
 
 .card{
-	margin-left: 4px;
-	margin-right: 4px;
-	margin-bottom: 4px;
+	border: 1px solid #ddd;
 }

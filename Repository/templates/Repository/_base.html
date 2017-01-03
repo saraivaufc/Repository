@@ -6,7 +6,11 @@
 	<title>{% block title %}{% endblock %}</title>
 	
 	{% block css %}
-	
+		<link rel="stylesheet" type="text/css" href="{% static "Repository/packages/bootstrap-4.0.0-alpha.5/dist/css/bootstrap.min.css" %}" />
+		<link rel="stylesheet" type="text/css" href="{% static "Repository/packages/bootstrap-4.0.0-alpha.5/dist/css/bootstrap-flex.min.css" %}" />
+		<link rel="stylesheet" type="text/css" href="{% static "Repository/packages/bootstrap-4.0.0-alpha.5/dist/css/bootstrap-grid.min.css" %}" />
+		<link rel="stylesheet" type="text/css" href="{% static "Repository/packages/font-awesome-4.7.0/css/font-awesome.min.css" %}" />
+		<link rel="stylesheet" type="text/css" href="{% static "Repository/css/base.css" %}" />
 	{% endblock %}
 	
 	{% block stylesheet %}
@@ -46,13 +50,17 @@
 		<div class="container-fluid">
 			<div class="row">
 				{% block site %}
-					<h3 class="text-xs-center text-sm-center text-md-center page-title">
+					<label class="h4 text-xs-center text-sm-center text-md-center page-title">
 						{%  block page_title %}{% endblock %}
-					</h3>
+					</label>
 					<section class="page-container">
-					{% block content %}
+						<div class="container-fluid">
+							<div class="row">
+							{% block content %}
 
-					{% endblock %}
+							{% endblock %}
+							</div>
+						</div>
 					</section>
 				{% endblock %}
 			</div>
@@ -63,7 +71,10 @@
 	{% endblock %}
 
 	{% block js %}
-
+		<script src="{% static "Repository/packages/jquery-3.1.1.js" %}"></script>
+		<script src="{% static "Repository/packages/tether.min.js" %}"></script>
+		<script src="{% static "Repository/packages/bootstrap-4.0.0-alpha.5/dist/js/bootstrap.min.js" %}"></script>
+		<script src="{% static "Repository/js/base.js" %}"></script>
 	{% endblock %}
 
 	{% block scripts %}

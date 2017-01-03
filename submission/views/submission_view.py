@@ -2,6 +2,7 @@ from django.utils.translation import ugettext_lazy as _
 from django.views.generic.list import ListView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic.detail import DetailView, SingleObjectMixin
+from django.views.generic import View
 from django.core.urlresolvers import reverse_lazy
 from django.contrib.auth.decorators import login_required, permission_required
 from django.conf import settings
@@ -182,3 +183,13 @@ class SubmissionToReviewDetailView(DetailView):
 		context['publication'] = self.object.publication
 		context['submission'] = self.object
 		return context
+
+class SubmissionSubmitFinal(UpdateView):
+	model = Submission
+	def get(self, request, * args, ** kwargs):
+		event = Event.objects.filter(slug=self.kwargs['event_slug']).first()
+		submission = Submission.objects.filter(slug=self.kwargs['slug']).first()
+		if submission and event:
+			submission.publication.is_final = not submission.publication.is_final
+			submission.publication.save()
+		return HttpResponseRedirect(reverse_lazy('submission:submission_list_to_review', kwargs={'event_slug':event.slug, 'page': 1}))
