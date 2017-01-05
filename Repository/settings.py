@@ -86,9 +86,9 @@ TEMPLATES = [
 WSGI_APPLICATION = 'Repository.wsgi.application'
 
 #Authentication
-LOGIN_URL = reverse_lazy("authentication:login")
+LOGIN_URL = reverse_lazy("authentication:account_login")
 LOGIN_REDIRECT_URL = reverse_lazy("manager:home")
-LOGOUT_URL = reverse_lazy("authentication:logout")
+LOGOUT_URL = reverse_lazy("authentication:account_logout")
 
 #Paginate
 PAGINATE_BY = 10

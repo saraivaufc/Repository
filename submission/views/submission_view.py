@@ -40,6 +40,13 @@ class SubmissionCreateView(CreateView):
 		event = Event.objects.filter(slug=self.kwargs['event_slug']).first()
 		return reverse_lazy('submission:submission_list', kwargs={'event_slug':event.slug, 'page': 1})
 
+	def get(self, request, * args, ** kwargs):
+		event = Event.objects.filter(slug=self.kwargs['event_slug']).first()
+		if event.stage()['type'] != 'submission_open_1':
+			return HttpResponseRedirect(reverse_lazy('submission:submission_list', kwargs={'event_slug':event.slug, 'page': 1}))
+		return super(SubmissionCreateView, self).get(request)
+	
+
 	def get_context_data(self, ** kwargs):
 		event = Event.objects.filter(slug=self.kwargs['event_slug']).first()
 		context = super(SubmissionCreateView, self).get_context_data( ** kwargs)

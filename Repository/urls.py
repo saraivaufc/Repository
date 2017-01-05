@@ -7,7 +7,7 @@ from django.core.urlresolvers import reverse_lazy
 import settings
 
 urlpatterns = [
-    url(r'^$', RedirectView.as_view(url=reverse_lazy('manager:home'))),
+    url(r'^$', RedirectView.as_view(url=reverse_lazy('manager:home'), permanent=True)),
     url(r'^manager/', include('manager.urls', namespace="manager", app_name="manager"), name='manager'),
     url(r'^authentication/', include('authentication.urls', namespace="authentication", app_name="authentication"), name='authentication'),
     url(r'^submission/', include('submission.urls', namespace="submission", app_name="submission"), name='submission'),

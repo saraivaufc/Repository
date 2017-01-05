@@ -17,7 +17,7 @@
 {% endblock %}
 
 {%  block page_title %}
-	{% blocktrans with publication=publication.title %}
+	{% blocktrans with publication=publication.title|truncatewords:"6" %}
 		Review of {{ publication }}
 	{% endblocktrans %}
 {% endblock %}

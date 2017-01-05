@@ -3,6 +3,7 @@ from django.views.generic.list import ListView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic.detail import DetailView, SingleObjectMixin
 from django.core.urlresolvers import reverse_lazy
+from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required, permission_required
 from django.conf import settings
 import hashlib
@@ -60,6 +61,11 @@ class PublicationDeleteView(DeleteView):
 class PublicationDetailView(DetailView):
 	template_name = 'manager/publication/detail.html'
 	model = Publication
+
+	def get(self, request, * args, ** kwargs):
+		if not self.get_object().is_final:
+			return HttpResponseRedirect(reverse_lazy('manager:publication_list', kwargs={'page': 1}))
+		return super(PublicationDetailView, self).get(request, * args, ** kwargs)
 
 	def get_context_data(self, ** kwargs):
 		context = super(PublicationDetailView, self).get_context_data( ** kwargs)

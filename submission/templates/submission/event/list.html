@@ -84,7 +84,7 @@
 						{% trans "Submissions" %}
 					</a>
 				{% endif %}
-				{% if perms.submission.list_submission_to_review and event.stage.type == 'reviewing' or event.stage.type == 'submission_open_2' or event.stage.type == 'submission_complete'  %}
+				{% if perms.submission.list_submission_to_review and event.stage.type != 'before_period' and event.stage.type != 'submission_open_1' and event.stage.type != 'out_of_period'  %}
 					<a href="{% url 'submission:submission_list_to_review' event_slug=event.slug page=1 %}" data-toggle="tooltip" class="card-link" title="{% trans "Reviews" %}">
 						<i class="fa fa-file-text-o"></i>
 						{% trans "Reviews" %}

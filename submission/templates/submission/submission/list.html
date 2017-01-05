@@ -39,7 +39,9 @@
 				<tr>
 					<th>{% trans "Submission" %}</th>
 					<th>{% trans "Authors" %}</th>
+					{% if event.stage.type == 'submission_open_2' or event.stage.type == 'submission_complete'  %}
 					<th>{% trans "Review" %}</th>
+					{% endif %}
 				</tr>
 			</thead>
 
@@ -58,6 +60,7 @@
 								</a>
 							{% endfor %}
 						</td>
+						{% if event.stage.type == 'submission_open_2' or event.stage.type == 'submission_complete'  %}
 						<td>
 							{% if submission.review %}
 							<a href="{% url 'submission:review_detail' event_slug=submission.event.slug submission_slug=submission.slug pk=submission.review.pk %}">
@@ -68,6 +71,7 @@
 								{% trans "No Available" %}
 							{% endif %}
 						</td>
+						{% endif %}
 					</tr>
 				{% empty %}
 					<tr>

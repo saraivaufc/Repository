@@ -21,7 +21,7 @@ class ReviewCreateView(CreateView):
 	def get_success_url(self):
 		event = Event.objects.filter(slug=self.kwargs['event_slug']).first()
 		submission = Submission.objects.filter(slug=self.kwargs['submission_slug']).first()
-		return reverse_lazy('submission:review_detail', kwargs={'event_slug':event.slug, 'submission_slug':submission.slug, 'pk': self.object.pk,})
+		return reverse_lazy('submission:review_detail_to_review', kwargs={'event_slug':event.slug, 'submission_slug':submission.slug, 'pk': self.object.pk,})
 
 	def get(self, request, * args, ** kwargs):
 		event = Event.objects.filter(slug=self.kwargs['event_slug']).first()
@@ -60,7 +60,7 @@ class ReviewUpdateView(UpdateView):
 	def get_success_url(self):
 		event = Event.objects.filter(slug=self.kwargs['event_slug']).first()
 		submission = Submission.objects.filter(slug=self.kwargs['submission_slug']).first()
-		return reverse_lazy('submission:review_detail', kwargs={'event_slug':event.slug, 'submission_slug':submission.slug, 'pk': self.object.pk,})
+		return reverse_lazy('submission:review_detail_to_review', kwargs={'event_slug':event.slug, 'submission_slug':submission.slug, 'pk': self.object.pk,})
 
 	def get(self, request, * args, ** kwargs):
 		event = Event.objects.filter(slug=self.kwargs['event_slug']).first()

@@ -8,6 +8,8 @@ from django.db.models.signals import post_save
 
 group_permissions = {
 	"participant": [
+		#author
+		"add_author",
 		#submission
 		"add_submission",
 		"change_submission",

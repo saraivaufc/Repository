@@ -7,7 +7,7 @@ from manager.feed import PublicationsLatests
 
 
 urlpatterns = [
-	url(r'^$', RedirectView.as_view(url=reverse_lazy('manager:home'))),
+	url(r'^$', RedirectView.as_view(url=reverse_lazy('manager:home'), permanent=True)),
 	url(r'^index/$', TemplateView.as_view(template_name="manager/index.html"), name="home"),
 	url(r'^community/', include('manager.urls.community')),
 	url(r'^collection/', include('manager.urls.collection')),

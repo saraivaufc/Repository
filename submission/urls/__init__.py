@@ -5,7 +5,7 @@ from django.core.urlresolvers import reverse_lazy
 from submission.feed import EventsLatests
 
 urlpatterns = [
-	url(r'^$', RedirectView.as_view(url=reverse_lazy('submission:home'))),
+	url(r'^$', RedirectView.as_view(url=reverse_lazy('submission:home'), permanent=True)),
 	url(r'^index/$', TemplateView.as_view(template_name="submission/index.html"), name="home"),
 	#url(r'^index/$', RedirectView.as_view(url=reverse_lazy("submission:event_list", kwargs={"page":1}), permanent=True), name="home"),
 	url(r'^event/', include('submission.urls.event')),
