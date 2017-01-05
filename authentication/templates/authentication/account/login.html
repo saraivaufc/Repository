@@ -33,6 +33,10 @@
 		<button type="submit" class="btn btn-primary">{% trans "Submit" %}</button>
 		<input type="hidden" name="next" value="{{ next }}" />
 	</form>
-	<p><a href="{% url 'authentication:password_reset' %}">{% trans "Lost password?" %}</a></p>
-	<p><a href="{% url 'authentication:register' %}">{% trans "Register" %}</a></p>
+	<a href="{% url 'authentication:account_password_reset' %}">
+		{% trans "Lost password?" %}
+	</a>
+	<a href="{% url 'authentication:account_register' %}">
+		{% trans "Register" %}
+	</a>
 {% endblock %}

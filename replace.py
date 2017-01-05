@@ -4,8 +4,8 @@ import os
 import glob
 import re
 
-TEXT = 'class="definition"'
-NEW_TEXT = 'class="definition text"'
+TEXT = 'table table-bordered table-striped table-hover'
+NEW_TEXT = 'table table-bordered table-striped table-hover text'
 FILE_TYPES = ['(.)\.html', ]
 
 rexs = []

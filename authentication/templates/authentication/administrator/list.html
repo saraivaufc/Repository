@@ -13,7 +13,7 @@
 {% block breadcrumbs %}
 	{{ block.super }}
 	<a href="{% url 'authentication:administrator_list' page=1 %}" class="breadcrumb-item" >
-		<i class="fa fa-wpforms"></i>
+		<i class="fa fa-users"></i>
 		{% trans "Administrators" %}
 	</a>
 {% endblock %}
@@ -40,11 +40,11 @@
 
 	<div class="col-md-12">
 	<div class="row">
-		<table class="table table-bordered table-striped table-hover">
+		<table class="table table-bordered table-striped table-hover text">
 			<thead class="thead-inverse">
 				<tr>
-					<th>{% trans "First Name" %}</th>
-					<th>{% trans "Last Name" %}</th>
+					<th>{% trans "Full Name" %}</th>
+					<th>{% trans "Username" %}</th>
 					<th>{% trans "Email" %}</th>
 					{% if perms.authentication.delete_administrator %}
 					<th>{% trans "Options" %}</th>
@@ -56,10 +56,12 @@
 				{% for administrator in object_list %}
 					<tr>
 						<td>
-							{{ administrator.first_name }}	
+							{{ administrator.get_full_name }}
 						</td>
 						<td>
-							{{ administrator.last_name }}	
+							<a href="{% url 'authentication:account_detail' pk=administrator.pk %}">
+							{{ administrator.username }}
+							</a>
 						</td>
 						<td>
 							{{ administrator.email }}	

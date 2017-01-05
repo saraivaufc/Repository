@@ -8,12 +8,12 @@
 {% block stylesheet %}
 {% endblock %}
 
-{% block administrators %}active{% endblock %}
+{% block participants %}active{% endblock %}
 
 {% block breadcrumbs %}
 	{{ block.super }}
 	<a href="{% url 'authentication:participant_list' page=1 %}" class="breadcrumb-item" >
-		<i class="fa fa-wpforms"></i>
+		<i class="fa fa-users"></i>
 		{% trans "Participants" %}
 	</a>
 {% endblock %}
@@ -32,26 +32,28 @@
 
 	<div class="col-md-12">
 	<div class="row">
-		<table class="table table-bordered table-striped table-hover">
+		<table class="table table-bordered table-striped table-hover text">
 			<thead class="thead-inverse">
 				<tr>
-					<th>{% trans "First Name" %}</th>
-					<th>{% trans "Last Name" %}</th>
+					<th>{% trans "Full Name" %}</th>
+					<th>{% trans "Username" %}</th>
 					<th>{% trans "Email" %}</th>
 				</tr>
 			</thead>
 
 			<tbody>
-				{% for administrator in object_list %}
+				{% for participant in object_list %}
 					<tr>
 						<td>
-							{{ administrator.first_name }}	
+							{{ participant.get_full_name }}
 						</td>
 						<td>
-							{{ administrator.last_name }}	
+							<a href="{% url 'authentication:account_detail' pk=participant.pk %}">
+							{{ participant.username }}
+							</a>
 						</td>
 						<td>
-							{{ administrator.email }}	
+							{{ participant.email }}	
 						</td>
 					</tr>
 				{% empty %}

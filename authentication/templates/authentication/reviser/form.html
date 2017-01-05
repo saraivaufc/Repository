@@ -12,11 +12,11 @@
 	{{ block.super }}
 	<a href="{% url 'authentication:reviser_create' %}" class="breadcrumb-item" >
 		<i class="fa fa-user-plus"></i>
-		{% trans "Form Administrator" %}
+		{% trans "Form Reviser" %}
 	</a>
 {% endblock %}
 
-{% block page_title %}{% trans "Form Administrator" %}{% endblock %}
+{% block page_title %}{% trans "Form Reviser" %}{% endblock %}
 
 {% block content %}
 	<form action="." method="post" enctype="multipart/form-data">{% csrf_token %}		

@@ -11,7 +11,7 @@
 {% block breadcrumbs %}
 	{{ block.super }}
 	<a href="{% url 'submission:event_detail' slug=event.slug %}" class="breadcrumb-item" >
-		<i class="fa fa-wpforms"></i>
+		<i class="fa fa-hashtag"></i>
 		{{ event.name }}
 	</a>
 {% endblock %}
@@ -33,6 +33,7 @@
 {% endblock %}
 
 {% block content %}
+<div class="text">
 	<div class="col-md-12">
 		<div class="row">	
 			<p class="lead text-justify">
@@ -43,7 +44,7 @@
 	</div>
 	<hr class="divider"/>
 	<div class="col-md-6">
-		<dl class="definition" itemscope>
+		<dl class="definition text" itemscope>
 			<dt class="col-sm-3">{% trans "Community" %}:</dt>
 			<dd class="col-sm-9" itemprop="community">
 				<a href="{% url 'manager:community_detail' slug=event.community.slug page=1 %}" class="tag tag-primary">
@@ -104,4 +105,5 @@
 			</a>
 		{% endif %}
 	</div>
+</div>
 {% endblock %}

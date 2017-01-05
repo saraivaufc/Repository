@@ -5,20 +5,7 @@
 
 {% block title %}{% endblock %}
 
-{% block css %}
-	{{block.super}}
-	<link rel="stylesheet" type="text/css" href="{% static "Repository/packages/bootstrap-4.0.0-alpha.5/dist/css/bootstrap.min.css" %}" />
-	<link rel="stylesheet" type="text/css" href="{% static "Repository/packages/bootstrap-4.0.0-alpha.5/dist/css/bootstrap-flex.min.css" %}" />
-	<link rel="stylesheet" type="text/css" href="{% static "Repository/packages/bootstrap-4.0.0-alpha.5/dist/css/bootstrap-grid.min.css" %}" />
-	<link rel="stylesheet" type="text/css" href="{% static "Repository/packages/font-awesome-4.7.0/css/font-awesome.min.css" %}" />
-	<link rel="stylesheet" type="text/css" href="{% static "Repository/css/base.css" %}" />
-{% endblock %}
-
-{% block stylesheet %}
-{% endblock %}
-
 {% block breadcrumbs %}
-	{{ block.super }}
 	<a href="{% url 'manager:home' %}" class="breadcrumb-item" >
 		<i class="fa fa-home" aria-hidden="true"></i>
 		{% trans "Home" %}
@@ -29,14 +16,4 @@
 
 {% block content %}
 
-{% endblock %}
-
-{% block js %}
-	{{ block.super }}
-	<script src="{% static "Repository/packages/jquery-3.1.1.js" %}"></script>
-	<script src="{% static "Repository/packages/bootstrap-4.0.0-alpha.5/dist/js/bootstrap.min.js" %}"></script>
-	<script src="{% static "Repository/js/base.js" %}"></script>
-{% endblock %}
-
-{% block scripts %}
 {% endblock %}

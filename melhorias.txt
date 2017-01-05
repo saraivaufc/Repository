@@ -1,4 +1,5 @@
-1) Adicionar o Boxer nas fotos, já que ele está com problemas.
-2) Realizar a tradução para português e espanhol.
-3) Criar RSS
-4) Próxima página de uma busca realizada está bugada.
+- Adicionar o Boxer nas fotos, já que ele está com problemas.
+- Realizar a tradução para português e espanhol.
+- Próxima página de uma busca realizada está bugada.
+- Fazer o menu funcionar normal, mesmo com o Js desabilitado.
+- Usar Js para dar um prévia de como ficará o nome de referência do autor durante a criação do mesmo (Lembrando que se o navegador do usuário não der suporte a Js, não se deve mostrar 'lixo' inútil na tela).

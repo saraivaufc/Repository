@@ -40,23 +40,23 @@
 
 	<div class="col-md-12">
 	<div class="row">
-		<table class="table table-bordered table-striped table-hover">
+		<table class="table table-bordered table-striped table-hover text">
 			<thead class="thead-inverse">
 				<tr>
-					<th class="col-md-10">{% trans "Reference Name" %}</th>
-					<th class="col-md-2">{% trans "Publications" %}</th>
+					<th>{% trans "Reference Name" %}</th>
+					<th>{% trans "Publications" %}</th>
 				</tr>
 			</thead>
 
 			<tbody>
 				{% for author in object_list %}
 					<tr>
-						<td class="col-md-10">
+						<td>
 							<a href="{% url 'manager:author_detail' slug=author.slug %}">
 								{{ author.reference_name }}
 							</a>
 						</td>
-						<td class="col-md-2">
+						<td>
 							<a href="{% url 'manager:author_publications' slug=author.slug page=1 %}" data-toggle="tooltip" title="{% trans "See Publications" %}">
 								<i class="fa fa-book"></i>
 								{% trans "See Publications" %}

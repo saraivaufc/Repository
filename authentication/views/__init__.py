@@ -1,4 +1,4 @@
-from account_view import UserCreate
+from account_view import UserCreateView, UserDetailView, UserUpdateView, UserDeleteView
 from reviser_view import ReviserListView, ReviserCreateView, ReviserDeleteView
 from administrator_view import AdministratorListView, AdministratorCreateView, AdministratorDeleteView
 from participant_view import ParticipantListView

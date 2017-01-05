@@ -1,10 +1,13 @@
 from django.conf.urls import include, url
 from django.contrib import admin
 from django.views.generic.base import TemplateView
+from django.views.generic.base import RedirectView
+from django.core.urlresolvers import reverse_lazy
 
 import settings
 
 urlpatterns = [
+    url(r'^$', RedirectView.as_view(url=reverse_lazy('manager:home'))),
     url(r'^manager/', include('manager.urls', namespace="manager", app_name="manager"), name='manager'),
     url(r'^authentication/', include('authentication.urls', namespace="authentication", app_name="authentication"), name='authentication'),
     url(r'^submission/', include('submission.urls', namespace="submission", app_name="submission"), name='submission'),

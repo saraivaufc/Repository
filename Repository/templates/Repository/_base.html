@@ -16,31 +16,36 @@
 	{% block stylesheet %}
 	
 	{% endblock %}
+
+	<!--[if (lt IE 9) & (!IEMobile)]>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/selectivizr/1.0.2/selectivizr-min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6/html5shiv.min.js"></script>
+	<![endif]-->
 </head>
 {% load i18n %}
 
 <body class="max-height">
 
 	{% block messages %}
-		{% if messages %}
-			<ul class="messagelist">
-			{% for message in messages %}
-				<li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message|capfirst }}</li>
-			{% endfor %}
-			</ul>
-		{% endif %}
+		{% include 'Repository/_messages.html' %}
 	{% endblock messages %}
 
 	<div class="col-md-12">
 		<header class="row">
+			{% include 'Repository/_no_script.html' %}
+			{% block header  %}
 			{% include "Repository/_header.html" %}
+			{% endblock %}
 		</header>
 	</div>
 	<div class="col-md-12">
 		<section class="row">
-			<nav class="breadcrumb" style="width: 100%;">
+			<nav class="breadcrumb">
 		        {% block breadcrumbs %}
-		        
+		        <a href="{% url 'manager:home' %}" class="breadcrumb-item" >
+					<i class="fa fa-home" aria-hidden="true"></i>
+					{% trans "Home" %}
+				</a>
 		 	   {% endblock %}
 			</nav>
 		</section>
