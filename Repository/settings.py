@@ -45,10 +45,10 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.humanize',
     'rosetta',
+    'base',
     'submission',
     'manager',
     'authentication',
- 
 )
 
 MIDDLEWARE_CLASSES = (
@@ -70,7 +70,7 @@ ROOT_URLCONF = 'Repository.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['Repository/templates','manager/templates', 'submission/templates',],
+        'DIRS': ['base/templates','manager/templates', 'submission/templates',],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -78,6 +78,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.media',
             ],
         },
     },
@@ -115,6 +116,7 @@ FORMAT_MODULE_PATH = [
 from Repository.formats.pt_BR.formats import * #GAMBI
 
 LOCALE_PATHS = (
+    os.path.join(PROJECT_DIR, '../base/locale'),
     os.path.join(PROJECT_DIR, '../manager/locale'),
     os.path.join(PROJECT_DIR, '../authentication/locale'),
     os.path.join(PROJECT_DIR, '../submission/locale'),
@@ -126,9 +128,6 @@ LANGUAGES = (
     ('en', _('English')),
     ('es', _('Spanish')),
 )
-
-LANGUAGE_CODE = 'en'
-
 
 TIME_ZONE = 'America/Fortaleza'
 
@@ -148,7 +147,7 @@ MEDIA_ROOT = os.path.join(PROJECT_DIR, '../media')
 MEDIA_URL = '/media/'
 
 STATIC_ROOT = os.path.join(PROJECT_DIR, '.')
-STATICFILES_DIRS = (os.path.join(PROJECT_DIR, '../Repository/static'), 
+STATICFILES_DIRS = (os.path.join(PROJECT_DIR, '../base/static'), 
                     os.path.join(PROJECT_DIR, '../manager/static'),
                     os.path.join(PROJECT_DIR, '../submission/static'), 
                     os.path.join(PROJECT_DIR, '../authentication/static'),)

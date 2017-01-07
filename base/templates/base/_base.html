@@ -1,0 +1,100 @@
+{% load i18n static %}
+<!DOCTYPE html>
+{% get_current_language as LANGUAGE_CODE %}
+<html lang="{{ LANGUAGE_CODE }}">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+
+	<title>{% block title %}{% endblock %}</title>
+	
+	{% block css %}
+		<link rel="stylesheet" type="text/css" href="{% static "base/packages/bootstrap-4.0.0-alpha.5/dist/css/bootstrap.min.css" %}" />
+		<link rel="stylesheet" type="text/css" href="{% static "base/packages/bootstrap-4.0.0-alpha.5/dist/css/bootstrap-flex.min.css" %}" />
+		<link rel="stylesheet" type="text/css" href="{% static "base/packages/bootstrap-4.0.0-alpha.5/dist/css/bootstrap-grid.min.css" %}" />
+		<link rel="stylesheet" type="text/css" href="{% static "base/packages/font-awesome-4.7.0/css/font-awesome.min.css" %}" />
+		
+		<link rel="stylesheet" type="text/css" media="all" href="{% static "base/css/all_style.css" %}" />
+		<link rel="stylesheet" type="text/css" media="print" href="{% static "base/css/print_style.css" %}" />
+		<link rel="stylesheet" type="text/css" media="handheld" href="{% static "base/css/handheld_style.css" %}" />
+	{% endblock %}
+	
+	{% block stylesheet %}
+	
+	{% endblock %}
+
+	<!--[if (lt IE 9) & (!IEMobile)]>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/selectivizr/1.0.2/selectivizr-min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6/html5shiv.min.js"></script>
+	<![endif]-->
+</head>
+{% load i18n %}
+
+<body>
+	<div class="col-md-12">
+		<header class="row">
+			{% include 'base/_no_script.html' %}
+			{% block header  %}
+			{% include "base/_header.html" %}
+			{% endblock %}
+		</header>
+	</div>
+	<div class="col-md-12">
+		<section class="row">
+			<nav class="breadcrumb">
+		        {% block breadcrumbs %}
+		        <a href="{% url 'manager:home' %}" class="breadcrumb-item" >
+					<i class="fa fa-home" aria-hidden="true"></i>
+					{% trans "Home" %}
+				</a>
+		 	   {% endblock %}
+			</nav>
+		</section>
+		<section class="row">
+		{% block messages %}
+			{% include 'base/_messages.html' %}
+		{% endblock messages %}
+		</section>
+	</div>
+
+	<div class="col-sm-12 col-md-12">
+		<div class="container-fluid">
+			<div class="row">
+				{% block site %}
+					<label class="h4 text-xs-center text-sm-center text-md-center page-title">
+						{%  block page_title %}{% endblock %}
+					</label>
+					<section class="page-container">
+						<div class="container-fluid">
+							<div class="row">
+							{% block content %}
+
+							{% endblock %}
+							</div>
+						</div>
+					</section>
+				{% endblock %}
+			</div>
+		</div>
+	</div>
+	<div class="col-md-12">
+		<div class="row">
+			{% block footer %}
+				{% include "base/_footer.html" %}
+			{% endblock %}
+		</div>
+	</div>
+
+	{% block js %}
+		<script src="{% static "base/packages/jquery-3.1.1.js" %}"></script>
+		<script src="{% static "base/packages/tether.min.js" %}"></script>
+		<script src="{% static "base/packages/bootstrap-4.0.0-alpha.5/dist/js/bootstrap.min.js" %}"></script>
+		<script type="text/javascript" src="{% url 'javascript-catalog' %}"></script>
+		<script src="{% static 'base/js/base.js' %}"></script>
+	{% endblock %}
+
+	{% block scripts %}
+	
+	{% endblock %}
+</body>
+</html>

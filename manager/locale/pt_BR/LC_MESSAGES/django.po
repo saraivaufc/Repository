@@ -1,0 +1,695 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-01-07 11:09-0300\n"
+"PO-Revision-Date: 2017-01-06 10:24-0234\n"
+"Last-Translator: Ciano Saraiva <admin@email.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Translated-Using: django-rosetta 0.7.8\n"
+
+#: manager/feed.py:8
+msgid "RIUFC"
+msgstr ""
+
+#: manager/feed.py:10
+msgid "The RIUFC is reported here!"
+msgstr ""
+
+#: manager/models/author.py:8 manager/templates/manager/author/_render.html:4
+msgid "First Name"
+msgstr ""
+
+#: manager/models/author.py:9 manager/templates/manager/author/_render.html:7
+msgid "Last Name"
+msgstr ""
+
+#: manager/models/author.py:11
+msgid "First name"
+msgstr ""
+
+#: manager/models/author.py:12
+msgid "Last name"
+msgstr ""
+
+#: manager/models/author.py:13
+msgid "Reference name"
+msgstr ""
+
+#: manager/models/author.py:14 manager/models/collection.py:14
+#: manager/models/community.py:13 manager/models/keyword.py:11
+#: manager/models/publication.py:34 manager/models/publisher.py:11
+#: manager/models/subject.py:11
+msgid "slug"
+msgstr ""
+
+#: manager/models/author.py:16 manager/models/collection.py:16
+#: manager/models/community.py:15 manager/models/keyword.py:13
+#: manager/models/publication.py:51 manager/models/publisher.py:13
+#: manager/models/subject.py:13
+msgid "Registration Date"
+msgstr ""
+
+#: manager/models/author.py:33
+msgid "Author"
+msgstr "Autor"
+
+#: manager/models/author.py:34 manager/models/publication.py:37
+#: manager/templates/manager/author/list.html:17
+#: manager/templates/manager/author/publications.html:20
+#: manager/templates/manager/index.html:28
+#: manager/templates/manager/publication/_render.html:10
+#: manager/templates/manager/publication/list.html:54
+msgid "Authors"
+msgstr "Autores"
+
+#: manager/models/collection.py:8 manager/models/collection.py:12
+#: manager/models/community.py:8 manager/models/community.py:11
+#: manager/models/keyword.py:8 manager/models/keyword.py:10
+#: manager/models/publisher.py:8 manager/models/publisher.py:10
+#: manager/models/subject.py:8 manager/models/subject.py:10
+#: manager/templates/manager/collection/_render.html:16
+#: manager/templates/manager/collection/list.html:46
+#: manager/templates/manager/community/_render.html:4
+#: manager/templates/manager/community/list.html:46
+#: manager/templates/manager/keyword/_render.html:4
+#: manager/templates/manager/keyword/list.html:46
+#: manager/templates/manager/publisher/_render.html:4
+#: manager/templates/manager/publisher/list.html:46
+#: manager/templates/manager/subject/_render.html:4
+#: manager/templates/manager/subject/list.html:46
+msgid "Name"
+msgstr "Nome"
+
+#: manager/models/collection.py:9
+#: manager/templates/manager/collection/_render.html:19
+msgid "Description"
+msgstr "Descrição"
+
+#: manager/models/collection.py:11 manager/models/community.py:32
+#: manager/templates/manager/collection/_render.html:4
+#: manager/templates/manager/collection/list.html:47
+#: manager/templates/manager/community/list.html:17
+#: manager/templates/manager/community/publications.html:20
+#: manager/templates/manager/index.html:33
+msgid "Communities"
+msgstr "Comunidades"
+
+#: manager/models/collection.py:13
+msgid "description"
+msgstr "descrição"
+
+#: manager/models/collection.py:31 manager/models/collection.py:32
+#: manager/models/publication.py:39
+#: manager/templates/manager/publication/_render.html:38
+msgid "Collection"
+msgstr "Coleção"
+
+#: manager/models/community.py:9 manager/models/community.py:12
+#: manager/templates/manager/community/_render.html:7
+#: manager/templates/manager/community/list.html:47
+msgid "Acronym"
+msgstr "Sigla"
+
+#: manager/models/community.py:31 manager/models/publication.py:38
+#: manager/templates/manager/publication/_render.html:30
+msgid "Community"
+msgstr "Comunidade"
+
+#: manager/models/keyword.py:30
+msgid "Keyword"
+msgstr "Palavra-chave"
+
+#: manager/models/keyword.py:31 manager/models/publication.py:48
+#: manager/templates/manager/index.html:53
+#: manager/templates/manager/keyword/list.html:17
+#: manager/templates/manager/keyword/publications.html:20
+#: manager/templates/manager/publication/_render.html:91
+msgid "Keywords"
+msgstr "Palavras-chave"
+
+#: manager/models/publication.py:9 manager/models/publication.py:33
+#: manager/templates/manager/publication/_render.html:4
+#: manager/templates/manager/publication/list.html:48
+msgid "Title"
+msgstr "Título"
+
+#: manager/models/publication.py:10 manager/models/publication.py:41
+#: manager/templates/manager/publication/_render.html:54
+msgid "Address"
+msgstr "Endereço"
+
+#: manager/models/publication.py:11 manager/models/publication.py:42
+#: manager/templates/manager/publication/_render.html:57
+msgid "Year"
+msgstr "Ano"
+
+#: manager/models/publication.py:12 manager/models/publication.py:26
+#: manager/models/publication.py:46
+#: manager/templates/manager/publication/_render.html:73
+msgid "Abstract"
+msgstr "Resumo"
+
+#: manager/models/publication.py:13 manager/models/publication.py:47
+#: manager/templates/manager/publication/_render.html:82
+msgid "Other Abstract"
+msgstr "Outro Resumo"
+
+#: manager/models/publication.py:16
+msgid "Article"
+msgstr "Artigo"
+
+#: manager/models/publication.py:17
+msgid "Book"
+msgstr "Livro"
+
+#: manager/models/publication.py:18
+msgid "Booklet"
+msgstr ""
+
+#: manager/models/publication.py:19
+msgid "Conference"
+msgstr ""
+
+#: manager/models/publication.py:20
+msgid "Inbook"
+msgstr ""
+
+#: manager/models/publication.py:21
+msgid "Incollection"
+msgstr ""
+
+#: manager/models/publication.py:22
+msgid "Manual"
+msgstr ""
+
+#: manager/models/publication.py:23
+msgid "Masters Thesis"
+msgstr ""
+
+#: manager/models/publication.py:24
+msgid "Monography"
+msgstr ""
+
+#: manager/models/publication.py:25
+msgid "Dissertation"
+msgstr ""
+
+#: manager/models/publication.py:29
+msgid "Brazilian Portuguese"
+msgstr ""
+
+#: manager/models/publication.py:30
+msgid "English"
+msgstr ""
+
+#: manager/models/publication.py:31
+msgid "Spanish"
+msgstr ""
+
+#: manager/models/publication.py:35
+#: manager/templates/manager/publication/_render.html:7
+#: manager/templates/manager/publication/list.html:51
+msgid "Typology"
+msgstr ""
+
+#: manager/models/publication.py:36 manager/models/subject.py:30
+#: manager/templates/manager/index.html:48
+#: manager/templates/manager/publication/_render.html:20
+#: manager/templates/manager/subject/list.html:17
+#: manager/templates/manager/subject/publications.html:20
+msgid "Subjects"
+msgstr ""
+
+#: manager/models/publication.py:40 manager/models/publisher.py:29
+#: manager/templates/manager/publication/_render.html:46
+msgid "Publisher"
+msgstr ""
+
+#: manager/models/publication.py:43
+#: manager/templates/manager/publication/_render.html:60
+msgid "Reference"
+msgstr ""
+
+#: manager/models/publication.py:44
+#: manager/templates/manager/publication/_render.html:63
+msgid "URI"
+msgstr ""
+
+#: manager/models/publication.py:45
+#: manager/templates/manager/publication/_render.html:70
+msgid "Language"
+msgstr ""
+
+#: manager/models/publication.py:49
+#: manager/templates/manager/publication/_render.html:101
+msgid "Issue Date"
+msgstr ""
+
+#: manager/models/publication.py:50
+#: manager/templates/manager/publication/_render.html:104
+msgid "File"
+msgstr ""
+
+#: manager/models/publication.py:52
+msgid "Is Final"
+msgstr ""
+
+#: manager/models/publication.py:80
+msgid "Publication"
+msgstr ""
+
+#: manager/models/publication.py:81
+#: manager/templates/manager/author/_render.html:13
+#: manager/templates/manager/author/list.html:47
+#: manager/templates/manager/collection/_render.html:22
+#: manager/templates/manager/collection/list.html:48
+#: manager/templates/manager/community/_render.html:27
+#: manager/templates/manager/community/list.html:48
+#: manager/templates/manager/index.html:23
+#: manager/templates/manager/keyword/_render.html:7
+#: manager/templates/manager/keyword/list.html:47
+#: manager/templates/manager/publication/list.html:17
+#: manager/templates/manager/publisher/_render.html:7
+#: manager/templates/manager/publisher/list.html:47
+#: manager/templates/manager/subject/_render.html:7
+#: manager/templates/manager/subject/list.html:47
+msgid "Publications"
+msgstr ""
+
+#: manager/models/publisher.py:30 manager/templates/manager/index.html:43
+#: manager/templates/manager/publisher/list.html:17
+#: manager/templates/manager/publisher/publications.html:20
+msgid "Publishers"
+msgstr ""
+
+#: manager/models/subject.py:29
+msgid "Subject"
+msgstr ""
+
+#: manager/templates/manager/author/_render.html:10
+#: manager/templates/manager/author/list.html:46
+msgid "Reference Name"
+msgstr ""
+
+#: manager/templates/manager/author/_render.html:15
+#: manager/templates/manager/author/_render.html:17
+#: manager/templates/manager/author/list.html:60
+#: manager/templates/manager/author/list.html:62
+#: manager/templates/manager/collection/_render.html:24
+#: manager/templates/manager/collection/_render.html:26
+#: manager/templates/manager/collection/list.html:68
+#: manager/templates/manager/collection/list.html:70
+#: manager/templates/manager/community/_render.html:29
+#: manager/templates/manager/community/_render.html:31
+#: manager/templates/manager/community/list.html:60
+#: manager/templates/manager/community/list.html:63
+#: manager/templates/manager/keyword/_render.html:9
+#: manager/templates/manager/keyword/_render.html:11
+#: manager/templates/manager/keyword/list.html:60
+#: manager/templates/manager/keyword/list.html:62
+#: manager/templates/manager/publisher/_render.html:9
+#: manager/templates/manager/publisher/_render.html:11
+#: manager/templates/manager/publisher/list.html:60
+#: manager/templates/manager/publisher/list.html:62
+#: manager/templates/manager/subject/_render.html:9
+#: manager/templates/manager/subject/_render.html:11
+#: manager/templates/manager/subject/list.html:60
+#: manager/templates/manager/subject/list.html:62
+msgid "See Publications"
+msgstr ""
+
+#: manager/templates/manager/author/_render.html:21
+#: manager/templates/manager/collection/_render.html:30
+#: manager/templates/manager/community/_render.html:35
+#: manager/templates/manager/keyword/_render.html:15
+#: manager/templates/manager/publisher/_render.html:15
+#: manager/templates/manager/subject/_render.html:15
+msgid "Registration date"
+msgstr ""
+
+#: manager/templates/manager/author/check_delete.html:15
+#: manager/templates/manager/author/check_delete.html:19
+#: manager/templates/manager/collection/check_delete.html:15
+#: manager/templates/manager/collection/check_delete.html:19
+#: manager/templates/manager/community/check_delete.html:15
+#: manager/templates/manager/community/check_delete.html:19
+#: manager/templates/manager/keyword/check_delete.html:15
+#: manager/templates/manager/keyword/check_delete.html:19
+#: manager/templates/manager/publication/check_delete.html:15
+#: manager/templates/manager/publication/check_delete.html:19
+#: manager/templates/manager/publisher/check_delete.html:15
+#: manager/templates/manager/publisher/check_delete.html:19
+#: manager/templates/manager/subject/check_delete.html:15
+#: manager/templates/manager/subject/check_delete.html:19
+msgid "Confirm delete"
+msgstr ""
+
+#: manager/templates/manager/author/check_delete.html:25
+#: manager/templates/manager/collection/check_delete.html:25
+#: manager/templates/manager/community/check_delete.html:25
+#: manager/templates/manager/keyword/check_delete.html:25
+#: manager/templates/manager/publication/check_delete.html:25
+#: manager/templates/manager/publisher/check_delete.html:25
+#: manager/templates/manager/subject/check_delete.html:25
+msgid "Are you sure you want to delete"
+msgstr ""
+
+#: manager/templates/manager/author/check_delete.html:26
+#: manager/templates/manager/collection/check_delete.html:26
+#: manager/templates/manager/community/check_delete.html:26
+#: manager/templates/manager/keyword/check_delete.html:26
+#: manager/templates/manager/publication/check_delete.html:26
+#: manager/templates/manager/publisher/check_delete.html:26
+#: manager/templates/manager/subject/check_delete.html:26
+msgid "No"
+msgstr ""
+
+#: manager/templates/manager/author/check_delete.html:27
+#: manager/templates/manager/collection/check_delete.html:27
+#: manager/templates/manager/community/check_delete.html:27
+#: manager/templates/manager/keyword/check_delete.html:27
+#: manager/templates/manager/publication/check_delete.html:27
+#: manager/templates/manager/publisher/check_delete.html:27
+#: manager/templates/manager/subject/check_delete.html:27
+msgid "Yes"
+msgstr ""
+
+#: manager/templates/manager/author/detail.html:23
+#: manager/templates/manager/collection/detail.html:23
+#: manager/templates/manager/community/detail.html:23
+#: manager/templates/manager/keyword/detail.html:23
+#: manager/templates/manager/publication/detail.html:23
+#: manager/templates/manager/publisher/detail.html:23
+#: manager/templates/manager/subject/detail.html:23
+msgid "Edit"
+msgstr ""
+
+#: manager/templates/manager/author/detail.html:28
+#: manager/templates/manager/collection/detail.html:28
+#: manager/templates/manager/community/detail.html:28
+#: manager/templates/manager/keyword/detail.html:28
+#: manager/templates/manager/publication/detail.html:28
+#: manager/templates/manager/publisher/detail.html:28
+#: manager/templates/manager/subject/detail.html:28
+msgid "Delete"
+msgstr ""
+
+#: manager/templates/manager/author/form.html:14
+#: manager/templates/manager/author/form.html:18
+msgid "Form Author"
+msgstr ""
+
+#: manager/templates/manager/author/list.html:21
+msgid "List of Authors"
+msgstr ""
+
+#: manager/templates/manager/author/list.html:29
+msgid "New Author"
+msgstr "Novo Autor"
+
+#: manager/templates/manager/author/list.html:68
+msgid "No Author found!"
+msgstr ""
+
+#: manager/templates/manager/author/publications.html:16
+#: manager/templates/manager/collection/publications.html:16
+#: manager/templates/manager/community/publications.html:16
+#: manager/templates/manager/index.html:11
+#: manager/templates/manager/keyword/publications.html:16
+#: manager/templates/manager/publisher/publications.html:16
+#: manager/templates/manager/subject/publications.html:16
+msgid "Home"
+msgstr ""
+
+#: manager/templates/manager/author/publications.html:24
+#, python-format
+msgid ""
+"\n"
+"\t\t\tPublications of %(author)s\n"
+"\t\t"
+msgstr ""
+
+#: manager/templates/manager/author/publications.html:31
+#, python-format
+msgid ""
+"\n"
+"\t\tPublications of %(author)s\n"
+"\t"
+msgstr ""
+
+#: manager/templates/manager/collection/_render.html:12
+msgid "Without Community"
+msgstr ""
+
+#: manager/templates/manager/collection/form.html:14
+#: manager/templates/manager/collection/form.html:18
+msgid "Form Collection"
+msgstr ""
+
+#: manager/templates/manager/collection/list.html:17
+#: manager/templates/manager/collection/publications.html:20
+#: manager/templates/manager/community/_render.html:10
+#: manager/templates/manager/index.html:38
+msgid "Collections"
+msgstr ""
+
+#: manager/templates/manager/collection/list.html:21
+msgid "List of Collections"
+msgstr ""
+
+#: manager/templates/manager/collection/list.html:29
+msgid "New Collection"
+msgstr ""
+
+#: manager/templates/manager/collection/list.html:76
+msgid "No Collection found!"
+msgstr ""
+
+#: manager/templates/manager/collection/publications.html:24
+#, python-format
+msgid ""
+"\n"
+"\t\t\tPublications of %(collection)s\n"
+"\t\t"
+msgstr ""
+
+#: manager/templates/manager/collection/publications.html:31
+#, python-format
+msgid ""
+"\n"
+"\t\tPublications of %(collection)s\n"
+"\t"
+msgstr ""
+
+#: manager/templates/manager/community/_render.html:18
+msgid "Without Collection"
+msgstr ""
+
+#: manager/templates/manager/community/form.html:14
+#: manager/templates/manager/community/form.html:18
+msgid "Form Community"
+msgstr ""
+
+#: manager/templates/manager/community/list.html:21
+msgid "List of Communities"
+msgstr ""
+
+#: manager/templates/manager/community/list.html:29
+msgid "New Comunity"
+msgstr ""
+
+#: manager/templates/manager/community/list.html:70
+msgid "No Community found!"
+msgstr ""
+
+#: manager/templates/manager/community/publications.html:24
+#, python-format
+msgid ""
+"\n"
+"\t\t\tPublications of %(community)s\n"
+"\t\t"
+msgstr ""
+
+#: manager/templates/manager/community/publications.html:31
+#, python-format
+msgid ""
+"\n"
+"\t\tPublications of %(community)s\n"
+"\t"
+msgstr ""
+
+#: manager/templates/manager/index.html:64
+msgid "Welcome"
+msgstr ""
+
+#: manager/templates/manager/index.html:72
+msgid "Institutional Repository UFC"
+msgstr ""
+
+#: manager/templates/manager/index.html:73
+msgid ""
+"Aims to store, preserve, disseminate and allow open access to scientific, "
+"academic, artistic, technical and administrative documents produced by UFC "
+"researchers and students."
+msgstr ""
+
+#: manager/templates/manager/keyword/form.html:14
+#: manager/templates/manager/keyword/form.html:18
+msgid "Form Keyword"
+msgstr ""
+
+#: manager/templates/manager/keyword/list.html:21
+msgid "List of Keywords"
+msgstr ""
+
+#: manager/templates/manager/keyword/list.html:29
+msgid "New Keyword"
+msgstr ""
+
+#: manager/templates/manager/keyword/list.html:68
+msgid "No Keyword found!"
+msgstr ""
+
+#: manager/templates/manager/keyword/publications.html:24
+#, python-format
+msgid ""
+"\n"
+"\t\t\tPublications of %(keyword)s\n"
+"\t\t"
+msgstr ""
+
+#: manager/templates/manager/keyword/publications.html:31
+#, python-format
+msgid ""
+"\n"
+"\t\tPublications of %(keyword)s\n"
+"\t"
+msgstr ""
+
+#: manager/templates/manager/publication/_render.html:78
+#: manager/templates/manager/publication/_render.html:87
+msgid "Empty"
+msgstr ""
+
+#: manager/templates/manager/publication/_render.html:108
+msgid "Download"
+msgstr ""
+
+#: manager/templates/manager/publication/form.html:14
+#: manager/templates/manager/publication/form.html:18
+msgid "Form Publication"
+msgstr ""
+
+#: manager/templates/manager/publication/list.html:21
+msgid "List of Publications"
+msgstr ""
+
+#: manager/templates/manager/publication/list.html:29
+msgid "New Publication"
+msgstr ""
+
+#: manager/templates/manager/publication/list.html:80
+msgid "No Publication found!"
+msgstr ""
+
+#: manager/templates/manager/publisher/form.html:14
+#: manager/templates/manager/publisher/form.html:18
+msgid "Form Publisher"
+msgstr ""
+
+#: manager/templates/manager/publisher/list.html:21
+msgid "List of Publishers"
+msgstr ""
+
+#: manager/templates/manager/publisher/list.html:29
+msgid "New Publisher"
+msgstr ""
+
+#: manager/templates/manager/publisher/list.html:68
+msgid "No Publisher found!"
+msgstr ""
+
+#: manager/templates/manager/publisher/publications.html:24
+#, python-format
+msgid ""
+"\n"
+"\t\t\tPublications of %(publisher)s\n"
+"\t\t"
+msgstr ""
+
+#: manager/templates/manager/publisher/publications.html:31
+#, python-format
+msgid ""
+"\n"
+"\t\tPublications of %(publisher)s\n"
+"\t"
+msgstr ""
+
+#: manager/templates/manager/subject/form.html:14
+#: manager/templates/manager/subject/form.html:18
+msgid "Form Subject"
+msgstr ""
+
+#: manager/templates/manager/subject/list.html:21
+msgid "List of Subjects"
+msgstr ""
+
+#: manager/templates/manager/subject/list.html:29
+msgid "New Subject"
+msgstr ""
+
+#: manager/templates/manager/subject/list.html:68
+msgid "No Subject found!"
+msgstr ""
+
+#: manager/templates/manager/subject/publications.html:24
+#, python-format
+msgid ""
+"\n"
+"\t\t\tPublications of %(subject)s\n"
+"\t\t"
+msgstr ""
+
+#: manager/templates/manager/subject/publications.html:31
+#, python-format
+msgid ""
+"\n"
+"\t\tPublications of %(subject)s\n"
+"\t"
+msgstr ""
+
+#: manager/utils/constants.py:5
+msgid "Keyword success add"
+msgstr ""
+
+#: manager/utils/constants.py:6
+msgid "Keyword error add"
+msgstr ""
+
+#: manager/utils/constants.py:7
+msgid "Keyword success changed"
+msgstr ""
+
+#: manager/utils/constants.py:8
+msgid "Keyword error changed"
+msgstr ""
+
+#: manager/utils/constants.py:9
+msgid "Keyword success removed"
+msgstr ""
+
+#: manager/utils/constants.py:10
+msgid "Keyword error removed"
+msgstr ""

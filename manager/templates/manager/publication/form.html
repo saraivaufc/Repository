@@ -17,14 +17,12 @@
 
 {%  block page_title %}{% trans "Form Publication" %}{% endblock %}
 
-{% block content %}
-	<form action="." method="post" enctype="multipart/form-data">{% csrf_token %}		
-		{% include "Repository/_form.html" %}
-		<button type="submit" class="btn btn-primary">{% trans "Submit" %}</button>
-	</form>
+{% block content %}	
+	{% include "base/_form.html" %}
 {% endblock %}
 
 {% block scripts %}
 	{{ block.super }}
-	{% include "Repository/imports/select2.html" %}
+	{% include "base/imports/calendar.html" %}
+	{% include "base/imports/select2.html" %}
 {% endblock %}

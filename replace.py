@@ -4,9 +4,9 @@ import os
 import glob
 import re
 
-TEXT = 'table table-bordered table-striped table-hover'
-NEW_TEXT = 'table table-bordered table-striped table-hover text'
-FILE_TYPES = ['(.)\.html', ]
+TEXT = 'Repository/'
+NEW_TEXT = 'base/'
+FILE_TYPES = ['(.)\.py', ]
 
 rexs = []
 for i in FILE_TYPES:

@@ -17,13 +17,10 @@
 {% block page_title %}{% trans "Form Review" %}{% endblock %}
 
 {% block content %}
-	<form action="." method="post" enctype="multipart/form-data">{% csrf_token %}		
-		{% include "Repository/_form.html" %}
-		<button type="submit" class="btn btn-primary">{% trans "Submit" %}</button>
-	</form>
+	{% include "base/_form.html" %}
 {% endblock %}
 
 {% block scripts %}
 	{{ block.super }}
-	{% include "Repository/imports/select2.html" %}
+	{% include "base/imports/select2.html" %}
 {% endblock %}

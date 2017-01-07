@@ -9,6 +9,15 @@ from django import template
 
 register = template.Library()
 
+@register.filter(name='convert')
+def convert(field, to_type):
+	if type(field) == type([]):
+		return map(lambda x: convert(x,to_type), field)
+	else:
+		if to_type == 'int':
+			return  int(field)
+		else:
+			return field
 
 @register.filter(name='is_checkbox')
 def is_checkbox(field):

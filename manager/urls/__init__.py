@@ -5,7 +5,6 @@ from django.core.urlresolvers import reverse_lazy
 
 from manager.feed import PublicationsLatests
 
-
 urlpatterns = [
 	url(r'^$', RedirectView.as_view(url=reverse_lazy('manager:home'), permanent=True)),
 	url(r'^index/$', TemplateView.as_view(template_name="manager/index.html"), name="home"),

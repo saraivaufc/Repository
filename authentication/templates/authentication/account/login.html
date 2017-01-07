@@ -28,15 +28,15 @@
 			<p>{% trans "Please login to see this page." %}</p>
 		{% endif %}
 	{% endif %}
-	<form action="{% url 'authentication:django.contrib.auth.views.login' %}" method="post">{% csrf_token %}		
-		{% include "Repository/_form.html" %}
-		<button type="submit" class="btn btn-primary">{% trans "Submit" %}</button>
-		<input type="hidden" name="next" value="{{ next }}" />
-	</form>
-	<a href="{% url 'authentication:account_password_reset' %}">
-		{% trans "Lost password?" %}
-	</a>
-	<a href="{% url 'authentication:account_register' %}">
-		{% trans "Register" %}
-	</a>
+	
+	{% include "base/_form.html" %}
+	
+	<div class="col-md-12">
+		<a href="{% url 'authentication:account_password_reset' %}">
+			{% trans "Lost password?" %}
+		</a>
+		<a href="{% url 'authentication:account_register' %}">
+			{% trans "Register" %}
+		</a>
+	</div>
 {% endblock %}

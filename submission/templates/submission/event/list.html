@@ -34,7 +34,7 @@
 
 	<div class="col-md-8">
 	<div class="row float-xs-right">
-		{% include "Repository/_form_search.html" %}
+		{% include "base/_form_search.html" %}
 	</div>
 	</div>
 
@@ -99,12 +99,12 @@
 
 	<div class="col-md-12">
 	<div class="row">
-		{% include "Repository/_paginate.html" %}
+		{% include "base/_paginate.html" %}
 	</div>
 	</div>
 {% endblock %}
 
 {% block scripts %}
 	{{ block.super }}
-	{% include "Repository/imports/boxer.html" %}
+	{% include "base/imports/boxer.html" %}
 {% endblock %}
