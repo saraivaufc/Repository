@@ -44,7 +44,7 @@
 	</div>
 	<hr class="divider"/>
 	<div class="col-md-6">
-		<dl class="definition text" itemscope>
+		<dl class="definition text" itemscope itemtype="http://schema.org/Event">
 			<dt class="col-sm-3">{% trans "Community" %}:</dt>
 			<dd class="col-sm-9" itemprop="community">
 				<a href="{% url 'manager:community_detail' slug=event.community.slug page=1 %}" class="tag tag-primary">
@@ -66,44 +66,43 @@
 
 			<dt class="col-sm-3">{% trans "Address" %}:</dt>
 			<dd class="col-sm-9" itemprop="address">{{ event.address }}</dd>
-
-			<dt class="col-sm-3">{% trans "Year" %}:</dt>
-			<dd class="col-sm-9" itemprop="year">{{ event.year }}</dd>
 		</dl>
 	</div>
-	<div class="col-md-6" style="border: 1px solid #000000;">
-		<h5 class="text-xs-center">{% trans "Submissions dates" %}</h5>
-		<dl class="row">
+	<div class="col-md-6">
+		<dl class="definition text" itemscope itemtype="http://schema.org/Date">
 			<dt class="col-sm-5">{% trans "Submission 1" %}:</dt>
-			<dd class="col-sm-7">
+			<dd class="col-sm-7" itemprop="submission_1">
 				{{ event.submission_1_open }} -- {{ event.submission_1_close }}
 			</dd>
 
 			<dt class="col-sm-5">{% trans "Review" %}:</dt>
-			<dd class="col-sm-7">
+			<dd class="col-sm-7" itemprop="review">
 				{{ event.review_open }} -- {{ event.review_close }}
 			</dd>
 
 			<dt class="col-sm-5">{% trans "Submission 2" %}:</dt>
-			<dd class="col-sm-7">
+			<dd class="col-sm-7" itemprop="submission_2">
 				{{ event.submission_2_open }} -- {{ event.submission_2_close }}
 			</dd>
 		</dl>
-		{% if event.stage.type == 'before_period' %}
-			{{ event.submission_1_open }}
-		{% else %}
-			<a href="{% url 'submission:submission_list' event_slug=event.slug page=1 %}" data-toggle="tooltip" title="{% trans "My Submissions" %}">
-				<i class="fa fa-upload"></i>
-				{% trans "My Submissions" %}
-			</a>
-		{% endif %}
-		{% if perms.submission.list_submission_to_review and event.stage.type != 'before_period' and event.stage.type != 'submission_open_1' and event.stage.type != 'out_of_period'  %}
-								/
-			<a href="{% url 'submission:submission_list_to_review' event_slug=event.slug page=1 %}" data-toggle="tooltip" title="{% trans "To Review" %}">
-				<i class="fa fa-file-text-o"></i>
-				{% trans "Reviews" %}
-			</a>
-		{% endif %}
+		<div class="col-sm-6">
+			{% if event.stage.type == 'before_period' %}
+				{{ event.submission_1_open }}
+			{% else %}
+				<a href="{% url 'submission:submission_list' event_slug=event.slug page=1 %}" data-toggle="tooltip" title="{% trans "My Submissions" %}">
+					<i class="fa fa-upload"></i>
+					{% trans "My Submissions" %}
+				</a>
+			{% endif %}
+		</div>
+		<div class="col-sm-6">
+			{% if perms.submission.list_submission_to_review and event.stage.type != 'before_period' and event.stage.type != 'out_of_period'  %}
+				<a href="{% url 'submission:submission_list_to_review' event_slug=event.slug page=1 %}" data-toggle="tooltip" title="{% trans "To Review" %}">
+					<i class="fa fa-file-text-o"></i>
+					{% trans "To Review" %}
+				</a>
+			{% endif %}
+		</div>
 	</div>
 </div>
 {% endblock %}

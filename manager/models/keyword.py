@@ -15,6 +15,7 @@ class Keyword(models.Model):
 
 	def save(self, *args, **kwargs):
 		if not self.id:
+			self.name = self.name.upper()
 			self.slug = orig = slugify(self.name)
 			for x in itertools.count(1):
 				if not Keyword.objects.filter(slug=self.slug).exists():

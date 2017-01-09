@@ -2,6 +2,11 @@
 
 {% load i18n static %}
 
+{% block css %}
+	{{ block.super }}
+	<link rel="stylesheet" type="text/css" media="all" href="{% static "manager/css/base.css" %}" />
+{% endblock %}
+
 
 {% block title %}{% endblock %}
 
@@ -79,4 +84,10 @@
 			</section>
 		</div>
 	</div>
+{% endblock %}
+
+
+{% block js %}
+	{{ block.super }}
+	<script src="{% static 'manager/js/base.js' %}"></script>
 {% endblock %}

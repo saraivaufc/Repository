@@ -21,10 +21,13 @@
 	{% include "base/_form.html" %}
 {% endblock %}
 
-{% block scripts %}
+{% block js %}
 	{{ block.super }}
 	{% include "base/imports/select2.html" %}
+{% endblock %}
 
+{% block scripts %}
+	{{ block.super }}
 	<script type="text/javascript">
 		var fields = [
 			{id:'#id_communities', url:'manager:community_create', parameters:{}},

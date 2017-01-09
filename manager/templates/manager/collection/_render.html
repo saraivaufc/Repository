@@ -1,6 +1,6 @@
 {% load i18n %}
 
-<dl class="definition text" itemscope>
+<dl class="definition text" itemscope itemtype="http://schema.org/Collection">
 	<dt class="col-sm-2">{% trans "Communities" %}:</dt>
 	<dd class="col-sm-10" itemprop="communities">
 		{% for community in collection.communities.all %}

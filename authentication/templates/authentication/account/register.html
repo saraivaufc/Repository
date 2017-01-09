@@ -17,11 +17,6 @@
 
 {%  block page_title %}{% trans "Register" %}{% endblock %}
 
-{% block content %}
-	<form action="{% url 'authentication:account_register' %}" method="post">
-		{% csrf_token %}		
-		{% include "base/_form.html" %}
-		<button type="submit" class="btn btn-primary">{% trans "Submit" %}</button>
-		<input type="hidden" name="next" value="{{ next }}" />
-	</form>
+{% block content %}	
+	{% include "base/_form.html" %}
 {% endblock %}

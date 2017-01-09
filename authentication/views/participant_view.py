@@ -19,8 +19,8 @@ class ParticipantListView(ListView):
 		text = self.request.GET.get('text')
 		if query and query in dict(self.fields_search):
 			kwargs = {("%s__contains" % (query,)):text}
-			return User.objects.filter(is_staff=False, is_reviser=False, ** kwargs)
-		return User.objects.filter(is_staff=False, is_reviser=False)
+			return User.objects.filter(** kwargs)
+		return User.objects.all()
 
 	def get_context_data(self, ** kwargs):
 		context = super(ParticipantListView, self).get_context_data( ** kwargs)

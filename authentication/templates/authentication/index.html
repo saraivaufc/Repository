@@ -2,6 +2,10 @@
 
 {% load i18n static %}
 
+{% block css %}
+	{{ block.super }}
+	<link rel="stylesheet" type="text/css" media="all" href="{% static "authentication/css/base.css" %}" />
+{% endblock %}
 
 {% block title %}{% endblock %}
 
@@ -16,4 +20,10 @@
 
 {% block content %}
 
+{% endblock %}
+
+
+{% block js %}
+	{{ block.super }}
+	<script src="{% static 'authentication/js/base.js' %}"></script>
 {% endblock %}

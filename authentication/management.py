@@ -10,6 +10,8 @@ group_permissions = {
 	"participant": [
 		#author
 		"add_author",
+		#keyword
+		"add_keyword",
 		#submission
 		"add_submission",
 		"change_submission",
@@ -17,9 +19,6 @@ group_permissions = {
 	],
 	"reviser": [
 		#submission
-		"add_submission",
-		"change_submission",
-		"delete_submission",
 		"list_submission_to_review",
 
 		"add_review",
@@ -60,9 +59,6 @@ group_permissions = {
 		"change_event",
 		"delete_event",
 		#submission
-		"add_submission",
-		"change_submission",
-		"delete_submission",
 		"list_submission_to_review",
 		"submit_final",
 		#Reviser

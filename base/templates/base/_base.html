@@ -31,61 +31,55 @@
 {% load i18n %}
 
 <body>
-	<div class="col-md-12">
-		<header class="row">
-			{% include 'base/_no_script.html' %}
-			{% block header  %}
-			{% include "base/_header.html" %}
-			{% endblock %}
-		</header>
-	</div>
-	<div class="col-md-12">
-		<section class="row">
-			{% block two_header %}
-			<nav class="breadcrumb">
-		        {% block breadcrumbs %}
-		        <a href="{% url 'manager:home' %}" class="breadcrumb-item" >
-					<i class="fa fa-home" aria-hidden="true"></i>
-					{% trans "Home" %}
-				</a>
-		 	   {% endblock %}
-			</nav>
-			{% endblock %}
-		</section>
-		<section class="row">
-		{% block messages %}
-			{% include 'base/_messages.html' %}
-		{% endblock messages %}
-		</section>
-	</div>
+	
+	<header id="header">
+		{% include 'base/_no_script.html' %}
+		{% block header  %}
+		{% include "base/_header.html" %}
+		{% endblock %}
+	</header>
+	
+	{% block two_header %}
+	<nav id="breadcrumb" class="breadcrumb">
+        {% block breadcrumbs %}
+        <a href="{% url 'manager:home' %}" class="breadcrumb-item" >
+			<i class="fa fa-home" aria-hidden="true"></i>
+			{% trans "Home" %}
+		</a>
+ 	   {% endblock %}
+	</nav>
+	{% endblock %}
 
-	<div class="col-sm-12 col-md-12">
-		<div class="container-fluid">
-			<div class="row">
-				{% block site %}
-					<label class="h4 text-xs-center text-sm-center text-md-center page-title">
-						{%  block page_title %}{% endblock %}
-					</label>
-					<section class="page-container">
-						<div class="container-fluid">
-							<div class="row">
-							{% block content %}
+	<section id="messages">
+	{% block messages %}
+		{% include 'base/_messages.html' %}
+	{% endblock messages %}
+	</section>
 
-							{% endblock %}
-							</div>
-						</div>
-					</section>
-				{% endblock %}
-			</div>
+	<section id="content"> 
+	{% block site %}
+		<label class="h4 text-xs-center text-sm-center text-md-center page-title">
+			{%  block page_title %}{% endblock %}
+		</label>
+		<div class="page-container">
+			<div class="container-fluid">
+				<div class="row">
+					{% block content %}
+
+					{% endblock %}
+				</div>
+			</div>/
 		</div>
-	</div>
-	<div class="col-md-12">
-		<div class="row">
-			{% block footer %}
-				{% include "base/_footer.html" %}
-			{% endblock %}
-		</div>
-	</div>
+	{% endblock %}
+	</section>
+
+
+	<footer id="footer" class="navbar navbar-dark bg-primary bg-faded" style="display: inline-block; width: 100%;">
+	{% block footer %}
+		{% include "base/_footer.html" %}
+	{% endblock %}
+	</footer>
+
 
 	{% block js %}
 		<script src="{% static "base/packages/jquery-3.1.1.js" %}"></script>
