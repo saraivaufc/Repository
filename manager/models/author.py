@@ -28,6 +28,9 @@ class Author(models.Model):
 	def __unicode__(self):
 		return self.reference_name
 
+	def verbose_name(self):
+		return self._meta.verbose_name
+
 	class Meta:
 		ordering = ['-registration_date']
 		verbose_name = _(u"Author")

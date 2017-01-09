@@ -6,6 +6,7 @@ from django.core.urlresolvers import reverse_lazy
 from django.contrib.auth.decorators import login_required, permission_required
 from django.conf import settings
 
+from base.views import AjaxableResponseMixin
 from manager.models import Publisher, Publication
 
 class PublisherListView(ListView):
@@ -27,14 +28,11 @@ class PublisherListView(ListView):
 		context["url_search"] = reverse_lazy("manager:publisher_list", kwargs={"page":1})
 		return context
 
-class PublisherCreateView(CreateView):
+class PublisherCreateView(AjaxableResponseMixin, CreateView):
 	template_name = 'manager/publisher/form.html'
 	model = Publisher
 	fields = ['name']
 	success_url = reverse_lazy('manager:publisher_list', kwargs={'page': 1})
-
-	def form_valid(self, form):
-		return super(PublisherCreateView, self).form_valid(form)
 
 class PublisherUpdateView(UpdateView):
 	template_name = 'manager/publisher/form.html'

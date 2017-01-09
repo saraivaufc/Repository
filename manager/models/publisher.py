@@ -7,7 +7,7 @@ class Publisher(models.Model):
 	FIELDS_SEARCH = (
 		("name",_("Name")),
 	)
-	name = models.CharField(verbose_name=_("Name"), max_length=100, null=False, blank=False)
+	name = models.CharField(verbose_name=_("Name"), max_length=100, unique=True, null=False, blank=False)
 	slug = models.SlugField(_('slug'), max_length=60, blank=True, unique=True)
 	
 	registration_date = models.DateTimeField(verbose_name=_("Registration Date"), auto_now_add=True, auto_now=False)
@@ -23,6 +23,9 @@ class Publisher(models.Model):
 
 	def __unicode__(self):
 		return self.name
+
+	def verbose_name(self):
+		return self._meta.verbose_name
 	
 	class Meta:
 		ordering = ['-registration_date']

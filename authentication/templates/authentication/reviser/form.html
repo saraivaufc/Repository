@@ -19,8 +19,5 @@
 {% block page_title %}{% trans "Form Reviser" %}{% endblock %}
 
 {% block content %}
-	<form action="." method="post" enctype="multipart/form-data">{% csrf_token %}		
-		{% include "base/_form.html" %}
-		<button type="submit" class="btn btn-primary">{% trans "Submit" %}</button>
-	</form>
+	{% include "base/_form.html" %}
 {% endblock %}

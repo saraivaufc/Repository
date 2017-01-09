@@ -75,6 +75,9 @@ class Publication(models.Model):
 	def __unicode__(self):
 		return self.title
 
+	def verbose_name(self):
+		return self._meta.verbose_name
+
 	class Meta:
 		ordering = ['-registration_date']
 		verbose_name = _(u"Publication")

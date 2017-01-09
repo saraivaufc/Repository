@@ -1,12 +1,13 @@
 from django.utils.translation import ugettext_lazy as _
 from django.views.generic.list import ListView
+from django.http import JsonResponse
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic.detail import DetailView, SingleObjectMixin
 from django.core.urlresolvers import reverse_lazy
 from django.contrib.auth.decorators import login_required, permission_required
 from django.conf import settings
 
-
+from base.views import AjaxableResponseMixin
 from manager.models import Author, Publication
 
 class AuthorListView(ListView):
@@ -28,14 +29,11 @@ class AuthorListView(ListView):
 		context["url_search"] = reverse_lazy("manager:author_list", kwargs={"page":1})
 		return context
 
-class AuthorCreateView(CreateView):
+class AuthorCreateView(AjaxableResponseMixin, CreateView):
 	template_name = 'manager/author/form.html'
 	model = Author
 	fields = ['first_name', 'last_name']
 	success_url = reverse_lazy('manager:author_list', kwargs={'page': 1})
-
-	def form_valid(self, form):
-		return super(AuthorCreateView, self).form_valid(form)
 
 class AuthorUpdateView(UpdateView):
 	template_name = 'manager/author/form.html'

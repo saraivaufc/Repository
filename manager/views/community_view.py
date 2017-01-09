@@ -6,6 +6,7 @@ from django.core.urlresolvers import reverse_lazy
 from django.contrib.auth.decorators import login_required, permission_required
 from django.conf import settings
 
+from base.views import AjaxableResponseMixin
 from manager.models import Community, Collection, Publication
 
 class CommunityListView(ListView):
@@ -27,14 +28,11 @@ class CommunityListView(ListView):
 		context["url_search"] = reverse_lazy("manager:community_list", kwargs={"page":1})
 		return context
 
-class CommunityCreateView(CreateView):
+class CommunityCreateView(AjaxableResponseMixin, CreateView):
 	template_name = 'manager/community/form.html'
 	model = Community
 	fields = ['name','acronym']
 	success_url = reverse_lazy('manager:community_list', kwargs={'page': 1})
-
-	def form_valid(self, form):
-		return super(CommunityCreateView, self).form_valid(form)
 
 class CommunityUpdateView(UpdateView):
 	template_name = 'manager/community/form.html'

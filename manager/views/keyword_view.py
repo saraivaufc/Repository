@@ -7,6 +7,7 @@ from django.contrib.auth.decorators import login_required, permission_required
 from django.conf import settings
 from django.contrib import messages
 
+from base.views import AjaxableResponseMixin
 from manager.models import Keyword, Publication
 from manager.utils.constants import Constants as ConstantsManager
 
@@ -30,19 +31,11 @@ class KeywordListView(ListView):
 		context["url_search"] = reverse_lazy("manager:keyword_list", kwargs={"page":1})
 		return context
 
-class KeywordCreateView(CreateView):
+class KeywordCreateView(AjaxableResponseMixin, CreateView):
 	template_name = 'manager/keyword/form.html'
 	model = Keyword
 	fields = ['name']
 	success_url = reverse_lazy('manager:keyword_list', kwargs={'page': 1})
-
-	def form_valid(self, form):
-		messages.success(self.request, ConstantsManager.KEYWORD_SUCCESS_ADD)
-		return super(KeywordCreateView, self).form_valid(form)
-
-	def form_invalid(self, form):
-		messages.error(self.request, ConstantsManager.KEYWORD_ERROR_ADD)
-		return super(KeywordCreateView, self).form_invalid(form)
 
 class KeywordUpdateView(UpdateView):
 	template_name = 'manager/keyword/form.html'

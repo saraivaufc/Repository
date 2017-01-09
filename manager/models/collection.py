@@ -9,7 +9,7 @@ class Collection(models.Model):
 		("description", _("Description")),
 	)
 	communities = models.ManyToManyField("Community", verbose_name=_("Communities"), null=False, blank=False)
-	name = models.CharField(verbose_name=_("Name"), max_length=100, null=False, blank=False)
+	name = models.CharField(verbose_name=_("Name"), max_length=100, unique=True, null=False, blank=False)
 	description = models.TextField(verbose_name=_("description"), null=False, blank=False)
 	slug = models.SlugField(verbose_name=_('slug'), max_length=60, blank=True, unique=True)
 	
@@ -25,6 +25,9 @@ class Collection(models.Model):
 
 	def __unicode__(self):
 		return self.name
+
+	def verbose_name(self):
+		return self._meta.verbose_name
 
 	class Meta:
 		ordering = ['-registration_date']

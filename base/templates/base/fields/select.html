@@ -3,11 +3,11 @@
 <div class="container-fluid">
 	<div class="form-group row">
 		{% include 'base/fields/headers/caption.html' %}
-		<div class="col-xs-10">
+		<div class="col-xs-9">
 			<select data-toggle="tooltip" title="{{ field.help_text }}"
 				class="form-control {{ field.css_classes }}"
 				name="{% if form.prefix %}{{form.prefix}}-{% endif %}{{ field.name }}"
-				type="email" id="{{ field.auto_id }}"
+				id="{{ field.auto_id }}"
 				{% include 'base/fields/headers/attrs.html' %}
 				{% if field.field.required %}
 					required="required"
@@ -17,6 +17,12 @@
 				<option value="{{ value }}" {% ifequal value field.value %}selected="selected"{% endifequal %}>{{ text }}</option>
 				{% endfor %}
 			</select>
+			{% include 'base/fields/headers/errors.html' %}
+		</div>
+		<div class="col-xs-1" style="height: 100px;">
+			<div class="btn-plus">
+				
+			</div>
 		</div>
 	</div>
 </div>

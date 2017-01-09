@@ -6,7 +6,7 @@ from django.core.urlresolvers import reverse_lazy
 from django.contrib.auth.decorators import login_required, permission_required
 from django.conf import settings
 
-
+from base.views import AjaxableResponseMixin
 from manager.models import Collection, Publication
 
 class CollectionListView(ListView):
@@ -28,7 +28,7 @@ class CollectionListView(ListView):
 		context["url_search"] = reverse_lazy("manager:collection_list", kwargs={"page":1})
 		return context
 
-class CollectionCreateView(CreateView):
+class CollectionCreateView(AjaxableResponseMixin, CreateView):
 	template_name = 'manager/collection/form.html'
 	model = Collection
 	fields = ['communities','name', 'description']

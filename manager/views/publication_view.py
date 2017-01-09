@@ -8,6 +8,7 @@ from django.contrib.auth.decorators import login_required, permission_required
 from django.conf import settings
 import hashlib
 
+from base.views import AjaxableResponseMixin
 from manager.models import Publication
 
 class PublicationListView(ListView):
@@ -29,7 +30,7 @@ class PublicationListView(ListView):
 		context["url_search"] = reverse_lazy("manager:publication_list", kwargs={"page":1})
 		return context
 
-class PublicationCreateView(CreateView):
+class PublicationCreateView(AjaxableResponseMixin, CreateView):
 	template_name = 'manager/publication/form.html'
 	model = Publication
 	fields = ['title', 'typology', 'subjects', 'authors', 'community',

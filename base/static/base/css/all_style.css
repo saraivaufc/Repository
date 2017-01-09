@@ -1,14 +1,3 @@
-body{
-	background-image: url("/static/Repository/img/background.jpg");
-   	background-repeat: repeat-y;
-}
-
-.sidebar, .sidebar > .sidebar-item{
-	width: 100%;
-	margin-right: 5px;
-	font-weight: bold;
-}
-
 .page-title{
 	font-family:"Trebuchet MS", Helvetica, sans-serif;
 	color:#FFF;
@@ -30,6 +19,12 @@ body{
 	width: 100%;
 }
 
+.sidebar, .sidebar > .sidebar-item{
+	width: 100%;
+	margin-right: 5px;
+	font-weight: bold;
+}
+
 .full-width{
 	width: 100%;
 	min-width: 100%;
@@ -39,16 +34,12 @@ body{
 	height: 100%;
 }
 
-
-.card-img-top{
-	margin-top: 15px;
-}
-
 .text{
 	background-color: #fff;
 	padding: 10px;
 }
 
+/* DEFINITION */
 dl.definition{
 	width: 100%;
 }
@@ -62,10 +53,15 @@ dl.definition > dt:nth-child(1), dl.definition > dd:nth-child(2){
 	border-top: none;
 }
 
-
+/* CARD */
 .card{
 	border: 1px solid #ddd;
 }
+
+.card-img-top{
+	margin-top: 15px;
+}
+
 
 ul.errorlist > li{
 	color: red;
@@ -76,6 +72,28 @@ hr.divider{
 	margin-bottom: 10px;
 }
 
+.hide{
+	display: none;
+}
+
+
+/* FORMS */
 .form-group{
 	margin-bottom: 0px;
+}
+
+span.select2-selection--multiple{
+	width: 100% !important;
+}
+
+input[type="email"]{
+	width: 300px !important;
+}
+
+input[type="datetime"]{
+	width: 150px !important;
+}
+
+input[type="number"], input[type="date"]{
+	width: 100px !important;
 }

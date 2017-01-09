@@ -1,0 +1,40 @@
+{% extends 'base/_base.html' %}
+
+{% load i18n %}
+
+{% block title %}Add {{ model_name }}{% endblock %}
+
+{% block header %}
+{% endblock %}
+
+{% block two_header %}{% endblock %}
+
+{% block messages %}
+
+{% endblock %}
+
+{%  block page_title %}
+	{% blocktrans with model_name=model.verbose_name %}
+		Add {{ model_name }}
+	{% endblocktrans %}
+{% endblock %}
+
+{% block content %}
+	<div id="loading">
+		<h2 class="text-xs-center">{% trans "Loading..." %}</h2>
+	</div>
+	<div id="form-container" class="hide full-width">
+	{% include 'base/_form.html' with is_popup=True %}
+	</div>
+{% endblock %}
+
+{% block footer %}
+{% endblock %}
+
+{% block scripts %}
+	{{ block.super }}
+	<script type="text/javascript">
+		$("#loading").addClass("hide");
+		$("#form-container").removeClass("hide");
+	</script>
+{% endblock %}

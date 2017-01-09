@@ -1,1 +1,2 @@
 from reverse_view import ReverseView
+from ajaxable_response_mixin import AjaxableResponseMixin

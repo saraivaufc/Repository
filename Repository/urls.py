@@ -25,10 +25,11 @@ urlpatterns = [
 	url(r'^contact_us/$', TemplateView.as_view(template_name="base/contact_us.html"), name="contact_us"),
 	
 	url(r'^django/', include(admin.site.urls), name='admin'),
+		
 	url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}),
 	url(r'^i18n/', include('django.conf.urls.i18n')),
 	url(r'^rosetta/', include('rosetta.urls')),
-	url(r'^jsi18n/$', javascript_catalog, js_info_dict, name='javascript-catalog'),
+	#url(r'^jsi18n/$', javascript_catalog, js_info_dict, name='javascript-catalog'),
 ]
 
 urlpatterns +=[

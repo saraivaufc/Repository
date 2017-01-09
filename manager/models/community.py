@@ -8,7 +8,7 @@ class Community(models.Model):
 		("name", _("Name")), 
 		("acronym", _("Acronym")),
 	)
-	name = models.CharField(verbose_name=_("Name"), max_length=100, null=False, blank=False)
+	name = models.CharField(verbose_name=_("Name"), max_length=100, unique=True, null=False, blank=False)
 	acronym = models.CharField(verbose_name=_("Acronym"), max_length=100, null=False, blank=False)
 	slug = models.SlugField(_('slug'), max_length=60, blank=True, unique=True)
 	
@@ -25,6 +25,9 @@ class Community(models.Model):
 
 	def __unicode__(self):
 		return self.name
+
+	def verbose_name(self):
+		return self._meta.verbose_name
 	
 	class Meta:
 		ordering = ['-registration_date']

@@ -24,4 +24,11 @@
 {% block scripts %}
 	{{ block.super }}
 	{% include "base/imports/select2.html" %}
+
+	<script type="text/javascript">
+		var fields = [
+			{id:'#id_communities', url:'manager:community_create', parameters:{}},
+		];
+		create_objects(fields);
+	</script>
 {% endblock %}

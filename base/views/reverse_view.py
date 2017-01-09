@@ -12,7 +12,7 @@ class ReverseView(View):
 		if app_name:
 			self.url = reverse_lazy(app_name + ':' + url_name, kwargs=dict(self.request.GET))
 		else:
-			self.url = reverse_lazy(url_name, args)
+			self.url = reverse_lazy(url_name,  kwargs=dict(self.request.GET))
 		try:
 			response = JsonResponse({'url': str(self.url)})
 		except Exception, e:

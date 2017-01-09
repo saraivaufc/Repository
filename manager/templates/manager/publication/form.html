@@ -25,4 +25,16 @@
 	{{ block.super }}
 	{% include "base/imports/calendar.html" %}
 	{% include "base/imports/select2.html" %}
+
+	<script type="text/javascript">
+		var fields = [
+			{id:'#id_subjects', url:'manager:subject_create', parameters:{}},
+			{id:'#id_authors', url:'manager:author_create', parameters:{}},
+			{id:'#id_community', url:'manager:community_create', parameters:{}},
+			{id:'#id_collection', url:'manager:collection_create', parameters:{}},
+			{id:'#id_publisher', url:'manager:publisher_create', parameters:{}},
+			{id:'#id_keywords', url:'manager:keyword_create', parameters:{}},
+		];
+		create_objects(fields);
+	</script>
 {% endblock %}
