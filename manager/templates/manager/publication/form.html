@@ -25,6 +25,7 @@
 	{{ block.super }}
 	{% include "base/imports/calendar.html" %}
 	{% include "base/imports/select2.html" %}
+	{% include "base/imports/reverse.html" %}
 {% endblock %}
 
 {% block scripts %}
@@ -32,12 +33,12 @@
 
 	<script type="text/javascript">
 		var fields = [
-			{id:'#id_subjects', url:'manager:subject_create', parameters:{}},
-			{id:'#id_authors', url:'manager:author_create', parameters:{}},
-			{id:'#id_community', url:'manager:community_create', parameters:{}},
-			{id:'#id_collection', url:'manager:collection_create', parameters:{}},
-			{id:'#id_publisher', url:'manager:publisher_create', parameters:{}},
-			{id:'#id_keywords', url:'manager:keyword_create', parameters:{}},
+			{id:'#id_subjects', url: Urls['manager:subject_create']()},
+			{id:'#id_authors', url: Urls['manager:author_create']()},
+			{id:'#id_community', url: Urls['manager:community_create']()},
+			{id:'#id_collection', url: Urls['manager:collection_create']()},
+			{id:'#id_publisher', url: Urls['manager:publisher_create']()},
+			{id:'#id_keywords', url: Urls['manager:keyword_create']()},
 		];
 		create_objects(fields);
 	</script>

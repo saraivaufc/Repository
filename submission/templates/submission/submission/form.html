@@ -25,14 +25,15 @@
 	{{ block.super }}
 	{% include "base/imports/mask.html" %}
 	{% include "base/imports/select2.html" %}
+	{% include "base/imports/reverse.html" %}
 {% endblock %}
 
 {% block scripts %}
 	{{ block.super }}
 	<script type="text/javascript">
 		var fields = [
-			{id:'#id_authors', url:'manager:author_create', parameters:{}},
-			{id:'#id_keywords', url:'manager:keyword_create', parameters:{}},
+			{id:'#id_authors', url: Urls['manager:author_create']()},
+			{id:'#id_keywords', url: Urls['manager:keyword_create']()},
 		];
 		create_objects(fields);
 	</script>

@@ -47,6 +47,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.humanize',
     'rosetta',
+    'django_js_reverse', 
     'base',
     'submission',
     'manager',
@@ -72,7 +73,9 @@ ROOT_URLCONF = 'Repository.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['base/templates','manager/templates', 'submission/templates',],
+        'DIRS': ['base/templates',
+                'manager/templates', 
+                'submission/templates',],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -153,3 +156,10 @@ STATICFILES_DIRS = (os.path.join(PROJECT_DIR, '../base/static'),
                     os.path.join(PROJECT_DIR, '../manager/static'),
                     os.path.join(PROJECT_DIR, '../submission/static'), 
                     os.path.join(PROJECT_DIR, '../authentication/static'),)
+
+# Reverse
+JS_REVERSE_JS_VAR_NAME = 'Urls'
+JS_REVERSE_JS_GLOBAL_OBJECT_NAME = 'window'
+JS_REVERSE_JS_MINIFY = True
+JS_REVERSE_EXCLUDE_NAMESPACES = []
+JS_REVERSE_INCLUDE_ONLY_NAMESPACES = ['manager', 'authentication', 'submission']

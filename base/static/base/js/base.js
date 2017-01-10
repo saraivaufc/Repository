@@ -37,20 +37,18 @@ $('[data-toggle="tooltip"]').tooltip();
 function create_objects(fields){
 	for(var i=0; i < fields.length; i++){
 		var field = $(fields[i].id);
-		create_object(field, fields[i].url, fields[i].parameters);			
+		create_object(field, fields[i].url);			
 	}
 }
 
-function create_object(element, url, parameters){
+function create_object(element, url){
 	var i = $("<i>").addClass("fa fa-plus");
 	var button = $("<a>").addClass("btn btn-success btn-sm text-white").attr("type", "cancel").append(i);
 	console.log(button);
 	var button_plus=$(element).parent().parent().find('.btn-plus').append(button);
 	button.on('click', function(){
-		var url_ = window.location.origin + '/' + url;
-		$.get(url_, parameters, function(data){
-			create_window(element, data.url);
-		});
+		var url_ = window.location.origin + url;
+		create_window(element, url_);
 	});
 }
 

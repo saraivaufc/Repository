@@ -24,13 +24,14 @@
 {% block js %}
 	{{ block.super }}
 	{% include "base/imports/select2.html" %}
+	{% include "base/imports/reverse.html" %}
 {% endblock %}
 
 {% block scripts %}
 	{{ block.super }}
 	<script type="text/javascript">
 		var fields = [
-			{id:'#id_communities', url:'manager:community_create', parameters:{}},
+			{id:'#id_communities', url:Urls['manager:community_create']()},
 		];
 		create_objects(fields);
 	</script>

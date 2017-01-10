@@ -4,8 +4,8 @@ from django.views.generic.base import TemplateView
 from django.views.generic.base import RedirectView
 from django.core.urlresolvers import reverse_lazy
 from django.views.i18n import javascript_catalog
-from base.views import ReverseView
-
+from django_js_reverse.views import urls_js
+from django.views.decorators.cache import cache_page
 import settings
 
 
@@ -29,10 +29,6 @@ urlpatterns = [
 	url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}),
 	url(r'^i18n/', include('django.conf.urls.i18n')),
 	url(r'^rosetta/', include('rosetta.urls')),
+	url(r'^jsreverse/$', cache_page(3600)(urls_js), name='js_reverse'),
 	#url(r'^jsi18n/$', javascript_catalog, js_info_dict, name='javascript-catalog'),
-]
-
-urlpatterns +=[
-	url(r'^(?P<app_name>.*):(?P<url_name>.*)$', ReverseView.as_view(), name="reverse"),
-	url(r'^(?P<url_name>.*)$', ReverseView.as_view(), name="reverse"),
 ]

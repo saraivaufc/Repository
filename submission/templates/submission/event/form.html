@@ -25,6 +25,7 @@
 	{{ block.super }}
 	{% include "base/imports/mask.html" %}
 	{% include "base/imports/select2.html" %}
+	{% include "base/imports/reverse.html" %}
 {% endblock %}
 
 {% block scripts %}
@@ -32,9 +33,9 @@
 
 	<script type="text/javascript">
 		var fields = [
-			{id:'#id_community', url:'manager:community_create', parameters:{}},
-			{id:'#id_collection', url:'manager:collection_create', parameters:{}},
-			{id:'#id_publisher', url:'manager:publisher_create', parameters:{}},
+			{id:'#id_community', url: Urls['manager:community_create']()},
+			{id:'#id_collection', url: Urls['manager:collection_create']()},
+			{id:'#id_publisher', url: Urls['manager:publisher_create']()},
 		];
 		create_objects(fields);
 	</script>
