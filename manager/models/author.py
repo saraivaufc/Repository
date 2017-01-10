@@ -3,11 +3,9 @@ from django.template.defaultfilters import slugify
 from django.db import models
 import itertools
 
+
 class Author(models.Model):
-	FIELDS_SEARCH = (
-		("first_name", _("First Name")), 
-		("last_name", _("Last Name")),
-	)
+	
 	first_name = models.CharField(verbose_name=_("First name"), max_length=100, null=False, blank=False)
 	last_name = models.CharField(verbose_name=_("Last name"), max_length=100, null=False, blank=False)
 	reference_name = models.CharField(verbose_name=_("Reference name"), max_length=200, null=True, blank=True)
@@ -15,6 +13,21 @@ class Author(models.Model):
 
 	registration_date = models.DateTimeField(verbose_name=_("Registration Date"), auto_now_add=True, auto_now=False)
 	
+	def get_search_fields():
+		return (
+			("first_name", _("First Name")), 
+			("last_name", _("Last Name")),
+		)
+	def get_output_fields():
+		return (
+			("first_name", _("First Name")), 
+			("last_name", _("Last Name")),
+			("reference_name", _("Reference name")),
+		)
+
+	get_search_fields = staticmethod(get_search_fields)
+	get_output_fields = staticmethod(get_output_fields)
+
 	def save(self, *args, **kwargs):
 		if not self.id:
 			self.slug = orig = slugify(self.first_name + self.last_name)
@@ -26,6 +39,9 @@ class Author(models.Model):
 		super(Author, self).save(*args, **kwargs)
 
 	def __unicode__(self):
+		return self.reference_name
+
+	def natural_key(self):
 		return self.reference_name
 
 	def verbose_name(self):

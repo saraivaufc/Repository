@@ -8,24 +8,12 @@ from django.conf import settings
 
 from submission.models import Event
 
-class EventListView(ListView):
+from base.views import  SearchResponseMixin, CSVResponseMixin
+
+class EventListView(SearchResponseMixin, CSVResponseMixin, ListView):
 	template_name = 'submission/event/list.html'
 	paginate_by = settings.PAGINATE_BY
-	fields_search = Event.FIELDS_SEARCH
-
-	def get_queryset(self):
-		query = self.request.GET.get('query')
-		text = self.request.GET.get('text')
-		if query and query in dict(self.fields_search):
-			kwargs = {("%s__contains" % (query,)):text}
-			return Event.objects.filter(** kwargs)
-		return Event.objects.all()
-
-	def get_context_data(self, ** kwargs):
-		context = super(EventListView, self).get_context_data( ** kwargs)
-		context["fields_search"] = self.fields_search
-		context["url_search"] = reverse_lazy("submission:event_list", kwargs={"page":1})
-		return context
+	model = Event
 
 class EventCreateView(CreateView):
 	template_name = 'submission/event/form.html'

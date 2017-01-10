@@ -21,8 +21,21 @@ class Submission(models.Model):
 	
 	registration_date = models.DateTimeField(verbose_name=_("Registration Date"), auto_now_add=True, auto_now=False)
 
-	def __unicode__(self):
-		return self.publication.title 
+	def get_search_fields():
+		return (
+			("publication.title", _("Title")), 
+			("publication.description", _("Description")),
+		)
+	def get_output_fields():
+		return (
+			("event", _("Event")),
+			("user", _("User")),
+			("publication", _("Publication")),
+			("reviser", _("Reviser")),
+		)
+
+	get_search_fields = staticmethod(get_search_fields)
+	get_output_fields = staticmethod(get_output_fields)
 
 	def save(self, *args, **kwargs):
 		if not self.id:
@@ -37,6 +50,16 @@ class Submission(models.Model):
 		publication = self.publication
 		publication.delete()
 		super(Submission, self).delete(*args, **kwargs)
+
+	def __unicode__(self):
+		return self.publication.title
+
+	def natural_key(self):
+		return self.publication.title
+
+	def verbose_name(self):
+		return self._meta.verbose_name
+
 	class Meta:
 		verbose_name = _(u'Submission')
 		verbose_name_plural = _(u'Submission')

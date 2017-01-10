@@ -8,27 +8,17 @@ from django.contrib.auth.decorators import login_required, permission_required
 from django.conf import settings
 import hashlib
 
-from base.views import AjaxableResponseMixin
+from base.views import AjaxableResponseMixin, SearchResponseMixin, CSVResponseMixin
 from manager.models import Publication
 
-class PublicationListView(ListView):
+class PublicationListView(SearchResponseMixin, CSVResponseMixin, ListView):
 	template_name = 'manager/publication/list.html'
 	paginate_by = settings.PAGINATE_BY
-	fields_search = Publication.FIELDS_SEARCH
+	model = Publication
 
 	def get_queryset(self):
-		query = self.request.GET.get('query')
-		text = self.request.GET.get('text')
-		if query and query in dict(self.fields_search):
-			kwargs = {("%s__contains" % (query,)):text}
-			return Publication.objects.filter(is_final=True, ** kwargs)
-		return Publication.objects.filter(is_final=True)
-
-	def get_context_data(self, ** kwargs):
-		context = super(PublicationListView, self).get_context_data( ** kwargs)
-		context["fields_search"] = self.fields_search
-		context["url_search"] = reverse_lazy("manager:publication_list", kwargs={"page":1})
-		return context
+		queryset = super(PublicationListView, self).get_queryset()
+		return queryset.filter(is_final=True)
 
 class PublicationCreateView(AjaxableResponseMixin, CreateView):
 	template_name = 'manager/publication/form.html'

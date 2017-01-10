@@ -6,27 +6,13 @@ from django.core.urlresolvers import reverse_lazy
 from django.contrib.auth.decorators import login_required, permission_required
 from django.conf import settings
 
-from base.views import AjaxableResponseMixin
+from base.views import AjaxableResponseMixin, SearchResponseMixin, CSVResponseMixin
 from manager.models import Subject, Publication
 
-class SubjectListView(ListView):
+class SubjectListView(SearchResponseMixin, CSVResponseMixin, ListView):
 	template_name = 'manager/subject/list.html'
 	paginate_by = settings.PAGINATE_BY
-	fields_search = Subject.FIELDS_SEARCH
-
-	def get_queryset(self):
-		query = self.request.GET.get('query')
-		text = self.request.GET.get('text')
-		if query and query in dict(self.fields_search):
-			kwargs = {("%s__contains" % (query,)):text}
-			return Subject.objects.filter(** kwargs)
-		return Subject.objects.all()
-
-	def get_context_data(self, ** kwargs):
-		context = super(SubjectListView, self).get_context_data( ** kwargs)
-		context["fields_search"] = self.fields_search
-		context["url_search"] = reverse_lazy("manager:subject_list", kwargs={"page":1})
-		return context
+	model = Subject
 
 class SubjectCreateView(AjaxableResponseMixin, CreateView):
 	template_name = 'manager/subject/form.html'

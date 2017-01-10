@@ -7,27 +7,13 @@ from django.core.urlresolvers import reverse_lazy
 from django.contrib.auth.decorators import login_required, permission_required
 from django.conf import settings
 
-from base.views import AjaxableResponseMixin
+from base.views import AjaxableResponseMixin, SearchResponseMixin, CSVResponseMixin
 from manager.models import Author, Publication
 
-class AuthorListView(ListView):
+class AuthorListView(SearchResponseMixin, CSVResponseMixin, ListView):
 	template_name = 'manager/author/list.html'
 	paginate_by = settings.PAGINATE_BY
-	fields_search = Author.FIELDS_SEARCH
-
-	def get_queryset(self):
-		query = self.request.GET.get('query')
-		text = self.request.GET.get('text')
-		if query and query in dict(self.fields_search):
-			kwargs = {("%s__contains" % (query,)):text}
-			return Author.objects.filter(** kwargs)
-		return Author.objects.all()
-
-	def get_context_data(self, ** kwargs):
-		context = super(AuthorListView, self).get_context_data( ** kwargs)
-		context["fields_search"] = self.fields_search
-		context["url_search"] = reverse_lazy("manager:author_list", kwargs={"page":1})
-		return context
+	model = Author
 
 class AuthorCreateView(AjaxableResponseMixin, CreateView):
 	template_name = 'manager/author/form.html'

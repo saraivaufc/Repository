@@ -1,8 +1,7 @@
 from django.http import JsonResponse
 
 class AjaxableResponseMixin(object):
-	template_name=None
-
+	
 	def get_template_names(self):
 		if self.request.GET.get("is_popup"):
 			return ["base/form_ajax.html",]

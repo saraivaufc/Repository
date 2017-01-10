@@ -11,5 +11,6 @@ urlpatterns = [
 	url(r'^event/', include('submission.urls.event')),
 	url(r'^event/(?P<event_slug>[-\w]+)/submission/', include('submission.urls.submissions')),
 	url(r'^event/(?P<event_slug>[-\w]+)/submission/(?P<submission_slug>[-\w]+)/', include('submission.urls.review')),
+	url(r'^report/', include('submission.urls.report')),
 	url(r'^feed/$', EventsLatests(), name="feed"),
 ]

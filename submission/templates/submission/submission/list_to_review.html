@@ -18,9 +18,15 @@
 	</a>
 {% endblock %}
 
-{%  block page_title %}{% trans "List of Submissions to Review" %}{% endblock %}
+{%  block page_title %}
+	{% if request.user.is_reviser %}
+		{% trans "List of Submissions to Your Review" %}
+	{% else %}
+		{% trans "List of Submissions to Review" %}
+	{% endif %}
+{% endblock %}
 
-{% block content %}	
+{% block content %}
 	<div class="col-md-12">
 	<div class="row">
 		<table class="table table-bordered table-striped table-hover text">

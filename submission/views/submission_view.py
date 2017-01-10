@@ -2,7 +2,6 @@ from django.utils.translation import ugettext_lazy as _
 from django.views.generic.list import ListView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic.detail import DetailView, SingleObjectMixin
-from django.views.generic import View
 from django.core.urlresolvers import reverse_lazy
 from django.contrib.auth.decorators import login_required, permission_required
 from django.conf import settings
@@ -12,23 +11,23 @@ from django.http import HttpResponseRedirect
 from authentication.models import User
 from submission.models import Submission, Event
 from manager.models import Publication
+from base.views import  SearchResponseMixin, CSVResponseMixin
 
 
-class SubmissionListView(ListView):
+class SubmissionListView(SearchResponseMixin, CSVResponseMixin, ListView):
 	template_name = 'submission/submission/list.html'
 	paginate_by = settings.PAGINATE_BY
-	fields_search = Submission.FIELDS_SEARCH
+	model = Submission
 
 	def get_queryset(self):
+		queryset = super(SubmissionListView, self).get_queryset()
 		event = Event.objects.filter(slug=self.kwargs['event_slug']).first()
-		return Submission.objects.filter(event=event, user=self.request.user)
+		return queryset.filter(event=event, user=self.request.user)
 
 	def get_context_data(self, ** kwargs):
 		context = super(SubmissionListView, self).get_context_data( ** kwargs)
 		event = Event.objects.filter(slug=self.kwargs['event_slug']).first()
 		context["event"] = event
-		context["fields_search"] = self.fields_search
-		context["url_search"] = reverse_lazy("submission:submission_list", kwargs={"event_slug": event.slug,"page":1})
 		return context
 
 class SubmissionCreateView(CreateView):
@@ -160,23 +159,29 @@ class SubmissionDetailView(DetailView):
 		return super(SubmissionDetailView, self).get(request)
 
 
-class SubmissionsToReviewListView(ListView):
+class SubmissionsToReviewListView(CSVResponseMixin, ListView):
 	template_name = 'submission/submission/list_to_review.html'
 	paginate_by = settings.PAGINATE_BY
-	fields_search = Submission.FIELDS_SEARCH
+	fields_search = Publication.FIELDS_SEARCH
+	model=Publication
 
 	def get_queryset(self):
 		event = Event.objects.filter(slug=self.kwargs['event_slug']).first()
 		if self.request.user.is_reviser:
 			return Submission.objects.filter(event=event,reviser=self.request.user)
-		return Submission.objects.filter(event=event)
+		else:
+			return Submission.objects.filter(event=event)
+
+	def get_queryset_csv(self):
+		publications = []
+		for submission in self.get_queryset():
+			publications.append(submission.publication)
+		return ("title", "authors", "typology"), publications
 
 	def get_context_data(self, ** kwargs):
 		context = super(SubmissionsToReviewListView, self).get_context_data( ** kwargs)
 		event = Event.objects.filter(slug=self.kwargs['event_slug']).first()
 		context["event"] = event
-		context["fields_search"] = self.fields_search
-		context["url_search"] = reverse_lazy("submission:submission_list", kwargs={"event_slug": event.slug,"page":1})
 		return context
 
 class SubmissionToReviewDetailView(DetailView):

@@ -1,9 +1,8 @@
 {% load i18n %}
-
-<form action="{{ url_search }}" method="GET" class="form-inline">
+<form action="" method="GET" class="form-inline">
 	<div class="input-group ">
 		<select value="title" name="query" class="form-control">
-			{% for elem, value in fields_search %}
+			{% for elem, value in model.get_search_fields %}
 			<option value="{{ elem }}">{{ value|title }}</option>
 			{% endfor %}
 		</select>

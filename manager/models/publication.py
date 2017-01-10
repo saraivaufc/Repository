@@ -51,6 +51,25 @@ class Publication(models.Model):
 	registration_date = models.DateTimeField(verbose_name=_("Registration Date"), auto_now_add=True, auto_now=False)
 	is_final =  models.BooleanField(verbose_name=_(u"Is Final"), default=False,)
 
+	def get_search_fields():
+		return (
+			("title", _("Title")), 
+			("address", _("Address")), 
+			("year", _("Year")), 
+			("abstract", _("Abstract")), 
+			("other_abstract", _("Other Abstract")),
+		)
+	def get_output_fields():
+		return (
+			("title", _("Title")),
+			("typology", _("Typology")), 
+			("authors", _("Authors")),
+		 	("year", _("Year")),
+		)
+
+	get_search_fields = staticmethod(get_search_fields)
+	get_output_fields = staticmethod(get_output_fields)
+
 	def save(self, *args, **kwargs):
 		if not self.id:
 			self.slug = orig = slugify(self.title)
@@ -73,6 +92,9 @@ class Publication(models.Model):
 		return self.language
 
 	def __unicode__(self):
+		return self.title
+
+	def natural_key(self):
 		return self.title
 
 	def verbose_name(self):

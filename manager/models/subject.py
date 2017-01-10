@@ -4,13 +4,16 @@ from django.db import models
 import itertools
 
 class Subject(models.Model):
-	FIELDS_SEARCH = (
-		("name",_("Name")),
-	)
 	name = models.CharField(verbose_name=_("Name"), max_length=100, unique=True, null=False, blank=False)
 	slug = models.SlugField(verbose_name=_('slug'), max_length=60, blank=True, unique=True)
-
 	registration_date = models.DateTimeField(verbose_name=_("Registration Date"), auto_now_add=True, auto_now=False)
+
+	def get_search_fields():
+		return (("name", _("Name")),)
+	def get_output_fields():
+		return (("name", _("Name")),)
+	get_search_fields = staticmethod(get_search_fields)
+	get_output_fields = staticmethod(get_output_fields)
 
 	def save(self, *args, **kwargs):
 		if not self.id:
@@ -22,6 +25,9 @@ class Subject(models.Model):
 		super(Subject, self).save(*args, **kwargs)
 
 	def __unicode__(self):
+		return self.name
+
+	def natural_key(self):
 		return self.name
 
 	def verbose_name(self):

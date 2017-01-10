@@ -16,5 +16,4 @@ urlpatterns = [
 	url(r'^author/', include('manager.urls.author')),
 	url(r'^publication/', include('manager.urls.publication')),
 	url(r'^feed/$', PublicationsLatests(), name="feed"),
-	url(r'^api/', include('manager.api.urls'), name="api"),
 ]

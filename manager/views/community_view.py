@@ -6,27 +6,13 @@ from django.core.urlresolvers import reverse_lazy
 from django.contrib.auth.decorators import login_required, permission_required
 from django.conf import settings
 
-from base.views import AjaxableResponseMixin
+from base.views import AjaxableResponseMixin, SearchResponseMixin, CSVResponseMixin
 from manager.models import Community, Collection, Publication
 
-class CommunityListView(ListView):
+class CommunityListView(SearchResponseMixin, CSVResponseMixin, ListView):
 	template_name = 'manager/community/list.html'
 	paginate_by = settings.PAGINATE_BY
-	fields_search = Community.FIELDS_SEARCH
-
-	def get_queryset(self):
-		query = self.request.GET.get('query')
-		text = self.request.GET.get('text')
-		if query and query in dict(self.fields_search):
-			kwargs = {("%s__contains" % (query,)):text}
-			return Community.objects.filter(** kwargs)
-		return Community.objects.all()
-
-	def get_context_data(self, ** kwargs):
-		context = super(CommunityListView, self).get_context_data( ** kwargs)
-		context["fields_search"] = self.fields_search
-		context["url_search"] = reverse_lazy("manager:community_list", kwargs={"page":1})
-		return context
+	model =Community
 
 class CommunityCreateView(AjaxableResponseMixin, CreateView):
 	template_name = 'manager/community/form.html'

@@ -7,11 +7,6 @@ import datetime
 from manager.models import Community, Collection, Publisher
 
 class Event(models.Model):
-	FIELDS_SEARCH = (
-		("name", _("Name")),
-		("description", _("Description")),
-	)
-
 	TYPOLOGY_CHOICES = (
 		(u'conference', _(u'Conference')),
 		(u'workshop', _(u'Workshop')),
@@ -38,6 +33,28 @@ class Event(models.Model):
 
 	registration_date = models.DateTimeField(verbose_name=_("Registration Date"), auto_now_add=True, auto_now=False)
 
+	def get_search_fields():
+		return (
+			("name", _("Name")),
+			("description", _("Description")),
+		)
+	def get_output_fields():
+		return (
+			("name", _("Name")),
+			("typology", _("Typology")),
+			("address", _("Address")),
+			("community", _("Community")),
+			("publisher", _("Publisher")),
+			("date", _("Date")),
+			("submission_1_open", _("Submission 1 Open")),
+			("review_open", _("Review Open")),
+			("submission_2_open", _("Submission 2 Open")),
+				
+		)
+
+	get_search_fields = staticmethod(get_search_fields)
+	get_output_fields = staticmethod(get_output_fields)
+
 	def stage(self):
 		now = datetime.date.today()
 		if now < self.submission_1_open:
@@ -53,9 +70,6 @@ class Event(models.Model):
 		else:
 			return {'type': 'out_of_period', 'text': _('Out of period')}
 
-	def __unicode__(self):
-		return self.name
-
 	def save(self, *args, **kwargs):
 		if not self.id:
 			self.slug = orig = slugify(self.name)
@@ -64,6 +78,15 @@ class Event(models.Model):
 					break
 				self.slug = "%s-%d" % (orig, x)
 		super(Event, self).save(*args, **kwargs)
+
+	def __unicode__(self):
+		return self.name
+
+	def natural_key(self):
+		return self.name
+
+	def verbose_name(self):
+		return self._meta.verbose_name
 
 	class Meta:
 		ordering = ['-date']
