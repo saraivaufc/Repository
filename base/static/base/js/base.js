@@ -1,3 +1,4 @@
+
 function resize_window() {
 	var body = parseInt($("body").css("height"));
 	var header = parseInt($("#header").css("height"));

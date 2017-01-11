@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-01-07 11:09-0300\n"
+"POT-Creation-Date: 2017-01-11 07:38-0300\n"
 "PO-Revision-Date: 2017-01-07 11:12-0234\n"
 "Last-Translator: Ciano Saraiva <admin@email.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Translated-Using: django-rosetta 0.7.8\n"
 
-#: base/templates/base/_base.html:48
+#: base/templates/base/_base.html:47
 msgid "Home"
 msgstr "Início"
 
@@ -54,11 +54,11 @@ msgstr "Publicações"
 msgid "Events"
 msgstr "Eventos"
 
-#: base/templates/base/_form.html:7
+#: base/templates/base/_form.html:8
 msgid "Submit"
 msgstr "Enviar"
 
-#: base/templates/base/_form_search.html:12
+#: base/templates/base/_form_search.html:11
 msgid "Search"
 msgstr "Buscar"
 
@@ -66,57 +66,60 @@ msgstr "Buscar"
 msgid "RIUFC"
 msgstr "RIUFC"
 
-#: base/templates/base/_header.html:15
+#: base/templates/base/_header.html:13
 msgid "Repository"
 msgstr "Repositório"
 
-#: base/templates/base/_header.html:21
+#: base/templates/base/_header.html:19
 msgid "Submission"
 msgstr "Submissão"
 
-#: base/templates/base/_header.html:28
+#: base/templates/base/_header.html:26
 msgid "Users"
 msgstr "Usuários"
 
-#: base/templates/base/_header.html:33
+#: base/templates/base/_header.html:31
 msgid "Participants"
 msgstr "Participantes"
 
-#: base/templates/base/_header.html:38
+#: base/templates/base/_header.html:36
 msgid "Administrators"
 msgstr "Administradores"
 
-#: base/templates/base/_header.html:43
+#: base/templates/base/_header.html:41
 msgid "Revisers"
 msgstr "Revisores"
 
-#: base/templates/base/_header.html:61
+#: base/templates/base/_header.html:59
 msgid "Profile"
 msgstr "Perfil"
 
-#: base/templates/base/_header.html:65
+#: base/templates/base/_header.html:63
 msgid "Logout"
 msgstr "Sair"
 
-#: base/templates/base/_header.html:73
+#: base/templates/base/_header.html:71
 msgid "Login"
 msgstr "Entrar"
 
 #: base/templates/base/_no_script.html:3
 msgid ""
 "For full functionality of this site it is necessary to enable JavaScript. "
-"Here are the <a href=\"http://www.enable-javascript.com/pt/\" "
-"target=\"_blank\">instructions on how to enable JavaScript in your browser "
-"</a>."
+"Here are the <a href=\"http://www.enable-javascript.com/pt/\" target=\"_blank"
+"\">instructions on how to enable JavaScript in your browser </a>."
 msgstr ""
 
-#: base/templates/base/_paginate.html:5 base/templates/base/_paginate.html:7
+#: base/templates/base/_paginate.html:6 base/templates/base/_paginate.html:8
 msgid "Previous"
 msgstr "Prévio"
 
-#: base/templates/base/_paginate.html:21 base/templates/base/_paginate.html:23
+#: base/templates/base/_paginate.html:24 base/templates/base/_paginate.html:26
 msgid "Next"
 msgstr "Próximo"
+
+#: base/templates/base/_paginate.html:37
+msgid "CSV"
+msgstr ""
 
 #: base/templates/base/fields/datetime.html:10
 msgid "This field can not be empty"
@@ -141,3 +144,19 @@ msgstr "Atualmente"
 #: base/templates/base/fields/image.html:13
 msgid "Change:"
 msgstr "Alterar"
+
+#: base/templates/base/form_ajax.html:17
+#, python-format
+msgid ""
+"\n"
+"\t\tAdd %(model_name)s\n"
+"\t"
+msgstr ""
+
+#: base/templates/base/form_ajax.html:24
+msgid "Loading..."
+msgstr ""
+
+#: base/utils/export.py:33
+msgid "Empty"
+msgstr ""

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-01-07 11:09-0300\n"
+"POT-Creation-Date: 2017-01-11 07:38-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -26,120 +26,116 @@ msgstr ""
 msgid "The RIUFC is reported here!"
 msgstr ""
 
-#: submission/models/event.py:11 submission/models/event.py:20
-msgid "Name"
-msgstr ""
-
-#: submission/models/event.py:12 submission/models/submission.py:13
-msgid "Description"
-msgstr ""
-
-#: submission/models/event.py:16
+#: submission/models/event.py:13
 msgid "Conference"
 msgstr ""
 
-#: submission/models/event.py:17
+#: submission/models/event.py:14
 msgid "Workshop"
 msgstr ""
 
-#: submission/models/event.py:19 submission/models/submission.py:15
+#: submission/models/event.py:16 submission/models/submission.py:11
 msgid "Slug"
 msgstr ""
 
-#: submission/models/event.py:21
+#: submission/models/event.py:17 submission/models/event.py:39
+#: submission/models/event.py:44
+msgid "Name"
+msgstr ""
+
+#: submission/models/event.py:18
 msgid "description"
 msgstr ""
 
-#: submission/models/event.py:22
-#: submission/templates/submission/event/detail.html:67
+#: submission/models/event.py:19 submission/models/event.py:46
+#: submission/templates/submission/event/_render.html:24
 msgid "Address"
 msgstr ""
 
-#: submission/models/event.py:23
-#: submission/templates/submission/event/detail.html:70
-msgid "Year"
-msgstr ""
-
-#: submission/models/event.py:24
+#: submission/models/event.py:20
 msgid "Image"
 msgstr ""
 
-#: submission/models/event.py:25
-#: submission/templates/submission/submission/_render_submission.html:7
+#: submission/models/event.py:21 submission/models/event.py:45
+#: submission/templates/submission/submission/_render.html:9
 msgid "Typology"
 msgstr ""
 
-#: submission/models/event.py:26
-#: submission/templates/submission/event/detail.html:48
+#: submission/models/event.py:22 submission/models/event.py:47
+#: submission/templates/submission/event/_render.html:5
 msgid "Community"
 msgstr ""
 
-#: submission/models/event.py:27
-#: submission/templates/submission/event/detail.html:56
+#: submission/models/event.py:23 submission/models/event.py:48
+#: submission/templates/submission/event/_render.html:13
 msgid "Publisher"
 msgstr ""
 
-#: submission/models/event.py:28
-#: submission/templates/submission/event/detail.html:64
-#: submission/templates/submission/event/list.html:61
+#: submission/models/event.py:24 submission/models/event.py:49
+#: submission/templates/submission/event/_render.html:21
+#: submission/templates/submission/event/list.html:62
 msgid "Date"
 msgstr ""
 
-#: submission/models/event.py:30
+#: submission/models/event.py:26 submission/models/event.py:50
 msgid "Submission 1 Open"
 msgstr ""
 
-#: submission/models/event.py:31
+#: submission/models/event.py:27
 msgid "Submission 1 Close"
 msgstr ""
 
-#: submission/models/event.py:33
+#: submission/models/event.py:29 submission/models/event.py:51
 msgid "Review Open"
 msgstr ""
 
-#: submission/models/event.py:34
+#: submission/models/event.py:30
 msgid "Review Close"
 msgstr ""
 
-#: submission/models/event.py:36
+#: submission/models/event.py:32 submission/models/event.py:52
 msgid "Submission 2 Open"
 msgstr ""
 
-#: submission/models/event.py:37
+#: submission/models/event.py:33
 msgid "Submission 2 Close"
 msgstr ""
 
-#: submission/models/event.py:39 submission/models/review.py:36
-#: submission/models/submission.py:22
+#: submission/models/event.py:35 submission/models/review.py:36
+#: submission/models/submission.py:18
 msgid "Registration Date"
 msgstr ""
 
-#: submission/models/event.py:44
+#: submission/models/event.py:40 submission/models/submission.py:23
+msgid "Description"
+msgstr ""
+
+#: submission/models/event.py:62
 msgid "Before the period"
 msgstr ""
 
-#: submission/models/event.py:46
+#: submission/models/event.py:64
 msgid "Submission Open 1"
 msgstr ""
 
-#: submission/models/event.py:48
+#: submission/models/event.py:66
 msgid "Reviewing..."
 msgstr ""
 
-#: submission/models/event.py:50
+#: submission/models/event.py:68
 msgid "Submission Open 2"
 msgstr ""
 
-#: submission/models/event.py:52
+#: submission/models/event.py:70
 msgid "Submission Complete"
 msgstr ""
 
-#: submission/models/event.py:54
+#: submission/models/event.py:72
 msgid "Out of period"
 msgstr ""
 
-#: submission/models/event.py:70 submission/models/event.py:71
-#: submission/models/submission.py:16
+#: submission/models/event.py:94 submission/models/event.py:95
+#: submission/models/submission.py:12 submission/models/submission.py:27
 msgid "Event"
 msgstr ""
 
@@ -226,39 +222,81 @@ msgstr ""
 msgid "General Observation"
 msgstr ""
 
-#: submission/models/review.py:39 submission/models/submission.py:20
-#: submission/templates/submission/event/detail.html:82
+#: submission/models/review.py:39 submission/models/submission.py:16
+#: submission/templates/submission/event/_render.html:35
 #: submission/templates/submission/review/detail.html:15
 #: submission/templates/submission/review/detail_to_review.html:15
-#: submission/templates/submission/submission/list.html:43
-#: submission/templates/submission/submission/list.html:68
-#: submission/templates/submission/submission/list_to_review.html:32
-#: submission/templates/submission/submission/list_to_review.html:78
+#: submission/templates/submission/submission/list.html:45
+#: submission/templates/submission/submission/list.html:70
+#: submission/templates/submission/submission/list_to_review.html:36
+#: submission/templates/submission/submission/list_to_review.html:82
 msgid "Review"
 msgstr ""
 
-#: submission/models/submission.py:12
-#: submission/templates/submission/submission/_render_submission.html:4
-msgid "Title"
-msgstr ""
-
-#: submission/models/submission.py:17
+#: submission/models/submission.py:13 submission/models/submission.py:28
 msgid "User"
 msgstr ""
 
-#: submission/models/submission.py:18
+#: submission/models/submission.py:14 submission/models/submission.py:29
 msgid "Publication"
 msgstr ""
 
-#: submission/models/submission.py:19
-#: submission/templates/submission/submission/list_to_review.html:31
+#: submission/models/submission.py:15 submission/models/submission.py:30
+#: submission/templates/submission/submission/list_to_review.html:35
 msgid "Reviser"
 msgstr ""
 
-#: submission/models/submission.py:41 submission/models/submission.py:42
-#: submission/templates/submission/submission/list.html:40
-#: submission/templates/submission/submission/list_to_review.html:29
+#: submission/models/submission.py:22
+#: submission/templates/submission/submission/_render.html:6
+#: submission/templates/submission/submission/list_final.html:40
+msgid "Title"
+msgstr ""
+
+#: submission/models/submission.py:60 submission/models/submission.py:61
+#: submission/templates/submission/submission/list.html:42
+#: submission/templates/submission/submission/list_to_review.html:33
 msgid "Submission"
+msgstr ""
+
+#: submission/templates/submission/event/_render.html:30
+msgid "Submission 1"
+msgstr ""
+
+#: submission/templates/submission/event/_render.html:40
+msgid "Submission 2"
+msgstr ""
+
+#: submission/templates/submission/event/_render_buttons_actions.html:5
+#, python-format
+msgid ""
+"\n"
+"\t\t\tSubmissions in %(submission_open)s\n"
+"\t\t"
+msgstr ""
+
+#: submission/templates/submission/event/_render_buttons_actions.html:9
+msgid "List my submissions"
+msgstr ""
+
+#: submission/templates/submission/event/_render_buttons_actions.html:11
+#: submission/templates/submission/submission/list.html:15
+msgid "My Submissions"
+msgstr ""
+
+#: submission/templates/submission/event/_render_buttons_actions.html:16
+msgid "Submission to review"
+msgstr ""
+
+#: submission/templates/submission/event/_render_buttons_actions.html:18
+msgid "To Review"
+msgstr ""
+
+#: submission/templates/submission/event/_render_buttons_actions.html:23
+msgid "All publications of event"
+msgstr ""
+
+#: submission/templates/submission/event/_render_buttons_actions.html:25
+msgid "All Publications"
 msgstr ""
 
 #: submission/templates/submission/event/check_delete.html:15
@@ -300,34 +338,6 @@ msgstr ""
 msgid "Delete"
 msgstr ""
 
-#: submission/templates/submission/event/detail.html:75
-msgid "Submissions dates"
-msgstr ""
-
-#: submission/templates/submission/event/detail.html:77
-msgid "Submission 1"
-msgstr ""
-
-#: submission/templates/submission/event/detail.html:87
-msgid "Submission 2"
-msgstr ""
-
-#: submission/templates/submission/event/detail.html:95
-#: submission/templates/submission/event/detail.html:97
-#: submission/templates/submission/submission/list.html:17
-msgid "My Submissions"
-msgstr ""
-
-#: submission/templates/submission/event/detail.html:102
-msgid "To Review"
-msgstr ""
-
-#: submission/templates/submission/event/detail.html:104
-#: submission/templates/submission/event/list.html:88
-#: submission/templates/submission/event/list.html:90
-msgid "Reviews"
-msgstr ""
-
 #: submission/templates/submission/event/form.html:14
 #: submission/templates/submission/event/form.html:18
 msgid "Form Event"
@@ -338,7 +348,7 @@ msgid "List of Events"
 msgstr ""
 
 #: submission/templates/submission/event/list.html:19
-#: submission/templates/submission/index.html:24
+#: submission/templates/submission/index.html:29
 msgid "Events"
 msgstr ""
 
@@ -346,36 +356,27 @@ msgstr ""
 msgid "New Event"
 msgstr ""
 
-#: submission/templates/submission/event/list.html:63
+#: submission/templates/submission/event/list.html:58
+msgid "plus"
+msgstr ""
+
+#: submission/templates/submission/event/list.html:65
 msgid "Stage"
 msgstr ""
 
-#: submission/templates/submission/event/list.html:78
-#, python-format
-msgid ""
-"\n"
-"\t\t\t\t\t\tSubmissions in %(submission_open)s\n"
-"\t\t\t\t\t"
-msgstr ""
-
-#: submission/templates/submission/event/list.html:82
-#: submission/templates/submission/event/list.html:84
-msgid "Submissions"
-msgstr ""
-
-#: submission/templates/submission/index.html:11
+#: submission/templates/submission/index.html:15
 msgid "Home"
 msgstr ""
 
-#: submission/templates/submission/index.html:35
+#: submission/templates/submission/index.html:20
 msgid "Welcome"
 msgstr ""
 
-#: submission/templates/submission/index.html:43
+#: submission/templates/submission/index.html:25
 msgid "Submission System UFC"
 msgstr ""
 
-#: submission/templates/submission/index.html:44
+#: submission/templates/submission/index.html:26
 msgid ""
 "Aims to store, preserve, disseminate and allow open access to scientific, "
 "academic, artistic, technical and administrative documents produced by UFC "
@@ -416,54 +417,54 @@ msgstr ""
 msgid "Form Review"
 msgstr ""
 
-#: submission/templates/submission/submission/_render_submission.html:10
-#: submission/templates/submission/submission/list.html:41
-#: submission/templates/submission/submission/list_to_review.html:30
-msgid "Authors"
-msgstr ""
-
-#: submission/templates/submission/submission/_render_submission.html:20
-msgid "Subjects"
-msgstr ""
-
-#: submission/templates/submission/submission/_render_submission.html:30
-msgid "Collection"
-msgstr ""
-
-#: submission/templates/submission/submission/_render_submission.html:38
-msgid "Reference"
-msgstr ""
-
-#: submission/templates/submission/submission/_render_submission.html:41
-msgid "Language"
-msgstr ""
-
-#: submission/templates/submission/submission/_render_submission.html:44
-msgid "Abstract"
-msgstr ""
-
-#: submission/templates/submission/submission/_render_submission.html:49
-#: submission/templates/submission/submission/_render_submission.html:58
+#: submission/templates/submission/submission/_render.html:3
 msgid "Empty"
 msgstr ""
 
-#: submission/templates/submission/submission/_render_submission.html:53
+#: submission/templates/submission/submission/_render.html:12
+#: submission/templates/submission/submission/list.html:43
+#: submission/templates/submission/submission/list_final.html:41
+#: submission/templates/submission/submission/list_to_review.html:34
+msgid "Authors"
+msgstr ""
+
+#: submission/templates/submission/submission/_render.html:22
+msgid "Subjects"
+msgstr ""
+
+#: submission/templates/submission/submission/_render.html:32
+msgid "Collection"
+msgstr ""
+
+#: submission/templates/submission/submission/_render.html:40
+msgid "Reference"
+msgstr ""
+
+#: submission/templates/submission/submission/_render.html:43
+msgid "Language"
+msgstr ""
+
+#: submission/templates/submission/submission/_render.html:46
+msgid "Abstract"
+msgstr ""
+
+#: submission/templates/submission/submission/_render.html:51
 msgid "Other Abstract"
 msgstr ""
 
-#: submission/templates/submission/submission/_render_submission.html:62
+#: submission/templates/submission/submission/_render.html:56
 msgid "Keywords"
 msgstr ""
 
-#: submission/templates/submission/submission/_render_submission.html:72
+#: submission/templates/submission/submission/_render.html:66
 msgid "Issue Date"
 msgstr ""
 
-#: submission/templates/submission/submission/_render_submission.html:75
+#: submission/templates/submission/submission/_render.html:71
 msgid "File"
 msgstr ""
 
-#: submission/templates/submission/submission/_render_submission.html:79
+#: submission/templates/submission/submission/_render.html:75
 msgid "Download"
 msgstr ""
 
@@ -478,47 +479,64 @@ msgstr ""
 msgid "Submit"
 msgstr ""
 
-#: submission/templates/submission/submission/list.html:21
+#: submission/templates/submission/submission/list.html:19
 msgid "List of My Submissions"
 msgstr ""
 
-#: submission/templates/submission/submission/list.html:29
+#: submission/templates/submission/submission/list.html:27
 msgid "New Submission"
 msgstr ""
 
-#: submission/templates/submission/submission/list.html:71
+#: submission/templates/submission/submission/list.html:73
 msgid "No Available"
 msgstr ""
 
-#: submission/templates/submission/submission/list.html:78
-#: submission/templates/submission/submission/list_to_review.html:101
+#: submission/templates/submission/submission/list.html:80
+#: submission/templates/submission/submission/list_final.html:63
+#: submission/templates/submission/submission/list_to_review.html:105
 msgid "No Submission found!"
+msgstr ""
+
+#: submission/templates/submission/submission/list_final.html:15
+msgid "Publications"
+msgstr ""
+
+#: submission/templates/submission/submission/list_final.html:20
+#, python-format
+msgid ""
+"\n"
+"\t\tPublications of %(event)s\n"
+"\t"
 msgstr ""
 
 #: submission/templates/submission/submission/list_to_review.html:17
 msgid "To Revission"
 msgstr ""
 
-#: submission/templates/submission/submission/list_to_review.html:21
-msgid "List of Submissions to Revission"
+#: submission/templates/submission/submission/list_to_review.html:23
+msgid "List of Submissions to Your Review"
 msgstr ""
 
-#: submission/templates/submission/submission/list_to_review.html:34
+#: submission/templates/submission/submission/list_to_review.html:25
+msgid "List of Submissions to Review"
+msgstr ""
+
+#: submission/templates/submission/submission/list_to_review.html:38
 msgid "Final"
 msgstr ""
 
-#: submission/templates/submission/submission/list_to_review.html:65
+#: submission/templates/submission/submission/list_to_review.html:69
 msgid "No Reviser"
 msgstr ""
 
-#: submission/templates/submission/submission/list_to_review.html:69
+#: submission/templates/submission/submission/list_to_review.html:73
 msgid "Add Reviser"
 msgstr ""
 
-#: submission/templates/submission/submission/list_to_review.html:83
+#: submission/templates/submission/submission/list_to_review.html:87
 msgid "Add Review"
 msgstr ""
 
-#: submission/templates/submission/submission/list_to_review.html:86
+#: submission/templates/submission/submission/list_to_review.html:90
 msgid "Without Review"
 msgstr ""

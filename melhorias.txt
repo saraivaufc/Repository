@@ -3,3 +3,5 @@
 - Próxima página de uma busca realizada está bugada.
 - Fazer o menu funcionar normal, mesmo com o Js desabilitado.
 - Usar Js para dar um prévia de como ficará o nome de referência do autor durante a criação do mesmo (Lembrando que se o navegador do usuário não der suporte a Js, não se deve mostrar 'lixo' inútil na tela).
+- Verificar o publication.title na hora de gerar um .csv das submissões
+- Organizar melhor os detalhes do evento e seus botões de ações

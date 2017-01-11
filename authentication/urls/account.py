@@ -2,9 +2,10 @@ from django.conf.urls import include, url
 from authentication.views import UserCreateView, UserDetailView, UserUpdateView, UserDeleteView
 from django.contrib.auth import views as auth_views
 from django.core.urlresolvers import reverse_lazy
+from django.utils.translation import ugettext_lazy as _
 
 urlpatterns = [
-	url(r'^login$', auth_views.login, {'template_name': 'authentication/account/login.html',}, name="account_login"),
+	url(_(r'^login$'), auth_views.login, {'template_name': 'authentication/account/login.html',}, name="account_login"),
 	url(r'^logout$', auth_views.logout, {'next_page': reverse_lazy("authentication:account_login")}, name="account_logout"),
 	url(r'^register$', UserCreateView.as_view(), name="account_register"),
 	url(r'^(?P<pk>[0-9]+)/detail$', UserDetailView.as_view(), name="account_detail"),
