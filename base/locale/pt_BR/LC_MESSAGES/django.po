@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-01-11 07:38-0300\n"
-"PO-Revision-Date: 2017-01-07 11:12-0234\n"
-"Last-Translator: Ciano Saraiva <admin@email.com>\n"
+"POT-Creation-Date: 2017-01-11 07:45-0300\n"
+"PO-Revision-Date: 2017-01-11 07:56-0234\n"
+"Last-Translator: None None <admin@email.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -105,8 +105,9 @@ msgstr "Entrar"
 #: base/templates/base/_no_script.html:3
 msgid ""
 "For full functionality of this site it is necessary to enable JavaScript. "
-"Here are the <a href=\"http://www.enable-javascript.com/pt/\" target=\"_blank"
-"\">instructions on how to enable JavaScript in your browser </a>."
+"Here are the <a href=\"http://www.enable-javascript.com/pt/\" "
+"target=\"_blank\">instructions on how to enable JavaScript in your browser "
+"</a>."
 msgstr ""
 
 #: base/templates/base/_paginate.html:6 base/templates/base/_paginate.html:8
@@ -123,7 +124,7 @@ msgstr ""
 
 #: base/templates/base/fields/datetime.html:10
 msgid "This field can not be empty"
-msgstr ""
+msgstr "Este campo não pode ficar vazio"
 
 #: base/templates/base/fields/file.html:8
 msgid "Currently"
@@ -135,7 +136,7 @@ msgstr "Alterar"
 
 #: base/templates/base/fields/headers/caption.html:6
 msgid "This field is required!"
-msgstr ""
+msgstr "Este campo é obrigatório!"
 
 #: base/templates/base/fields/image.html:8
 msgid "Current:"
@@ -152,11 +153,13 @@ msgid ""
 "\t\tAdd %(model_name)s\n"
 "\t"
 msgstr ""
+"\n"
+"Adicionar  %(model_name)s"
 
 #: base/templates/base/form_ajax.html:24
 msgid "Loading..."
-msgstr ""
+msgstr "Carregando..."
 
 #: base/utils/export.py:33
 msgid "Empty"
-msgstr ""
+msgstr "Vazio"

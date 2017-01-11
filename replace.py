@@ -4,8 +4,8 @@ import os
 import glob
 import re
 
-TEXT = "/page=(?P<page>[0-9]+)"
-NEW_TEXT = ""
+TEXT = "/', include"
+NEW_TEXT = "/'), include"
 FILE_TYPES = ['(.)\.py', ]
 
 rexs = []

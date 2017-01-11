@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-01-11 07:38-0300\n"
-"PO-Revision-Date: 2017-01-11 07:40-0234\n"
+"POT-Creation-Date: 2017-01-11 07:45-0300\n"
+"PO-Revision-Date: 2017-01-11 07:55-0234\n"
 "Last-Translator: None None <admin@email.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -21,35 +21,35 @@ msgstr ""
 
 #: authentication/models/user.py:31
 msgid "email"
-msgstr ""
+msgstr "email"
 
 #: authentication/models/user.py:32 authentication/models/user.py:52
 #: authentication/models/user.py:59
 #: authentication/templates/authentication/account/_render.html:4
 msgid "First Name"
-msgstr ""
+msgstr "Primeiro Nome"
 
 #: authentication/models/user.py:33 authentication/models/user.py:53
 #: authentication/models/user.py:60
 #: authentication/templates/authentication/account/_render.html:13
 msgid "Last Name"
-msgstr ""
+msgstr "Último Nome"
 
 #: authentication/models/user.py:35
 msgid "First Name "
-msgstr ""
+msgstr "Primeiro Nome"
 
 #: authentication/models/user.py:35
 msgid "Please enter you first name."
-msgstr ""
+msgstr "Por favor, entre com seu primeiro nome."
 
 #: authentication/models/user.py:36
 msgid "Last Name "
-msgstr ""
+msgstr "Último Nome"
 
 #: authentication/models/user.py:36
 msgid "Please enter you last name."
-msgstr ""
+msgstr "Por favor, entre com seu último nome."
 
 #: authentication/models/user.py:37 authentication/models/user.py:54
 #: authentication/models/user.py:61
@@ -58,11 +58,11 @@ msgstr ""
 #: authentication/templates/authentication/participant/list.html:41
 #: authentication/templates/authentication/reviser/list.html:49
 msgid "Username"
-msgstr ""
+msgstr "Nome de usuário"
 
 #: authentication/models/user.py:37
 msgid "Please enter you username."
-msgstr ""
+msgstr "Por favor, entre com seu nome de usuário."
 
 #: authentication/models/user.py:38 authentication/models/user.py:55
 #: authentication/models/user.py:62
@@ -71,15 +71,15 @@ msgstr ""
 #: authentication/templates/authentication/participant/list.html:42
 #: authentication/templates/authentication/reviser/list.html:50
 msgid "Email"
-msgstr ""
+msgstr "Email"
 
 #: authentication/models/user.py:38
 msgid "Please enter you email."
-msgstr ""
+msgstr "Por favor, entre com seu email."
 
 #: authentication/models/user.py:39
 msgid "Active"
-msgstr ""
+msgstr "Ativo"
 
 #: authentication/models/user.py:39
 msgid ""
@@ -89,23 +89,23 @@ msgstr ""
 
 #: authentication/models/user.py:40
 msgid "Date joined"
-msgstr ""
+msgstr "Data de cadastro"
 
 #: authentication/models/user.py:41
 msgid "Moderator Status"
-msgstr ""
+msgstr "Status de Moderador"
 
 #: authentication/models/user.py:42
 msgid "Staff Status"
-msgstr ""
+msgstr "Status de Técnico"
 
 #: authentication/models/user.py:43
 msgid "Reviser Status"
-msgstr ""
+msgstr "Status de Revisor"
 
 #: authentication/models/user.py:99 authentication/models/user.py:100
 msgid "User"
-msgstr ""
+msgstr "Usuário"
 
 #: authentication/templates/authentication/account/_render.html:9
 #: authentication/templates/authentication/account/_render.html:18
@@ -113,11 +113,11 @@ msgstr ""
 #: authentication/templates/authentication/participant/list.html:24
 #: authentication/templates/authentication/reviser/list.html:24
 msgid "Empty"
-msgstr ""
+msgstr "Vazio"
 
 #: authentication/templates/authentication/account/_render.html:28
 msgid "Date Joined"
-msgstr ""
+msgstr "Data de cadastro"
 
 #: authentication/templates/authentication/account/check_delete.html:15
 #: authentication/templates/authentication/account/check_delete.html:19
@@ -126,45 +126,45 @@ msgstr ""
 #: authentication/templates/authentication/reviser/check_delete.html:15
 #: authentication/templates/authentication/reviser/check_delete.html:19
 msgid "Confirm delete"
-msgstr ""
+msgstr "Confirmação de exclusão"
 
 #: authentication/templates/authentication/account/check_delete.html:25
 #: authentication/templates/authentication/administrator/check_delete.html:25
 #: authentication/templates/authentication/reviser/check_delete.html:25
 msgid "Are you sure you want to delete"
-msgstr ""
+msgstr "Você deseja delete isso?"
 
 #: authentication/templates/authentication/account/check_delete.html:27
 #: authentication/templates/authentication/administrator/check_delete.html:26
 #: authentication/templates/authentication/reviser/check_delete.html:26
 msgid "No"
-msgstr ""
+msgstr "Não"
 
 #: authentication/templates/authentication/account/check_delete.html:30
 #: authentication/templates/authentication/administrator/check_delete.html:27
 #: authentication/templates/authentication/reviser/check_delete.html:27
 msgid "Yes"
-msgstr ""
+msgstr "Sim"
 
 #: authentication/templates/authentication/account/detail.html:17
 msgid "Profile"
-msgstr ""
+msgstr "Perfil"
 
 #: authentication/templates/authentication/account/detail.html:25
 msgid "Edit"
-msgstr ""
+msgstr "Editar"
 
 #: authentication/templates/authentication/account/detail.html:29
 msgid "Delete"
-msgstr ""
+msgstr "Excluir"
 
 #: authentication/templates/authentication/account/form.html:17
 msgid "Form User"
-msgstr ""
+msgstr "Formulário de Usuário"
 
 #: authentication/templates/authentication/account/form.html:22
 msgid "Form Author"
-msgstr ""
+msgstr "Formulário de Autor"
 
 #: authentication/templates/authentication/account/login.html:14
 #: authentication/templates/authentication/account/login.html:18
@@ -173,7 +173,7 @@ msgstr "Entrar"
 
 #: authentication/templates/authentication/account/login.html:22
 msgid "Your username and password didn't match. Please try again."
-msgstr ""
+msgstr "Seu login e/ou senha estão incorretos. Por favor, tente novamente."
 
 #: authentication/templates/authentication/account/login.html:26
 msgid ""
@@ -229,7 +229,7 @@ msgstr ""
 
 #: authentication/templates/authentication/account/password_reset_complete.html:10
 msgid "Log in"
-msgstr ""
+msgstr "Entrar"
 
 #: authentication/templates/authentication/account/password_reset_confirm.html:8
 msgid ""
@@ -240,7 +240,7 @@ msgstr ""
 #: authentication/templates/authentication/account/password_reset_confirm.html:12
 #: authentication/templates/authentication/account/password_reset_form.html:23
 msgid "Submit"
-msgstr ""
+msgstr "Enviar"
 
 #: authentication/templates/authentication/account/password_reset_confirm.html:16
 msgid "Password reset unsuccessful"
@@ -312,74 +312,143 @@ msgstr ""
 
 #: authentication/templates/authentication/administrator/list.html:16
 msgid "Administrators"
-msgstr ""
+msgstr "Administradores"
 
 #: authentication/templates/authentication/administrator/list.html:20
 msgid "List of Administrators"
-msgstr ""
+msgstr "Lista de Administradores"
 
 #: authentication/templates/authentication/administrator/list.html:30
 msgid "New Administrator"
-msgstr ""
+msgstr "Novo Administrador"
 
 #: authentication/templates/authentication/administrator/list.html:47
 #: authentication/templates/authentication/participant/list.html:40
 #: authentication/templates/authentication/reviser/list.html:48
 msgid "Full Name"
-msgstr ""
+msgstr "Nome Completo"
 
 #: authentication/templates/authentication/administrator/list.html:51
 #: authentication/templates/authentication/reviser/list.html:52
 msgid "Options"
-msgstr ""
+msgstr "Opções"
 
 #: authentication/templates/authentication/administrator/list.html:74
 #: authentication/templates/authentication/reviser/list.html:75
 msgid "Remove"
-msgstr ""
+msgstr "Excluir"
 
 #: authentication/templates/authentication/administrator/list.html:81
 #: authentication/templates/authentication/participant/list.html:63
 msgid "No Administrator found!"
-msgstr ""
+msgstr "Nenhum administrador encontrado!"
 
 #: authentication/templates/authentication/index.html:15
 msgid "Home"
-msgstr ""
+msgstr "Início"
 
 #: authentication/templates/authentication/index.html:19
 msgid "Site Administration"
-msgstr ""
+msgstr "Site de Administração"
 
 #: authentication/templates/authentication/participant/list.html:17
 msgid "Participants"
-msgstr ""
+msgstr "Participantes"
 
 #: authentication/templates/authentication/participant/list.html:21
 msgid "List of Participants"
-msgstr ""
+msgstr "Lista de Participantes"
 
 #: authentication/templates/authentication/reviser/form.html:15
 #: authentication/templates/authentication/reviser/form.html:19
 msgid "Form Reviser"
-msgstr ""
+msgstr "Formulário do Revisor"
 
 #: authentication/templates/authentication/reviser/list.html:17
 msgid "Revisers"
-msgstr ""
+msgstr "Revisores"
 
 #: authentication/templates/authentication/reviser/list.html:21
 msgid "List of Revisers"
-msgstr ""
+msgstr "Lista de Revisores"
 
 #: authentication/templates/authentication/reviser/list.html:31
 msgid "New Reviser"
-msgstr ""
+msgstr "Novo Revisor"
 
 #: authentication/templates/authentication/reviser/list.html:82
 msgid "No Reviser found!"
-msgstr ""
+msgstr "Nenhum revisor encontrado!"
+
+#: authentication/urls/__init__.py:5
+msgid "^account/"
+msgstr "^conta/"
+
+#: authentication/urls/__init__.py:6
+msgid "^participant/"
+msgstr "^participante/"
+
+#: authentication/urls/__init__.py:7
+msgid "^reviser/"
+msgstr "^revisor/"
+
+#: authentication/urls/__init__.py:8
+msgid "^administrator/"
+msgstr "^administrador/"
 
 #: authentication/urls/account.py:8
 msgid "^login$"
 msgstr "^entrar$"
+
+#: authentication/urls/account.py:9
+#, fuzzy
+#| msgid "^login$"
+msgid "^logout$"
+msgstr "^entrar$"
+
+#: authentication/urls/account.py:10
+#, fuzzy
+#| msgid "Register"
+msgid "^register$"
+msgstr "Registrar"
+
+#: authentication/urls/account.py:11
+msgid "^(?P<pk>[0-9]+)/detail$"
+msgstr "^(?P<pk>[0-9]+)/detalhe$"
+
+#: authentication/urls/account.py:12
+msgid "^(?P<pk>[0-9]+)/edit$"
+msgstr "^(?P<pk>[0-9]+)/editar$"
+
+#: authentication/urls/account.py:13
+msgid "^(?P<pk>[0-9]+)/delete$"
+msgstr "^(?P<pk>[0-9]+)/excluir$"
+
+#: authentication/urls/account.py:15
+msgid "^password/reset$"
+msgstr "^senha/reset$"
+
+#: authentication/urls/account.py:22
+msgid "^password_reset/done$"
+msgstr ""
+
+#: authentication/urls/account.py:26
+msgid "^password_reset/(?P<uidb64>[0-9A-Za-z_\\-]+)/(?P<token>.+)$"
+msgstr ""
+
+#: authentication/urls/account.py:31
+msgid "^password_reset/complete$"
+msgstr ""
+
+#: authentication/urls/administrator.py:7 authentication/urls/participant.py:7
+#: authentication/urls/reviser.py:7
+msgid "^list$"
+msgstr "^lista$"
+
+#: authentication/urls/administrator.py:8 authentication/urls/reviser.py:8
+msgid "^add$"
+msgstr "^adicionar$"
+
+#: authentication/urls/administrator.py:9 authentication/urls/reviser.py:9
+msgid "^(?P<pk>[0-9]+)/remove$"
+msgstr "^(?P<pk>[0-9]+)/excluir$"

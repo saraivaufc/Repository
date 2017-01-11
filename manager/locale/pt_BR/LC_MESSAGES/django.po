@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-01-11 07:38-0300\n"
-"PO-Revision-Date: 2017-01-06 10:24-0234\n"
-"Last-Translator: Ciano Saraiva <admin@email.com>\n"
+"POT-Creation-Date: 2017-01-11 07:45-0300\n"
+"PO-Revision-Date: 2017-01-11 08:09-0234\n"
+"Last-Translator: None None <admin@email.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -21,7 +21,7 @@ msgstr ""
 
 #: manager/feed.py:8
 msgid "RIUFC"
-msgstr ""
+msgstr "RIUFC"
 
 #: manager/feed.py:10
 msgid "The RIUFC is reported here!"
@@ -29,39 +29,39 @@ msgstr ""
 
 #: manager/models/author.py:9
 msgid "First name"
-msgstr ""
+msgstr "Primeiro Nome"
 
 #: manager/models/author.py:10
 msgid "Last name"
-msgstr ""
+msgstr "Último Nome"
 
 #: manager/models/author.py:11 manager/models/author.py:25
 msgid "Reference name"
-msgstr ""
+msgstr "Nome para Referência"
 
 #: manager/models/author.py:12 manager/models/collection.py:10
 #: manager/models/community.py:9 manager/models/keyword.py:9
 #: manager/models/publication.py:34 manager/models/publisher.py:8
 #: manager/models/subject.py:8
 msgid "slug"
-msgstr ""
+msgstr "slug"
 
 #: manager/models/author.py:14 manager/models/collection.py:12
 #: manager/models/community.py:11 manager/models/keyword.py:11
 #: manager/models/publication.py:51 manager/models/publisher.py:9
 #: manager/models/subject.py:9
 msgid "Registration Date"
-msgstr ""
+msgstr "Data de Registro"
 
 #: manager/models/author.py:18 manager/models/author.py:23
 #: manager/templates/manager/author/_render.html:4
 msgid "First Name"
-msgstr ""
+msgstr "Primeiro Nome"
 
 #: manager/models/author.py:19 manager/models/author.py:24
 #: manager/templates/manager/author/_render.html:7
 msgid "Last Name"
-msgstr ""
+msgstr "Último Nome"
 
 #: manager/models/author.py:52
 msgid "Author"
@@ -188,53 +188,53 @@ msgstr "Livro"
 
 #: manager/models/publication.py:18
 msgid "Booklet"
-msgstr ""
+msgstr "Pequeno Livro"
 
 #: manager/models/publication.py:19
 msgid "Conference"
-msgstr ""
+msgstr "Conferência"
 
 #: manager/models/publication.py:20
 msgid "Inbook"
-msgstr ""
+msgstr "Em livro"
 
 #: manager/models/publication.py:21
 msgid "Incollection"
-msgstr ""
+msgstr "Em coleção"
 
 #: manager/models/publication.py:22
 msgid "Manual"
-msgstr ""
+msgstr "Manual"
 
 #: manager/models/publication.py:23
 msgid "Masters Thesis"
-msgstr ""
+msgstr "Tese de Mestrado"
 
 #: manager/models/publication.py:24
 msgid "Monography"
-msgstr ""
+msgstr "Monografia"
 
 #: manager/models/publication.py:25
 msgid "Dissertation"
-msgstr ""
+msgstr "Dissertação"
 
 #: manager/models/publication.py:29
 msgid "Brazilian Portuguese"
-msgstr ""
+msgstr "Português Brasileiro"
 
 #: manager/models/publication.py:30
 msgid "English"
-msgstr ""
+msgstr "Inglês"
 
 #: manager/models/publication.py:31
 msgid "Spanish"
-msgstr ""
+msgstr "Espanhol"
 
 #: manager/models/publication.py:35 manager/models/publication.py:65
 #: manager/templates/manager/publication/_render.html:9
 #: manager/templates/manager/publication/list.html:48
 msgid "Typology"
-msgstr ""
+msgstr "Tipo"
 
 #: manager/models/publication.py:36 manager/models/subject.py:39
 #: manager/templates/manager/index.html:53
@@ -242,41 +242,41 @@ msgstr ""
 #: manager/templates/manager/subject/list.html:17
 #: manager/templates/manager/subject/publications.html:20
 msgid "Subjects"
-msgstr ""
+msgstr "Assuntos"
 
 #: manager/models/publication.py:40 manager/models/publisher.py:38
 #: manager/templates/manager/publication/_render.html:48
 msgid "Publisher"
-msgstr ""
+msgstr "Editora"
 
 #: manager/models/publication.py:43
 #: manager/templates/manager/publication/_render.html:62
 msgid "Reference"
-msgstr ""
+msgstr "Referência"
 
 #: manager/models/publication.py:44
 #: manager/templates/manager/publication/_render.html:65
 msgid "URI"
-msgstr ""
+msgstr "URI"
 
 #: manager/models/publication.py:45
 #: manager/templates/manager/publication/_render.html:72
 msgid "Language"
-msgstr ""
+msgstr "Linguagem"
 
 #: manager/models/publication.py:49
 #: manager/templates/manager/publication/_render.html:95
 msgid "Issue Date"
-msgstr ""
+msgstr "Data de edição"
 
 #: manager/models/publication.py:50
 #: manager/templates/manager/publication/_render.html:98
 msgid "File"
-msgstr ""
+msgstr "Arquivo"
 
 #: manager/models/publication.py:52
 msgid "Is Final"
-msgstr ""
+msgstr "Final"
 
 #: manager/models/publication.py:105
 msgid "Publication"
@@ -386,7 +386,7 @@ msgstr ""
 #: manager/templates/manager/publisher/check_delete.html:26
 #: manager/templates/manager/subject/check_delete.html:26
 msgid "No"
-msgstr ""
+msgstr "Não"
 
 #: manager/templates/manager/author/check_delete.html:27
 #: manager/templates/manager/collection/check_delete.html:27
@@ -396,7 +396,7 @@ msgstr ""
 #: manager/templates/manager/publisher/check_delete.html:27
 #: manager/templates/manager/subject/check_delete.html:27
 msgid "Yes"
-msgstr ""
+msgstr "Sim"
 
 #: manager/templates/manager/author/detail.html:23
 #: manager/templates/manager/collection/detail.html:23
@@ -406,7 +406,7 @@ msgstr ""
 #: manager/templates/manager/publisher/detail.html:23
 #: manager/templates/manager/subject/detail.html:23
 msgid "Edit"
-msgstr ""
+msgstr "Editar"
 
 #: manager/templates/manager/author/detail.html:28
 #: manager/templates/manager/collection/detail.html:28
@@ -416,16 +416,16 @@ msgstr ""
 #: manager/templates/manager/publisher/detail.html:28
 #: manager/templates/manager/subject/detail.html:28
 msgid "Delete"
-msgstr ""
+msgstr "Excluir"
 
 #: manager/templates/manager/author/form.html:14
 #: manager/templates/manager/author/form.html:18
 msgid "Form Author"
-msgstr ""
+msgstr "Formulário de Autor"
 
 #: manager/templates/manager/author/list.html:21
 msgid "List of Authors"
-msgstr ""
+msgstr "Lista de Autores"
 
 #: manager/templates/manager/author/list.html:29
 msgid "New Author"
@@ -433,7 +433,7 @@ msgstr "Novo Autor"
 
 #: manager/templates/manager/author/list.html:66
 msgid "No Author found!"
-msgstr ""
+msgstr "Nenhum autor encontrado!"
 
 #: manager/templates/manager/author/publications.html:16
 #: manager/templates/manager/collection/publications.html:16
@@ -443,7 +443,7 @@ msgstr ""
 #: manager/templates/manager/publisher/publications.html:16
 #: manager/templates/manager/subject/publications.html:16
 msgid "Home"
-msgstr ""
+msgstr "Início"
 
 #: manager/templates/manager/author/publications.html:24
 #, python-format
@@ -452,6 +452,8 @@ msgid ""
 "\t\t\tPublications of %(author)s\n"
 "\t\t"
 msgstr ""
+"\n"
+"Publicações de %(author)s"
 
 #: manager/templates/manager/author/publications.html:31
 #, python-format
@@ -460,34 +462,36 @@ msgid ""
 "\t\tPublications of %(author)s\n"
 "\t"
 msgstr ""
+"\n"
+"Publicações de %(author)s"
 
 #: manager/templates/manager/collection/_render.html:12
 msgid "Without Community"
-msgstr ""
+msgstr "Sem comunidade"
 
 #: manager/templates/manager/collection/form.html:14
 #: manager/templates/manager/collection/form.html:18
 msgid "Form Collection"
-msgstr ""
+msgstr "Formulário da Coleção"
 
 #: manager/templates/manager/collection/list.html:17
 #: manager/templates/manager/collection/publications.html:20
 #: manager/templates/manager/community/_render.html:10
 #: manager/templates/manager/index.html:43
 msgid "Collections"
-msgstr ""
+msgstr "Coleções"
 
 #: manager/templates/manager/collection/list.html:21
 msgid "List of Collections"
-msgstr ""
+msgstr "Lista de Coleções"
 
 #: manager/templates/manager/collection/list.html:29
 msgid "New Collection"
-msgstr ""
+msgstr "Nova Coleção"
 
 #: manager/templates/manager/collection/list.html:74
 msgid "No Collection found!"
-msgstr ""
+msgstr "Nenhuma coleção encontrada!"
 
 #: manager/templates/manager/collection/publications.html:24
 #, python-format
@@ -520,11 +524,11 @@ msgstr ""
 
 #: manager/templates/manager/community/list.html:29
 msgid "New Comunity"
-msgstr ""
+msgstr "Nova Comunidade"
 
 #: manager/templates/manager/community/list.html:68
 msgid "No Community found!"
-msgstr ""
+msgstr "Nenhum comunidade encontrada!"
 
 #: manager/templates/manager/community/publications.html:24
 #, python-format
@@ -533,6 +537,8 @@ msgid ""
 "\t\t\tPublications of %(community)s\n"
 "\t\t"
 msgstr ""
+"\n"
+"Publicações de  %(community)s"
 
 #: manager/templates/manager/community/publications.html:31
 #, python-format
@@ -541,14 +547,16 @@ msgid ""
 "\t\tPublications of %(community)s\n"
 "\t"
 msgstr ""
+"\n"
+"Publicações de  %(community)s"
 
 #: manager/templates/manager/index.html:69
 msgid "Welcome"
-msgstr ""
+msgstr "Bem-vindo"
 
 #: manager/templates/manager/index.html:77
 msgid "Institutional Repository UFC"
-msgstr ""
+msgstr "Repositório Institucional da UFC"
 
 #: manager/templates/manager/index.html:78
 msgid ""
@@ -560,15 +568,15 @@ msgstr ""
 #: manager/templates/manager/keyword/form.html:14
 #: manager/templates/manager/keyword/form.html:18
 msgid "Form Keyword"
-msgstr ""
+msgstr "Formulário da Palavra-chave"
 
 #: manager/templates/manager/keyword/list.html:21
 msgid "List of Keywords"
-msgstr ""
+msgstr "Lista de Palavras-chave"
 
 #: manager/templates/manager/keyword/list.html:29
 msgid "New Keyword"
-msgstr ""
+msgstr "Nova Palavra-chave"
 
 #: manager/templates/manager/keyword/list.html:66
 msgid "No Keyword found!"
@@ -592,45 +600,45 @@ msgstr ""
 
 #: manager/templates/manager/publication/_render.html:3
 msgid "Empty"
-msgstr ""
+msgstr "Vazio"
 
 #: manager/templates/manager/publication/_render.html:102
 msgid "Download"
-msgstr ""
+msgstr "Baixar"
 
 #: manager/templates/manager/publication/form.html:14
 #: manager/templates/manager/publication/form.html:18
 msgid "Form Publication"
-msgstr ""
+msgstr "Formulário da Publicação"
 
 #: manager/templates/manager/publication/list.html:21
 msgid "List of Publications"
-msgstr ""
+msgstr "Lista de Publicações"
 
 #: manager/templates/manager/publication/list.html:29
 msgid "New Publication"
-msgstr ""
+msgstr "Nova Publicação"
 
 #: manager/templates/manager/publication/list.html:77
 msgid "No Publication found!"
-msgstr ""
+msgstr "Nenhuma publicação encontrada!"
 
 #: manager/templates/manager/publisher/form.html:14
 #: manager/templates/manager/publisher/form.html:18
 msgid "Form Publisher"
-msgstr ""
+msgstr "Formulário da Editora"
 
 #: manager/templates/manager/publisher/list.html:21
 msgid "List of Publishers"
-msgstr ""
+msgstr "Lista de Editoras"
 
 #: manager/templates/manager/publisher/list.html:29
 msgid "New Publisher"
-msgstr ""
+msgstr "Nova Editora"
 
 #: manager/templates/manager/publisher/list.html:66
 msgid "No Publisher found!"
-msgstr ""
+msgstr "Nenhuma editora encontrada!"
 
 #: manager/templates/manager/publisher/publications.html:24
 #, python-format
@@ -639,6 +647,8 @@ msgid ""
 "\t\t\tPublications of %(publisher)s\n"
 "\t\t"
 msgstr ""
+"\n"
+"Publicações de %(publisher)s"
 
 #: manager/templates/manager/publisher/publications.html:31
 #, python-format
@@ -647,23 +657,25 @@ msgid ""
 "\t\tPublications of %(publisher)s\n"
 "\t"
 msgstr ""
+"\n"
+"Publicações de %(publisher)s"
 
 #: manager/templates/manager/subject/form.html:14
 #: manager/templates/manager/subject/form.html:18
 msgid "Form Subject"
-msgstr ""
+msgstr "Formulário do Assunto"
 
 #: manager/templates/manager/subject/list.html:21
 msgid "List of Subjects"
-msgstr ""
+msgstr "Lista de Assuntos"
 
 #: manager/templates/manager/subject/list.html:29
 msgid "New Subject"
-msgstr ""
+msgstr "Novo Assunto"
 
 #: manager/templates/manager/subject/list.html:66
 msgid "No Subject found!"
-msgstr ""
+msgstr "Nenhum assunto encontrado!"
 
 #: manager/templates/manager/subject/publications.html:24
 #, python-format
@@ -679,6 +691,91 @@ msgid ""
 "\n"
 "\t\tPublications of %(subject)s\n"
 "\t"
+msgstr ""
+
+#: manager/urls/__init__.py:10
+msgid "^$"
+msgstr ""
+
+#: manager/urls/__init__.py:11
+msgid "^index$"
+msgstr "^inicio$"
+
+#: manager/urls/__init__.py:12
+msgid "^community/"
+msgstr "^comunidade/"
+
+#: manager/urls/__init__.py:13
+msgid "^collection/"
+msgstr "^colecao/"
+
+#: manager/urls/__init__.py:14
+msgid "^publisher/"
+msgstr "^editora/"
+
+#: manager/urls/__init__.py:15
+msgid "^subject/"
+msgstr "^assunto/"
+
+#: manager/urls/__init__.py:16
+msgid "^keyword/"
+msgstr "^palavra-chave/"
+
+#: manager/urls/__init__.py:17
+msgid "^author/"
+msgstr "^autor/"
+
+#: manager/urls/__init__.py:18
+msgid "^publication/"
+msgstr "^publicacao/"
+
+#: manager/urls/__init__.py:19
+msgid "^feed/$"
+msgstr "^noticias/$"
+
+#: manager/urls/author.py:7 manager/urls/collection.py:7
+#: manager/urls/community.py:7 manager/urls/keyword.py:7
+#: manager/urls/publication.py:7 manager/urls/publisher.py:7
+#: manager/urls/subject.py:7
+msgid "^list$"
+msgstr "^lista$"
+
+#: manager/urls/author.py:8 manager/urls/collection.py:8
+#: manager/urls/community.py:8 manager/urls/keyword.py:8
+#: manager/urls/publication.py:8 manager/urls/publisher.py:8
+#: manager/urls/subject.py:8
+msgid "^add$"
+msgstr "^adicionar$"
+
+#: manager/urls/author.py:9 manager/urls/collection.py:9
+#: manager/urls/community.py:9 manager/urls/keyword.py:9
+#: manager/urls/publication.py:9 manager/urls/publisher.py:9
+#: manager/urls/subject.py:9
+msgid "^(?P<slug>[-\\w]+)/detail$"
+msgstr "^(?P<slug>[-\\w]+)/detalhes$"
+
+#: manager/urls/author.py:10 manager/urls/collection.py:10
+#: manager/urls/community.py:10 manager/urls/keyword.py:10
+#: manager/urls/publication.py:11 manager/urls/publisher.py:10
+#: manager/urls/subject.py:10
+msgid "^(?P<slug>[-\\w]+)/edit$"
+msgstr "^(?P<slug>[-\\w]+)/editar$"
+
+#: manager/urls/author.py:11 manager/urls/collection.py:11
+#: manager/urls/community.py:11 manager/urls/keyword.py:11
+#: manager/urls/publication.py:12 manager/urls/publisher.py:11
+#: manager/urls/subject.py:11
+msgid "^(?P<slug>[-\\w]+)/delete$"
+msgstr "^(?P<slug>[-\\w]+)/excluir$"
+
+#: manager/urls/author.py:12 manager/urls/collection.py:12
+#: manager/urls/community.py:12 manager/urls/keyword.py:12
+#: manager/urls/publisher.py:12 manager/urls/subject.py:12
+msgid "^(?P<slug>[-\\w]+)/publications$"
+msgstr "^(?P<slug>[-\\w]+)/publicacoes$"
+
+#: manager/urls/publication.py:10
+msgid "^(?P<pk>[0-9]+)$"
 msgstr ""
 
 #: manager/utils/constants.py:5

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-01-11 07:38-0300\n"
+"POT-Creation-Date: 2017-01-11 07:45-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -539,4 +539,93 @@ msgstr ""
 
 #: submission/templates/submission/submission/list_to_review.html:90
 msgid "Without Review"
+msgstr ""
+
+#: submission/urls/__init__.py:10
+msgid "^$"
+msgstr ""
+
+#: submission/urls/__init__.py:11
+msgid "^index$"
+msgstr ""
+
+#: submission/urls/__init__.py:12
+msgid "^event/"
+msgstr ""
+
+#: submission/urls/__init__.py:13
+msgid "^event/(?P<event_slug>[-\\w]+)/submission/"
+msgstr ""
+
+#: submission/urls/__init__.py:14
+msgid "^event/(?P<event_slug>[-\\w]+)/submission/(?P<submission_slug>[-\\w]+)/"
+msgstr ""
+
+#: submission/urls/__init__.py:15
+msgid "^report/"
+msgstr ""
+
+#: submission/urls/__init__.py:16
+msgid "^feed/$"
+msgstr ""
+
+#: submission/urls/event.py:7 submission/urls/submissions.py:7
+msgid "^list$"
+msgstr ""
+
+#: submission/urls/event.py:8 submission/urls/review.py:7
+#: submission/urls/submissions.py:9
+msgid "^add$"
+msgstr ""
+
+#: submission/urls/event.py:9 submission/urls/submissions.py:10
+msgid "^(?P<slug>[-\\w]+)/detail$"
+msgstr ""
+
+#: submission/urls/event.py:10 submission/urls/submissions.py:12
+msgid "^(?P<slug>[-\\w]+)/edit$"
+msgstr ""
+
+#: submission/urls/event.py:11 submission/urls/submissions.py:13
+msgid "^(?P<slug>[-\\w]+)/delete$"
+msgstr ""
+
+#: submission/urls/report.py:7
+msgid "^(?P<event_slug>[-\\w]+)/submissions$"
+msgstr ""
+
+#: submission/urls/review.py:8
+msgid "^(?P<pk>[-\\w]+)/detail$"
+msgstr ""
+
+#: submission/urls/review.py:9
+msgid "^(?P<pk>[-\\w]+)/detail_to_review$"
+msgstr ""
+
+#: submission/urls/review.py:10
+msgid "^(?P<pk>[-\\w]+)/edit$"
+msgstr ""
+
+#: submission/urls/review.py:11
+msgid "^(?P<pk>[-\\w]+)/delete$"
+msgstr ""
+
+#: submission/urls/submissions.py:8
+msgid "^list_all$"
+msgstr ""
+
+#: submission/urls/submissions.py:11
+msgid "^(?P<slug>[-\\w]+)/detail_to_review$"
+msgstr ""
+
+#: submission/urls/submissions.py:14
+msgid "^(?P<slug>[-\\w]+)/add_reviser$"
+msgstr ""
+
+#: submission/urls/submissions.py:15
+msgid "^(?P<slug>[-\\w]+)/submit_final$"
+msgstr ""
+
+#: submission/urls/submissions.py:16
+msgid "^submission_final$"
 msgstr ""

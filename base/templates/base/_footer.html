@@ -21,7 +21,8 @@
 	<li class="nav-item active">
 		<div class="nav-link">
 			<form action="{% url 'set_language' %}" method="post">{% csrf_token %}
-			<input name="next" type="hidden" value="{{ redirect_to }}" />
+			{# Não usei {{ redirect_to }} no valor pois, após a tradução das URL, a URL para redirecionamento está desatualizada  #}
+			<input name="next" type="hidden" value="/" />
 			<select name="language">
 			{% get_current_language as LANGUAGE_CODE %}
 			{% get_available_languages as LANGUAGES %}

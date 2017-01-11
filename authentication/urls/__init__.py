@@ -1,8 +1,9 @@
 from django.conf.urls import include, url
+from django.utils.translation import ugettext_lazy as _
 
 urlpatterns = [
-	url(r'^account/', include('authentication.urls.account')),
-	url(r'^participant/', include('authentication.urls.participant')),
-	url(r'^reviser/', include('authentication.urls.reviser')),	
-	url(r'^administrator/', include('authentication.urls.administrator')),	
+	url(_(r'^account/'), include('authentication.urls.account')),
+	url(_(r'^participant/'), include('authentication.urls.participant')),
+	url(_(r'^reviser/'), include('authentication.urls.reviser')),	
+	url(_(r'^administrator/'), include('authentication.urls.administrator')),	
 ]
