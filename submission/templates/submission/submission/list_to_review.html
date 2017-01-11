@@ -12,7 +12,7 @@
 
 {% block breadcrumbs %}
 	{{ block.super }}
-	<a href="{% url 'submission:submission_list_to_review' event_slug=event.slug page=1 %}" class="breadcrumb-item" >
+	<a href="{% url 'submission:submission_list_to_review' event_slug=event.slug %}" class="breadcrumb-item" >
 		<i class="fa fa-upload"></i>
 		{% trans "To Revission" %}
 	</a>
@@ -27,89 +27,85 @@
 {% endblock %}
 
 {% block content %}
-	<div class="col-md-12">
-	<div class="row">
-		<table class="table table-bordered table-striped table-hover text">
-			<thead class="thead-inverse">
+	<table class="table table-bordered table-striped table-hover text">
+		<thead class="thead-inverse">
+			<tr>
+				<th>{% trans "Submission" %}</th>
+				<th>{% trans "Authors" %}</th>
+				<th>{% trans "Reviser" %}</th>
+				<th>{% trans "Review" %}</th>
+				{% if event.stage.type == 'submission_complete' %}
+				<th>{% trans "Final" %}</th>
+				{% endif %}
+			</tr>
+		</thead>
+
+		<tbody>
+			{% for submission in object_list %}
 				<tr>
-					<th>{% trans "Submission" %}</th>
-					<th>{% trans "Authors" %}</th>
-					<th>{% trans "Reviser" %}</th>
-					<th>{% trans "Review" %}</th>
+					<td>
+						<a href="{% url 'submission:submission_detail_to_review' event_slug=submission.event.slug slug=submission.slug %}">
+							{{ submission.publication.title }}
+						</a>
+					</td>
+					<td>
+						{% for author in submission.publication.authors.all %}
+							<a href="{% url 'manager:author_detail' slug=author.slug %}" class="tag tag-primary" target="_blank">
+								{{ author.reference_name }}
+							</a>
+						{% endfor %}
+					</td>
+					<td>
+						{% if submission.reviser %}
+							<label>
+								{{ submission.reviser }}
+							</label>
+							{% if perms.authentication.change_reviser and event.stage.type == 'reviewing' %}
+								<a href="{% url 'submission:submission_change_reviser' event_slug=submission.event.slug slug=submission.slug %}" class="btn btn-link">
+									<i class="fa fa-edit"></i>
+								</a>
+							{% endif %}
+						{% else %}
+							{% trans "No Reviser" %}
+							{% if perms.authentication.add_reviser and event.stage.type == 'reviewing' %}
+							<a href="{% url 'submission:submission_change_reviser' event_slug=submission.event.slug slug=submission.slug %}" class="btn btn-link btn-sm">
+								<i class="fa fa-plus"></i>
+								{% trans "Add Reviser" %}
+							</a>
+							{% endif %}
+						{% endif %}
+					</td>
+					<td>
+						{% if submission.review %}
+							<a href="{% url 'submission:review_detail_to_review' event_slug=event.slug submission_slug=submission.slug pk=submission.review.pk %}">
+								<i class="fa fa-file-text-o"></i>
+								{% trans "Review" %}
+							</a>
+						{% elif submission.reviser == request.user %}
+							<a href="{% url 'submission:review_create' event_slug=event.slug submission_slug=submission.slug %}">
+								<i class="fa fa-plus"></i>
+								{% trans "Add Review" %}
+							</a>
+						{% else %}
+							{% trans "Without Review" %}
+						{% endif %}
+					</td>
 					{% if event.stage.type == 'submission_complete' %}
-					<th>{% trans "Final" %}</th>
+					<td>
+					<div class="form-check has-success">
+					  <a href="{% url 'submission:submission_submit_final' event_slug=event.slug slug=submission.slug %}" class="form-check-label">
+					    <input type="checkbox" class="form-check-input" {% if submission.publication.is_final %}checked{% endif %}>
+					  </a>
+					</div>
+					</td>
 					{% endif %}
 				</tr>
-			</thead>
-
-			<tbody>
-				{% for submission in object_list %}
-					<tr>
-						<td>
-							<a href="{% url 'submission:submission_detail_to_review' event_slug=submission.event.slug slug=submission.slug %}">
-								{{ submission.publication.title }}
-							</a>
-						</td>
-						<td>
-							{% for author in submission.publication.authors.all %}
-								<a href="{% url 'manager:author_detail' slug=author.slug %}" class="tag tag-primary">
-									{{ author.reference_name }}
-								</a>
-							{% endfor %}
-						</td>
-						<td>
-							{% if submission.reviser %}
-								<label>
-									{{ submission.reviser }}
-								</label>
-								{% if perms.authentication.change_reviser and event.stage.type == 'reviewing' %}
-									<a href="{% url 'submission:submission_change_reviser' event_slug=submission.event.slug slug=submission.slug %}" class="btn btn-link">
-										<i class="fa fa-edit"></i>
-									</a>
-								{% endif %}
-							{% else %}
-								{% trans "No Reviser" %}
-								{% if perms.authentication.add_reviser and event.stage.type == 'reviewing' %}
-								<a href="{% url 'submission:submission_change_reviser' event_slug=submission.event.slug slug=submission.slug %}" class="btn btn-link btn-sm">
-									<i class="fa fa-plus"></i>
-									{% trans "Add Reviser" %}
-								</a>
-								{% endif %}
-							{% endif %}
-						</td>
-						<td>
-							{% if submission.review %}
-								<a href="{% url 'submission:review_detail_to_review' event_slug=event.slug submission_slug=submission.slug pk=submission.review.pk %}">
-									<i class="fa fa-file-text-o"></i>
-									{% trans "Review" %}
-								</a>
-							{% elif submission.reviser == request.user %}
-								<a href="{% url 'submission:review_create' event_slug=event.slug submission_slug=submission.slug %}">
-									<i class="fa fa-plus"></i>
-									{% trans "Add Review" %}
-								</a>
-							{% else %}
-								{% trans "Without Review" %}
-							{% endif %}
-						</td>
-						{% if event.stage.type == 'submission_complete' %}
-						<td>
-						<div class="form-check has-success">
-						  <a href="{% url 'submission:submission_submit_final' event_slug=event.slug slug=submission.slug %}" class="form-check-label">
-						    <input type="checkbox" class="form-check-input" {% if submission.publication.is_final %}checked{% endif %}>
-						  </a>
-						</div>
-						</td>
-						{% endif %}
-					</tr>
-				{% empty %}
-					<tr>
-						<td class="text-xs-center">{% trans "No Submission found!" %}</td>
-					</tr>
-				{% endfor %}
-			</tbody>
-		</table>
-		{% include "base/_paginate.html" %}
-	</div>
-	</div>
+			{% empty %}
+				<tr>
+					<td class="text-xs-center">{% trans "No Submission found!" %}</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+	{% include "base/_paginate.html" %}
 {% endblock %}

@@ -18,7 +18,7 @@ class EventListView(SearchResponseMixin, CSVResponseMixin, ListView):
 class EventCreateView(CreateView):
 	template_name = 'submission/event/form.html'
 	model = Event
-	fields = ['name', 'description', 'address', 'year', 'image', 'typology', 'community', 'publisher', 'date', 
+	fields = ['name', 'description', 'address', 'image', 'typology', 'community', 'publisher', 'date', 
 	'submission_1_open', 'submission_1_close', 'review_open', 'review_close', 'submission_2_open', 'submission_2_close']
 
 	def get_success_url(self):
@@ -30,14 +30,11 @@ class EventCreateView(CreateView):
 class EventUpdateView(UpdateView):
 	template_name = 'submission/event/form.html'
 	model = Event
-	fields = ['name', 'description', 'address','year', 'image', 'typology', 'community', 'publisher', 'date', 
+	fields = ['name', 'description', 'address', 'image', 'typology', 'community', 'publisher', 'date', 
 	'submission_1_open', 'submission_1_close', 'review_open', 'review_close', 'submission_2_open', 'submission_2_close']
 	
 	def get_success_url(self):
 		return reverse_lazy('submission:event_detail', kwargs={'slug':self.object.slug})
-		
-	def form_valid(self, form):
-		return super(EventUpdateView, self).form_valid(form)
 
 class EventDeleteView(DeleteView):
 	template_name = 'submission/event/check_delete.html'
@@ -47,7 +44,3 @@ class EventDeleteView(DeleteView):
 class EventDetailView(DetailView):
 	template_name = 'submission/event/detail.html'
 	model = Event
-
-	def get_context_data(self, ** kwargs):
-		context = super(EventDetailView, self).get_context_data( ** kwargs)
-		return context

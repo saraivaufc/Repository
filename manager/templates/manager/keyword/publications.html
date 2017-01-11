@@ -15,11 +15,11 @@
 		<i class="fa fa-home" aria-hidden="true"></i>
 		{% trans "Home" %}
 	</a>
-	<a href="{% url 'manager:keyword_list' page=1 %}" class="breadcrumb-item" >
+	<a href="{% url 'manager:keyword_list' %}" class="breadcrumb-item" >
 		<i class="fa fa-flag"></i>
 		{% trans "Keywords" %}
 	</a>
-	<a href="{% url 'manager:keyword_publications' slug=keyword.slug page=1 %}" class="breadcrumb-item" >
+	<a href="{% url 'manager:keyword_publications' slug=keyword.slug %}" class="breadcrumb-item" >
 		<i class="fa fa-book"></i>
 		{% blocktrans with keyword=keyword %}
 			Publications of {{ keyword }}

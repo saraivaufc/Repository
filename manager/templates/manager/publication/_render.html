@@ -1,5 +1,7 @@
 {% load i18n %}
 
+{% trans "Empty" as Empty %}
+
 <dl class="definition text" itemscope itemtype="http://schema.org/Publication">
 	<dt class="col-sm-2">{% trans "Title" %}:</dt>
 	<dd class="col-sm-10" itemprop="title">{{ publication.title }}</dd>
@@ -29,7 +31,7 @@
 
 	<dt class="col-sm-2">{% trans "Community" %}:</dt>
 	<dd class="col-sm-10" itemprop="community">
-		<a class="tag tag-primary" href="{% url 'manager:community_detail' slug=publication.community.slug page=1 %}">
+		<a class="tag tag-primary" href="{% url 'manager:community_detail' slug=publication.community.slug %}">
 			<i class="fa fa-university"></i>
 			{{ publication.community }}		
 		</a>
@@ -72,20 +74,12 @@
 
 	<dt class="col-sm-2">{% trans "Abstract" %}:</dt>
 	<dd class="col-sm-10" itemprop="abstract">
-		{% if publication.abstract %}
-			{{ publication.abstract }}
-		{% else %}
-			{% trans "Empty" %}
-		{% endif %}
+		{{ publication.abstract|default:Empty }}
 	</dd>
 
 	<dt class="col-sm-2">{% trans "Other Abstract" %}:</dt>
 	<dd class="col-sm-10" itemprop="other_abstract">
-		{% if publication.other_abstract %}
-			{{ publication.other_abstract }}
-		{% else %}
-			{% trans "Empty" %}
-		{% endif %}
+		{{ publication.other_abstract|default:Empty }}
 	</dd>
 
 	<dt class="col-sm-2">{% trans "Keywords" %}:</dt>

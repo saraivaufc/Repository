@@ -15,11 +15,11 @@
 		<i class="fa fa-home" aria-hidden="true"></i>
 		{% trans "Home" %}
 	</a>
-	<a href="{% url 'manager:subject_list' page=1 %}" class="breadcrumb-item" >
+	<a href="{% url 'manager:subject_list' %}" class="breadcrumb-item" >
 		<i class="fa fa-flag"></i>
 		{% trans "Subjects" %}
 	</a>
-	<a href="{% url 'manager:subject_publications' slug=subject.slug page=1 %}" class="breadcrumb-item" >
+	<a href="{% url 'manager:subject_publications' slug=subject.slug %}" class="breadcrumb-item" >
 		<i class="fa fa-book"></i>
 		{% blocktrans with subject=subject %}
 			Publications of {{ subject }}

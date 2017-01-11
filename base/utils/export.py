@@ -13,7 +13,7 @@ class Export:
 
 	def to_csv(request, queryset, fields):
 		response = HttpResponse(content_type='text/csv')
-		response['Content-Disposition'] = 'attachment; filename="submissions.csv"'
+		response['Content-Disposition'] = 'attachment; filename="file.csv"'
 		writer = csv.writer(response)
 		writer.writerow(map(lambda x: x[1], fields))
 		serial = Export.to_serial(request, 'json', queryset, dict(fields).keys())
@@ -22,7 +22,6 @@ class Export:
 			values=[]
 			for field in map(lambda x: x[0], fields):
 				value = obj['fields'][field]
-				print type(value)
 				#se o campo for uma lista, converta para string
 				if type(value) == list:
 					value = reduce(lambda x, y: x + ';' + y, value)

@@ -15,11 +15,11 @@
 		<i class="fa fa-home" aria-hidden="true"></i>
 		{% trans "Home" %}
 	</a>
-	<a href="{% url 'manager:community_list' page=1 %}" class="breadcrumb-item" >
+	<a href="{% url 'manager:community_list' %}" class="breadcrumb-item" >
 		<i class="fa fa-university"></i>
 		{% trans "Communities" %}
 	</a>
-	<a href="{% url 'manager:community_publications' slug=community.slug page=1 %}" class="breadcrumb-item" >
+	<a href="{% url 'manager:community_publications' slug=community.slug %}" class="breadcrumb-item" >
 		<i class="fa fa-book"></i>
 		{% blocktrans with community=community %}
 			Publications of {{ community }}

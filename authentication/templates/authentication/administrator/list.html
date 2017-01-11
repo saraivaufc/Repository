@@ -1,7 +1,6 @@
 {% extends "authentication/index.html" %}
 
-
-{% load i18n static %}
+{% load i18n %}
 
 {% block title %}{% endblock %}
 
@@ -12,7 +11,7 @@
 
 {% block breadcrumbs %}
 	{{ block.super }}
-	<a href="{% url 'authentication:administrator_list' page=1 %}" class="breadcrumb-item" >
+	<a href="{% url 'authentication:administrator_list' %}" class="breadcrumb-item" >
 		<i class="fa fa-users"></i>
 		{% trans "Administrators" %}
 	</a>
@@ -21,6 +20,8 @@
 {%  block page_title %}{% trans "List of Administrators" %}{% endblock %}
 
 {% block content %}
+	{% trans "Empty" as Empty %}
+
 	<div class="col-md-4">
 	<div class="row">
 	{% if perms.authentication.add_administrator %}
@@ -56,11 +57,11 @@
 				{% for administrator in object_list %}
 					<tr>
 						<td>
-							{{ administrator.get_full_name }}
+							{{ administrator.get_full_name|default:Empty }}
 						</td>
 						<td>
 							<a href="{% url 'authentication:account_detail' pk=administrator.pk %}">
-							{{ administrator.username }}
+							{{ administrator.username|default:Empty }}
 							</a>
 						</td>
 						<td>

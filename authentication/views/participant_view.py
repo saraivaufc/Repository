@@ -7,23 +7,10 @@ from django.conf import settings
 from django.http import HttpResponseRedirect
 from django.contrib.auth.models import Group
 
+from base.views import SearchResponseMixin, CSVResponseMixin
 from authentication.models import User
 
-class ParticipantListView(ListView):
+class ParticipantListView(SearchResponseMixin, CSVResponseMixin, ListView):
 	template_name = 'authentication/participant/list.html'
 	paginate_by = settings.PAGINATE_BY
-	fields_search = User.FIELDS_SEARCH
-
-	def get_queryset(self):
-		query = self.request.GET.get('query')
-		text = self.request.GET.get('text')
-		if query and query in dict(self.fields_search):
-			kwargs = {("%s__contains" % (query,)):text}
-			return User.objects.filter(** kwargs)
-		return User.objects.all()
-
-	def get_context_data(self, ** kwargs):
-		context = super(ParticipantListView, self).get_context_data( ** kwargs)
-		context["fields_search"] = self.fields_search
-		context["url_search"] = reverse_lazy("authentication:participant_list", kwargs={"page":1})
-		return context
+	model = User

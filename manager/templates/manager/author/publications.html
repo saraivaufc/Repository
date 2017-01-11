@@ -15,11 +15,11 @@
 		<i class="fa fa-home" aria-hidden="true"></i>
 		{% trans "Home" %}
 	</a>
-	<a href="{% url 'manager:author_list' page=1 %}" class="breadcrumb-item" >
+	<a href="{% url 'manager:author_list' %}" class="breadcrumb-item" >
 		<i class="fa fa-graduation-cap"></i>
 		{% trans "Authors" %}
 	</a>
-	<a href="{% url 'manager:author_publications' slug=author.slug page=1 %}" class="breadcrumb-item" >
+	<a href="{% url 'manager:author_publications' slug=author.slug %}" class="breadcrumb-item" >
 		<i class="fa fa-book"></i>
 		{% blocktrans with author=author %}
 			Publications of {{ author }}

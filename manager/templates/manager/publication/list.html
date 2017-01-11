@@ -12,7 +12,7 @@
 
 {% block breadcrumbs %}
 	{{ block.super }}
-	<a href="{% url 'manager:publication_list' page=1 %}" class="breadcrumb-item" >
+	<a href="{% url 'manager:publication_list' %}" class="breadcrumb-item" >
 		<i class="fa fa-book"></i>
 		{% trans "Publications" %}
 	</a>
@@ -38,52 +38,46 @@
 	</div>
 	</div>
 
-	<div class="col-md-12">
-	<div class="row">
-		<div class="table-responsive">
-			<table class="table table-bordered table-striped table-hover text">
-				<thead class="thead-inverse">
-					<tr>
-						<th>
-							{% trans "Title" %}
-						</th>
-						<th>
-							{% trans "Typology" %}
-						</th>
-						<th>
-							{% trans "Authors" %}
-						</th>
-					</tr>
-				</thead>
+	<table class="table table-bordered table-striped table-hover text">
+		<thead class="thead-inverse">
+			<tr>
+				<th>
+					{% trans "Title" %}
+				</th>
+				<th>
+					{% trans "Typology" %}
+				</th>
+				<th>
+					{% trans "Authors" %}
+				</th>
+			</tr>
+		</thead>
 
-				<tbody>
-					{% for publication in object_list %}
-						<tr>
-							<td>
-								<a href="{% url 'manager:publication_detail' slug=publication.slug %}">
-									{{ publication.title }}	
-								</a>
-							</td>
-							<td>
-								{{ publication.typology|title }}	
-							</td>
-							<td>
-								{% for author in publication.authors.all %}
-									<a href="{% url 'manager:author_detail' slug=author.slug %}" class="tag tag-primary">
-										{{ author.reference_name }}
-									</a>
-								{% endfor %}
-							</td>
-						</tr>
-					{% empty %}
-						<tr>
-							<td class="text-xs-center">{% trans "No Publication found!" %}</td>
-						</tr>
-					{% endfor %}
-				</tbody>
-			</table>
-		</div>
-		{% include "base/_paginate.html" %}
-	</div>
-	</div>
+		<tbody>
+			{% for publication in object_list %}
+				<tr>
+					<td>
+						<a href="{% url 'manager:publication_detail' slug=publication.slug %}">
+							{{ publication.title }}	
+						</a>
+					</td>
+					<td>
+						{{ publication.typology|title }}	
+					</td>
+					<td>
+						{% for author in publication.authors.all %}
+							<a href="{% url 'manager:author_detail' slug=author.slug %}" class="tag tag-primary">
+								{{ author.reference_name }}
+							</a>
+						{% endfor %}
+					</td>
+				</tr>
+			{% empty %}
+				<tr>
+					<td class="text-xs-center">{% trans "No Publication found!" %}</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+	{% include "base/_paginate.html" %}
 {% endblock %}

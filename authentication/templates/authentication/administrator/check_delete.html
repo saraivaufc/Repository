@@ -23,7 +23,7 @@
 	<div class="container-fluid">
 		<form action="." method="post">{% csrf_token %}
 			<p class="lead">{% trans "Are you sure you want to delete" %} "{{ object }}"?</p>
-			<a href="{% url 'authentication:administrator_list' page=1 %}" class="btn btn-info">{% trans "No" %}</a>
+			<a href="{% url 'authentication:administrator_list' %}" class="btn btn-info">{% trans "No" %}</a>
 			<button class="btn btn-primary" type="submit">{% trans "Yes" %}</button>
 		</form>
 	</div>

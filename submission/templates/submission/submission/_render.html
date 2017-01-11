@@ -1,5 +1,7 @@
 {% load i18n static %}
 
+{% trans "Empty" as Empty %}
+
 <dl class="definition text" itemscope itemtype="http://schema.org/Submission">
 	<dt class="col-sm-2">{% trans "Title" %}:</dt>
 	<dd class="col-sm-10" itemprop="title">{{ publication.title }}</dd>
@@ -10,7 +12,7 @@
 	<dt class="col-sm-2">{% trans "Authors" %}:</dt>
 	<dd class="col-sm-10" itemprop="authors">
 		{% for author in publication.authors.all %}
-			<a class="tag tag-primary" href="{% url 'manager:author_detail' slug=author.slug %}">
+			<a class="tag tag-primary" href="{% url 'manager:author_detail' slug=author.slug %}" target="_blank">
 				<i class="fa fa-graduation-cap"></i>
 				{{ author.reference_name }}	
 			</a>
@@ -20,7 +22,7 @@
 	<dt class="col-sm-2">{% trans "Subjects" %}</dt>
 	<dd class="col-sm-10" itemprop="subjects">
 		{% for subject in publication.subjects.all %}
-			<a class="tag tag-primary" href="{% url 'manager:subject_detail' slug=subject.slug %}">
+			<a class="tag tag-primary" href="{% url 'manager:subject_detail' slug=subject.slug %}" target="_blank">
 				<i class="fa fa-flag"></i>
 				{{ subject.name }}		
 			</a>	
@@ -29,7 +31,7 @@
 
 	<dt class="col-sm-2">{% trans "Collection" %}:</dt>
 	<dd class="col-sm-10" itemprop="collection">
-		<a class="tag tag-primary" href="{% url 'manager:collection_detail' slug=publication.collection.slug %}">
+		<a class="tag tag-primary" href="{% url 'manager:collection_detail' slug=publication.collection.slug %}" target="_blank">
 			<i class="fa fa-object-group"></i>
 			{{ publication.collection }}		
 		</a>
@@ -43,26 +45,18 @@
 
 	<dt class="col-sm-2">{% trans "Abstract" %}:</dt>
 	<dd class="col-sm-10" itemprop="abstract">
-		{% if publication.abstract %}
-			{{ publication.abstract }}
-		{% else %}
-			{% trans "Empty" %}
-		{% endif %}
+		{{ publication.abstract|default:Empty }}
 	</dd>
 
 	<dt class="col-sm-2">{% trans "Other Abstract" %}:</dt>
 	<dd class="col-sm-10" itemprop="other_abstract">
-		{% if publication.other_abstract %}
-			{{ publication.other_abstract }}
-		{% else %}
-			{% trans "Empty" %}
-		{% endif %}
+		{{ publication.other_abstract|default:Empty }}
 	</dd>
 
 	<dt class="col-sm-2">{% trans "Keywords" %}:</dt>
 	<dd class="col-sm-10" itemprop="keywords">
 		{% for keyword in publication.keywords.all %}
-		<a class="tag tag-primary" href="{% url 'manager:keyword_detail' slug=keyword.slug %}">
+		<a class="tag tag-primary" href="{% url 'manager:keyword_detail' slug=keyword.slug %}" target="_blank">
 			<i class="fa fa-tags"></i>
 			{{ keyword }}
 		</a>
@@ -70,7 +64,9 @@
 	</dd>
 
 	<dt class="col-sm-2">{% trans "Issue Date" %}:</dt>
-	<dd class="col-sm-10" itemprop="issue_date">{{ publication.issue_date }}</dd>
+	<dd class="col-sm-10" itemprop="issue_date">
+		{{ publication.issue_date }}
+	</dd>
 
 	<dt class="col-sm-2">{% trans "File" %}:</dt>
 	<dd class="col-sm-10" itemprop="file">

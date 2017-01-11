@@ -4,8 +4,8 @@ import os
 import glob
 import re
 
-TEXT = 'Repository/'
-NEW_TEXT = 'base/'
+TEXT = "/page=(?P<page>[0-9]+)"
+NEW_TEXT = ""
 FILE_TYPES = ['(.)\.py', ]
 
 rexs = []
@@ -47,4 +47,7 @@ def replace(f, text, new_text):
 for fn in find():
 	fn = BASE_DIR + fn
 	if not fn == SELF:
+		print "Ok"
 		replace(fn,TEXT, NEW_TEXT)
+	else:
+		print "Erro"

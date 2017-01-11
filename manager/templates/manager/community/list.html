@@ -12,7 +12,7 @@
 
 {% block breadcrumbs %}
 	{{ block.super }}
-	<a href="{% url 'manager:community_list' page=1 %}" class="breadcrumb-item" >
+	<a href="{% url 'manager:community_list' %}" class="breadcrumb-item" >
 		<i class="fa fa-university"></i>
 		{% trans "Communities" %}
 	</a>
@@ -38,41 +38,37 @@
 	</div>
 	</div>
 
-	<div class="col-md-12">
-	<div class="row">
-		<table class="table table-bordered table-striped table-hover text">
-			<thead class="thead-inverse">
-				<tr>
-					<th>{% trans "Name" %}</th>
-					<th>{% trans "Acronym" %}</th>
-					<th>{% trans "Publications" %}</th>
-				</tr>
-			</thead>
+	<table class="table table-bordered table-striped table-hover text">
+		<thead class="thead-inverse">
+			<tr>
+				<th>{% trans "Name" %}</th>
+				<th>{% trans "Acronym" %}</th>
+				<th>{% trans "Publications" %}</th>
+			</tr>
+		</thead>
 
-			<tbody>
-				{% for community in object_list %}
-					<tr>
-						<td>
-							<a href="{% url 'manager:community_detail' slug=community.slug page=1 %}">{{ community.name }}</a>
-						</td>
-						<td>{{ community.acronym }}</td>
-						<td>
-							<a href="{% url 'manager:community_publications' slug=community.slug page=1 %}"  data-toggle="tooltip" title="{% trans "See Publications" %}">
-								<label>
-									<i class="fa fa-book"></i>
-									{% trans "See Publications" %}
-								</label>
-							</a>
-						</td>
-					</tr>
-				{% empty %}
-					<tr>
-						<td class="text-xs-center">{% trans "No Community found!" %}</td>
-					</tr>
-				{% endfor %}
-			</tbody>
-		</table>
-		{% include "base/_paginate.html" %}
-	</div>
-	</div>
+		<tbody>
+			{% for community in object_list %}
+				<tr>
+					<td>
+						<a href="{% url 'manager:community_detail' slug=community.slug %}">{{ community.name }}</a>
+					</td>
+					<td>{{ community.acronym }}</td>
+					<td>
+						<a href="{% url 'manager:community_publications' slug=community.slug %}"  data-toggle="tooltip" title="{% trans "See Publications" %}">
+							<label>
+								<i class="fa fa-book"></i>
+								{% trans "See Publications" %}
+							</label>
+						</a>
+					</td>
+				</tr>
+			{% empty %}
+				<tr>
+					<td class="text-xs-center">{% trans "No Community found!" %}</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+	{% include "base/_paginate.html" %}
 {% endblock %}

@@ -1,28 +1,8 @@
 html, body {
-    height: 100%;
+	height: 100%;
 }
-
-#header{
-}
-
-#breadcrumb{
-
-}
-
-#messages{
-	
-}
-
-#content{
-}
-
-#footer{
-
-}
-
 
 .page-title{
-	font-family:"Trebuchet MS", Helvetica, sans-serif;
 	color:#FFF;
 	background-color: #0275d8;
 	border-color: #0275d8;
@@ -46,6 +26,19 @@ html, body {
 	width: 100%;
 	margin-right: 5px;
 	font-weight: bold;
+	color: #0275d8;
+}
+
+.sidebar-item.active{
+	color: #fff;
+}
+
+.breadcrumb{
+	margin-bottom: 0px;
+}
+
+.breadcrumb > .breadcrumb-item:last-child{
+	color: #818a91;
 }
 
 .full-width{
@@ -79,10 +72,6 @@ dl.definition > dt:nth-child(1), dl.definition > dd:nth-child(2){
 /* CARD */
 .card{
 	border: 1px solid #ddd;
-}
-
-.card-img-top{
-	margin-top: 15px;
 }
 
 
@@ -119,4 +108,18 @@ input[type="datetime"]{
 
 input[type="number"], input[type="date"]{
 	width: 100px !important;
+}
+
+
+.nav-link.active:after {
+  position: absolute;
+  bottom: 0;
+  width: 0;
+  height: 0;
+  margin-left: -3rem;
+  vertical-align: middle;
+  content: "";
+  border-right: .3rem solid transparent;
+  border-bottom: .3rem solid;
+  border-left: .3rem solid transparent;
 }

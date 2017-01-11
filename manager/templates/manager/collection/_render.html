@@ -4,7 +4,7 @@
 	<dt class="col-sm-2">{% trans "Communities" %}:</dt>
 	<dd class="col-sm-10" itemprop="communities">
 		{% for community in collection.communities.all %}
-		<a href="{% url 'manager:community_detail' slug=community.slug page=1 %}" class="tag tag-primary">
+		<a href="{% url 'manager:community_detail' slug=community.slug %}" class="tag tag-primary">
 			<i class="fa fa-university"></i>
 			{{ community }}
 		</a>
@@ -21,7 +21,7 @@
 
 	<dt class="col-sm-2">{% trans "Publications" %}:</dt>
 	<dd class="col-sm-10" itemprop="publications">
-		<a href="{% url 'manager:collection_publications' slug=collection.slug page=1 %}" data-toggle="tooltip" title="{% trans "See Publications" %}">
+		<a href="{% url 'manager:collection_publications' slug=collection.slug %}" data-toggle="tooltip" title="{% trans "See Publications" %}">
 			<i class="fa fa-book"></i>
 			{% trans "See Publications" %}
 		</a>

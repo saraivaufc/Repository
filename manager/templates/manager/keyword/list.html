@@ -12,7 +12,7 @@
 
 {% block breadcrumbs %}
 	{{ block.super }}
-	<a href="{% url 'manager:keyword_list' page=1 %}" class="breadcrumb-item" >
+	<a href="{% url 'manager:keyword_list' %}" class="breadcrumb-item" >
 		<i class="fa fa-tags"></i>
 		{% trans "Keywords" %}
 	</a>
@@ -37,40 +37,36 @@
 		{% include "base/_form_search.html" %}
 	</div>
 	</div>
+	
+	<table class="table table-bordered table-striped table-hover text">
+		<thead class="thead-inverse">
+			<tr>
+				<th>{% trans "Name" %}</th>
+				<th>{% trans "Publications" %}</th>
+			</tr>
+		</thead>
 
-	<div class="col-md-12">
-	<div class="row">
-		<table class="table table-bordered table-striped table-hover text">
-			<thead class="thead-inverse">
+		<tbody>
+			{% for keyword in object_list %}
 				<tr>
-					<th>{% trans "Name" %}</th>
-					<th>{% trans "Publications" %}</th>
+					<td>
+						<a href="{% url 'manager:keyword_detail' slug=keyword.slug %}">
+							{{ keyword.name }}
+						</a>
+					</td>
+					<td>
+						<a href="{% url 'manager:keyword_publications' slug=keyword.slug %}" data-toggle="tooltip" title="{% trans "See Publications" %}">
+							<i class="fa fa-book"></i>
+							{% trans "See Publications" %}
+						</a>
+					</td>
 				</tr>
-			</thead>
-
-			<tbody>
-				{% for keyword in object_list %}
-					<tr>
-						<td>
-							<a href="{% url 'manager:keyword_detail' slug=keyword.slug %}">
-								{{ keyword.name }}
-							</a>
-						</td>
-						<td>
-							<a href="{% url 'manager:keyword_publications' slug=keyword.slug page=1 %}" data-toggle="tooltip" title="{% trans "See Publications" %}">
-								<i class="fa fa-book"></i>
-								{% trans "See Publications" %}
-							</a>
-						</td>
-					</tr>
-				{% empty %}
-					<tr>
-						<td class="text-xs-center">{% trans "No Keyword found!" %}</td>
-					</tr>
-				{% endfor %}
-			</tbody>
-		</table>
-		{% include "base/_paginate.html" %}
-	</div>
-	</div>
+			{% empty %}
+				<tr>
+					<td class="text-xs-center">{% trans "No Keyword found!" %}</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+	{% include "base/_paginate.html" %}
 {% endblock %}

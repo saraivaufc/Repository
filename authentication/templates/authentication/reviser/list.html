@@ -12,7 +12,7 @@
 
 {% block breadcrumbs %}
 	{{ block.super }}
-	<a href="{% url 'authentication:reviser_list' page=1 %}" class="breadcrumb-item" >
+	<a href="{% url 'authentication:reviser_list' %}" class="breadcrumb-item" >
 		<i class="fa fa-users"></i>
 		{% trans "Revisers" %}
 	</a>
@@ -21,6 +21,8 @@
 {%  block page_title %}{% trans "List of Revisers" %}{% endblock %}
 
 {% block content %}
+	{% trans "Empty" as Empty %}
+
 	<div class="col-md-4">
 	<div class="row">
 	{% if perms.authentication.add_reviser %}
@@ -56,11 +58,11 @@
 				{% for reviser in object_list %}
 					<tr>
 						<td>
-							{{ reviser.get_full_name }}
+							{{ reviser.get_full_name|default:Empty }}
 						</td>
 						<td>
 							<a href="{% url 'authentication:account_detail' pk=reviser.pk %}">
-								{{ reviser.username }}
+								{{ reviser.username|default:Empty }}
 							</a>
 						</td>
 						<td>

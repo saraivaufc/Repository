@@ -12,7 +12,7 @@
 
 {% block breadcrumbs %}
 	{{ block.super }}
-	<a href="{% url 'manager:author_list' page=1 %}" class="breadcrumb-item" >
+	<a href="{% url 'manager:author_list' %}" class="breadcrumb-item" >
 		<i class="fa fa-graduation-cap"></i>
 		{% trans "Authors" %}
 	</a>
@@ -38,44 +38,35 @@
 	</div>
 	</div>
 
-	<div class="col-md-12">
-	<div class="row">
-		<table class="table table-bordered table-striped table-hover text">
-			<thead class="thead-inverse">
+	<table class="table table-bordered table-striped table-hover text">
+		<thead class="thead-inverse">
+			<tr>
+				<th>{% trans "Reference Name" %}</th>
+				<th>{% trans "Publications" %}</th>
+			</tr>
+		</thead>
+
+		<tbody>
+			{% for author in object_list %}
 				<tr>
-					<th>{% trans "Reference Name" %}</th>
-					<th>{% trans "Publications" %}</th>
+					<td>
+						<a href="{% url 'manager:author_detail' slug=author.slug %}">
+							{{ author.reference_name }}
+						</a>
+					</td>
+					<td>
+						<a href="{% url 'manager:author_publications' slug=author.slug %}" data-toggle="tooltip" title="{% trans "See Publications" %}">
+							<i class="fa fa-book"></i>
+							{% trans "See Publications" %}
+						</a>
+					</td>
 				</tr>
-			</thead>
-
-			<tbody>
-				{% for author in object_list %}
-					<tr>
-						<td>
-							<a href="{% url 'manager:author_detail' slug=author.slug %}">
-								{{ author.reference_name }}
-							</a>
-						</td>
-						<td>
-							<a href="{% url 'manager:author_publications' slug=author.slug page=1 %}" data-toggle="tooltip" title="{% trans "See Publications" %}">
-								<i class="fa fa-book"></i>
-								{% trans "See Publications" %}
-							</a>
-						</td>
-					</tr>
-				{% empty %}
-					<tr>
-						<td class="text-xs-center">{% trans "No Author found!" %}</td>
-					</tr>
-				{% endfor %}
-			</tbody>
-		</table>
-	</div>
-	</div>
-
-	<div class="col-md-12">
-	<div class="row">
-		{% include "base/_paginate.html" %}
-	</div>
-	</div>
+			{% empty %}
+				<tr>
+					<td class="text-xs-center">{% trans "No Author found!" %}</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+	{% include "base/_paginate.html" %}
 {% endblock %}

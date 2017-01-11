@@ -12,7 +12,7 @@
 
 {% block breadcrumbs %}
 	{{ block.super }}
-	<a href="{% url 'authentication:participant_list' page=1 %}" class="breadcrumb-item" >
+	<a href="{% url 'authentication:participant_list' %}" class="breadcrumb-item" >
 		<i class="fa fa-users"></i>
 		{% trans "Participants" %}
 	</a>
@@ -21,6 +21,8 @@
 {%  block page_title %}{% trans "List of Participants" %}{% endblock %}
 
 {% block content %}
+	{% trans "Empty" as Empty %}
+
 	<div class="col-md-4">
 	</div>
 
@@ -45,11 +47,11 @@
 				{% for participant in object_list %}
 					<tr>
 						<td>
-							{{ participant.get_full_name }}
+							{{ participant.get_full_name|default:Empty }}
 						</td>
 						<td>
 							<a href="{% url 'authentication:account_detail' pk=participant.pk %}">
-							{{ participant.username }}
+							{{ participant.username|default:Empty }}
 							</a>
 						</td>
 						<td>

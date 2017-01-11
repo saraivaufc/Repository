@@ -48,6 +48,7 @@ INSTALLED_APPS = (
     'django.contrib.humanize',
     'rosetta',
     'django_js_reverse', 
+    'versatileimagefield',
     'base',
     'submission',
     'manager',
@@ -157,9 +158,41 @@ STATICFILES_DIRS = (os.path.join(PROJECT_DIR, '../base/static'),
                     os.path.join(PROJECT_DIR, '../submission/static'), 
                     os.path.join(PROJECT_DIR, '../authentication/static'),)
 
+#Messages
+MESSAGE_STORAGE = 'django.contrib.messages.storage.cookie.CookieStorage'
+
 # Reverse
 JS_REVERSE_JS_VAR_NAME = 'Urls'
 JS_REVERSE_JS_GLOBAL_OBJECT_NAME = 'window'
 JS_REVERSE_JS_MINIFY = True
 JS_REVERSE_EXCLUDE_NAMESPACES = []
 JS_REVERSE_INCLUDE_ONLY_NAMESPACES = ['manager', 'authentication', 'submission']
+
+#Versatile image
+
+VERSATILEIMAGEFIELD_SETTINGS = {
+     # The amount of time, in seconds, that references to created images
+     # should be stored in the cache. Defaults to `2592000` (30 days)
+    'cache_length': 2592000,
+    # The name of the cache you'd like `django-versatileimagefield` to use.
+    # Defaults to 'versatileimagefield_cache'. If no cache exists with the name
+    # provided, the 'default' cache will be used instead.
+    'cache_name': 'versatileimagefield_cache',
+    # The save quality of modified JPEG images. More info here:
+    # http://pillow.readthedocs.org/en/latest/handbook/image-file-formats.html#jpeg
+    # Defaults to 70
+    'jpeg_resize_quality': 70,
+    # The name of the top-level folder within storage classes to save all
+    # sized images. Defaults to '__sized__'
+    'sized_directory_name': '__sized__',
+    # The name of the directory to save all filtered images within.
+    # Defaults to '__filtered__':
+    'filtered_directory_name': '__filtered__',
+    # The name of the directory to save placeholder images within.
+    # Defaults to '__placeholder__':
+    'placeholder_directory_name': '__placeholder__',
+    # Whether or not to create new images on-the-fly. Set this to `False` for
+    # speedy performance but don't forget to 'pre-warm' to ensure they're
+    # created and available at the appropriate URL.
+    'create_images_on_demand': True
+}

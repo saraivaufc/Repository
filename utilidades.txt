@@ -2,3 +2,6 @@ from django.core.exceptions import PermissionDenied
 	def edit(request, pk):
 		if not request.user.is_staff:
 		raise PermissionDenied
+
+
+IndexView

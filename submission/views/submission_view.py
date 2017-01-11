@@ -57,7 +57,7 @@ class SubmissionCreateView(CreateView):
 		event = Event.objects.filter(slug=self.kwargs['event_slug']).first()
 		publication = form.save(commit=False)
 		publication.address = event.address
-		publication.year = event.year
+		publication.year = event.date.year
 		publication.community = event.community
 		publication.publisher = event.publisher
 		publication.issue_date = datetime.today()
@@ -163,20 +163,15 @@ class SubmissionsToReviewListView(CSVResponseMixin, ListView):
 	template_name = 'submission/submission/list_to_review.html'
 	paginate_by = settings.PAGINATE_BY
 	fields_search = Publication.FIELDS_SEARCH
-	model=Publication
+	model=Submission
 
 	def get_queryset(self):
+		queryset = super(SubmissionsToReviewListView, self).get_queryset()
 		event = Event.objects.filter(slug=self.kwargs['event_slug']).first()
 		if self.request.user.is_reviser:
-			return Submission.objects.filter(event=event,reviser=self.request.user)
+			return queryset.filter(event=event,reviser=self.request.user)
 		else:
-			return Submission.objects.filter(event=event)
-
-	def get_queryset_csv(self):
-		publications = []
-		for submission in self.get_queryset():
-			publications.append(submission.publication)
-		return ("title", "authors", "typology"), publications
+			return queryset.filter(event=event)
 
 	def get_context_data(self, ** kwargs):
 		context = super(SubmissionsToReviewListView, self).get_context_data( ** kwargs)
@@ -205,3 +200,19 @@ class SubmissionSubmitFinal(UpdateView):
 			submission.publication.is_final = not submission.publication.is_final
 			submission.publication.save()
 		return HttpResponseRedirect(reverse_lazy('submission:submission_list_to_review', kwargs={'event_slug':event.slug, 'page': 1}))
+
+class SubmissionFinal(SearchResponseMixin, CSVResponseMixin, ListView):
+	template_name = 'submission/submission/list_final.html'
+	paginate_by = settings.PAGINATE_BY
+	model=Submission
+
+	def get_queryset(self):
+		queryset = super(SubmissionFinal, self).get_queryset()
+		event = Event.objects.filter(slug=self.kwargs['event_slug']).first()
+		return filter(lambda x: x.publication.is_final , queryset.filter(event=event))
+
+	def get_context_data(self, ** kwargs):
+		context = super(SubmissionFinal, self).get_context_data( ** kwargs)
+		event = Event.objects.filter(slug=self.kwargs['event_slug']).first()
+		context["event"] = event
+		return context

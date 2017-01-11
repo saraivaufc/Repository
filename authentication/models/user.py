@@ -47,6 +47,24 @@ class User(AbstractBaseUser, PermissionsMixin):
 
 	objects = UserManager()
 
+	def get_search_fields():
+		return (
+			("first_name", _("First Name")), 
+			("last_name", _("Last Name")),
+			("username", _("Username")),
+			("email", _("Email")),
+		)
+	def get_output_fields():
+		return (
+			("first_name", _("First Name")), 
+			("last_name", _("Last Name")),
+			("username", _("Username")),
+			("email", _("Email")),
+		)
+
+	get_search_fields = staticmethod(get_search_fields)
+	get_output_fields = staticmethod(get_output_fields)
+
 	def get_full_name(self):
 		if self.first_name and self.last_name:
 			return self.first_name + ' ' + self.last_name
@@ -60,12 +78,6 @@ class User(AbstractBaseUser, PermissionsMixin):
 	def get_short_name(self):
 		return self.email
 
-	def __str__(self):
-		return self.email
-
-	def __unicode__(self):
-		return self.email
-
 	def save(self, group=None, *args, **kwargs):
 		if not self.username:
 			self.username = self.email
@@ -73,6 +85,15 @@ class User(AbstractBaseUser, PermissionsMixin):
 		if group:
 			group = Group.objects.get(name=group)
 			self.groups.add(group)
+
+	def __unicode__(self):
+		return self.email
+
+	def natural_key(self):
+		return self.email
+
+	def verbose_name(self):
+		return self._meta.verbose_name
 
 	class Meta:
 		verbose_name = _(u'User')

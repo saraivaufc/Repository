@@ -1,7 +1,7 @@
 {% extends "submission/index.html" %}
 
 
-{% load i18n static %}
+{% load i18n %}
 
 {% block title %}{% endblock %}
 
@@ -14,7 +14,7 @@
 
 {% block breadcrumbs %}
 	{{ block.super }}
-	<a href="{% url 'submission:event_list' page=1 %}" class="breadcrumb-item" >
+	<a href="{% url 'submission:event_list' %}" class="breadcrumb-item" >
 		<i class="fa fa-hashtag"></i>
 		{% trans "Events" %}
 	</a>
@@ -38,70 +38,55 @@
 	</div>
 	</div>
 
-	<div class="col-md-12">
-	<div class="row">
-		<div class="card-group">
 		{% for event in object_list %}
-		{% if forloop.counter0|divisibleby:3 %}
-			</div>
-			<div class="card-group">
-		{% endif %}
-		<div class="card col-md-4">
-			<a href="{{ event.image.url }}" class="boxer" title="{{ event.name }}" data-gallery="gallery">
-				<img class="card-img-top" src="{{ event.image.url }}" width="100%" height="200px">
-			</a>
-			<div class="card-block">
-				<h5 class="card-title">
-					<a href="{% url 'submission:event_detail' slug=event.slug  %}" class="btn-link">
+
+		<div class="col-xs-12 col-sm-12 col-md-12">
+			<div class="card card-block row">
+				<div class="col-md-4">
+					<a href="{{ event.image.url }}" class="boxer" title="{{ event.name }}" data-gallery="gallery">
+						<img class="card-img-top" src="{{ event.image.url }}" width="100%" height="200px">
+					</a>
+				</div>
+				<div class="col-md-8">
+					<h3 class="card-title">
+						<a href="{% url 'submission:event_detail' slug=event.slug  %}" class="btn-link">
 						{{ event.name }}
-					</a>
-				</h5>
-			</div>
-			<ul class="list-group list-group-flush">
-				<li class="list-group-item">{% trans "Date" %}: {{ event.date }}</li>
-				<li class="list-group-item">
-					{% trans "Stage" %}: 
-					{% if event.stage.type == 'before_period' %}
-					<label class="tag tag-info">
-					{% elif event.stage.type == 'submission_open_1' or event.stage.type == 'submission_open_2'  %}
-					<label class="tag tag-success">
-					{% elif event.stage.type == 'submission_close'  %}
-					<label class="tag tag-danger">
-					{% else %}
-					<label class="tag tag-primary">
-					{% endif %}
-					{{ event.stage.text }}</label>
-				</li>
-			</ul>
-			<div class="card-block">
-				{% if event.stage.type == 'before_period' %}
-					{% blocktrans with submission_open=event.submission_1_open %}
-						Submissions in {{ submission_open }}
-					{% endblocktrans %}
-				{% else %}
-					<a href="{% url 'submission:submission_list' event_slug=event.slug page=1 %}" data-toggle="tooltip" class="card-link" title="{% trans "Submissions" %}">
-						<i class="fa fa-upload"></i>
-						{% trans "Submissions" %}
-					</a>
-				{% endif %}
-				{% if perms.submission.list_submission_to_review and event.stage.type != 'before_period' and event.stage.type != 'out_of_period'  %}
-					<a href="{% url 'submission:submission_list_to_review' event_slug=event.slug page=1 %}" data-toggle="tooltip" class="card-link" title="{% trans "Reviews" %}">
-						<i class="fa fa-file-text-o"></i>
-						{% trans "To Review" %}
-					</a>
-				{% endif %}
+						</a>
+					</h3>
+					<p class="card-text text-justify">
+						{{ event.description|truncatewords:30 }}
+						<a href="{% url 'submission:event_detail' slug=event.slug  %}">{% trans "plus" %}</a>
+					</p>
+					<p class="card-text">
+						<div class="col-md-4">
+							{% trans "Date" %}: {{ event.date }}
+						</div>
+						<div class="col-md-4">
+							{% trans "Stage" %}: 
+							{% if event.stage.type == 'before_period' %}
+							<label class="tag tag-info">
+							{% elif event.stage.type == 'submission_open_1' or event.stage.type == 'submission_open_2'  %}
+							<label class="tag tag-success">
+							{% elif event.stage.type == 'submission_close'  %}
+							<label class="tag tag-danger">
+							{% else %}
+							<label class="tag tag-primary">
+							{% endif %}
+								{{ event.stage.text }}
+							</label>
+						</div>
+						<div class="col-md-4">
+							
+						</div>
+					</p>
+					{% include "submission/event/_render_buttons_actions.html" %}
+				</div>
 			</div>
 		</div>
 		{% endfor %}
-		</div>
-	</div>
-	</div>
 
-	<div class="col-md-12">
-	<div class="row">
 		{% include "base/_paginate.html" %}
-	</div>
-	</div>
+
 {% endblock %}
 
 {% block js %}

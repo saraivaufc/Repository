@@ -4,6 +4,8 @@ from django.db import models
 import itertools
 import datetime
 
+from versatileimagefield.fields import VersatileImageField
+
 from manager.models import Community, Collection, Publisher
 
 class Event(models.Model):
@@ -15,8 +17,7 @@ class Event(models.Model):
 	name = models.CharField(verbose_name=_("Name"), max_length=100, null=False, blank=False)
 	description = models.TextField(verbose_name=_("description"), null=False, blank=False)
 	address = models.CharField(verbose_name=_("Address"), max_length=100, null=False, blank=False)
-	year = models.IntegerField(verbose_name=_("Year"), null=False, blank=False)
-	image = models.FileField(verbose_name=_(u"Image"), upload_to='documents/event/images/%Y/%m/%d')
+	image = VersatileImageField(verbose_name=_(u"Image"), upload_to='documents/event/images/%Y/%m/%d')
 	typology = models.CharField(verbose_name=_("Typology"), choices=TYPOLOGY_CHOICES, max_length=100, null=False, blank=False)
 	community = models.ForeignKey(Community, verbose_name=_("Community"), null=False, blank=False)
 	publisher = models.ForeignKey(Publisher, verbose_name=_("Publisher"), null=False, blank=False)

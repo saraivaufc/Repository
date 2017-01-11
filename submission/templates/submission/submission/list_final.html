@@ -1,0 +1,69 @@
+{% extends "submission/event/detail.html" %}
+
+
+{% load i18n static %}
+
+{% block title %}{% endblock %}
+
+{% block stylesheet %}
+{% endblock %}
+
+{% block breadcrumbs %}
+	{{ block.super }}
+	<a href="" class="breadcrumb-item" >
+		<i class="fa fa-book"></i>
+		{% trans "Publications" %}
+	</a>
+{% endblock %}
+
+{%  block page_title %}
+	{% blocktrans with event=event %}
+		Publications of {{ event }}
+	{% endblocktrans %}
+{% endblock %}
+
+{% block content %}
+	<div class="col-md-4">
+	<div class="row">
+	</div>
+	</div>
+
+	<div class="col-md-8">
+	<div class="row float-xs-right">
+		{% include "base/_form_search.html" %}
+	</div>
+	</div>
+	
+	<table class="table table-bordered table-striped table-hover text">
+		<thead class="thead-inverse">
+			<tr>
+				<th>{% trans "Title" %}</th>
+				<th>{% trans "Authors" %}</th>
+			</tr>
+		</thead>
+
+		<tbody>
+			{% for submission in object_list %}
+				<tr>
+					<td>
+						<a href="{% url 'manager:publication_detail' slug=submission.publication.slug %}" target="_blank">
+							{{ submission.publication.title }}
+						</a>
+					</td>
+					<td>
+						{% for author in submission.publication.authors.all %}
+							<a href="{% url 'manager:author_detail' slug=author.slug %}" class="tag tag-primary" target="_blank">
+								{{ author.reference_name }}
+							</a>
+						{% endfor %}
+					</td>
+				</tr>
+			{% empty %}
+				<tr>
+					<td class="text-xs-center">{% trans "No Submission found!" %}</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+	{% include "base/_paginate.html" %}
+{% endblock %}

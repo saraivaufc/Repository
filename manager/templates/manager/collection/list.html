@@ -12,7 +12,7 @@
 
 {% block breadcrumbs %}
 	{{ block.super }}
-	<a href="{% url 'manager:collection_list' page=1 %}" class="breadcrumb-item" >
+	<a href="{% url 'manager:collection_list' %}" class="breadcrumb-item" >
 		<i class="fa fa-object-group"></i>
 		{% trans "Collections" %}
 	</a>
@@ -38,47 +38,43 @@
 	</div>
 	</div>
 
-	<div class="col-md-12">
-	<div class="row">
-		<table class="table table-bordered table-striped table-hover text">
-			<thead class="thead-inverse">
-				<tr>
-					<th>{% trans "Name" %}</th>
-					<th>{% trans "Communities" %}</th>
-					<th>{% trans "Publications" %}</th>
-				</tr>
-			</thead>
+	<table class="table table-bordered table-striped table-hover text">
+		<thead class="thead-inverse">
+			<tr>
+				<th>{% trans "Name" %}</th>
+				<th>{% trans "Communities" %}</th>
+				<th>{% trans "Publications" %}</th>
+			</tr>
+		</thead>
 
-			<tbody>
-				{% for collection in object_list %}
-					<tr>
-						<td>
-							<a href="{% url 'manager:collection_detail' slug=collection.slug %}">
-								{{ collection.name }}
+		<tbody>
+			{% for collection in object_list %}
+				<tr>
+					<td>
+						<a href="{% url 'manager:collection_detail' slug=collection.slug %}">
+							{{ collection.name }}
+						</a>
+					</td>
+					<td>
+						{% for community in collection.communities.all %}
+							<a class="tag tag-primary" href="{% url 'manager:community_detail' slug=community.slug %}">
+								{{ community }}
 							</a>
-						</td>
-						<td>
-							{% for community in collection.communities.all %}
-								<a class="tag tag-primary" href="{% url 'manager:community_detail' slug=community.slug page=1 %}">
-									{{ community }}
-								</a>
-							{% endfor %}
-						</td>
-						<td>
-							<a href="{% url 'manager:collection_publications' slug=collection.slug page=1 %}"  data-toggle="tooltip" title="{% trans "See Publications" %}">
-								<i class="fa fa-book"></i>
-								{% trans "See Publications" %}
-							</a>
-						</td>
-					</tr>
-				{% empty %}
-					<tr>
-						<td class="text-xs-center">{% trans "No Collection found!" %}</td>
-					</tr>
-				{% endfor %}
-			</tbody>
-		</table>
-		{% include "base/_paginate.html" %}
-	</div>
-	</div>
+						{% endfor %}
+					</td>
+					<td>
+						<a href="{% url 'manager:collection_publications' slug=collection.slug %}"  data-toggle="tooltip" title="{% trans "See Publications" %}">
+							<i class="fa fa-book"></i>
+							{% trans "See Publications" %}
+						</a>
+					</td>
+				</tr>
+			{% empty %}
+				<tr>
+					<td class="text-xs-center">{% trans "No Collection found!" %}</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+	{% include "base/_paginate.html" %}
 {% endblock %}

@@ -12,7 +12,7 @@
 
 	<dt class="col-sm-3">{% trans "Publications" %}:</dt>
 	<dd class="col-sm-9" itemprop="publications">
-		<a href="{% url 'manager:author_publications' slug=author.slug page=1 %}" data-toggle="tooltip" title="{% trans "See Publications" %}">
+		<a href="{% url 'manager:author_publications' slug=author.slug %}" data-toggle="tooltip" title="{% trans "See Publications" %}">
 			<i class="fa fa-book"></i>
 			{% trans "See Publications" %}
 		</a>
