@@ -18,7 +18,7 @@ class CollectionCreateView(AjaxableResponseMixin, CreateView):
 	template_name = 'manager/collection/form.html'
 	model = Collection
 	fields = ['communities','name', 'description']
-	success_url = reverse_lazy('manager:collection_list', kwargs={'page': 1})
+	success_url = reverse_lazy('manager:collection_list')
 
 	def form_valid(self, form):
 		return super(CollectionCreateView, self).form_valid(form)
@@ -27,7 +27,7 @@ class CollectionUpdateView(UpdateView):
 	template_name = 'manager/collection/form.html'
 	model = Collection
 	fields = ['communities','name', 'description']
-	success_url = reverse_lazy('manager:collection_list', kwargs={'page': 1})
+	success_url = reverse_lazy('manager:collection_list')
 	
 	def form_valid(self, form):
 		return super(CollectionUpdateView, self).form_valid(form)
@@ -35,7 +35,7 @@ class CollectionUpdateView(UpdateView):
 class CollectionDeleteView(DeleteView):
 	template_name = 'manager/collection/check_delete.html'
 	model = Collection
-	success_url = reverse_lazy('manager:collection_list', kwargs={'page': 1})
+	success_url = reverse_lazy('manager:collection_list')
 
 class CollectionDetailView(DetailView):
 	template_name = 'manager/collection/detail.html'
@@ -48,22 +48,12 @@ class CollectionDetailView(DetailView):
 class CollectionPublicationsView(SingleObjectMixin, ListView):
 	paginate_by = settings.PAGINATE_BY
 	template_name = 'manager/collection/publications.html'
-	fields_search = Publication.FIELDS_SEARCH
+	model = Publication
 
 	def get(self, request, * args, ** kwargs):
 		self.object = self.get_object(queryset=Collection.objects.all())
 		return super(CollectionPublicationsView, self).get(request, * args, ** kwargs)
-	def get_context_data(self, ** kwargs):
-		context = super(CollectionPublicationsView, self).get_context_data( ** kwargs)
-		context['collection'] = self.object
-		context["fields_search"] = self.fields_search
-		context["url_search"] = reverse_lazy("manager:collection_publications", kwargs={"slug":self.object.slug, "page":1})
-		return context
 
 	def get_queryset(self):
-		query = self.request.GET.get('query')
-		text = self.request.GET.get('text')
-		if query and query in dict(self.fields_search):
-			kwargs = {("%s__contains" % (query,)):text}
-			return Publication.objects.filter(is_final=True, collection=self.object.id, ** kwargs)
-		return Publication.objects.filter(is_final=True, collection=self.object.id)
+		queryset = super(CollectionPublicationsView, self).get_queryset()
+		return queryset.filter(collection=self.object, is_final=True)

@@ -18,13 +18,13 @@ class CommunityCreateView(AjaxableResponseMixin, CreateView):
 	template_name = 'manager/community/form.html'
 	model = Community
 	fields = ['name','acronym']
-	success_url = reverse_lazy('manager:community_list', kwargs={'page': 1})
+	success_url = reverse_lazy('manager:community_list')
 
 class CommunityUpdateView(UpdateView):
 	template_name = 'manager/community/form.html'
 	model = Community
 	fields = ['name','acronym']
-	success_url = reverse_lazy('manager:community_list', kwargs={'page': 1})
+	success_url = reverse_lazy('manager:community_list')
 	
 	def form_valid(self, form):
 		return super(CommunityUpdateView, self).form_valid(form)
@@ -32,7 +32,7 @@ class CommunityUpdateView(UpdateView):
 class CommunityDeleteView(DeleteView):
 	template_name = 'manager/community/check_delete.html'
 	model = Community
-	success_url = reverse_lazy('manager:community_list', kwargs={'page': 1})
+	success_url = reverse_lazy('manager:community_list')
 
 class CommunityDetailView(SingleObjectMixin, ListView):
 	paginate_by = settings.PAGINATE_BY
@@ -48,35 +48,15 @@ class CommunityDetailView(SingleObjectMixin, ListView):
 	def get_queryset(self):
 		return Collection.objects.filter(communities=self.object.id)
 
-class CommunityPublicationsView(SingleObjectMixin, ListView):
+class CommunityPublicationsView(SearchResponseMixin, SingleObjectMixin, ListView):
 	paginate_by = settings.PAGINATE_BY
 	template_name = 'manager/community/publications.html'
-	fields_search = Publication.FIELDS_SEARCH
+	model = Publication
 
 	def get(self, request, * args, ** kwargs):
 		self.object = self.get_object(queryset=Community.objects.all())
 		return super(CommunityPublicationsView, self).get(request, * args, ** kwargs)
-	def get_context_data(self, ** kwargs):
-		context = super(CommunityPublicationsView, self).get_context_data( ** kwargs)
-		context['community'] = self.object
-		context["fields_search"] = self.fields_search
-		context["url_search"] = reverse_lazy("manager:community_publications", kwargs={"slug":self.object.slug, "page":1})
-		return context
 
 	def get_queryset(self):
-		query = self.request.GET.get('query')
-		text = self.request.GET.get('text')
-		collections = Collection.objects.filter(communities=self.object.id)
-		publications = []
-		if query and query in dict(self.fields_search):
-			kwargs = {("%s__contains" % (query,)):text}
-			for collection in collections:
-				temp_publications = Publication.objects.filter(is_final=True, collection=collection.id, ** kwargs)
-				for publication in temp_publications:
-					publications.append(publication)
-		else:
-			for collection in collections:
-				temp_publications = Publication.objects.filter(is_final=True, collection=collection.id)
-				for publication in temp_publications:
-					publications.append(publication)
-		return publications
+		queryset = super(CommunityPublicationsView, self).get_queryset()
+		return queryset.filter(community=self.object, is_final=True)

@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-01-11 07:45-0300\n"
-"PO-Revision-Date: 2017-01-11 08:09-0234\n"
+"POT-Creation-Date: 2017-01-11 17:40-0300\n"
+"PO-Revision-Date: 2017-01-11 21:50-0234\n"
 "Last-Translator: None None <admin@email.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -280,7 +280,7 @@ msgstr "Final"
 
 #: manager/models/publication.py:105
 msgid "Publication"
-msgstr ""
+msgstr "Publicação"
 
 #: manager/models/publication.py:106
 #: manager/templates/manager/author/_render.html:13
@@ -298,22 +298,22 @@ msgstr ""
 #: manager/templates/manager/subject/_render.html:7
 #: manager/templates/manager/subject/list.html:45
 msgid "Publications"
-msgstr ""
+msgstr "Publicações"
 
 #: manager/models/publisher.py:39 manager/templates/manager/index.html:48
 #: manager/templates/manager/publisher/list.html:17
 #: manager/templates/manager/publisher/publications.html:20
 msgid "Publishers"
-msgstr ""
+msgstr "Editoras"
 
 #: manager/models/subject.py:38
 msgid "Subject"
-msgstr ""
+msgstr "Assunto"
 
 #: manager/templates/manager/author/_render.html:10
 #: manager/templates/manager/author/list.html:44
 msgid "Reference Name"
-msgstr ""
+msgstr "Nome de Referência"
 
 #: manager/templates/manager/author/_render.html:15
 #: manager/templates/manager/author/_render.html:17
@@ -340,7 +340,7 @@ msgstr ""
 #: manager/templates/manager/subject/list.html:58
 #: manager/templates/manager/subject/list.html:60
 msgid "See Publications"
-msgstr ""
+msgstr "Ver publicações"
 
 #: manager/templates/manager/author/_render.html:21
 #: manager/templates/manager/collection/_render.html:30
@@ -349,7 +349,7 @@ msgstr ""
 #: manager/templates/manager/publisher/_render.html:15
 #: manager/templates/manager/subject/_render.html:15
 msgid "Registration date"
-msgstr ""
+msgstr "Data de Registro"
 
 #: manager/templates/manager/author/check_delete.html:15
 #: manager/templates/manager/author/check_delete.html:19
@@ -366,37 +366,7 @@ msgstr ""
 #: manager/templates/manager/subject/check_delete.html:15
 #: manager/templates/manager/subject/check_delete.html:19
 msgid "Confirm delete"
-msgstr ""
-
-#: manager/templates/manager/author/check_delete.html:25
-#: manager/templates/manager/collection/check_delete.html:25
-#: manager/templates/manager/community/check_delete.html:25
-#: manager/templates/manager/keyword/check_delete.html:25
-#: manager/templates/manager/publication/check_delete.html:25
-#: manager/templates/manager/publisher/check_delete.html:25
-#: manager/templates/manager/subject/check_delete.html:25
-msgid "Are you sure you want to delete"
-msgstr ""
-
-#: manager/templates/manager/author/check_delete.html:26
-#: manager/templates/manager/collection/check_delete.html:26
-#: manager/templates/manager/community/check_delete.html:26
-#: manager/templates/manager/keyword/check_delete.html:26
-#: manager/templates/manager/publication/check_delete.html:26
-#: manager/templates/manager/publisher/check_delete.html:26
-#: manager/templates/manager/subject/check_delete.html:26
-msgid "No"
-msgstr "Não"
-
-#: manager/templates/manager/author/check_delete.html:27
-#: manager/templates/manager/collection/check_delete.html:27
-#: manager/templates/manager/community/check_delete.html:27
-#: manager/templates/manager/keyword/check_delete.html:27
-#: manager/templates/manager/publication/check_delete.html:27
-#: manager/templates/manager/publisher/check_delete.html:27
-#: manager/templates/manager/subject/check_delete.html:27
-msgid "Yes"
-msgstr "Sim"
+msgstr "Confirmação de exclusão"
 
 #: manager/templates/manager/author/detail.html:23
 #: manager/templates/manager/collection/detail.html:23
@@ -500,6 +470,8 @@ msgid ""
 "\t\t\tPublications of %(collection)s\n"
 "\t\t"
 msgstr ""
+"\n"
+"Publicações de  %(collection)s"
 
 #: manager/templates/manager/collection/publications.html:31
 #, python-format
@@ -692,6 +664,8 @@ msgid ""
 "\t\tPublications of %(subject)s\n"
 "\t"
 msgstr ""
+"\n"
+"Publicações def %(subject)s"
 
 #: manager/urls/__init__.py:10
 msgid "^$"
@@ -801,3 +775,9 @@ msgstr ""
 #: manager/utils/constants.py:10
 msgid "Keyword error removed"
 msgstr ""
+
+#~ msgid "No"
+#~ msgstr "Não"
+
+#~ msgid "Yes"
+#~ msgstr "Sim"

@@ -47,7 +47,7 @@ class AdministratorCreateView(CreateView):
 class AdministratorDeleteView(DeleteView):
 	template_name = 'authentication/administrator/check_delete.html'
 	model = User
-	success_url = reverse_lazy('authentication:administrator_list', kwargs={'page': 1})
+	success_url = reverse_lazy('authentication:administrator_list')
 
 	def post(self, request, * args, ** kwargs):
 		group = Group.objects.get(name="administrator")

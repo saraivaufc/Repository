@@ -1,5 +1,6 @@
 html, body {
 	height: 100%;
+	background-color: #eceeef;
 }
 
 .page-title{
@@ -63,10 +64,6 @@ dl.definition{
 dl.definition > dt, dl.definition > dd{
 	padding: 10px;
 	border-top: 1px solid #333;
-}
-
-dl.definition > dt:nth-child(1), dl.definition > dd:nth-child(2){
-	border-top: none;
 }
 
 /* CARD */

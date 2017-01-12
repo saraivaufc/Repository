@@ -20,13 +20,13 @@ class KeywordCreateView(AjaxableResponseMixin, CreateView):
 	template_name = 'manager/keyword/form.html'
 	model = Keyword
 	fields = ['name']
-	success_url = reverse_lazy('manager:keyword_list', kwargs={'page': 1})
+	success_url = reverse_lazy('manager:keyword_list')
 
 class KeywordUpdateView(UpdateView):
 	template_name = 'manager/keyword/form.html'
 	model = Keyword
 	fields = ['name',]
-	success_url = reverse_lazy('manager:keyword_list', kwargs={'page': 1})
+	success_url = reverse_lazy('manager:keyword_list')
 	
 	def form_valid(self, form):
 		messages.success(self.request, ConstantsManager.KEYWORD_SUCCESS_CHANGED)
@@ -39,7 +39,7 @@ class KeywordUpdateView(UpdateView):
 class KeywordDeleteView(DeleteView):
 	template_name = 'manager/keyword/check_delete.html'
 	model = Keyword
-	success_url = reverse_lazy('manager:keyword_list', kwargs={'page': 1})
+	success_url = reverse_lazy('manager:keyword_list')
 
 class KeywordDetailView(DetailView):
 	template_name = 'manager/keyword/detail.html'
@@ -49,26 +49,15 @@ class KeywordDetailView(DetailView):
 		context = super(KeywordDetailView, self).get_context_data( ** kwargs)
 		return context
 
-class KeywordPublicationsView(SingleObjectMixin, ListView):
+class KeywordPublicationsView(SearchResponseMixin, SingleObjectMixin, ListView):
 	paginate_by = settings.PAGINATE_BY
 	template_name = 'manager/keyword/publications.html'
-	fields_search = Publication.FIELDS_SEARCH
+	model = Publication
 
 	def get(self, request, * args, ** kwargs):
 		self.object = self.get_object(queryset=Keyword.objects.all())
 		return super(KeywordPublicationsView, self).get(request, * args, ** kwargs)
-	
-	def get_context_data(self, ** kwargs):
-		context = super(KeywordPublicationsView, self).get_context_data( ** kwargs)
-		context['keyword'] = self.object
-		context["fields_search"] = self.fields_search
-		context["url_search"] = reverse_lazy("manager:keyword_publications", kwargs={"slug":self.object.slug, "page":1})
-		return context
 
 	def get_queryset(self):
-		query = self.request.GET.get('query')
-		text = self.request.GET.get('text')
-		if query and query in dict(self.fields_search):
-			kwargs = {("%s__contains" % (query,)):text}
-			return Publication.objects.filter(is_final=True, keywords=self.object.id, ** kwargs)
-		return Publication.objects.filter(is_final=True, keywords=self.object.id)
+		queryset = super(KeywordPublicationsView, self).get_queryset()
+		return queryset.filter(keywords=self.object, is_final=True)

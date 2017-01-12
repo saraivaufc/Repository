@@ -27,11 +27,6 @@ class UserManager(BaseUserManager):
 
 
 class User(AbstractBaseUser, PermissionsMixin):
-	FIELDS_SEARCH = (
-		("email", _("email")),
-		("first_name", _("First Name")),
-		("last_name", _("Last Name")),
-	)
 	first_name = models.CharField(verbose_name=_(u"First Name "), max_length=100, blank=True, null=True, help_text=_(u'Please enter you first name.'), )
 	last_name = models.CharField(verbose_name=_(u"Last Name "), max_length=100, blank=True, null=True, help_text=_(u'Please enter you last name.'), )
 	username = models.CharField(verbose_name=_(u"Username"), max_length=254, unique=True,  null=False, blank=False, help_text=_(u'Please enter you username.'), )

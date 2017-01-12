@@ -39,7 +39,7 @@ class EventUpdateView(UpdateView):
 class EventDeleteView(DeleteView):
 	template_name = 'submission/event/check_delete.html'
 	model = Event
-	success_url = reverse_lazy('submission:event_list', kwargs={'page': 1})
+	success_url = reverse_lazy('submission:event_list')
 
 class EventDetailView(DetailView):
 	template_name = 'submission/event/detail.html'

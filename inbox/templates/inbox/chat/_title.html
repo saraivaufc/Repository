@@ -1,0 +1,17 @@
+{% load i18n %}
+
+<label class="tag tag-info">
+{% if chat.chat_manager_send.user == request.user and chat.chat_manager_receive.user != request.user  %}
+	{% blocktrans with user=chat.chat_manager_receive.user %}
+		<i class="fa fa-send"></i> {{ user }}
+	{% endblocktrans %}
+{% elif chat.chat_manager_send.user != request.user and chat.chat_manager_receive.user == request.user  %}
+	{% blocktrans with user=chat.chat_manager_send.user %}
+		<i class="fa fa-envelope"></i> {{ user }}
+	{% endblocktrans %}
+{% else %}
+	{% trans "I to I" %}
+{% endif %}
+</label>
+
+{{ chat.subject }}

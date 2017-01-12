@@ -47,7 +47,7 @@ class ReviserCreateView(CreateView):
 class ReviserDeleteView(DeleteView):
 	template_name = 'authentication/reviser/check_delete.html'
 	model = User
-	success_url = reverse_lazy('authentication:reviser_list', kwargs={'page': 1})
+	success_url = reverse_lazy('authentication:reviser_list')
 
 	def post(self, request, * args, ** kwargs):
 		group = Group.objects.get(name="reviser")

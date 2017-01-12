@@ -5,13 +5,6 @@ from django.core.urlresolvers import reverse_lazy
 import itertools
 
 class Publication(models.Model):
-	FIELDS_SEARCH = (
-		("title", _("Title")), 
-		("address", _("Address")), 
-		("year", _("Year")), 
-		("abstract", _("Abstract")), 
-		("other_abstract", _("Other Abstract")),
-	)
 	TYPOLOGY_CHOICES = (
 	    (u'article', _(u'Article')),
 	    (u'book', _(u'Book')),
@@ -54,8 +47,6 @@ class Publication(models.Model):
 	def get_search_fields():
 		return (
 			("title", _("Title")), 
-			("address", _("Address")), 
-			("year", _("Year")), 
 			("abstract", _("Abstract")), 
 			("other_abstract", _("Other Abstract")),
 		)

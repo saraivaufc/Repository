@@ -1,0 +1,40 @@
+{% extends 'inbox/chat/list.html' %}
+
+{% load i18n %}
+
+{% block title %}{% endblock %}
+
+{% block breadcrumbs %}
+	{{ block.super }}
+	<a href="{% url 'inbox:chat_detail' slug=object.slug %}" class="breadcrumb-item" >
+		<i class="fa fa-wechat"></i>
+		{{ object.subject }}
+	</a>
+{% endblock %}
+
+{%  block page_title %}
+	{{ object.subject }}
+{% endblock %}
+
+{% block content %}
+	{% include "inbox/chat/_render.html" %}
+	<ul class="list-group full-width">
+	{% for reply in object_list %}
+		<li class="list-group-item">
+			<h5 class="list-group-item-heading">
+				{{ reply.chat_manager.user.get_full_name }}
+				<label>{{ reply.chat_manager.user.email }}</label>
+			</h5>
+			<p class="list-group-item-text">
+				{{ reply.user.get_full_name }} {{ reply.text }}
+			</p>
+			<label>{{ reply.last_modified }}</label>
+		</li>
+	{% empty %}
+	{% endfor %}
+	</ul>
+	<div class="col-md-12">
+	{% include "base/_form.html" %}
+	</div>
+
+{% endblock %}

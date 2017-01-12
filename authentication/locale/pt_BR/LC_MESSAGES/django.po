@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-01-11 07:45-0300\n"
-"PO-Revision-Date: 2017-01-11 07:55-0234\n"
+"POT-Creation-Date: 2017-01-11 17:40-0300\n"
+"PO-Revision-Date: 2017-01-11 12:41-0234\n"
 "Last-Translator: None None <admin@email.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -177,8 +177,8 @@ msgstr "Seu login e/ou senha estão incorretos. Por favor, tente novamente."
 
 #: authentication/templates/authentication/account/login.html:26
 msgid ""
-"Your account doesn't have access to this page. To proceed, please login with"
-" an account that has access."
+"Your account doesn't have access to this page. To proceed, please login with "
+"an account that has access."
 msgstr ""
 
 #: authentication/templates/authentication/account/login.html:28
@@ -401,16 +401,12 @@ msgid "^login$"
 msgstr "^entrar$"
 
 #: authentication/urls/account.py:9
-#, fuzzy
-#| msgid "^login$"
 msgid "^logout$"
-msgstr "^entrar$"
+msgstr "^sair$"
 
 #: authentication/urls/account.py:10
-#, fuzzy
-#| msgid "Register"
 msgid "^register$"
-msgstr "Registrar"
+msgstr "^registrar$"
 
 #: authentication/urls/account.py:11
 msgid "^(?P<pk>[0-9]+)/detail$"

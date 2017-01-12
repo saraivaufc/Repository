@@ -19,13 +19,13 @@ class AuthorCreateView(AjaxableResponseMixin, CreateView):
 	template_name = 'manager/author/form.html'
 	model = Author
 	fields = ['first_name', 'last_name']
-	success_url = reverse_lazy('manager:author_list', kwargs={'page': 1})
+	success_url = reverse_lazy('manager:author_list')
 
 class AuthorUpdateView(UpdateView):
 	template_name = 'manager/author/form.html'
 	model = Author
 	fields = ['first_name', 'last_name']
-	success_url = reverse_lazy('manager:author_list', kwargs={'page': 1})
+	success_url = reverse_lazy('manager:author_list')
 	
 	def form_valid(self, form):
 		return super(AuthorUpdateView, self).form_valid(form)
@@ -33,7 +33,7 @@ class AuthorUpdateView(UpdateView):
 class AuthorDeleteView(DeleteView):
 	template_name = 'manager/author/check_delete.html'
 	model = Author
-	success_url = reverse_lazy('manager:author_list', kwargs={'page': 1})
+	success_url = reverse_lazy('manager:author_list')
 
 class AuthorDetailView(DetailView):
 	template_name = 'manager/author/detail.html'
@@ -43,25 +43,15 @@ class AuthorDetailView(DetailView):
 		context = super(AuthorDetailView, self).get_context_data( ** kwargs)
 		return context
 
-class AuthorPublicationsView(SingleObjectMixin, ListView):
+class AuthorPublicationsView(SearchResponseMixin, SingleObjectMixin, ListView):
 	paginate_by = settings.PAGINATE_BY
 	template_name = 'manager/author/publications.html'
-	fields_search = Publication.FIELDS_SEARCH
+	model = Publication
 
 	def get(self, request, * args, ** kwargs):
 		self.object = self.get_object(queryset=Author.objects.all())
 		return super(AuthorPublicationsView, self).get(request, * args, ** kwargs)
-	def get_context_data(self, ** kwargs):
-		context = super(AuthorPublicationsView, self).get_context_data( ** kwargs)
-		context['author'] = self.object
-		context["fields_search"] = self.fields_search
-		context["url_search"] = reverse_lazy("manager:author_publications", kwargs={"slug":self.object.slug, "page":1})
-		return context
 
 	def get_queryset(self):
-		query = self.request.GET.get('query')
-		text = self.request.GET.get('text')
-		if query and query in dict(self.fields_search):
-			kwargs = {("%s__contains" % (query,)):text}
-			return Publication.objects.filter(is_final=True, authors=self.object.id, ** kwargs)
-		return Publication.objects.filter(is_final=True, authors=self.object.id)
+		queryset = super(AuthorPublicationsView, self).get_queryset()
+		return queryset.filter(authors=self.object, is_final=True)

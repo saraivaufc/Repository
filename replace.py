@@ -4,8 +4,8 @@ import os
 import glob
 import re
 
-TEXT = "/', include"
-NEW_TEXT = "/'), include"
+TEXT = ", kwargs={'page': 1}"
+NEW_TEXT = ''
 FILE_TYPES = ['(.)\.py', ]
 
 rexs = []

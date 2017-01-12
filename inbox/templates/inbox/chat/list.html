@@ -1,0 +1,49 @@
+{% extends 'inbox/index.html' %}
+
+{% load i18n %}
+
+{% block title %}{% endblock %}
+
+{% block breadcrumbs %}
+	{{ block.super }}
+	<a href="{% url 'inbox:chat_list' %}?query=all" class="breadcrumb-item" >
+		<i class="fa fa-wechat"></i>
+		{% trans "Chats" %}
+	</a>
+{% endblock %}
+
+{%  block page_title %}{% trans "Chats" %}{% endblock %}
+
+{% block content %}
+	<div class="col-md-4">
+		<div class="row">
+		{% if perms.chat.add_chat %}
+			<a href="{% url 'inbox:chat_create' %}" class="btn btn-success">
+				<i class="fa fa-plus"></i>
+				{% trans "New Chat" %}
+			</a>
+		{% endif %}
+		</div>
+	</div>
+	
+	<div class="list-group full-width">
+	{% for chat in object_list %}
+		<a href="{% url 'inbox:chat_detail' slug=chat.slug %}" class="list-group-item list-group-item-action">
+			<h5 class="list-group-item-heading">
+				{% include 'inbox/chat/_title.html' %}
+			</h5>
+			<p class="list-group-item-text">
+				{{ chat.text|truncatewords:10 }}
+			</p>
+			<label>{{ chat.last_modified }}</label>
+			<span class="tag tag-default tag-pill float-xs-right">
+				{% blocktrans with replies=chat.get_replies|length %}
+				{{ replies }} Replies
+				{% endblocktrans %}
+			</span>
+		</a>
+	{% empty %}
+	{% endfor %}
+	</div>
+	{% include "base/_paginate.html" %}
+{% endblock %}

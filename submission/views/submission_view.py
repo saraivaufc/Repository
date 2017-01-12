@@ -14,7 +14,7 @@ from manager.models import Publication
 from base.views import  SearchResponseMixin, CSVResponseMixin
 
 
-class SubmissionListView(SearchResponseMixin, CSVResponseMixin, ListView):
+class SubmissionListView(CSVResponseMixin, ListView):
 	template_name = 'submission/submission/list.html'
 	paginate_by = settings.PAGINATE_BY
 	model = Submission
@@ -37,12 +37,12 @@ class SubmissionCreateView(CreateView):
 
 	def get_success_url(self):
 		event = Event.objects.filter(slug=self.kwargs['event_slug']).first()
-		return reverse_lazy('submission:submission_list', kwargs={'event_slug':event.slug, 'page': 1})
+		return reverse_lazy('submission:submission_list', kwargs={'event_slug':event.slug})
 
 	def get(self, request, * args, ** kwargs):
 		event = Event.objects.filter(slug=self.kwargs['event_slug']).first()
 		if event.stage()['type'] != 'submission_open_1':
-			return HttpResponseRedirect(reverse_lazy('submission:submission_list', kwargs={'event_slug':event.slug, 'page': 1}))
+			return HttpResponseRedirect(reverse_lazy('submission:submission_list', kwargs={'event_slug':event.slug}))
 		return super(SubmissionCreateView, self).get(request)
 	
 
@@ -75,7 +75,7 @@ class SubmissionUpdateView(UpdateView):
 	
 	def get_success_url(self):
 		event = Event.objects.filter(slug=self.kwargs['event_slug']).first()
-		return reverse_lazy('submission:submission_list', kwargs={'event_slug':event.slug, 'page': 1})
+		return reverse_lazy('submission:submission_list', kwargs={'event_slug':event.slug})
 
 	def get_context_data(self, ** kwargs):
 		event = Event.objects.filter(slug=self.kwargs['event_slug']).first()
@@ -87,12 +87,12 @@ class SubmissionUpdateView(UpdateView):
 	def get(self, request, * args, ** kwargs):
 		event = Event.objects.filter(slug=self.kwargs['event_slug']).first()
 		if not Submission.objects.filter(event=event, user=self.request.user, publication=self.get_object()):
-			return HttpResponseRedirect(reverse_lazy('submission:submission_list', kwargs={'event_slug':event.slug, 'page': 1}))
+			return HttpResponseRedirect(reverse_lazy('submission:submission_list', kwargs={'event_slug':event.slug}))
 		return super(SubmissionUpdateView, self).get(request)
 	def post(self, request, * args, ** kwargs):
 		event = Event.objects.filter(slug=self.kwargs['event_slug']).first()
 		if not Submission.objects.filter(event=event, user=self.request.user, publication=self.get_object()):
-			return HttpResponseRedirect(reverse_lazy('submission:submission_list', kwargs={'event_slug':event.slug, 'page': 1}))
+			return HttpResponseRedirect(reverse_lazy('submission:submission_list', kwargs={'event_slug':event.slug}))
 		return super(SubmissionUpdateView, self).post(request)
 
 	def form_valid(self, form):
@@ -109,7 +109,7 @@ class SubmissionChangeReviser(UpdateView):
 	
 	def get_success_url(self):
 		event = Event.objects.filter(slug=self.kwargs['event_slug']).first()
-		return reverse_lazy('submission:submission_list_to_review', kwargs={'event_slug':event.slug, 'page': 1})
+		return reverse_lazy('submission:submission_list_to_review', kwargs={'event_slug':event.slug})
 
 	def get_context_data(self, ** kwargs):
 		event = Event.objects.filter(slug=self.kwargs['event_slug']).first()
@@ -127,17 +127,17 @@ class SubmissionDeleteView(DeleteView):
 
 	def get_success_url(self):
 		event = Event.objects.filter(slug=self.kwargs['event_slug']).first()
-		return reverse_lazy('submission:submission_list', kwargs={'event_slug':event.slug, 'page': 1})
+		return reverse_lazy('submission:submission_list', kwargs={'event_slug':event.slug})
 
 	def get(self, request, * args, ** kwargs):
 		event = Event.objects.filter(slug=self.kwargs['event_slug']).first()
 		if not Submission.objects.filter(event=event, user=self.request.user,publication=self.get_object().publication):
-			return HttpResponseRedirect(reverse_lazy('submission:submission_list', kwargs={'event_slug':event.slug, 'page': 1}))
+			return HttpResponseRedirect(reverse_lazy('submission:submission_list', kwargs={'event_slug':event.slug}))
 		return super(SubmissionDeleteView, self).get(request)
 	def post(self, request, * args, ** kwargs):
 		event = Event.objects.filter(slug=self.kwargs['event_slug']).first()
 		if not Submission.objects.filter(event=event, user=self.request.user, publication=self.get_object().publication):
-			return HttpResponseRedirect(reverse_lazy('submission:submission_list', kwargs={'event_slug':event.slug, 'page': 1}))
+			return HttpResponseRedirect(reverse_lazy('submission:submission_list', kwargs={'event_slug':event.slug}))
 		return super(SubmissionDeleteView, self).post(request)
 
 class SubmissionDetailView(DetailView):
@@ -155,14 +155,13 @@ class SubmissionDetailView(DetailView):
 	def get(self, request, * args, ** kwargs):
 		event = Event.objects.filter(slug=self.kwargs['event_slug']).first()
 		if not Submission.objects.filter(event=event, user=self.request.user,publication=self.get_object().publication):
-			return HttpResponseRedirect(reverse_lazy('submission:submission_list', kwargs={'event_slug':event.slug, 'page': 1}))
+			return HttpResponseRedirect(reverse_lazy('submission:submission_list', kwargs={'event_slug':event.slug}))
 		return super(SubmissionDetailView, self).get(request)
 
 
 class SubmissionsToReviewListView(CSVResponseMixin, ListView):
 	template_name = 'submission/submission/list_to_review.html'
 	paginate_by = settings.PAGINATE_BY
-	fields_search = Publication.FIELDS_SEARCH
 	model=Submission
 
 	def get_queryset(self):
@@ -199,7 +198,7 @@ class SubmissionSubmitFinal(UpdateView):
 		if submission and event:
 			submission.publication.is_final = not submission.publication.is_final
 			submission.publication.save()
-		return HttpResponseRedirect(reverse_lazy('submission:submission_list_to_review', kwargs={'event_slug':event.slug, 'page': 1}))
+		return HttpResponseRedirect(reverse_lazy('submission:submission_list_to_review', kwargs={'event_slug':event.slug}))
 
 class SubmissionFinal(SearchResponseMixin, CSVResponseMixin, ListView):
 	template_name = 'submission/submission/list_final.html'

@@ -1,0 +1,22 @@
+{% extends "inbox/chat/list.html" %}
+
+
+{% load i18n static %}
+
+{% block title %}{% endblock %}
+
+{% block stylesheet %}
+{% endblock %}
+
+{% block breadcrumbs %}
+	{{ block.super }}
+	<a href="{% url 'inbox:chat_create' %}" class="breadcrumb-item" >
+		{% trans "Send Message" %}
+	</a>
+{% endblock %}
+
+{% block page_title %}{% trans "Send Message" %}{% endblock %}
+
+{% block content %}		
+	{% include "base/_form.html" %}
+{% endblock %}

@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-01-11 07:45-0300\n"
-"PO-Revision-Date: 2017-01-11 07:56-0234\n"
+"POT-Creation-Date: 2017-01-11 17:40-0300\n"
+"PO-Revision-Date: 2017-01-11 12:34-0234\n"
 "Last-Translator: None None <admin@email.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -22,6 +22,18 @@ msgstr ""
 #: base/templates/base/_base.html:47
 msgid "Home"
 msgstr "Início"
+
+#: base/templates/base/_check_delete.html:6
+msgid "Are you sure you want to delete"
+msgstr ""
+
+#: base/templates/base/_check_delete.html:7
+msgid "No"
+msgstr ""
+
+#: base/templates/base/_check_delete.html:8
+msgid "Yes"
+msgstr ""
 
 #: base/templates/base/_footer.html:10
 msgid "About"
@@ -42,15 +54,15 @@ msgid "Contact Us"
 msgstr "Contate-nos"
 
 #. Translators: Label of a button that triggers language
-#: base/templates/base/_footer.html:36
+#: base/templates/base/_footer.html:37
 msgid "Go"
 msgstr "Ir"
 
-#: base/templates/base/_footer.html:43
+#: base/templates/base/_footer.html:44
 msgid "Publications"
 msgstr "Publicações"
 
-#: base/templates/base/_footer.html:49
+#: base/templates/base/_footer.html:50
 msgid "Events"
 msgstr "Eventos"
 
@@ -90,24 +102,35 @@ msgstr "Administradores"
 msgid "Revisers"
 msgstr "Revisores"
 
-#: base/templates/base/_header.html:59
+#: base/templates/base/_header.html:51
+msgid "Extra"
+msgstr "Extra"
+
+#: base/templates/base/_header.html:56
+msgid "Django Admin"
+msgstr "Administração do Django"
+
+#: base/templates/base/_header.html:60
+msgid "Rosetta"
+msgstr "Rosetta"
+
+#: base/templates/base/_header.html:77
 msgid "Profile"
 msgstr "Perfil"
 
-#: base/templates/base/_header.html:63
+#: base/templates/base/_header.html:81
 msgid "Logout"
 msgstr "Sair"
 
-#: base/templates/base/_header.html:71
+#: base/templates/base/_header.html:89
 msgid "Login"
 msgstr "Entrar"
 
 #: base/templates/base/_no_script.html:3
 msgid ""
 "For full functionality of this site it is necessary to enable JavaScript. "
-"Here are the <a href=\"http://www.enable-javascript.com/pt/\" "
-"target=\"_blank\">instructions on how to enable JavaScript in your browser "
-"</a>."
+"Here are the <a href=\"http://www.enable-javascript.com/pt/\" target=\"_blank"
+"\">instructions on how to enable JavaScript in your browser </a>."
 msgstr ""
 
 #: base/templates/base/_paginate.html:6 base/templates/base/_paginate.html:8

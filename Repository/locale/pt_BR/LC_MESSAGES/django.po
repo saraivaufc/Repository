@@ -1,0 +1,87 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-01-11 17:48-0300\n"
+"PO-Revision-Date: 2017-01-11 17:49-0234\n"
+"Last-Translator: None None <admin@email.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Translated-Using: django-rosetta 0.7.8\n"
+
+#: settings.py:134
+msgid "Brazilian Portuguese"
+msgstr "Português Brasileiro"
+
+#: settings.py:135
+msgid "English"
+msgstr "Inglês"
+
+#: settings.py:136
+msgid "Spanish"
+msgstr "Espanhol"
+
+#: urls.py:18
+msgid "^$"
+msgstr ""
+
+#: urls.py:19
+msgid "^manager/"
+msgstr "^repositorio/"
+
+#: urls.py:20
+msgid "^authentication/"
+msgstr "^autenticacao/"
+
+#: urls.py:21
+msgid "^submission/"
+msgstr "^submissao/"
+
+#: urls.py:23
+#| msgid "^about/$"
+msgid "^about$"
+msgstr "^sobre$"
+
+#: urls.py:24
+#| msgid "^terms/$"
+msgid "^terms$"
+msgstr "^termos$"
+
+#: urls.py:25
+#| msgid "^policies/$"
+msgid "^policies$"
+msgstr "^politicas$"
+
+#: urls.py:26
+msgid "^contact_us$"
+msgstr "^contate-nos$"
+
+#: urls.py:28
+msgid "^media/(?P<path>.*)$"
+msgstr "^midia/(?P<path>.*)$"
+
+#: urls.py:29
+msgid "^i18n/"
+msgstr ""
+
+#: urls.py:30
+msgid "^django_admin/"
+msgstr "^administracao_django/"
+
+#: urls.py:31
+msgid "^rosetta/"
+msgstr ""
+
+#: urls.py:32
+msgid "^jsreverse/$"
+msgstr ""

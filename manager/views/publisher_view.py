@@ -18,13 +18,13 @@ class PublisherCreateView(AjaxableResponseMixin, CreateView):
 	template_name = 'manager/publisher/form.html'
 	model = Publisher
 	fields = ['name']
-	success_url = reverse_lazy('manager:publisher_list', kwargs={'page': 1})
+	success_url = reverse_lazy('manager:publisher_list')
 
 class PublisherUpdateView(UpdateView):
 	template_name = 'manager/publisher/form.html'
 	model = Publisher
 	fields = ['name']
-	success_url = reverse_lazy('manager:publisher_list', kwargs={'page': 1})
+	success_url = reverse_lazy('manager:publisher_list')
 	
 	def form_valid(self, form):
 		return super(PublisherUpdateView, self).form_valid(form)
@@ -32,7 +32,7 @@ class PublisherUpdateView(UpdateView):
 class PublisherDeleteView(DeleteView):
 	template_name = 'manager/publisher/check_delete.html'
 	model = Publisher
-	success_url = reverse_lazy('manager:publisher_list', kwargs={'page': 1})
+	success_url = reverse_lazy('manager:publisher_list')
 
 class PublisherDetailView(DetailView):
 	template_name = 'manager/publisher/detail.html'
@@ -45,22 +45,12 @@ class PublisherDetailView(DetailView):
 class PublisherPublicationsView(SingleObjectMixin, ListView):
 	paginate_by = settings.PAGINATE_BY
 	template_name = 'manager/publisher/publications.html'
-	fields_search = Publication.FIELDS_SEARCH
+	model = Publication
 
 	def get(self, request, * args, ** kwargs):
 		self.object = self.get_object(queryset=Publisher.objects.all())
 		return super(PublisherPublicationsView, self).get(request, * args, ** kwargs)
-	def get_context_data(self, ** kwargs):
-		context = super(PublisherPublicationsView, self).get_context_data( ** kwargs)
-		context['publisher'] = self.object
-		context["fields_search"] = self.fields_search
-		context["url_search"] = reverse_lazy("manager:publisher_publications", kwargs={"slug":self.object.slug, "page":1})
-		return context
 
 	def get_queryset(self):
-		query = self.request.GET.get('query')
-		text = self.request.GET.get('text')
-		if query and query in dict(self.fields_search):
-			kwargs = {("%s__contains" % (query,)):text}
-			return Publication.objects.filter(is_final=True, publisher=self.object.id, ** kwargs)
-		return Publication.objects.filter(is_final=True, publisher=self.object.id)
+		queryset = super(PublisherPublicationsView, self).get_queryset()
+		return queryset.filter(publisher=self.object, is_final=True)

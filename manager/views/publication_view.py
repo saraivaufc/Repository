@@ -26,7 +26,7 @@ class PublicationCreateView(AjaxableResponseMixin, CreateView):
 	fields = ['title', 'typology', 'subjects', 'authors', 'community',
 			  'collection', 'publisher', 'address', 'year', 'reference','language', 
 			  'abstract', 'other_abstract', 'keywords', 'issue_date', 'file']
-	success_url = reverse_lazy('manager:publication_list', kwargs={'page': 1})
+	success_url = reverse_lazy('manager:publication_list')
 
 	def form_valid(self, form):
 		form.instance.is_final=True
@@ -38,7 +38,7 @@ class PublicationUpdateView(UpdateView):
 	fields = ['title', 'typology', 'subjects', 'authors', 'community',
 			  'collection', 'publisher', 'address', 'year', 'reference','language', 
 			  'abstract', 'other_abstract', 'keywords', 'issue_date', 'file',]
-	success_url = reverse_lazy('manager:publication_list', kwargs={'page': 1})
+	success_url = reverse_lazy('manager:publication_list')
 	
 	def form_valid(self, form):
 		form.instance.is_final=True
@@ -47,7 +47,7 @@ class PublicationUpdateView(UpdateView):
 class PublicationDeleteView(DeleteView):
 	template_name = 'manager/publication/check_delete.html'
 	model = Publication
-	success_url = reverse_lazy('manager:publication_list', kwargs={'page': 1})
+	success_url = reverse_lazy('manager:publication_list')
 
 class PublicationDetailView(DetailView):
 	template_name = 'manager/publication/detail.html'
@@ -55,7 +55,7 @@ class PublicationDetailView(DetailView):
 
 	def get(self, request, * args, ** kwargs):
 		if not self.get_object().is_final:
-			return HttpResponseRedirect(reverse_lazy('manager:publication_list', kwargs={'page': 1}))
+			return HttpResponseRedirect(reverse_lazy('manager:publication_list'))
 		return super(PublicationDetailView, self).get(request, * args, ** kwargs)
 
 	def get_context_data(self, ** kwargs):
