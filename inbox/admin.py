@@ -1,13 +1,13 @@
 from django.contrib import admin
 
-from inbox.models import (ChatManager, Chat, Reply)
+from inbox.models import (MessageManager, Message, Reply)
 
-@admin.register(ChatManager)
-class ChatManagerAdmin(admin.ModelAdmin):
+@admin.register(MessageManager)
+class MessageManagerAdmin(admin.ModelAdmin):
 	pass
 
-@admin.register(Chat)
-class ChatAdmin(admin.ModelAdmin):
+@admin.register(Message)
+class MessageAdmin(admin.ModelAdmin):
 	pass
 
 @admin.register(Reply)

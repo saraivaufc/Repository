@@ -16,10 +16,10 @@ group_permissions = {
 		"add_submission",
 		"change_submission",
 		"delete_submission",
-		#chat
-		"add_chat",
-		"change_chat",
-		"delete_chat",
+		#message
+		"add_message",
+		"change_message",
+		"delete_message",
 		#reply
 		"add_reply",
 		"change_reply",

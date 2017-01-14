@@ -1,0 +1,21 @@
+{% load i18n %}
+
+{{ message.subject|title }}
+
+{% if message.message_manager_send.user == request.user and message.message_manager_receive.user != request.user  %}
+	<label class="tag tag-success tag-sm">
+		{% blocktrans with user=message.message_manager_receive.user.get_full_name email=message.message_manager_receive.user.email %}
+			 To: {{ user }} - {{ email }}
+		{% endblocktrans %}
+	</label>
+{% elif message.message_manager_send.user != request.user and message.message_manager_receive.user == request.user  %}
+	<label class="tag tag-info tag-sm">
+		{% blocktrans with user=message.message_manager_send.user.get_full_name email=message.message_manager_send.user.email %}
+			From: {{ user }} - {{ email }}
+		{% endblocktrans %}
+	</label>
+{% else %}
+	<label class="tag tag-warning tag-sm">
+		{% trans "Draft" %}
+	</label>
+{% endif %}

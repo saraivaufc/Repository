@@ -18,72 +18,74 @@
 {% endblock %}
 
 {% block site %}
-	<div class="col-sm-2 col-md-2">
-		<div class="row">
-		{% block sidebar %}
-			<div class="list-group sidebar">
+	<section id="content">
+		<div class="col-sm-2 col-md-2">
+			<div class="row">
+			{% block sidebar %}
+				<div class="list-group sidebar">
 
-				<a href="{% url 'manager:publication_list' %}" class="list-group-item list-group-item-action sidebar-item {% block publications %}{% endblock %}">
-					<i class="fa fa-book"></i>
-					{% trans "Publications" %}
-				</a>
+					<a href="{% url 'manager:publication_list' %}" class="list-group-item list-group-item-action sidebar-item {% block publications %}{% endblock %}">
+						<i class="fa fa-book"></i>
+						{% trans "Publications" %}
+					</a>
 
-				<a href="{% url 'manager:author_list' %}" class="list-group-item list-group-item-action sidebar-item {% block authors %}{% endblock %}">
-					<i class="fa fa-graduation-cap"></i>
-					{% trans "Authors" %}
-				</a>
+					<a href="{% url 'manager:author_list' %}" class="list-group-item list-group-item-action sidebar-item {% block authors %}{% endblock %}">
+						<i class="fa fa-graduation-cap"></i>
+						{% trans "Authors" %}
+					</a>
+					
+					<a href="{% url 'manager:community_list' %}" class="list-group-item list-group-item-action sidebar-item {% block communities %}{% endblock %}">
+						<i class="fa fa-university"></i>
+						{% trans "Communities" %}
+					</a>
+					
+					<a href="{% url 'manager:collection_list' %}" class="list-group-item list-group-item-action sidebar-item {% block collections %}{% endblock %}">
+						<i class="fa fa-object-group"></i>
+						{% trans "Collections" %}
+					</a>
+
+					<a href="{% url 'manager:publisher_list' %}" class="list-group-item list-group-item-action sidebar-item {% block publishers %}{% endblock %}">
+						<i class="fa fa-newspaper-o"></i>
+						{% trans "Publishers" %}
+					</a>
+					
+					<a href="{% url 'manager:subject_list' %}" class="list-group-item list-group-item-action sidebar-item {% block subjects %}{% endblock %}">
+						<i class="fa fa-flag"></i>
+						{% trans "Subjects" %}
+					</a>
+
+					<a href="{% url 'manager:keyword_list' %}" class="list-group-item list-group-item-action sidebar-item {% block keywords %}{% endblock %}">
+						<i class="fa fa-tags"></i>
+						{% trans "Keywords" %}
+					</a>
 				
-				<a href="{% url 'manager:community_list' %}" class="list-group-item list-group-item-action sidebar-item {% block communities %}{% endblock %}">
-					<i class="fa fa-university"></i>
-					{% trans "Communities" %}
-				</a>
-				
-				<a href="{% url 'manager:collection_list' %}" class="list-group-item list-group-item-action sidebar-item {% block collections %}{% endblock %}">
-					<i class="fa fa-object-group"></i>
-					{% trans "Collections" %}
-				</a>
-
-				<a href="{% url 'manager:publisher_list' %}" class="list-group-item list-group-item-action sidebar-item {% block publishers %}{% endblock %}">
-					<i class="fa fa-newspaper-o"></i>
-					{% trans "Publishers" %}
-				</a>
-				
-				<a href="{% url 'manager:subject_list' %}" class="list-group-item list-group-item-action sidebar-item {% block subjects %}{% endblock %}">
-					<i class="fa fa-flag"></i>
-					{% trans "Subjects" %}
-				</a>
-
-				<a href="{% url 'manager:keyword_list' %}" class="list-group-item list-group-item-action sidebar-item {% block keywords %}{% endblock %}">
-					<i class="fa fa-tags"></i>
-					{% trans "Keywords" %}
-				</a>
-			
-			</div>
-		{% endblock %}
-		</div>
-	</div>
-
-	<div class="col-sm-10 col-md-10">
-		<div class="row">
-			<label class="h4 text-xs-center text-sm-center text-md-center page-title">
-				{%  block page_title %}{% trans "Welcome" %}{% endblock %}
-			</label>
-			<section class="page-container">
-				<div class="container-fluid">
-					<div class="row">
-					{% block content %}
-						<div class="jumbotron jumbotron-fluid">
-							<div class="container-fluid">
-								<h1 class="display-4">{% trans "Institutional Repository UFC" %}</h1>
-								<p class="lead">{% trans "Aims to store, preserve, disseminate and allow open access to scientific, academic, artistic, technical and administrative documents produced by UFC researchers and students." %}</p>
-							</div>
-						</div>
-					{% endblock %}
-					</div>
 				</div>
-			</section>
+			{% endblock %}
+			</div>
 		</div>
-	</div>
+
+		<div class="col-sm-10 col-md-10">
+			<div class="row">
+				<label class="h4 text-xs-center text-sm-center text-md-center page-title">
+					{%  block page_title %}{% trans "Welcome" %}{% endblock %}
+				</label>
+				<section class="page-container">
+					<div class="container-fluid">
+						<div class="row">
+						{% block content %}
+							<div class="jumbotron jumbotron-fluid">
+								<div class="container-fluid">
+									<h1 class="display-4">{% trans "Institutional Repository UFC" %}</h1>
+									<p class="lead">{% trans "Aims to store, preserve, disseminate and allow open access to scientific, academic, artistic, technical and administrative documents produced by UFC researchers and students." %}</p>
+								</div>
+							</div>
+						{% endblock %}
+						</div>
+					</div>
+				</section>
+			</div>
+		</div>
+	</section>
 {% endblock %}
 
 

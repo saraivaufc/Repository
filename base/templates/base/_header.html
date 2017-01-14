@@ -21,9 +21,10 @@
 			</li>
 			{% if request.user.is_authenticated %}
 			<li class="nav-item active">
-				<a class="nav-link {% if request.resolver_match.namespace == 'inbox' %}active{% endif %}" href="{% url 'inbox:chat_list' %}?messages=all" >
-					<i class="fa fa-wechat"></i>
-					{% trans "Chat" %}
+				{% trans "receives" as receives %}
+				<a class="nav-link {% if request.resolver_match.namespace == 'inbox' %}active{% endif %}" href="{% url 'inbox:message_list' query=receives %}" >
+					<i class="fa fa-inbox"></i>
+					{% trans "Inbox" %}
 				</a>
 			</li>
 			{% endif %}

@@ -1,0 +1,188 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-01-13 11:32-0300\n"
+"PO-Revision-Date: 2017-01-13 11:33-0234\n"
+"Last-Translator: Ciano Saraiva <admin@email.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Translated-Using: django-rosetta 0.7.8\n"
+
+#: inbox/models/message.py:9
+msgid "slug"
+msgstr "slug"
+
+#: inbox/models/message.py:10 inbox/templates/inbox/message/_render.html:4
+msgid "From"
+msgstr "De"
+
+#: inbox/models/message.py:11 inbox/templates/inbox/message/_render.html:9
+msgid "To"
+msgstr "Para"
+
+#: inbox/models/message.py:12 inbox/models/message.py:35
+msgid "Subject"
+msgstr "Assunto"
+
+#: inbox/models/message.py:13 inbox/models/message.py:36
+#: inbox/models/reply.py:9 inbox/templates/inbox/message/_render.html:14
+msgid "Text"
+msgstr "Texto"
+
+#: inbox/models/message.py:14 inbox/models/reply.py:10
+#: inbox/models/reply.py:14 inbox/templates/inbox/message/_render.html:19
+msgid "File"
+msgstr "Arquivo"
+
+#: inbox/models/message.py:15
+msgid "Message UnRead"
+msgstr "Mensagem Não-lida"
+
+#: inbox/models/message.py:16 inbox/models/reply.py:11
+msgid "Last modification"
+msgstr "Última modificação"
+
+#: inbox/models/message.py:25 inbox/templates/inbox/index.html:33
+#: inbox/templates/inbox/message/list.html:10 inbox/views/message_view.py:25
+#: inbox/views/message_view.py:55
+msgid "sends"
+msgstr "enviadas"
+
+#: inbox/models/message.py:27 inbox/templates/inbox/index.html:12
+#: inbox/templates/inbox/index.html:28
+#: inbox/templates/inbox/message/list.html:9 inbox/views/message_view.py:23
+msgid "receives"
+msgstr "recebidas"
+
+#: inbox/models/message.py:29 inbox/templates/inbox/index.html:38
+#: inbox/templates/inbox/message/list.html:11 inbox/views/message_view.py:27
+msgid "drafts"
+msgstr "rascunhos"
+
+#: inbox/models/message.py:55 inbox/models/reply.py:6
+msgid "Message"
+msgstr "Mensagem"
+
+#: inbox/models/message.py:56 inbox/templates/inbox/index.html:51
+#: inbox/templates/inbox/message/list.html:24
+msgid "Messages"
+msgstr "Mensagens"
+
+#: inbox/models/message_manager.py:8 inbox/models/reply.py:7
+msgid "User"
+msgstr "Usuário"
+
+#: inbox/models/message_manager.py:9
+msgid "Messages UnRead"
+msgstr ""
+
+#: inbox/models/message_manager.py:16
+msgid "MessageManager"
+msgstr ""
+
+#: inbox/models/message_manager.py:17
+msgid "MessagesManager"
+msgstr ""
+
+#: inbox/models/reply.py:8
+msgid "Read"
+msgstr "Lida"
+
+#: inbox/models/reply.py:18
+msgid "Reply"
+msgstr "Resposta"
+
+#: inbox/models/reply.py:19
+msgid "Replies"
+msgstr "Respostas"
+
+#: inbox/templates/inbox/index.html:15
+msgid "Inbox"
+msgstr "Inbox"
+
+#: inbox/templates/inbox/index.html:31
+msgid "Receives"
+msgstr "Recebidas"
+
+#: inbox/templates/inbox/index.html:36
+msgid "Sends"
+msgstr "Enviadas"
+
+#: inbox/templates/inbox/index.html:41
+msgid "Drafts"
+msgstr "Rascunhos"
+
+#: inbox/templates/inbox/message/_render.html:24
+msgid "Download"
+msgstr "Baixar"
+
+#: inbox/templates/inbox/message/_render.html:27
+msgid "Empty"
+msgstr "Vazio"
+
+#: inbox/templates/inbox/message/_render.html:31
+msgid "In"
+msgstr ""
+
+#: inbox/templates/inbox/message/_title.html:6
+#, python-format
+msgid ""
+"\n"
+"\t\t\t %(user)s - %(email)s\n"
+"\t\t"
+msgstr ""
+
+#: inbox/templates/inbox/message/_title.html:13
+#, python-format
+msgid ""
+"\n"
+"\t\t\t%(user)s - %(email)s\n"
+"\t\t"
+msgstr ""
+
+#: inbox/templates/inbox/message/_title.html:19
+msgid "Draft"
+msgstr "Rascunho"
+
+#: inbox/templates/inbox/message/form.html:15
+#: inbox/templates/inbox/message/form.html:19
+#: inbox/templates/inbox/message/list.html:32
+msgid "Send Message"
+msgstr "Enviar Mensagem"
+
+#: inbox/templates/inbox/message/list.html:55
+#, python-format
+msgid ""
+"\n"
+"\t\t\t\t%(replies)s Replies\n"
+"\t\t\t\t"
+msgstr ""
+"\n"
+"%(replies)s Respostas"
+
+#: inbox/urls/message.py:10
+#| msgid "^(?P<query>[-\\w]+)/list/$"
+msgid "^(?P<query>[-\\w]+)/list$"
+msgstr "^(?P<query>[-\\w]+)/lista$"
+
+#: inbox/urls/message.py:11
+msgid "^send$"
+msgstr "^enviar$"
+
+#: inbox/urls/message.py:12
+msgid "^(?P<slug>[-\\w]+)/detail$"
+msgstr "^(?P<slug>[-\\w]+)/detalhe$"
+
+#~ msgid "^add$"
+#~ msgstr "^adicionar$"

@@ -1,23 +1,23 @@
-{% load i18n %}
+{% load i18n humanize %}
 
 <dl class="definition text" itemscope itemtype="http://schema.org/Email">
 	<dt class="col-xs-2 col-sm-1">{% trans "From" %}:</dt>
 	<dd class="col-xs-4 col-sm-5" itemprop="from">
-		{{ object.chat_manager_send }}
+		{{ object.message_manager_send }}
 	</dd>
 
 	<dt class="col-xs-2 col-sm-1">{% trans "To" %}:</dt>
 	<dd class="col-xs-4 col-sm-5" itemprop="to">
-		{{ object.chat_manager_receive }}
+		{{ object.message_manager_receive }}
 	</dd>
 
 	<dt class="col-xs-2 col-sm-1">{% trans "Text" %}:</dt>
 	<dd class="col-xs-10 col-sm-11" itemprop="subject">
-		{{ object.text }}
+		{{ object.text|linebreaks }}
 	</dd>
 
 	<dt class="col-xs-2 col-sm-1">{% trans "File" %}:</dt>
-	<dd class="col-xs-10 col-sm-11" itemprop="subject">
+	<dd class="col-xs-4 col-sm-5" itemprop="subject">
 		{% if object.file %}
 		<a href="{{ object.file.url }}" target="_blank">
 			<i class="fa fa-download"></i>
@@ -27,4 +27,10 @@
 			{% trans "Empty" %}
 		{% endif %}
 	</dd>
+
+	<dt class="col-xs-2 col-sm-1">{% trans "In" %}:</dt>
+	<dd class="col-xs-4 col-sm-5" itemprop="to">
+		{{ object.last_modified }}
+	</dd>
+
 </dl>

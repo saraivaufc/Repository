@@ -4,9 +4,9 @@ import os
 import glob
 import re
 
-TEXT = ", kwargs={'page': 1}"
-NEW_TEXT = ''
-FILE_TYPES = ['(.)\.py', ]
+TEXT = "chat"
+NEW_TEXT = 'message'
+FILE_TYPES = ['(.)\.html', ]
 
 rexs = []
 for i in FILE_TYPES:

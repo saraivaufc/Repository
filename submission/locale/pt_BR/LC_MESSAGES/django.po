@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-01-11 17:40-0300\n"
+"POT-Creation-Date: 2017-01-13 11:32-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -226,8 +226,8 @@ msgstr ""
 #: submission/templates/submission/event/_render.html:35
 #: submission/templates/submission/review/detail.html:15
 #: submission/templates/submission/review/detail_to_review.html:15
-#: submission/templates/submission/submission/list.html:45
-#: submission/templates/submission/submission/list.html:70
+#: submission/templates/submission/submission/list.html:44
+#: submission/templates/submission/submission/list.html:69
 #: submission/templates/submission/submission/list_to_review.html:36
 #: submission/templates/submission/submission/list_to_review.html:82
 msgid "Review"
@@ -253,7 +253,7 @@ msgid "Title"
 msgstr ""
 
 #: submission/models/submission.py:60 submission/models/submission.py:61
-#: submission/templates/submission/submission/list.html:42
+#: submission/templates/submission/submission/list.html:41
 #: submission/templates/submission/submission/list_to_review.html:33
 msgid "Submission"
 msgstr ""
@@ -404,7 +404,7 @@ msgid "Empty"
 msgstr ""
 
 #: submission/templates/submission/submission/_render.html:12
-#: submission/templates/submission/submission/list.html:43
+#: submission/templates/submission/submission/list.html:42
 #: submission/templates/submission/submission/list_final.html:41
 #: submission/templates/submission/submission/list_to_review.html:34
 msgid "Authors"
@@ -469,11 +469,11 @@ msgstr ""
 msgid "New Submission"
 msgstr ""
 
-#: submission/templates/submission/submission/list.html:73
+#: submission/templates/submission/submission/list.html:72
 msgid "No Available"
 msgstr ""
 
-#: submission/templates/submission/submission/list.html:80
+#: submission/templates/submission/submission/list.html:79
 #: submission/templates/submission/submission/list_final.html:63
 #: submission/templates/submission/submission/list_to_review.html:105
 msgid "No Submission found!"

@@ -1,0 +1,64 @@
+{% extends 'inbox/index.html' %}
+
+{% load i18n humanize %}
+
+{% block title %}{% endblock %}
+
+{% block breadcrumbs %}
+	{{ block.super }}
+	{% trans "receives" as receives %}
+	{% trans "sends" as sends %}
+	{% trans "drafts" as drafts %}
+	<a href="{% url 'inbox:message_list' query=query %}" class="breadcrumb-item" >
+		{% if query == receives %}
+			<i class="fa fa-envelope"></i>
+		{% elif query == sends %}
+			<i class="fa fa-send"></i>
+		{% elif query == drafts %}
+			<i class="fa fa-file-text"></i>
+		{% endif %}
+		{{ query }}
+	</a>
+{% endblock %}
+
+{%  block page_title %}{% trans "Messages" %}{% endblock %}
+
+{% block content %}
+	<div class="col-md-4">
+		<div class="row">
+		{% if perms.message.add_message %}
+			<a href="{% url 'inbox:message_send' %}" class="btn btn-success">
+				<i class="fa fa-send"></i>
+				{% trans "Send Message" %}
+			</a>
+		{% endif %}
+		</div>
+	</div>
+
+	<div class="col-md-8">
+	<div class="row float-xs-right">
+		{% include "base/_form_search.html" %}
+	</div>
+	</div>
+	
+	<div class="list-group full-width">
+	{% for message in object_list %}
+		<a href="{% url 'inbox:message_detail' slug=message.slug %}" class="list-group-item list-group-item-action">
+			<h5 class="list-group-item-heading">
+				{% include 'inbox/message/_title.html' %}
+			</h5>
+			<p class="list-group-item-text lead">
+				{{ message.text|truncatewords:10 }}
+			</p>
+			<label class="text-muted">{{ message.last_modified|naturaltime }}</label>
+			<span class="tag tag-default tag-pill float-xs-right">
+				{% blocktrans with replies=message.get_replies|length %}
+				{{ replies }} Replies
+				{% endblocktrans %}
+			</span>
+		</a>
+	{% empty %}
+	{% endfor %}
+	</div>
+	{% include "base/_paginate.html" %}
+{% endblock %}

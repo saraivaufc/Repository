@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-01-11 17:40-0300\n"
+"POT-Creation-Date: 2017-01-13 11:32-0300\n"
 "PO-Revision-Date: 2017-01-11 12:34-0234\n"
 "Last-Translator: None None <admin@email.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -86,43 +86,51 @@ msgstr "Repositório"
 msgid "Submission"
 msgstr "Submissão"
 
-#: base/templates/base/_header.html:26
+#: base/templates/base/_header.html:24
+msgid "receives"
+msgstr ""
+
+#: base/templates/base/_header.html:27
+msgid "Inbox"
+msgstr ""
+
+#: base/templates/base/_header.html:36
 msgid "Users"
 msgstr "Usuários"
 
-#: base/templates/base/_header.html:31
+#: base/templates/base/_header.html:41
 msgid "Participants"
 msgstr "Participantes"
 
-#: base/templates/base/_header.html:36
+#: base/templates/base/_header.html:46
 msgid "Administrators"
 msgstr "Administradores"
 
-#: base/templates/base/_header.html:41
+#: base/templates/base/_header.html:51
 msgid "Revisers"
 msgstr "Revisores"
 
-#: base/templates/base/_header.html:51
+#: base/templates/base/_header.html:61
 msgid "Extra"
 msgstr "Extra"
 
-#: base/templates/base/_header.html:56
+#: base/templates/base/_header.html:66
 msgid "Django Admin"
 msgstr "Administração do Django"
 
-#: base/templates/base/_header.html:60
+#: base/templates/base/_header.html:70
 msgid "Rosetta"
 msgstr "Rosetta"
 
-#: base/templates/base/_header.html:77
+#: base/templates/base/_header.html:87
 msgid "Profile"
 msgstr "Perfil"
 
-#: base/templates/base/_header.html:81
+#: base/templates/base/_header.html:91
 msgid "Logout"
 msgstr "Sair"
 
-#: base/templates/base/_header.html:89
+#: base/templates/base/_header.html:99
 msgid "Login"
 msgstr "Entrar"
 

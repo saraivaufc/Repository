@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-01-11 17:48-0300\n"
-"PO-Revision-Date: 2017-01-11 17:49-0234\n"
-"Last-Translator: None None <admin@email.com>\n"
+"POT-Creation-Date: 2017-01-14 08:02-0300\n"
+"PO-Revision-Date: 2017-01-14 08:03-0234\n"
+"Last-Translator: Ciano Saraiva <admin@email.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -19,21 +19,17 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Translated-Using: django-rosetta 0.7.8\n"
 
-#: settings.py:134
+#: settings.py:145
 msgid "Brazilian Portuguese"
 msgstr "Português Brasileiro"
 
-#: settings.py:135
+#: settings.py:146
 msgid "English"
 msgstr "Inglês"
 
-#: settings.py:136
+#: settings.py:147
 msgid "Spanish"
 msgstr "Espanhol"
-
-#: urls.py:18
-msgid "^$"
-msgstr ""
 
 #: urls.py:19
 msgid "^manager/"
@@ -47,41 +43,28 @@ msgstr "^autenticacao/"
 msgid "^submission/"
 msgstr "^submissao/"
 
-#: urls.py:23
-#| msgid "^about/$"
+#: urls.py:22
+msgid "^inbox/"
+msgstr "^caixa_de_mensagens/"
+
+#: urls.py:24
 msgid "^about$"
 msgstr "^sobre$"
 
-#: urls.py:24
-#| msgid "^terms/$"
+#: urls.py:25
 msgid "^terms$"
 msgstr "^termos$"
 
-#: urls.py:25
-#| msgid "^policies/$"
+#: urls.py:26
 msgid "^policies$"
 msgstr "^politicas$"
 
-#: urls.py:26
+#: urls.py:27
 msgid "^contact_us$"
 msgstr "^contate-nos$"
 
-#: urls.py:28
-msgid "^media/(?P<path>.*)$"
-msgstr "^midia/(?P<path>.*)$"
+#~ msgid "^media/(?P<path>.*)$"
+#~ msgstr "^midia/(?P<path>.*)$"
 
-#: urls.py:29
-msgid "^i18n/"
-msgstr ""
-
-#: urls.py:30
-msgid "^django_admin/"
-msgstr "^administracao_django/"
-
-#: urls.py:31
-msgid "^rosetta/"
-msgstr ""
-
-#: urls.py:32
-msgid "^jsreverse/$"
-msgstr ""
+#~ msgid "^django_admin/"
+#~ msgstr "^administracao_django/"

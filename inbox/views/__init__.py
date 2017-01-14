@@ -1,1 +1,1 @@
-from .chat_view import ChatListView, ChatCreateView, ChatDetailView
+from .message_view import MessageListView, MessageCreateView, MessageDetailView, MessageSendView

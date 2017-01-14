@@ -7,12 +7,13 @@ from django.db import models, migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('submission', '0005_auto_20170110_1505'),
+        ('inbox', '0001_initial'),
     ]
 
     operations = [
-        migrations.RemoveField(
-            model_name='event',
-            name='year',
+        migrations.AlterField(
+            model_name='reply',
+            name='text',
+            field=models.TextField(null=True, verbose_name='Text', blank=True),
         ),
     ]

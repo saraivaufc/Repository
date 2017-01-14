@@ -120,3 +120,7 @@ input[type="number"], input[type="date"]{
   border-bottom: .5rem solid;
   border-left: .5rem solid transparent;
 }
+
+.tag-sm{
+	font-size: .6em;
+}

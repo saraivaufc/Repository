@@ -21,6 +21,7 @@ class Migration(migrations.Migration):
                 ('is_superuser', models.BooleanField(default=False, help_text='Designates that this user has all permissions without explicitly assigning them.', verbose_name='superuser status')),
                 ('first_name', models.CharField(help_text='Please enter you first name.', max_length=100, null=True, verbose_name='First Name ', blank=True)),
                 ('last_name', models.CharField(help_text='Please enter you last name.', max_length=100, null=True, verbose_name='Last Name ', blank=True)),
+                ('username', models.CharField(help_text='Please enter you username.', unique=True, max_length=254, verbose_name='Username')),
                 ('email', models.EmailField(help_text='Please enter you email.', unique=True, max_length=254, verbose_name='Email')),
                 ('is_active', models.BooleanField(default=True, help_text='Designates whether this user should be treated as active. Unselect this instead of deleting accounts.', verbose_name='Active')),
                 ('date_joined', models.DateTimeField(default=django.utils.timezone.now, verbose_name='Date joined')),
@@ -33,6 +34,7 @@ class Migration(migrations.Migration):
             options={
                 'verbose_name': 'User',
                 'verbose_name_plural': 'User',
+                'permissions': (('list_participant', 'List Participant'), ('list_reviser', 'List Reviser'), ('add_reviser', 'Add Reviser'), ('change_reviser', 'Change Reviser'), ('delete_reviser', 'Delete Reviser'), ('list_administrator', 'List Administrator'), ('add_administrator', 'Add Administrator'), ('delete_administrator', 'Delete Administrator')),
             },
         ),
     ]

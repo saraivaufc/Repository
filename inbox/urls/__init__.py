@@ -2,5 +2,5 @@ from django.conf.urls import include, url
 
 
 urlpatterns = [
-	url(r'^', include('inbox.urls.chat')),
+	url(r'^', include('inbox.urls.message')),
 ]

@@ -24,11 +24,16 @@
 		<h2 class="text-xs-center">{% trans "Loading..." %}</h2>
 	</div>
 	<div id="form-container" class="hide full-width">
-	{% include 'base/_form.html' with is_popup=True %}
+		{% include 'base/_form.html' with is_popup=True %}
 	</div>
 {% endblock %}
 
 {% block footer %}
+{% endblock %}
+
+{% block js %}
+	{{ block.super }}
+	{% include "base/imports/select2.html" %}
 {% endblock %}
 
 {% block scripts %}

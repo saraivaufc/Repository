@@ -15,6 +15,11 @@ import os
 from django.utils.translation import ugettext_lazy as _
 from django.core.urlresolvers import reverse_lazy
 
+#import hide
+from .hide import site_config as SITE_CONFIG
+from .hide import database_config  as DATABASE_CONFIG
+from .hide import email_config as EMAIL_CONFIG
+
 SITE_ID = 1
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -24,7 +29,7 @@ PROJECT_DIR = os.path.dirname(__file__)
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '-cw=v4hl&_@e$96=1z^2n^a1qb@13typt0z5sutuyk*&=j=#y!'
+SECRET_KEY = SITE_CONFIG.SECRET_KEY
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -58,8 +63,8 @@ LOCAL_APPS = (
 	'base',
 	'submission',
 	'manager',
-	'authentication',
 	'inbox',
+	'authentication',
 )
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
@@ -114,12 +119,32 @@ PAGINATE_BY = 10
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
 
 DATABASES = {
-	'default': {
+	'sqlite': {
 		'ENGINE': 'django.db.backends.sqlite3',
 		'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+	}, 'default': {
+		'ENGINE': 'django.db.backends.postgresql_psycopg2',
+		'NAME': 'repository',
+		'USER': 'postgres',
+		'PASSWORD': 'postgres',
+		'HOST': 'localhost',
+		'PORT': '5432',
 	}
 }
 
+
+"""
+Configurations of database to server
+"""
+if  DEBUG:
+	DATABASES['default'] = {
+		'ENGINE': DATABASE_CONFIG.DATABASE_ENGINE,
+		'NAME': DATABASE_CONFIG.DATABASE_NAME,
+		'USER': DATABASE_CONFIG.DATABASE_USER,
+		'PASSWORD': DATABASE_CONFIG.DATABASE_PASSWORD,
+		'HOST': DATABASE_CONFIG.DATABASE_HOST,
+		'PORT': DATABASE_CONFIG.DATABASE_PORT,
+	}
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
@@ -211,3 +236,17 @@ VERSATILEIMAGEFIELD_SETTINGS = {
 	# created and available at the appropriate URL.
 	'create_images_on_demand': True
 }
+
+
+"""
+Configurations of email
+"""
+EMAIL_ADMINS = EMAIL_CONFIG.EMAIL_ADMINS
+DEFAULT_FROM_EMAIL = EMAIL_CONFIG.DEFAULT_FROM_EMAIL
+
+EMAIL_HOST = EMAIL_CONFIG.EMAIL_HOST
+EMAIL_HOST_USER = EMAIL_CONFIG.EMAIL_HOST_USER
+EMAIL_HOST_PASSWORD = EMAIL_CONFIG.EMAIL_HOST_PASSWORD
+EMAIL_PORT = EMAIL_CONFIG.EMAIL_PORT
+EMAIL_USE_TLS = EMAIL_CONFIG.EMAIL_USE_TLS
+EMAIL_BACKEND = EMAIL_CONFIG.EMAIL_BACKEND

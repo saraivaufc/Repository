@@ -1,4 +1,4 @@
-{% extends "inbox/chat/list.html" %}
+{% extends "inbox/message/list.html" %}
 
 
 {% load i18n static %}
@@ -10,7 +10,8 @@
 
 {% block breadcrumbs %}
 	{{ block.super }}
-	<a href="{% url 'inbox:chat_create' %}" class="breadcrumb-item" >
+	<a href="{% url 'inbox:message_send' %}" class="breadcrumb-item" >
+		<i class="fa fa-send"></i>
 		{% trans "Send Message" %}
 	</a>
 {% endblock %}
@@ -19,4 +20,9 @@
 
 {% block content %}		
 	{% include "base/_form.html" %}
+{% endblock %}
+
+{% block js %}
+	{{ block.super }}
+	{% include "base/imports/select2.html" %}
 {% endblock %}

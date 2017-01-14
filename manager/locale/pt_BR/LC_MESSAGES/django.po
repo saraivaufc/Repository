@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-01-11 17:40-0300\n"
+"POT-Creation-Date: 2017-01-13 11:32-0300\n"
 "PO-Revision-Date: 2017-01-11 21:50-0234\n"
 "Last-Translator: None None <admin@email.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -41,14 +41,14 @@ msgstr "Nome para Referência"
 
 #: manager/models/author.py:12 manager/models/collection.py:10
 #: manager/models/community.py:9 manager/models/keyword.py:9
-#: manager/models/publication.py:34 manager/models/publisher.py:8
+#: manager/models/publication.py:27 manager/models/publisher.py:8
 #: manager/models/subject.py:8
 msgid "slug"
 msgstr "slug"
 
 #: manager/models/author.py:14 manager/models/collection.py:12
 #: manager/models/community.py:11 manager/models/keyword.py:11
-#: manager/models/publication.py:51 manager/models/publisher.py:9
+#: manager/models/publication.py:44 manager/models/publisher.py:9
 #: manager/models/subject.py:9
 msgid "Registration Date"
 msgstr "Data de Registro"
@@ -67,8 +67,8 @@ msgstr "Último Nome"
 msgid "Author"
 msgstr "Autor"
 
-#: manager/models/author.py:53 manager/models/publication.py:37
-#: manager/models/publication.py:66
+#: manager/models/author.py:53 manager/models/publication.py:30
+#: manager/models/publication.py:57
 #: manager/templates/manager/author/list.html:17
 #: manager/templates/manager/author/publications.html:20
 #: manager/templates/manager/index.html:33
@@ -118,7 +118,7 @@ msgid "Description"
 msgstr "Descrição"
 
 #: manager/models/collection.py:49 manager/models/collection.py:50
-#: manager/models/publication.py:39
+#: manager/models/publication.py:32
 #: manager/templates/manager/publication/_render.html:40
 msgid "Collection"
 msgstr "Coleção"
@@ -130,7 +130,7 @@ msgstr "Coleção"
 msgid "Acronym"
 msgstr "Sigla"
 
-#: manager/models/community.py:47 manager/models/publication.py:38
+#: manager/models/community.py:47 manager/models/publication.py:31
 #: manager/templates/manager/publication/_render.html:32
 msgid "Community"
 msgstr "Comunidade"
@@ -139,7 +139,7 @@ msgstr "Comunidade"
 msgid "Keyword"
 msgstr "Palavra-chave"
 
-#: manager/models/keyword.py:47 manager/models/publication.py:48
+#: manager/models/keyword.py:47 manager/models/publication.py:41
 #: manager/templates/manager/index.html:58
 #: manager/templates/manager/keyword/list.html:17
 #: manager/templates/manager/keyword/publications.html:20
@@ -147,96 +147,78 @@ msgstr "Palavra-chave"
 msgid "Keywords"
 msgstr "Palavras-chave"
 
-#: manager/models/publication.py:9 manager/models/publication.py:33
-#: manager/models/publication.py:56 manager/models/publication.py:64
+#: manager/models/publication.py:9
+msgid "Article"
+msgstr "Artigo"
+
+#: manager/models/publication.py:10
+msgid "Book"
+msgstr "Livro"
+
+#: manager/models/publication.py:11
+msgid "Booklet"
+msgstr "Pequeno Livro"
+
+#: manager/models/publication.py:12
+msgid "Conference"
+msgstr "Conferência"
+
+#: manager/models/publication.py:13
+msgid "Inbook"
+msgstr "Em livro"
+
+#: manager/models/publication.py:14
+msgid "Incollection"
+msgstr "Em coleção"
+
+#: manager/models/publication.py:15
+msgid "Manual"
+msgstr "Manual"
+
+#: manager/models/publication.py:16
+msgid "Masters Thesis"
+msgstr "Tese de Mestrado"
+
+#: manager/models/publication.py:17
+msgid "Monography"
+msgstr "Monografia"
+
+#: manager/models/publication.py:18
+msgid "Dissertation"
+msgstr "Dissertação"
+
+#: manager/models/publication.py:19 manager/models/publication.py:39
+#: manager/models/publication.py:50
+#: manager/templates/manager/publication/_render.html:75
+msgid "Abstract"
+msgstr "Resumo"
+
+#: manager/models/publication.py:22
+msgid "Brazilian Portuguese"
+msgstr "Português Brasileiro"
+
+#: manager/models/publication.py:23
+msgid "English"
+msgstr "Inglês"
+
+#: manager/models/publication.py:24
+msgid "Spanish"
+msgstr "Espanhol"
+
+#: manager/models/publication.py:26 manager/models/publication.py:49
+#: manager/models/publication.py:55
 #: manager/templates/manager/publication/_render.html:6
 #: manager/templates/manager/publication/list.html:45
 msgid "Title"
 msgstr "Título"
 
-#: manager/models/publication.py:10 manager/models/publication.py:41
-#: manager/models/publication.py:57
-#: manager/templates/manager/publication/_render.html:56
-msgid "Address"
-msgstr "Endereço"
-
-#: manager/models/publication.py:11 manager/models/publication.py:42
-#: manager/models/publication.py:58 manager/models/publication.py:67
-#: manager/templates/manager/publication/_render.html:59
-msgid "Year"
-msgstr "Ano"
-
-#: manager/models/publication.py:12 manager/models/publication.py:26
-#: manager/models/publication.py:46 manager/models/publication.py:59
-#: manager/templates/manager/publication/_render.html:75
-msgid "Abstract"
-msgstr "Resumo"
-
-#: manager/models/publication.py:13 manager/models/publication.py:47
-#: manager/models/publication.py:60
-#: manager/templates/manager/publication/_render.html:80
-msgid "Other Abstract"
-msgstr "Outro Resumo"
-
-#: manager/models/publication.py:16
-msgid "Article"
-msgstr "Artigo"
-
-#: manager/models/publication.py:17
-msgid "Book"
-msgstr "Livro"
-
-#: manager/models/publication.py:18
-msgid "Booklet"
-msgstr "Pequeno Livro"
-
-#: manager/models/publication.py:19
-msgid "Conference"
-msgstr "Conferência"
-
-#: manager/models/publication.py:20
-msgid "Inbook"
-msgstr "Em livro"
-
-#: manager/models/publication.py:21
-msgid "Incollection"
-msgstr "Em coleção"
-
-#: manager/models/publication.py:22
-msgid "Manual"
-msgstr "Manual"
-
-#: manager/models/publication.py:23
-msgid "Masters Thesis"
-msgstr "Tese de Mestrado"
-
-#: manager/models/publication.py:24
-msgid "Monography"
-msgstr "Monografia"
-
-#: manager/models/publication.py:25
-msgid "Dissertation"
-msgstr "Dissertação"
-
-#: manager/models/publication.py:29
-msgid "Brazilian Portuguese"
-msgstr "Português Brasileiro"
-
-#: manager/models/publication.py:30
-msgid "English"
-msgstr "Inglês"
-
-#: manager/models/publication.py:31
-msgid "Spanish"
-msgstr "Espanhol"
-
-#: manager/models/publication.py:35 manager/models/publication.py:65
+#: manager/models/publication.py:28 manager/models/publication.py:56
 #: manager/templates/manager/publication/_render.html:9
 #: manager/templates/manager/publication/list.html:48
 msgid "Typology"
 msgstr "Tipo"
 
-#: manager/models/publication.py:36 manager/models/subject.py:39
+#: manager/models/publication.py:29 manager/models/subject.py:39
 #: manager/templates/manager/index.html:53
 #: manager/templates/manager/publication/_render.html:22
 #: manager/templates/manager/subject/list.html:17
@@ -244,45 +226,60 @@ msgstr "Tipo"
 msgid "Subjects"
 msgstr "Assuntos"
 
-#: manager/models/publication.py:40 manager/models/publisher.py:38
+#: manager/models/publication.py:33 manager/models/publisher.py:38
 #: manager/templates/manager/publication/_render.html:48
 msgid "Publisher"
 msgstr "Editora"
 
-#: manager/models/publication.py:43
+#: manager/models/publication.py:34
+#: manager/templates/manager/publication/_render.html:56
+msgid "Address"
+msgstr "Endereço"
+
+#: manager/models/publication.py:35 manager/models/publication.py:58
+#: manager/templates/manager/publication/_render.html:59
+msgid "Year"
+msgstr "Ano"
+
+#: manager/models/publication.py:36
 #: manager/templates/manager/publication/_render.html:62
 msgid "Reference"
 msgstr "Referência"
 
-#: manager/models/publication.py:44
+#: manager/models/publication.py:37
 #: manager/templates/manager/publication/_render.html:65
 msgid "URI"
 msgstr "URI"
 
-#: manager/models/publication.py:45
+#: manager/models/publication.py:38
 #: manager/templates/manager/publication/_render.html:72
 msgid "Language"
 msgstr "Linguagem"
 
-#: manager/models/publication.py:49
+#: manager/models/publication.py:40 manager/models/publication.py:51
+#: manager/templates/manager/publication/_render.html:80
+msgid "Other Abstract"
+msgstr "Outro Resumo"
+
+#: manager/models/publication.py:42
 #: manager/templates/manager/publication/_render.html:95
 msgid "Issue Date"
 msgstr "Data de edição"
 
-#: manager/models/publication.py:50
+#: manager/models/publication.py:43
 #: manager/templates/manager/publication/_render.html:98
 msgid "File"
 msgstr "Arquivo"
 
-#: manager/models/publication.py:52
+#: manager/models/publication.py:45
 msgid "Is Final"
 msgstr "Final"
 
-#: manager/models/publication.py:105
+#: manager/models/publication.py:96
 msgid "Publication"
 msgstr "Publicação"
 
-#: manager/models/publication.py:106
+#: manager/models/publication.py:97
 #: manager/templates/manager/author/_render.html:13
 #: manager/templates/manager/author/list.html:45
 #: manager/templates/manager/collection/_render.html:22

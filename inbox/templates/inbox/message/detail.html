@@ -1,0 +1,50 @@
+{% extends 'inbox/message/list.html' %}
+
+{% load i18n humanize %}
+
+{% block title %}{% endblock %}
+
+{% block breadcrumbs %}
+	{{ block.super }}
+	<a href="{% url 'inbox:message_detail' slug=object.slug %}" class="breadcrumb-item" >
+		<i class="fa fa-wemessage"></i>
+		{{ object.subject }}
+	</a>
+{% endblock %}
+
+{%  block page_title %}
+	{{ object.subject }}
+{% endblock %}
+
+{% block content %}
+	
+	{% include "inbox/message/_render.html" %}
+	<ul class="list-group full-width">
+	{% for reply in object_list %}
+		<li class="list-group-item">
+			<h5 class="list-group-item-heading">
+				{{ reply.message_manager.user }}
+				<label class="tag tag-sm tag-default">
+					{{ reply.last_modified|naturaltime }}			
+				</label>
+			</h5>
+			<p class="list-group-item-text">
+				{{ reply.text|linebreaks }}
+			</p>
+			{% if reply.file %}
+			<a href="{{ reply.file.url }}" target="_blank">
+				<i class="fa fa-download"></i>
+				{% trans "Download" %}
+			</a>
+			{% else %}
+				{% trans "Empty" %}
+			{% endif %}
+		</li>
+	{% empty %}
+	{% endfor %}
+	</ul>
+	<div class="col-md-12">
+	{% include "base/_form.html" %}
+	</div>
+
+{% endblock %}

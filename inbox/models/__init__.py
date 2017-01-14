@@ -1,3 +1,3 @@
-from .chat_manager import ChatManager
-from .chat import Chat
+from .message_manager import MessageManager
+from .message import Message
 from .reply import Reply
