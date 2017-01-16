@@ -24,7 +24,7 @@ class Publication(models.Model):
 	 	(u'es', _(u'Spanish')),   
 	)
 	title = models.CharField(verbose_name=_("Title"), max_length=500, null=False, blank=False)
-	slug = models.SlugField(_('slug'), max_length=60, blank=True, unique=True)
+	slug = models.SlugField(_('slug'), max_length=1000, blank=True, unique=True)
 	typology = models.CharField(verbose_name=_("Typology"), choices=TYPOLOGY_CHOICES, max_length=100, null=False, blank=False)
 	subjects = models.ManyToManyField("Subject", verbose_name=_("Subjects"), null=False, blank=False)
 	authors = models.ManyToManyField("Author", verbose_name=_("Authors"), related_name="Authors", null=False, blank=False)
@@ -49,6 +49,7 @@ class Publication(models.Model):
 			("title", _("Title")), 
 			("abstract", _("Abstract")), 
 			("other_abstract", _("Other Abstract")),
+			("year", _("Year")),
 		)
 	def get_output_fields():
 		return (
@@ -90,6 +91,9 @@ class Publication(models.Model):
 
 	def verbose_name(self):
 		return self._meta.verbose_name
+
+	def get_absolute_url(self):
+		return reverse_lazy('manager:publication_detail', kwargs={'slug': self.slug})
 
 	class Meta:
 		ordering = ['-registration_date']

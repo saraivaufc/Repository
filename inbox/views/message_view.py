@@ -7,7 +7,7 @@ from django.core.urlresolvers import reverse_lazy
 from django.http.response import HttpResponseRedirect
 from django.core.mail import send_mail, BadHeaderError
 from django.conf import settings
-
+from django.utils import timezone
 
 from base.views import AjaxableResponseMixin, SearchResponseMixin
 from inbox.models import MessageManager, Message, Reply
@@ -22,7 +22,6 @@ class MessageListView(SearchResponseMixin, ListView):
 	def get_queryset(self):
 		queryset = super(MessageListView, self).get_queryset()
 		message_manager = MessageManager.objects.get_or_create(user=self.request.user)[0]
-		messages = None
 		query = self.kwargs['query']
 		if query == _("receives"):
 			messages = queryset.filter(message_manager_receive=message_manager).exclude(message_manager_send=message_manager)
@@ -37,6 +36,7 @@ class MessageListView(SearchResponseMixin, ListView):
 	def get_context_data(self, ** kwargs):
 		context = super(MessageListView, self).get_context_data(** kwargs)
 		context['query'] = self.kwargs['query']
+		context['message_manager'] = MessageManager.objects.get_or_create(user=self.request.user)[0]
 		return context
 
 class MessageCreateView(AjaxableResponseMixin, CreateView):
@@ -75,6 +75,9 @@ class MessageDetailView(SingleObjectMixin, FormMixin, ListView):
 
 	def get(self, request, * args, ** kwargs):
 		self.object = self.get_object(queryset=Message.objects.all())
+		if self.object.message_manager_receive.user == request.user:
+			self.object.message_read = True
+			self.object.save()
 		return super(MessageDetailView, self).get(request, * args, ** kwargs)
 
 	def get_context_data(self, ** kwargs):
@@ -93,13 +96,13 @@ class MessageDetailView(SingleObjectMixin, FormMixin, ListView):
 		return reverse_lazy('inbox:message_detail', kwargs={'slug': self.kwargs['slug']})
 
 	def post(self, request, * args, ** kwargs):
-		if not request.user.is_authenticated():
-			return HttpResponseForbidden()
-		form = self.get_form()
-		if form.is_valid():
+		self.object = self.get_object(queryset=Message.objects.all())
+		if self.object.message_manager_receive.user == request.user or self.object.message_manager_send.user == request.user:
+			form = self.get_form()
 			return self.form_valid(form)
 		else:
 			return self.form_invalid(form)
+			
 	def form_valid(self, form):
 		message = Message.objects.filter(slug=self.kwargs['slug']).first()
 		message_manager = MessageManager.objects.get_or_create(user=self.request.user)[0]
@@ -107,6 +110,9 @@ class MessageDetailView(SingleObjectMixin, FormMixin, ListView):
 		reply.message = message
 		reply.message_manager = message_manager
 		reply.save()
+		message.last_modified = timezone.now()
+		message.message_read = False
+		message.save()
 		return super(MessageDetailView, self).form_valid(form)
 
 

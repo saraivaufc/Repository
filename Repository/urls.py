@@ -8,6 +8,8 @@ from django_js_reverse.views import urls_js
 from django.views.decorators.cache import cache_page
 from django.utils.translation import ugettext_lazy as _
 from django.conf.urls.i18n import i18n_patterns
+from django.views.static import serve
+
 import settings
 
 js_info_dict = {
@@ -26,7 +28,7 @@ urlpatterns = [
 	url(_(r'^policies$'), TemplateView.as_view(template_name="base/policies.html"), name="policies"),
 	url(_(r'^contact_us$'), TemplateView.as_view(template_name="base/contact_us.html"), name="contact_us"),
 		
-	url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}),
+	url(r'^media/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT,}),
 	url(r'^i18n/', include('django.conf.urls.i18n')),
 	url(r'^django_admin/', include(admin.site.urls)),
 	url(r'^rosetta/', include('rosetta.urls')),

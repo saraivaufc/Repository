@@ -6,3 +6,6 @@
 - Verificar o publication.title na hora de gerar um .csv das submissões
 - Organizar melhor os detalhes do evento e seus botões de ações
 - Resolver a busca em "All Publications of Event"
+- (Importante): O envio do link da submissão ao revisor está com problema de tradução. Por exemplo: se
+	um administrador enviar o link para o revisor usando pt_BR e o revisor tentar abrir usando en ou es,
+	ele não vai conseguir.

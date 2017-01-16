@@ -78,13 +78,11 @@
 					<td>
 						{% if submission.review %}
 							<a href="{% url 'submission:review_detail_to_review' event_slug=event.slug submission_slug=submission.slug pk=submission.review.pk %}">
-								<i class="fa fa-file-text-o"></i>
-								{% trans "Review" %}
+								<i class="fa fa-file-text fa-lg"></i>
 							</a>
 						{% elif submission.reviser == request.user %}
 							<a href="{% url 'submission:review_create' event_slug=event.slug submission_slug=submission.slug %}">
-								<i class="fa fa-plus"></i>
-								{% trans "Add Review" %}
+								<i class="fa fa-plus fa-lg"></i>
 							</a>
 						{% else %}
 							{% trans "Without Review" %}

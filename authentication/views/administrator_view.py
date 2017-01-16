@@ -9,6 +9,7 @@ from django.contrib.auth.models import Group
 
 from base.views import SearchResponseMixin, CSVResponseMixin
 from authentication.models import User
+from inbox.views import MessageSendView
 
 class AdministratorListView(SearchResponseMixin, CSVResponseMixin, ListView):
 	template_name = 'authentication/administrator/list.html'
@@ -25,24 +26,26 @@ class AdministratorCreateView(CreateView):
 	fields = ['email']
 
 	def get_success_url(self):
-		return reverse_lazy('authentication:administrator_list', kwargs={'page':1})
+		return reverse_lazy('authentication:administrator_list')
 
 	def post(self, request, * args, ** kwargs):
 		email = self.request.POST.get('email')
-		group = Group.objects.get(name="administrator")
-		for user in User.objects.filter(email=email):
-			user.is_staff = True
-			user.groups.add(group)
+		user = User.objects.filter(email=email).first()
+		if not user:
+			user = User(email=email)
+			user.set_password(email)
 			user.save()
-			return HttpResponseRedirect(self.get_success_url())
-		return super(AdministratorCreateView, self).post(request, * args, ** kwargs)
-
-	def form_valid(self, form):
-		user = form.save(commit=False)
+		group = Group.objects.get(name="administrator")
 		user.is_staff = True
-		user.set_password(user.email)
-		user.save(group="administrator")
-		return super(AdministratorCreateView, self).form_valid(form)
+		user.groups.add(group)
+		user.save()
+		MessageSendView.send_message(
+			from_email=request.user.email,
+			to_email=user.email,
+			subject=_("Account"),
+			message=_("You is Administrator!"),
+		)
+		return HttpResponseRedirect(self.get_success_url())
 
 class AdministratorDeleteView(DeleteView):
 	template_name = 'authentication/administrator/check_delete.html'

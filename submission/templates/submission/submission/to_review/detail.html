@@ -1,7 +1,7 @@
-{% extends "submission/submission/list_to_review.html" %}
+{% extends "submission/submission/to_review/list.html" %}
 
 
-{% load i18n static %}
+{% load i18n %}
 
 {% block title %}{% endblock %}
 
@@ -21,5 +21,5 @@
 {% endblock %}
 
 {% block content %}
-	{% include "submission/submission/_render.html" %}
+	{% include "submission/submission/to_review/_render.html" %}
 {% endblock %}

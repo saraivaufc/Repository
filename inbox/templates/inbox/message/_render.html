@@ -13,7 +13,7 @@
 
 	<dt class="col-xs-2 col-sm-1">{% trans "Text" %}:</dt>
 	<dd class="col-xs-10 col-sm-11" itemprop="subject">
-		{{ object.text|linebreaks }}
+		{{ object.text|safe|linebreaks }}
 	</dd>
 
 	<dt class="col-xs-2 col-sm-1">{% trans "File" %}:</dt>

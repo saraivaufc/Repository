@@ -9,6 +9,7 @@ from django.contrib.auth.models import Group
 
 from base.views import SearchResponseMixin, CSVResponseMixin
 from authentication.models import User
+from inbox.views import MessageSendView
 
 class ReviserListView(SearchResponseMixin, CSVResponseMixin, ListView):
 	template_name = 'authentication/reviser/list.html'
@@ -25,24 +26,26 @@ class ReviserCreateView(CreateView):
 	fields = ['email']
 
 	def get_success_url(self):
-		return reverse_lazy('authentication:reviser_list', kwargs={'page':1})
+		return reverse_lazy('authentication:reviser_list')
 
 	def post(self, request, * args, ** kwargs):
 		email = self.request.POST.get('email')
-		group = Group.objects.get(name="reviser")
-		for user in User.objects.filter(email=email):
-			user.is_reviser=True
-			user.groups.add(group)
+		user = User.objects.filter(email=email).first()
+		if not user:
+			user = User(email=email)
+			user.set_password(email)
 			user.save()
-			return HttpResponseRedirect(self.get_success_url())
-		return super(ReviserCreateView, self).post(request, * args, ** kwargs)
-
-	def form_valid(self, form):
-		user = form.save(commit=False)
-		user.is_reviser=True
-		user.set_password(user.email)
-		user.save(group="reviser")
-		return super(ReviserCreateView, self).form_valid(form)
+		group = Group.objects.get(name="reviser")
+		user.is_reviser = True
+		user.groups.add(group)
+		user.save()
+		MessageSendView.send_message(
+			from_email=request.user.email,
+			to_email=user.email,
+			subject=_("Account"),
+			message=_("You is Reviser!"),
+		)
+		return HttpResponseRedirect(self.get_success_url())
 
 class ReviserDeleteView(DeleteView):
 	template_name = 'authentication/reviser/check_delete.html'

@@ -36,15 +36,19 @@
 				<i class="fa fa-download"></i>
 				{% trans "Download" %}
 			</a>
-			{% else %}
-				{% trans "Empty" %}
 			{% endif %}
 		</li>
 	{% empty %}
 	{% endfor %}
 	</ul>
 	<div class="col-md-12">
-	{% include "base/_form.html" %}
+		{% include "base/_form.html" %}
 	</div>
+
+	<style type="text/css">
+		textarea{
+			height: 5em;
+		}
+	</style>
 
 {% endblock %}

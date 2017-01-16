@@ -112,7 +112,7 @@ def default_group(sender, instance, created, **kwargs):
 
 post_save.connect(default_group, sender=User)
 
-signals.post_syncdb.connect(
+signals.post_migrate.connect(
 	create_user_groups,
 	sender=models,
 	dispatch_uid='authentication.models.create_user_groups'

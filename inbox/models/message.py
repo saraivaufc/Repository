@@ -12,7 +12,7 @@ class Message(models.Model):
 	subject = models.CharField(verbose_name=_("Subject"), max_length=140)
 	text = models.TextField(verbose_name=_("Text"), null=True, blank=True)
 	file = models.FileField(verbose_name=_(u"File"), upload_to='documents/message/files/%Y/%m/%d', null=True, blank=True)
-	message_unread = models.BooleanField(verbose_name=_("Message UnRead"), blank=True, default=False)
+	message_read = models.BooleanField(verbose_name=_("Message Read"), blank=True, default=False)
 	last_modified = models.DateTimeField(verbose_name=_('Last modification'), auto_now=False, default=timezone.now)
 
 	def get_replies(self):

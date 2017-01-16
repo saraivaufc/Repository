@@ -1,5 +1,6 @@
 from django.utils.translation import ugettext_lazy as _
 from django.template.defaultfilters import slugify
+from django.core.urlresolvers import reverse_lazy
 from django.db import models
 import itertools
 
@@ -46,6 +47,9 @@ class Author(models.Model):
 
 	def verbose_name(self):
 		return self._meta.verbose_name
+
+	def get_absolute_url(self):
+		return reverse_lazy('manager:author_detail', kwargs={'slug': self.slug})
 
 	class Meta:
 		ordering = ['-registration_date']

@@ -1,0 +1,22 @@
+{% extends 'submission/submission/_render.html' %}
+
+{% load i18n %}
+
+{% block field_review %}		
+	<dt class="col-sm-2">{% trans "Review" %}:</dt>
+	<dd class="col-sm-10" itemprop="review">
+		{% if submission.review %}
+			<a href="{% url 'submission:review_detail_to_review' event_slug=event.slug submission_slug=submission.slug pk=submission.review.pk %}">
+				<i class="fa fa-file-text-o"></i>
+				{% trans "Review" %}
+			</a>
+		{% elif submission.reviser == request.user %}
+			<a href="{% url 'submission:review_create' event_slug=event.slug submission_slug=submission.slug %}">
+				<i class="fa fa-plus"></i>
+				{% trans "Add Review" %}
+			</a>
+		{% else %}
+			{% trans "Without Review" %}
+		{% endif %}
+	</dd>
+{% endblock %}

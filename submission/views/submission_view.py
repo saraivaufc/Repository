@@ -4,6 +4,7 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic.detail import DetailView, SingleObjectMixin
 from django.core.urlresolvers import reverse_lazy
 from django.contrib.auth.decorators import login_required, permission_required
+from django.utils.safestring import mark_safe
 from django.conf import settings
 from datetime import datetime
 from django.http import HttpResponseRedirect
@@ -12,7 +13,7 @@ from authentication.models import User
 from submission.models import Submission, Event
 from manager.models import Publication
 from base.views import  SearchResponseMixin, CSVResponseMixin
-
+from inbox.views import MessageSendView
 
 class SubmissionListView(CSVResponseMixin, ListView):
 	template_name = 'submission/submission/list.html'
@@ -41,7 +42,7 @@ class SubmissionCreateView(CreateView):
 
 	def get(self, request, * args, ** kwargs):
 		event = Event.objects.filter(slug=self.kwargs['event_slug']).first()
-		if event.stage()['type'] != 'submission_open_1':
+		if not event.stage()['type'] == 'submission_open_1':
 			return HttpResponseRedirect(reverse_lazy('submission:submission_list', kwargs={'event_slug':event.slug}))
 		return super(SubmissionCreateView, self).get(request)
 	
@@ -119,6 +120,16 @@ class SubmissionChangeReviser(UpdateView):
 
 	def form_valid(self, form):
 		event = Event.objects.filter(slug=self.kwargs['event_slug']).first()
+		submission = form.save()
+		MessageSendView.send_message(
+			from_email=self.request.user.email, 
+			to_email=submission.reviser.email,
+			subject=_("Review"),
+			message=_("You is reviser of: <a href='%s' target='_blank'>%s</a>" % (
+				reverse_lazy('submission:submission_detail_to_review', kwargs={'event_slug': event.slug, 'slug': submission.slug}),
+				submission.publication.title)
+			)
+		)
 		return super(SubmissionChangeReviser, self).form_valid(form)
 
 class SubmissionDeleteView(DeleteView):
@@ -160,7 +171,7 @@ class SubmissionDetailView(DetailView):
 
 
 class SubmissionsToReviewListView(CSVResponseMixin, ListView):
-	template_name = 'submission/submission/list_to_review.html'
+	template_name = 'submission/submission/to_review/list.html'
 	paginate_by = settings.PAGINATE_BY
 	model=Submission
 
@@ -179,7 +190,7 @@ class SubmissionsToReviewListView(CSVResponseMixin, ListView):
 		return context
 
 class SubmissionToReviewDetailView(DetailView):
-	template_name = 'submission/submission/detail_to_review.html'
+	template_name = 'submission/submission/to_review/detail.html'
 	model = Submission
 
 	def get_context_data(self, ** kwargs):
@@ -198,9 +209,16 @@ class SubmissionSubmitFinal(UpdateView):
 		if submission and event:
 			submission.publication.is_final = not submission.publication.is_final
 			submission.publication.save()
+			if submission.publication.is_final:
+				MessageSendView.send_message(
+					from_email=request.user.email, 
+					to_email=submission.user.email,
+					subject=_("Submission publish!"),
+					message=_("You publication disponible here: %s" % (submission.publication.get_absolute_url(),))
+				)
 		return HttpResponseRedirect(reverse_lazy('submission:submission_list_to_review', kwargs={'event_slug':event.slug}))
 
-class SubmissionFinal(SearchResponseMixin, CSVResponseMixin, ListView):
+class SubmissionFinalListView(SearchResponseMixin, CSVResponseMixin, ListView):
 	template_name = 'submission/submission/list_final.html'
 	paginate_by = settings.PAGINATE_BY
 	model=Submission

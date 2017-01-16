@@ -1,5 +1,5 @@
 from django.conf.urls import include, url
-from submission.views import SubmissionListView, SubmissionsToReviewListView, SubmissionCreateView, SubmissionUpdateView, SubmissionDeleteView, SubmissionDetailView, SubmissionChangeReviser, SubmissionToReviewDetailView, SubmissionSubmitFinal, SubmissionFinal
+from submission.views import SubmissionListView, SubmissionsToReviewListView, SubmissionCreateView, SubmissionUpdateView, SubmissionDeleteView, SubmissionDetailView, SubmissionChangeReviser, SubmissionToReviewDetailView, SubmissionSubmitFinal, SubmissionFinalListView
 from django.contrib.auth.decorators import permission_required
 from django.utils.translation import ugettext_lazy as _
 
@@ -13,5 +13,5 @@ urlpatterns = [
 	url(_(r'^(?P<slug>[-\w]+)/delete$'), permission_required('submission.delete_submission')(SubmissionDeleteView.as_view()), name="submission_delete"),
 	url(_(r'^(?P<slug>[-\w]+)/add_reviser$'), permission_required('authentication.change_reviser')(SubmissionChangeReviser.as_view()), name="submission_change_reviser"),
 	url(_(r'^(?P<slug>[-\w]+)/submit_final$'), permission_required('submission.submit_final')(SubmissionSubmitFinal.as_view()), name="submission_submit_final"),
-	url(_(r'^submission_final$'), permission_required('submission.submit_final')(SubmissionFinal.as_view()), name="submission_final"),
+	url(_(r'^submission_final$'), permission_required('submission.submit_final')(SubmissionFinalListView.as_view()), name="submission_final"),
 ]

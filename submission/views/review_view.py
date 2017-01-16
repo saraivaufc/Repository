@@ -27,7 +27,7 @@ class ReviewCreateView(CreateView):
 		event = Event.objects.filter(slug=self.kwargs['event_slug']).first()
 		submission = Submission.objects.filter(slug=self.kwargs['submission_slug']).first()
 		if not request.user == submission.reviser:
-			return HttpResponseRedirect(reverse_lazy('submission:submission_list', kwargs={'event_slug':event.slug, 'page': 1}))
+			return HttpResponseRedirect(reverse_lazy('submission:submission_list', kwargs={'event_slug':event.slug}))
 		return super(ReviewCreateView, self).get(request)	
 
 	def get_context_data(self, ** kwargs):
@@ -66,7 +66,7 @@ class ReviewUpdateView(UpdateView):
 		event = Event.objects.filter(slug=self.kwargs['event_slug']).first()
 		submission = Submission.objects.filter(slug=self.kwargs['submission_slug']).first()
 		if not request.user == submission.reviser:
-			return HttpResponseRedirect(reverse_lazy('submission:submission_list', kwargs={'event_slug':event.slug, 'page': 1}))
+			return HttpResponseRedirect(reverse_lazy('submission:submission_list', kwargs={'event_slug':event.slug}))
 		return super(ReviewUpdateView, self).get(request)
 
 	def get_context_data(self, ** kwargs):
@@ -102,8 +102,9 @@ class ReviewDeleteView(DeleteView):
 
 	def get(self, request, * args, ** kwargs):
 		event = Event.objects.filter(slug=self.kwargs['event_slug']).first()
+		submission = Submission.objects.filter(slug=self.kwargs['submission_slug']).first()
 		if not request.user == submission.reviser:
-			return HttpResponseRedirect(reverse_lazy('submission:submission_list', kwargs={'event_slug':event.slug, 'page': 1}))
+			return HttpResponseRedirect(reverse_lazy('submission:submission_list', kwargs={'event_slug':event.slug}))
 		return super(ReviewDeleteView, self).get(request)
 	def post(self, request, * args, ** kwargs):
 		event = Event.objects.filter(slug=self.kwargs['event_slug']).first()
@@ -132,4 +133,4 @@ class ReviewDetailView(DetailView):
 		if request.user == submission.user or request.user == submission.reviser or request.user.is_staff:
 			return super(ReviewDetailView, self).get(request)
 		else:
-			return HttpResponseRedirect(reverse_lazy('submission:submission_list', kwargs={'event_slug':event.slug, 'page': 1}))
+			return HttpResponseRedirect(reverse_lazy('submission:submission_list', kwargs={'event_slug':event.slug}))

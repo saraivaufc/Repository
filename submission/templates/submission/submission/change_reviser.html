@@ -1,4 +1,4 @@
-{% extends "submission/submission/list_to_review.html" %}
+{% extends "submission/submission/to_review/list.html" %}
 
 
 {% load i18n static %}
@@ -18,10 +18,7 @@
 {% block page_title %}{% trans "Form Submission" %}{% endblock %}
 
 {% block content %}
-	<form action="" method="post" enctype="multipart/form-data">{% csrf_token %}		
-		{% include "base/_form.html" %}
-		<button type="submit" class="btn btn-primary">{% trans "Submit" %}</button>
-	</form>
+	{% include "base/_form.html" %}
 {% endblock %}
 
 {% block js %}

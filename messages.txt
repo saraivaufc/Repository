@@ -1,0 +1,9 @@
+Quando o revisor de uma submissão for adicionado ou alterado, 
+enviar uma mensagem alertando ele sobre isso. Submission:SubmissionChangeReviser
+
+Quando uma submissão for aceita como final e enviada ao repositório,
+enviar uma  mensagem ao autor sobre  esse evento. Submission:SubmissionSubmitFinal
+
+Quando uma Aministrador ou Revisor for adicionado, enviar uma mensagem a eles: 
+Authentication:AdministratorCreateView e Authentication:ReviserCreateView
+

@@ -33,6 +33,9 @@ class Subject(models.Model):
 	def verbose_name(self):
 		return self._meta.verbose_name
 
+	def get_absolute_url(self):
+		return reverse_lazy('manager:subject_detail', kwargs={'slug': self.slug})
+
 	class Meta:
 		ordering = ['-registration_date']
 		verbose_name = _(u"Subject")

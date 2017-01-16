@@ -68,7 +68,7 @@ class User(AbstractBaseUser, PermissionsMixin):
 		elif self.last_name:
 			return self.last_name
 		else:
-			return None
+			return self.email[:self.email.find("@")]
 
 	def get_short_name(self):
 		return self.email

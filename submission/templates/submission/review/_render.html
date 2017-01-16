@@ -1,4 +1,6 @@
-{% load i18n static %}
+{% load i18n %}
+
+{% trans "Empty" as Empty  %}
 
 <dl class="definition text" itemscope itemtype="http://schema.org/Review">
 	<dt class="col-sm-3">{% trans "Originality" %}:</dt>
@@ -8,11 +10,7 @@
 		</div>
 		<div class="col-sm-9">
 			<label class="font-weight-bold">{% trans "Observation" %}:</label class="font-weight-bold">
-			{% if review.originality_observation %}
-				{{ review.originality_observation }}
-			{% else %}
-				{% trans "Without Observation" %}
-			{% endif %}
+			{{ review.originality_observation|default:Empty }}
 		</div>
 	</dd>
 
@@ -23,11 +21,7 @@
 		</div>
 		<div class="col-sm-9">
 			<label class="font-weight-bold">{% trans "Observation" %}:</label class="font-weight-bold">
-			{% if review.technical_merit_observation %}
-				{{ review.technical_merit_observation }}
-			{% else %}
-				{% trans "Without Observation" %}
-			{% endif %}
+			{{ review.technical_merit_observation|default:Empty }}
 		</div>
 	</dd>
 
@@ -38,11 +32,7 @@
 		</div>
 		<div class="col-sm-9">
 			<label class="font-weight-bold">{% trans "Observation" %}:</label class="font-weight-bold">
-			{% if review.clarity_observation %}
-				{{ review.clarity_observation }}
-			{% else %}
-				{% trans "Without Observation" %}
-			{% endif %}
+			{{ review.clarity_observation|default:Empty }}
 		</div>
 	</dd>
 
@@ -53,11 +43,7 @@
 		</div>
 		<div class="col-sm-9">
 			<label class="font-weight-bold">{% trans "Observation" %}:</label class="font-weight-bold">
-			{% if review.text_quality_observation %}
-				{{ review.text_quality_observation }}
-			{% else %}
-				{% trans "Without Observation" %}
-			{% endif %}
+			{{ review.text_quality_observation|default:Empty }}
 		</div>
 	</dd>
 
@@ -68,11 +54,7 @@
 		</div>
 		<div class="col-sm-9">
 			<label class="font-weight-bold">{% trans "Observation" %}:</label class="font-weight-bold">
-			{% if review.relevance_observation %}
-				{{ review.relevance_observation }}
-			{% else %}
-				{% trans "Without Observation" %}
-			{% endif %}
+			{{ review.relevance_observation|default:Empty }}
 		</div>
 	</dd>
 
@@ -83,11 +65,7 @@
 		</div>
 		<div class="col-sm-9">
 			<label class="font-weight-bold">{% trans "Observation" %}:</label class="font-weight-bold">
-			{% if review.knowledge_level_revisor_observation %}
-				{{ review.knowledge_level_revisor_observation }}
-			{% else %}
-				{% trans "Without Observation" %}
-			{% endif %}
+			{{ review.knowledge_level_revisor_observation|default:Empty }}
 		</div>
 	</dd>
 
@@ -98,12 +76,7 @@
 		</div>
 		<div class="col-sm-9">
 			<label class="font-weight-bold">{% trans "Observation" %}:</label class="font-weight-bold">
-			{% if review.general_observation %}
-				{{ review.general_observation }}
-			{% else %}
-				{% trans "Without Observation" %}
-			{% endif %}
+			{{ review.general_observation|default:Empty }}
 		</div>
 	</dd>
-
-	</dl>
+</dl>
