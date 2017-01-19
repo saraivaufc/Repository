@@ -17,13 +17,13 @@ class CommunityListView(SearchResponseMixin, CSVResponseMixin, ListView):
 class CommunityCreateView(AjaxableResponseMixin, CreateView):
 	template_name = 'manager/community/form.html'
 	model = Community
-	fields = ['name','acronym']
+	fields = ['name',]
 	success_url = reverse_lazy('manager:community_list')
 
 class CommunityUpdateView(UpdateView):
 	template_name = 'manager/community/form.html'
 	model = Community
-	fields = ['name','acronym']
+	fields = ['name',]
 	success_url = reverse_lazy('manager:community_list')
 	
 	def form_valid(self, form):

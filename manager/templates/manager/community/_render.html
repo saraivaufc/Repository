@@ -4,9 +4,6 @@
 	<dt class="col-sm-2">{% trans "Name" %}:</dt>
 	<dd class="col-sm-10" itemprop="name">{{ community.name }}</dd>
 
-	<dt class="col-sm-2">{% trans "Acronym" %}:</dt>
-	<dd class="col-sm-10" itemprop="acronym">{{ community.acronym }}</dd>
-
 	<dt class="col-sm-2">{% trans "Collections" %}:</dt>
 	<dd class="col-sm-10" itemprop="collections">
 		{% for collection in page_obj %}

@@ -31,8 +31,8 @@ class MessageManager(models.Model):
 
 	class Meta:
 		ordering = ['user']
-		verbose_name = _(u"MessageManager")
-		verbose_name_plural = _(u"MessagesManager")
+		verbose_name = _(u"Message Manager")
+		verbose_name_plural = _(u"Messages Manager")
 
 
 def create_message_manager(sender, instance, created, **kwargs):

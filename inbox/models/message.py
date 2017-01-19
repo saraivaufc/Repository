@@ -22,11 +22,11 @@ class Message(models.Model):
 
 	def get_type(self, message_manager):
 		if message_manager == self.message_manager_send and message_manager != self.message_manager_receive:
-			return _("sends")
+			return "sends"
 		elif message_manager != self.message_manager_send and message_manager == self.message_manager_receive:
-			return _("receives")
+			return "receives"
 		elif message_manager == self.message_manager_send and message_manager == self.message_manager_receive:
-			return _("drafts")
+			return "drafts"
 		else:
 			return None
 

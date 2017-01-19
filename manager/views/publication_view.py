@@ -24,8 +24,10 @@ class PublicationCreateView(AjaxableResponseMixin, CreateView):
 	template_name = 'manager/publication/form.html'
 	model = Publication
 	fields = ['title', 'typology', 'subjects', 'authors', 'community',
-			  'collection', 'publisher', 'address', 'year', 'reference','language', 
-			  'abstract', 'other_abstract', 'keywords', 'issue_date', 'file']
+			  'collection', 'publisher', 'address', 'year', 'reference',
+			  'principal_language', 'principal_abstract', 'principal_keywords', 
+			  'secondary_language', 'secondary_abstract', 'secondary_keywords', 
+			  'issue_date', 'file']
 	success_url = reverse_lazy('manager:publication_list')
 
 	def form_valid(self, form):
@@ -36,8 +38,10 @@ class PublicationUpdateView(UpdateView):
 	template_name = 'manager/publication/form.html'
 	model = Publication
 	fields = ['title', 'typology', 'subjects', 'authors', 'community',
-			  'collection', 'publisher', 'address', 'year', 'reference','language', 
-			  'abstract', 'other_abstract', 'keywords', 'issue_date', 'file',]
+			  'collection', 'publisher', 'address', 'year', 'reference',
+			  'principal_language', 'principal_abstract', 'principal_keywords', 
+			  'secondary_language', 'secondary_abstract', 'secondary_keywords', 
+			  'issue_date', 'file']
 	success_url = reverse_lazy('manager:publication_list')
 	
 	def form_valid(self, form):

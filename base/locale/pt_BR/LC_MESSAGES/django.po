@@ -1,14 +1,13 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# Ciano Saraiva <saraiva.ufc@gmail.com>, 2017.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-01-15 12:53-0300\n"
+"POT-Creation-Date: 2017-01-18 22:24-0300\n"
 "PO-Revision-Date: 2017-01-11 12:34-0234\n"
 "Last-Translator: None None <admin@email.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,22 +24,22 @@ msgstr "Início"
 
 #: base/templates/base/_check_delete.html:6
 msgid "Are you sure you want to delete"
-msgstr ""
+msgstr "Você deseja apagar"
 
 #: base/templates/base/_check_delete.html:7
 msgid "No"
-msgstr ""
+msgstr "Não"
 
 #: base/templates/base/_check_delete.html:8
 msgid "Yes"
-msgstr ""
+msgstr "Sim"
 
 #: base/templates/base/_footer.html:10
 msgid "About"
 msgstr "Sobre"
 
 #: base/templates/base/_footer.html:13 base/templates/base/terms.html:12
-#: base/templates/base/terms.html.py:16
+#: base/templates/base/terms.html:16
 msgid "Terms of Use"
 msgstr "Termo de Uso"
 
@@ -66,9 +65,9 @@ msgstr "Publicações"
 msgid "Events"
 msgstr "Eventos"
 
-#: base/templates/base/_form.html:8
-msgid "Submit"
-msgstr "Enviar"
+#: base/templates/base/_form.html:9
+msgid "Save"
+msgstr ""
 
 #: base/templates/base/_form_search.html:11
 msgid "Search"
@@ -86,51 +85,51 @@ msgstr "Repositório"
 msgid "Submission"
 msgstr "Submissão"
 
-#: base/templates/base/_header.html:24
-msgid "receives"
-msgstr ""
-
-#: base/templates/base/_header.html:27
+#: base/templates/base/_header.html:26
 msgid "Inbox"
-msgstr ""
+msgstr "Caixa de Mensagens"
 
-#: base/templates/base/_header.html:36
+#: base/templates/base/_header.html:35
 msgid "Users"
 msgstr "Usuários"
 
-#: base/templates/base/_header.html:41
+#: base/templates/base/_header.html:40
 msgid "Participants"
 msgstr "Participantes"
 
-#: base/templates/base/_header.html:46
+#: base/templates/base/_header.html:45
 msgid "Administrators"
 msgstr "Administradores"
 
-#: base/templates/base/_header.html:51
+#: base/templates/base/_header.html:50
 msgid "Revisers"
 msgstr "Revisores"
 
-#: base/templates/base/_header.html:61
+#: base/templates/base/_header.html:60
 msgid "Extra"
 msgstr "Extra"
 
-#: base/templates/base/_header.html:66
+#: base/templates/base/_header.html:65
 msgid "Django Admin"
 msgstr "Administração do Django"
 
-#: base/templates/base/_header.html:70
+#: base/templates/base/_header.html:69
 msgid "Rosetta"
 msgstr "Rosetta"
 
-#: base/templates/base/_header.html:87
+#: base/templates/base/_header.html:86
 msgid "Profile"
 msgstr "Perfil"
 
-#: base/templates/base/_header.html:91
+#: base/templates/base/_header.html:90
+msgid "Change password"
+msgstr "Alterar Senha"
+
+#: base/templates/base/_header.html:94
 msgid "Logout"
 msgstr "Sair"
 
-#: base/templates/base/_header.html:99
+#: base/templates/base/_header.html:102
 msgid "Login"
 msgstr "Entrar"
 
@@ -143,7 +142,7 @@ msgstr ""
 
 #: base/templates/base/_paginate.html:6 base/templates/base/_paginate.html:8
 msgid "Previous"
-msgstr "Prévio"
+msgstr "Anterior"
 
 #: base/templates/base/_paginate.html:24 base/templates/base/_paginate.html:26
 msgid "Next"

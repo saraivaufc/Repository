@@ -6,24 +6,29 @@
 
 {% block breadcrumbs %}
 	{{ block.super }}
-	{% trans "receives" as receives %}
-	{% trans "sends" as sends %}
-	{% trans "drafts" as drafts %}
-	<a href="{% url 'inbox:message_list' query=query %}" class="breadcrumb-item" >
-		{% if query == receives %}
-			<i class="fa fa-envelope"></i>
-		{% elif query == sends %}
-			<i class="fa fa-send"></i>
-		{% elif query == drafts %}
-			<i class="fa fa-file-text"></i>
+		{% if query == 'receives' %}
+			<a href="{% url 'inbox:message_list_receives' %}" class="breadcrumb-item" >
+				<i class="fa fa-envelope"></i>
+				{% trans "Receives" %}
+			</a>
+		{% elif query == 'sends' %}
+			<a href="{% url 'inbox:message_list_sends' %}" class="breadcrumb-item" >
+				<i class="fa fa-send"></i>
+				{% trans "Sends" %}
+			</a>
+		{% elif query == 'drafts' %}
+			<a href="{% url 'inbox:message_list_drafts' %}" class="breadcrumb-item" >
+				<i class="fa fa-file-text"></i>
+				{% trans "Drafts" %}
+			</a>
 		{% endif %}
-		{{ query }}
 	</a>
 {% endblock %}
 
 {%  block page_title %}{% trans "Messages" %}{% endblock %}
 
 {% block content %}
+
 	<div class="col-md-4">
 		<div class="row">
 		{% if perms.inbox.add_message %}

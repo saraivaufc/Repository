@@ -9,7 +9,7 @@
 
 {% block breadcrumbs %}
 	{{ block.super }}
-	<a href="#" class="breadcrumb-item" >
+	<a href="{% url 'authentication:account_login' %}" class="breadcrumb-item" >
 		<i class="fa fa-users"></i>
 		{% trans "Login" %}
 	</a>

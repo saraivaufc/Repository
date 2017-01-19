@@ -37,3 +37,11 @@ class Review(models.Model):
 
 	def __unicode__(self):
 		return str(_("Review"))
+
+	def verbose_name(self):
+		return self._meta.verbose_name
+
+	class Meta:
+		ordering = ['-registration_date']
+		verbose_name = _(u'Review')
+		verbose_name_plural = _(u'Reviews')

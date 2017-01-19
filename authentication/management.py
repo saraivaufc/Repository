@@ -1,10 +1,7 @@
-import models
 from authentication.models import User
 from django.contrib.auth.models import Permission
 from django.contrib.auth.models import Group
 from django.contrib.contenttypes.models import ContentType
-from django.db.models import signals
-from django.db.models.signals import post_save
 
 group_permissions = {
 	"participant": [
@@ -66,7 +63,7 @@ group_permissions = {
 		"add_event",
 		"change_event",
 		"delete_event",
-		#submission
+		#su, inbmission
 		"list_submission_to_review",
 		"submit_final",
 		#Reviser
@@ -83,16 +80,13 @@ group_permissions = {
 	]
 }
 
-def create_user_groups(app, created_models, verbosity, **kwargs):
-	if verbosity > 0:
-		print "Initialising data post_syncdb"
+def create_user_groups(sender, **kwargs):
+	print "Initialising data post_migrate"
 
 	for group in group_permissions:
 		model = User
 		content_type = ContentType.objects.get_for_model(model)
 		role, created = Group.objects.get_or_create(name=group)
-		if verbosity > 1 and created:
-			print 'Creating group', group
 		for perm in group_permissions[group]:
 			try:
 				perm = Permission.objects.get(codename=perm)
@@ -100,20 +94,4 @@ def create_user_groups(app, created_models, verbosity, **kwargs):
 				print e, ">>" ,perm
 				continue
 			role.permissions.add(perm)
-			if verbosity > 1:
-				print 'Permitting', group, 'to', perm
 		role.save()
-
-
-def default_group(sender, instance, created, **kwargs):
-	if created:
-		instance.groups.add(Group.objects.get(name='default'))
-
-
-post_save.connect(default_group, sender=User)
-
-signals.post_migrate.connect(
-	create_user_groups,
-	sender=models,
-	dispatch_uid='authentication.models.create_user_groups'
-)

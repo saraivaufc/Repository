@@ -1,14 +1,13 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# Ciano Saraiva <saraiva.ufc@gmail.com>, 2017.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-01-15 12:53-0300\n"
+"POT-Creation-Date: 2017-01-18 22:24-0300\n"
 "PO-Revision-Date: 2017-01-13 11:33-0234\n"
 "Last-Translator: Ciano Saraiva <admin@email.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -46,31 +45,22 @@ msgid "File"
 msgstr "Arquivo"
 
 #: inbox/models/message.py:15
-#, fuzzy
-#| msgid "Message UnRead"
 msgid "Message Read"
-msgstr "Mensagem Não-lida"
+msgstr "Mensagem lida"
 
 #: inbox/models/message.py:16 inbox/models/reply.py:11
 msgid "Last modification"
 msgstr "Última modificação"
 
-#: inbox/models/message.py:25 inbox/models/message.py:41
-#: inbox/templates/inbox/index.html:33
-#: inbox/templates/inbox/message/list.html:10 inbox/views/message_view.py:28
-#: inbox/views/message_view.py:68
-msgid "sends"
-msgstr "enviadas"
-
-#: inbox/models/message.py:27 inbox/models/message.py:40
-#: inbox/templates/inbox/index.html:12 inbox/templates/inbox/index.html:28
-#: inbox/templates/inbox/message/list.html:9 inbox/views/message_view.py:26
+#: inbox/models/message.py:40 inbox/templates/inbox/index.html:12
 msgid "receives"
 msgstr "recebidas"
 
-#: inbox/models/message.py:29 inbox/models/message.py:42
-#: inbox/templates/inbox/index.html:38
-#: inbox/templates/inbox/message/list.html:11 inbox/views/message_view.py:30
+#: inbox/models/message.py:41 inbox/views/message_view.py:75
+msgid "sends"
+msgstr "enviadas"
+
+#: inbox/models/message.py:42
 msgid "drafts"
 msgstr "rascunhos"
 
@@ -78,8 +68,8 @@ msgstr "rascunhos"
 msgid "Message"
 msgstr "Mensagem"
 
-#: inbox/models/message.py:69 inbox/templates/inbox/index.html:51
-#: inbox/templates/inbox/message/list.html:24
+#: inbox/models/message.py:69 inbox/templates/inbox/index.html:48
+#: inbox/templates/inbox/message/list.html:28
 msgid "Messages"
 msgstr "Mensagens"
 
@@ -88,12 +78,12 @@ msgid "User"
 msgstr "Usuário"
 
 #: inbox/models/message_manager.py:34
-msgid "MessageManager"
-msgstr ""
+msgid "Message Manager"
+msgstr "Gerenciador de Mensagens"
 
 #: inbox/models/message_manager.py:35
-msgid "MessagesManager"
-msgstr ""
+msgid "Messages Manager"
+msgstr "Gerenciadores de Mensagens"
 
 #: inbox/models/reply.py:8
 msgid "Read"
@@ -111,15 +101,18 @@ msgstr "Respostas"
 msgid "Inbox"
 msgstr "Inbox"
 
-#: inbox/templates/inbox/index.html:31
+#: inbox/templates/inbox/index.html:30
+#: inbox/templates/inbox/message/list.html:12
 msgid "Receives"
 msgstr "Recebidas"
 
-#: inbox/templates/inbox/index.html:36
+#: inbox/templates/inbox/index.html:34
+#: inbox/templates/inbox/message/list.html:17
 msgid "Sends"
 msgstr "Enviadas"
 
-#: inbox/templates/inbox/index.html:41
+#: inbox/templates/inbox/index.html:38
+#: inbox/templates/inbox/message/list.html:22
 msgid "Drafts"
 msgstr "Rascunhos"
 
@@ -129,7 +122,6 @@ msgid "Download"
 msgstr "Baixar"
 
 #: inbox/templates/inbox/message/_render.html:27
-#: inbox/templates/inbox/message/detail.html:40
 msgid "Empty"
 msgstr "Vazio"
 
@@ -144,6 +136,9 @@ msgid ""
 "\t\t\t To: %(user)s - %(email)s\n"
 "\t\t"
 msgstr ""
+"\n"
+"\t\t\t Para: %(user)s - %(email)s\n"
+"\t\t"
 
 #: inbox/templates/inbox/message/_title.html:13
 #, python-format
@@ -152,6 +147,9 @@ msgid ""
 "\t\t\tFrom: %(user)s - %(email)s\n"
 "\t\t"
 msgstr ""
+"\n"
+"\t\t\tDe: %(user)s - %(email)s\n"
+"\t\t"
 
 #: inbox/templates/inbox/message/_title.html:19
 msgid "Draft"
@@ -159,23 +157,19 @@ msgstr "Rascunho"
 
 #: inbox/templates/inbox/message/form.html:15
 #: inbox/templates/inbox/message/form.html:19
-#: inbox/templates/inbox/message/list.html:32
+#: inbox/templates/inbox/message/list.html:37
 msgid "Send Message"
 msgstr "Enviar Mensagem"
 
-#: inbox/templates/inbox/message/list.html:50
-#, fuzzy
-#| msgid "Message UnRead"
+#: inbox/templates/inbox/message/list.html:55
 msgid "Message read"
-msgstr "Mensagem Não-lida"
+msgstr "Mensagem lida"
 
-#: inbox/templates/inbox/message/list.html:54
-#, fuzzy
-#| msgid "Message UnRead"
+#: inbox/templates/inbox/message/list.html:59
 msgid "Message no read"
-msgstr "Mensagem Não-lida"
+msgstr "Mensagem ainda não foi lida"
 
-#: inbox/templates/inbox/message/list.html:64
+#: inbox/templates/inbox/message/list.html:66
 #, python-format
 msgid ""
 "\n"
@@ -186,16 +180,21 @@ msgstr ""
 "%(replies)s Respostas"
 
 #: inbox/urls/message.py:10
-msgid "^(?P<query>[-\\w]+)/list$"
-msgstr "^(?P<query>[-\\w]+)/lista$"
+msgid "^receives/list$"
+msgstr "^recebidas/lista$"
 
 #: inbox/urls/message.py:11
+msgid "^sends/list$"
+msgstr "^enviadas/lista$"
+
+#: inbox/urls/message.py:12
+msgid "^drafts/list$"
+msgstr "^rascunhos/lista$"
+
+#: inbox/urls/message.py:13
 msgid "^send$"
 msgstr "^enviar$"
 
-#: inbox/urls/message.py:12
+#: inbox/urls/message.py:14
 msgid "^(?P<slug>[-\\w]+)/detail$"
 msgstr "^(?P<slug>[-\\w]+)/detalhe$"
-
-#~ msgid "^add$"
-#~ msgstr "^adicionar$"

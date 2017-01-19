@@ -1,7 +1,11 @@
 from django.utils.translation import ugettext_lazy as _
 from django.db import models
-from django.contrib.auth.models import Group
-from django.contrib.auth.models import ( BaseUserManager, AbstractBaseUser, PermissionsMixin)
+from django.contrib.auth.models import (
+	Group,
+	BaseUserManager, 
+	AbstractBaseUser, 
+	PermissionsMixin, 
+)
 from django.utils import timezone
 from django.template.defaultfilters import slugify
 
@@ -37,7 +41,7 @@ class User(AbstractBaseUser, PermissionsMixin):
 	is_staff = models.BooleanField(_(u'Staff Status'), default=False,)
 	is_reviser = models.BooleanField(_(u'Reviser Status'), default=False,)
 
-	REQUIRED_FIELDS =[]
+	REQUIRED_FIELDS =['first_name', 'last_name', ]
 	USERNAME_FIELD = 'email'
 
 	objects = UserManager()
@@ -92,7 +96,7 @@ class User(AbstractBaseUser, PermissionsMixin):
 
 	class Meta:
 		verbose_name = _(u'User')
-		verbose_name_plural = _(u'User')
+		verbose_name_plural = _(u'Users')
 		permissions = (
 			("list_participant", "List Participant"),
 			("list_reviser", "List Reviser"),

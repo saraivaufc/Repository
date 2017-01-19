@@ -3,14 +3,14 @@
 {% trans "Empty" as Empty %}
 
 <dl class="definition text" itemscope itemtype="http://schema.org/Submission">
-	<dt class="col-sm-2">{% trans "Title" %}:</dt>
-	<dd class="col-sm-10" itemprop="title">{{ publication.title }}</dd>
+	<dt class="col-sm-3">{% trans "Title" %}:</dt>
+	<dd class="col-sm-9" itemprop="title">{{ publication.title }}</dd>
 
-	<dt class="col-sm-2">{% trans "Typology" %}:</dt>
-	<dd class="col-sm-10" itemprop="typology">{{ publication.get_typology }}</dd>
+	<dt class="col-sm-3">{% trans "Typology" %}:</dt>
+	<dd class="col-sm-9" itemprop="typology">{{ publication.get_typology }}</dd>
 
-	<dt class="col-sm-2">{% trans "Authors" %}:</dt>
-	<dd class="col-sm-10" itemprop="authors">
+	<dt class="col-sm-3">{% trans "Authors" %}:</dt>
+	<dd class="col-sm-9" itemprop="authors">
 		{% for author in publication.authors.all %}
 			<a class="tag tag-primary" href="{% url 'manager:author_detail' slug=author.slug %}" target="_blank">
 				<i class="fa fa-graduation-cap"></i>
@@ -19,8 +19,8 @@
 		{% endfor %}
 	</dd>
 
-	<dt class="col-sm-2">{% trans "Subjects" %}</dt>
-	<dd class="col-sm-10" itemprop="subjects">
+	<dt class="col-sm-3">{% trans "Subjects" %}</dt>
+	<dd class="col-sm-9" itemprop="subjects">
 		{% for subject in publication.subjects.all %}
 			<a class="tag tag-primary" href="{% url 'manager:subject_detail' slug=subject.slug %}" target="_blank">
 				<i class="fa fa-flag"></i>
@@ -29,47 +29,66 @@
 		{% endfor %}
 	</dd>
 
-	<dt class="col-sm-2">{% trans "Collection" %}:</dt>
-	<dd class="col-sm-10" itemprop="collection">
+	<dt class="col-sm-3">{% trans "Collection" %}:</dt>
+	<dd class="col-sm-9" itemprop="collection">
 		<a class="tag tag-primary" href="{% url 'manager:collection_detail' slug=publication.collection.slug %}" target="_blank">
 			<i class="fa fa-object-group"></i>
 			{{ publication.collection }}		
 		</a>
 	</dd>
 
-	<dt class="col-sm-2">{% trans "Reference" %}:</dt>
-	<dd class="col-sm-10" itemprop="reference">{{ publication.reference }}</dd>
+	<dt class="col-sm-3">{% trans "Reference" %}:</dt>
+	<dd class="col-sm-9" itemprop="reference">{{ publication.reference }}</dd>
 
-	<dt class="col-sm-2">{% trans "Language" %}:</dt>
-	<dd class="col-sm-10" itemprop="language">{{ publication.get_language }}</dd>
+	<dt class="col-sm-3">{% trans "Principal Language" %}:</dt>
+	<dd class="col-sm-9" itemprop="principal_language">{{ publication.get_principal_language|default:Empty }}</dd>
 
-	<dt class="col-sm-2">{% trans "Abstract" %}:</dt>
-	<dd class="col-sm-10" itemprop="abstract">
-		{{ publication.abstract|default:Empty }}
+	<dt class="col-sm-3">{% trans "Principal Abstract" %}:</dt>
+	<dd class="col-sm-9" itemprop="principal_abstract">
+		{{ publication.principal_abstract|default:Empty }}
 	</dd>
 
-	<dt class="col-sm-2">{% trans "Other Abstract" %}:</dt>
-	<dd class="col-sm-10" itemprop="other_abstract">
-		{{ publication.other_abstract|default:Empty }}
-	</dd>
-
-	<dt class="col-sm-2">{% trans "Keywords" %}:</dt>
-	<dd class="col-sm-10" itemprop="keywords">
-		{% for keyword in publication.keywords.all %}
-		<a class="tag tag-primary" href="{% url 'manager:keyword_detail' slug=keyword.slug %}" target="_blank">
+	<dt class="col-sm-3">{% trans "Principal Keywords" %}:</dt>
+	<dd class="col-sm-9" itemprop="principal_keywords">
+		{% for keyword in publication.principal_keywords.all %}
+		<a class="tag tag-primary" href="{% url 'manager:keyword_detail' slug=keyword.slug %}">
 			<i class="fa fa-tags"></i>
 			{{ keyword }}
 		</a>
+		{% empty %}
+			{{ Empty }}
 		{% endfor %}
 	</dd>
 
-	<dt class="col-sm-2">{% trans "Issue Date" %}:</dt>
-	<dd class="col-sm-10" itemprop="issue_date">
+	<dt class="col-sm-3">{% trans "Secondary Language" %}:</dt>
+	<dd class="col-sm-9" itemprop="secondary_language">
+		{{ publication.get_secondary_language|default:Empty }}
+	</dd>
+
+	<dt class="col-sm-3">{% trans "Secondary Abstract" %}:</dt>
+	<dd class="col-sm-9" itemprop="secondary_abstract">
+		{{ publication.secondary_abstract|default:Empty }}
+	</dd>
+
+	<dt class="col-sm-3">{% trans "Secondary Keywords" %}:</dt>
+	<dd class="col-sm-9" itemprop="secondary_keywords">
+		{% for keyword in publication.secondary_keywords.all %}
+		<a class="tag tag-primary" href="{% url 'manager:keyword_detail' slug=keyword.slug %}">
+			<i class="fa fa-tags"></i>
+			{{ keyword }}
+		</a>
+		{% empty %}
+			{{ Empty }}
+		{% endfor %}
+	</dd>
+
+	<dt class="col-sm-3">{% trans "Issue Date" %}:</dt>
+	<dd class="col-sm-9" itemprop="issue_date">
 		{{ publication.issue_date }}
 	</dd>
 
-	<dt class="col-sm-2">{% trans "File" %}:</dt>
-	<dd class="col-sm-10" itemprop="file">
+	<dt class="col-sm-3">{% trans "File" %}:</dt>
+	<dd class="col-sm-9" itemprop="file">
 		<a href="{{ publication.file.url }}" target="_blank">
 			<i class="fa fa-download"></i>
 			{% trans "Download" %}

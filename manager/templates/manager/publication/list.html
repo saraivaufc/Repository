@@ -62,7 +62,7 @@
 						</a>
 					</td>
 					<td>
-						{{ publication.typology|title }}	
+						{{ publication.get_typology|title }}	
 					</td>
 					<td>
 						{% for author in publication.authors.all %}

@@ -60,4 +60,6 @@ class KeywordPublicationsView(SearchResponseMixin, SingleObjectMixin, ListView):
 
 	def get_queryset(self):
 		queryset = super(KeywordPublicationsView, self).get_queryset()
-		return queryset.filter(keywords=self.object, is_final=True)
+		principal_keywords = queryset.filter(principal_keywords=self.object, is_final=True)
+		secondary_keywords = queryset.filter(secondary_keywords=self.object, is_final=True)
+		return list(principal_keywords) + list(secondary_keywords)

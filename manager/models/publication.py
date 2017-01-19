@@ -26,8 +26,8 @@ class Publication(models.Model):
 	title = models.CharField(verbose_name=_("Title"), max_length=500, null=False, blank=False)
 	slug = models.SlugField(_('slug'), max_length=1000, blank=True, unique=True)
 	typology = models.CharField(verbose_name=_("Typology"), choices=TYPOLOGY_CHOICES, max_length=100, null=False, blank=False)
-	subjects = models.ManyToManyField("Subject", verbose_name=_("Subjects"), null=False, blank=False)
-	authors = models.ManyToManyField("Author", verbose_name=_("Authors"), related_name="Authors", null=False, blank=False)
+	subjects = models.ManyToManyField("Subject", verbose_name=_("Subjects"), blank=False)
+	authors = models.ManyToManyField("Author", verbose_name=_("Authors"), related_name="Authors", blank=False)
 	community = models.ForeignKey("Community", verbose_name=_("Community"), null=False, blank=False)
 	collection = models.ForeignKey("Collection", verbose_name=_("Collection"), null=False, blank=False)
 	publisher = models.ForeignKey("Publisher", verbose_name=_("Publisher"), null=False, blank=False)
@@ -35,10 +35,16 @@ class Publication(models.Model):
 	year = models.IntegerField(verbose_name=_("Year"), null=False, blank=False)
 	reference = models.CharField(verbose_name=_("Reference"), max_length=1000, null=False, blank=False)
 	uri = models.URLField(verbose_name=_("URI"), max_length=500, null=False, blank=False)
-	language = models.CharField(verbose_name=_("Language"), choices=LANGUAGE_CHOICES, max_length=100, null=False, blank=False)
-	abstract = models.TextField(verbose_name=_("Abstract"), null=True, blank=True)
-	other_abstract = models.TextField(verbose_name=_("Other Abstract"), null=True, blank=True)
-	keywords = models.ManyToManyField("KeyWord", verbose_name=_("Keywords"), related_name="Keywords", null=False, blank=False)
+	
+	principal_language = models.CharField(verbose_name=_("Principal Language"), choices=LANGUAGE_CHOICES, max_length=100, null=True, blank=True)
+	principal_abstract = models.TextField(verbose_name=_("Principal Abstract"), null=True, blank=True)
+	principal_keywords = models.ManyToManyField("KeyWord", verbose_name=_("Principal Keywords"), related_name="principal_keywords", blank=True)
+
+	secondary_language = models.CharField(verbose_name=_("Secondary Language"), choices=LANGUAGE_CHOICES, max_length=100, null=True, blank=True)
+	secondary_abstract = models.TextField(verbose_name=_("Secondary Abstract"), null=True, blank=True)
+	secondary_keywords = models.ManyToManyField("KeyWord", verbose_name=_("Secondary Keywords"), related_name="secondary_keywords", blank=True)
+	
+	
 	issue_date = models.DateField(verbose_name=_("Issue Date"), null=False, blank=False, auto_now=False)
 	file = models.FileField(verbose_name=_(u"File"), upload_to='documents/publication/%Y/%m/%d', null=False, blank=False)
 	registration_date = models.DateTimeField(verbose_name=_("Registration Date"), auto_now_add=True, auto_now=False)
@@ -46,9 +52,9 @@ class Publication(models.Model):
 
 	def get_search_fields():
 		return (
-			("title", _("Title")), 
-			("abstract", _("Abstract")), 
-			("other_abstract", _("Other Abstract")),
+			("title", _("Title")),
+			("principal_abstract", _("Principal Abstract")),
+			("secondary_abstract", _("Secondary Abstract")),
 			("year", _("Year")),
 		)
 	def get_output_fields():
@@ -77,11 +83,17 @@ class Publication(models.Model):
 				return elem[1]
 		return self.typology
 
-	def get_language(self):
+	def get_principal_language(self):
 		for elem in list(self.LANGUAGE_CHOICES):
-			if elem[0] == self.language:
+			if elem[0] == self.principal_language:
 				return elem[1]
-		return self.language
+		return self.principal_language
+
+	def get_secondary_language(self):
+		for elem in list(self.LANGUAGE_CHOICES):
+			if elem[0] == self.secondary_language:
+				return elem[1]
+		return self.secondary_language
 
 	def __unicode__(self):
 		return self.title

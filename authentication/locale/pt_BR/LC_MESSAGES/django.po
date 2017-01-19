@@ -1,14 +1,13 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# Ciano Saraiva <saraiva.ufc@gmail.com>, 2017.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-01-15 12:53-0300\n"
+"POT-Creation-Date: 2017-01-18 22:24-0300\n"
 "PO-Revision-Date: 2017-01-11 12:41-0234\n"
 "Last-Translator: None None <admin@email.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,24 +18,28 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Translated-Using: django-rosetta 0.7.8\n"
 
-#: authentication/models/user.py:30
+#: authentication/apps.py:11
+msgid "Authentication"
+msgstr "Autenticação"
+
+#: authentication/models/user.py:34
 msgid "First Name "
 msgstr "Primeiro Nome"
 
-#: authentication/models/user.py:30
+#: authentication/models/user.py:34
 msgid "Please enter you first name."
 msgstr "Por favor, entre com seu primeiro nome."
 
-#: authentication/models/user.py:31
+#: authentication/models/user.py:35
 msgid "Last Name "
 msgstr "Último Nome"
 
-#: authentication/models/user.py:31
+#: authentication/models/user.py:35
 msgid "Please enter you last name."
 msgstr "Por favor, entre com seu último nome."
 
-#: authentication/models/user.py:32 authentication/models/user.py:49
-#: authentication/models/user.py:56
+#: authentication/models/user.py:36 authentication/models/user.py:53
+#: authentication/models/user.py:60
 #: authentication/templates/authentication/account/_render.html:22
 #: authentication/templates/authentication/administrator/list.html:48
 #: authentication/templates/authentication/participant/list.html:41
@@ -44,12 +47,12 @@ msgstr "Por favor, entre com seu último nome."
 msgid "Username"
 msgstr "Nome de usuário"
 
-#: authentication/models/user.py:32
+#: authentication/models/user.py:36
 msgid "Please enter you username."
 msgstr "Por favor, entre com seu nome de usuário."
 
-#: authentication/models/user.py:33 authentication/models/user.py:50
-#: authentication/models/user.py:57
+#: authentication/models/user.py:37 authentication/models/user.py:54
+#: authentication/models/user.py:61
 #: authentication/templates/authentication/account/_render.html:25
 #: authentication/templates/authentication/administrator/list.html:49
 #: authentication/templates/authentication/participant/list.html:42
@@ -57,49 +60,53 @@ msgstr "Por favor, entre com seu nome de usuário."
 msgid "Email"
 msgstr "Email"
 
-#: authentication/models/user.py:33
+#: authentication/models/user.py:37
 msgid "Please enter you email."
 msgstr "Por favor, entre com seu email."
 
-#: authentication/models/user.py:34
+#: authentication/models/user.py:38
 msgid "Active"
 msgstr "Ativo"
 
-#: authentication/models/user.py:34
+#: authentication/models/user.py:38
 msgid ""
 "Designates whether this user should be treated as active. Unselect this "
 "instead of deleting accounts."
 msgstr ""
 
-#: authentication/models/user.py:35
+#: authentication/models/user.py:39
 msgid "Date joined"
 msgstr "Data de cadastro"
 
-#: authentication/models/user.py:36
+#: authentication/models/user.py:40
 msgid "Moderator Status"
 msgstr "Status de Moderador"
 
-#: authentication/models/user.py:37
+#: authentication/models/user.py:41
 msgid "Staff Status"
 msgstr "Status de Técnico"
 
-#: authentication/models/user.py:38
+#: authentication/models/user.py:42
 msgid "Reviser Status"
 msgstr "Status de Revisor"
 
-#: authentication/models/user.py:47 authentication/models/user.py:54
+#: authentication/models/user.py:51 authentication/models/user.py:58
 #: authentication/templates/authentication/account/_render.html:4
 msgid "First Name"
 msgstr "Primeiro Nome"
 
-#: authentication/models/user.py:48 authentication/models/user.py:55
+#: authentication/models/user.py:52 authentication/models/user.py:59
 #: authentication/templates/authentication/account/_render.html:13
 msgid "Last Name"
 msgstr "Último Nome"
 
-#: authentication/models/user.py:94 authentication/models/user.py:95
+#: authentication/models/user.py:98
 msgid "User"
 msgstr "Usuário"
+
+#: authentication/models/user.py:99
+msgid "Users"
+msgstr "Usuários"
 
 #: authentication/templates/authentication/account/_render.html:9
 #: authentication/templates/authentication/account/_render.html:18
@@ -177,7 +184,7 @@ msgstr ""
 
 #: authentication/templates/authentication/account/login.html:28
 msgid "Please login to see this page."
-msgstr ""
+msgstr "Por favor, entre no sistema para acessar essa página."
 
 #: authentication/templates/authentication/account/login.html:36
 msgid "Lost password?"
@@ -193,29 +200,25 @@ msgstr "Registrar"
 msgid "Password Reset Change"
 msgstr ""
 
-#: authentication/templates/authentication/account/password_change_done.html:14
+#: authentication/templates/authentication/account/password_change_done.html:12
+msgid "Change password done"
+msgstr "Alteração da senha concluída"
+
+#: authentication/templates/authentication/account/password_change_done.html:18
 msgid "Password change successful"
-msgstr ""
+msgstr "Senha alterada com sucesso"
 
-#: authentication/templates/authentication/account/password_change_done.html:16
+#: authentication/templates/authentication/account/password_change_done.html:19
 msgid "Your password was changed."
-msgstr ""
+msgstr "Sua senha foi alterada"
 
-#: authentication/templates/authentication/account/password_change_form.html:8
+#: authentication/templates/authentication/account/password_change_form.html:9
 msgid "Password Change Form"
-msgstr ""
+msgstr "Formulário para alterar senha"
 
-#: authentication/templates/authentication/account/password_change_form.html:14
-msgid "Password reset"
-msgstr ""
-
-#: authentication/templates/authentication/account/password_change_form.html:16
-msgid "Forgotten your password? Enter your email addess below"
-msgstr ""
-
-#: authentication/templates/authentication/account/password_change_form.html:22
-msgid "Change my password"
-msgstr ""
+#: authentication/templates/authentication/account/password_change_form.html:13
+msgid "Change password"
+msgstr "Alterar senha"
 
 #: authentication/templates/authentication/account/password_reset_complete.html:8
 msgid "Your password has been set.  You may go ahead and log in now."
@@ -232,7 +235,6 @@ msgid ""
 msgstr ""
 
 #: authentication/templates/authentication/account/password_reset_confirm.html:12
-#: authentication/templates/authentication/account/password_reset_form.html:23
 msgid "Submit"
 msgstr "Enviar"
 
@@ -275,34 +277,36 @@ msgstr ""
 
 #: authentication/templates/authentication/account/password_reset_email.html:10
 msgid "Thanks for using our site!"
-msgstr ""
+msgstr "Obrigado por usar nosso site!"
 
 #: authentication/templates/authentication/account/password_reset_email.html:12
 #, python-format
 msgid "The %(site_name)s team"
-msgstr ""
+msgstr "A equipe %(site_name)s"
 
-#: authentication/templates/authentication/account/password_reset_form.html:8
+#: authentication/templates/authentication/account/password_reset_form.html:9
 msgid "Password Reset"
-msgstr ""
+msgstr "Recuperar senha"
 
-#: authentication/templates/authentication/account/password_reset_form.html:12
+#: authentication/templates/authentication/account/password_reset_form.html:13
 msgid "Recover Password"
-msgstr ""
+msgstr "Recuperar senha"
 
-#: authentication/templates/authentication/account/password_reset_form.html:16
+#: authentication/templates/authentication/account/password_reset_form.html:17
 msgid ""
 "Forgotten your password? Enter your email address below, and we'll email "
 "instructions for setting a new one."
 msgstr ""
+"Esqueceu a senha? Entre com seu email que lhes enviaremos instruções de como "
+"recupera-la."
 
 #: authentication/templates/authentication/administrator/form.html:15
 msgid "Create Administrator"
-msgstr ""
+msgstr "Criar Administrador"
 
 #: authentication/templates/authentication/administrator/form.html:19
 msgid "Form Administrator"
-msgstr ""
+msgstr "Formulário de Administrador"
 
 #: authentication/templates/authentication/administrator/list.html:16
 msgid "Administrators"
@@ -415,20 +419,28 @@ msgid "^(?P<pk>[0-9]+)/delete$"
 msgstr "^(?P<pk>[0-9]+)/excluir$"
 
 #: authentication/urls/account.py:15
+msgid "^password/change$"
+msgstr "^senha/alterar$"
+
+#: authentication/urls/account.py:22
+msgid "^password_change/done$"
+msgstr "^alterar_senha/concluida$"
+
+#: authentication/urls/account.py:27
 msgid "^password/reset$"
 msgstr "^senha/reset$"
 
-#: authentication/urls/account.py:22
+#: authentication/urls/account.py:34
 msgid "^password_reset/done$"
-msgstr ""
+msgstr "^recuperar_senha/concluida$"
 
-#: authentication/urls/account.py:26
+#: authentication/urls/account.py:38
 msgid "^password_reset/(?P<uidb64>[0-9A-Za-z_\\-]+)/(?P<token>.+)$"
-msgstr ""
+msgstr "^recuperar_senha/(?P<uidb64>[0-9A-Za-z_\\-]+)/(?P<token>.+)$"
 
-#: authentication/urls/account.py:31
+#: authentication/urls/account.py:43
 msgid "^password_reset/complete$"
-msgstr ""
+msgstr "^recuperar_senha/completo$"
 
 #: authentication/urls/administrator.py:7 authentication/urls/participant.py:7
 #: authentication/urls/reviser.py:7
@@ -443,24 +455,15 @@ msgstr "^adicionar$"
 msgid "^(?P<pk>[0-9]+)/remove$"
 msgstr "^(?P<pk>[0-9]+)/excluir$"
 
-#: authentication/views/administrator_view.py:45
-#: authentication/views/reviser_view.py:45
-#, fuzzy
-#| msgid "^account/"
-msgid "Account"
-msgstr "^conta/"
-
 #: authentication/views/administrator_view.py:46
-#, fuzzy
-#| msgid "List of Administrators"
+#: authentication/views/reviser_view.py:45
+msgid "Account"
+msgstr "Conta"
+
+#: authentication/views/administrator_view.py:47
 msgid "You is Administrator!"
-msgstr "Lista de Administradores"
+msgstr "Você é Administrador!"
 
 #: authentication/views/reviser_view.py:46
-#, fuzzy
-#| msgid "Form Reviser"
 msgid "You is Reviser!"
-msgstr "Formulário do Revisor"
-
-#~ msgid "email"
-#~ msgstr "email"
+msgstr "Você é Revisor!"

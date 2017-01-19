@@ -34,7 +34,7 @@ class SubmissionListView(CSVResponseMixin, ListView):
 class SubmissionCreateView(CreateView):
 	template_name = 'submission/submission/form.html'
 	model = Publication
-	fields = ['title', 'typology', 'subjects', 'authors', 'collection', 'reference','language', 'abstract', 'other_abstract', 'keywords', 'file']
+	fields = ['title', 'typology', 'subjects', 'authors', 'collection', 'reference','principal_language', 'principal_abstract', 'principal_keywords', 'secondary_language', 'secondary_abstract', 'secondary_keywords', 'file']
 
 	def get_success_url(self):
 		event = Event.objects.filter(slug=self.kwargs['event_slug']).first()
@@ -72,7 +72,7 @@ class SubmissionCreateView(CreateView):
 class SubmissionUpdateView(UpdateView):
 	template_name = 'submission/submission/form.html'
 	model = Publication
-	fields = ['title', 'typology', 'subjects', 'authors', 'collection', 'reference','language', 'abstract', 'other_abstract', 'keywords', 'file']
+	fields = ['title', 'typology', 'subjects', 'authors', 'collection', 'reference','principal_language', 'principal_abstract', 'principal_keywords', 'secondary_language', 'secondary_abstract', 'secondary_keywords', 'file']
 	
 	def get_success_url(self):
 		event = Event.objects.filter(slug=self.kwargs['event_slug']).first()
@@ -125,9 +125,9 @@ class SubmissionChangeReviser(UpdateView):
 			from_email=self.request.user.email, 
 			to_email=submission.reviser.email,
 			subject=_("Review"),
-			message=_("You is reviser of: <a href='%s' target='_blank'>%s</a>" % (
-				reverse_lazy('submission:submission_detail_to_review', kwargs={'event_slug': event.slug, 'slug': submission.slug}),
-				submission.publication.title)
+			message=_("You is reviser of: <a href='%(link)s' target='_blank'>%(title)s</a>" % {
+				'link': reverse_lazy('submission:submission_detail_to_review', kwargs={'event_slug': event.slug, 'slug': submission.slug}),
+				'title': submission.publication.title, }
 			)
 		)
 		return super(SubmissionChangeReviser, self).form_valid(form)
@@ -214,7 +214,7 @@ class SubmissionSubmitFinal(UpdateView):
 					from_email=request.user.email, 
 					to_email=submission.user.email,
 					subject=_("Submission publish!"),
-					message=_("You publication disponible here: %s" % (submission.publication.get_absolute_url(),))
+					message=_("You publication disponible here: %(link)s" % {'link': submission.publication.get_absolute_url()})
 				)
 		return HttpResponseRedirect(reverse_lazy('submission:submission_list_to_review', kwargs={'event_slug':event.slug}))
 

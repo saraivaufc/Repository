@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-01-15 12:53-0300\n"
+"POT-Creation-Date: 2017-01-18 22:24-0300\n"
 "PO-Revision-Date: 2017-01-15 12:54-0234\n"
 "Last-Translator: Ciano Saraiva <admin@email.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -27,115 +27,115 @@ msgstr ""
 msgid "The RIUFC is reported here!"
 msgstr ""
 
-#: submission/models/event.py:13
+#: submission/models/event.py:11
 msgid "Conference"
 msgstr ""
 
-#: submission/models/event.py:14
+#: submission/models/event.py:12
 msgid "Workshop"
 msgstr ""
 
-#: submission/models/event.py:16 submission/models/submission.py:11
+#: submission/models/event.py:14 submission/models/submission.py:11
 msgid "Slug"
 msgstr ""
 
-#: submission/models/event.py:17 submission/models/event.py:39
-#: submission/models/event.py:44
+#: submission/models/event.py:15 submission/models/event.py:37
+#: submission/models/event.py:42
 msgid "Name"
 msgstr ""
 
-#: submission/models/event.py:18
+#: submission/models/event.py:16
 msgid "description"
 msgstr ""
 
-#: submission/models/event.py:19 submission/models/event.py:46
+#: submission/models/event.py:17 submission/models/event.py:44
 #: submission/templates/submission/event/_render.html:24
 msgid "Address"
 msgstr ""
 
-#: submission/models/event.py:20
+#: submission/models/event.py:18
 msgid "Image"
 msgstr ""
 
-#: submission/models/event.py:21 submission/models/event.py:45
+#: submission/models/event.py:19 submission/models/event.py:43
 #: submission/templates/submission/submission/_render.html:9
 msgid "Typology"
 msgstr ""
 
-#: submission/models/event.py:22 submission/models/event.py:47
+#: submission/models/event.py:20 submission/models/event.py:45
 #: submission/templates/submission/event/_render.html:5
 msgid "Community"
 msgstr ""
 
-#: submission/models/event.py:23 submission/models/event.py:48
+#: submission/models/event.py:21 submission/models/event.py:46
 #: submission/templates/submission/event/_render.html:13
 msgid "Publisher"
 msgstr ""
 
-#: submission/models/event.py:24 submission/models/event.py:49
+#: submission/models/event.py:22 submission/models/event.py:47
 #: submission/templates/submission/event/_render.html:21
 #: submission/templates/submission/event/list.html:62
 msgid "Date"
 msgstr ""
 
-#: submission/models/event.py:26 submission/models/event.py:50
+#: submission/models/event.py:24 submission/models/event.py:48
 msgid "Submission 1 Open"
 msgstr ""
 
-#: submission/models/event.py:27
+#: submission/models/event.py:25
 msgid "Submission 1 Close"
 msgstr ""
 
-#: submission/models/event.py:29 submission/models/event.py:51
+#: submission/models/event.py:27 submission/models/event.py:49
 msgid "Review Open"
 msgstr ""
 
-#: submission/models/event.py:30
+#: submission/models/event.py:28
 msgid "Review Close"
 msgstr ""
 
-#: submission/models/event.py:32 submission/models/event.py:52
+#: submission/models/event.py:30 submission/models/event.py:50
 msgid "Submission 2 Open"
 msgstr ""
 
-#: submission/models/event.py:33
+#: submission/models/event.py:31
 msgid "Submission 2 Close"
 msgstr ""
 
-#: submission/models/event.py:35 submission/models/review.py:36
+#: submission/models/event.py:33 submission/models/review.py:36
 #: submission/models/submission.py:18
 msgid "Registration Date"
 msgstr ""
 
-#: submission/models/event.py:40 submission/models/submission.py:23
+#: submission/models/event.py:38 submission/models/submission.py:23
 msgid "Description"
 msgstr ""
 
-#: submission/models/event.py:62
+#: submission/models/event.py:60
 msgid "Before the period"
 msgstr ""
 
-#: submission/models/event.py:64
+#: submission/models/event.py:62
 msgid "Submission Open 1"
 msgstr ""
 
-#: submission/models/event.py:66
+#: submission/models/event.py:64
 msgid "Reviewing..."
 msgstr ""
 
-#: submission/models/event.py:68
+#: submission/models/event.py:66
 msgid "Submission Open 2"
 msgstr ""
 
-#: submission/models/event.py:70
+#: submission/models/event.py:68
 msgid "Submission Complete"
 msgstr ""
 
-#: submission/models/event.py:72
+#: submission/models/event.py:70
 msgid "Out of period"
 msgstr ""
 
-#: submission/models/event.py:97 submission/models/event.py:98
+#: submission/models/event.py:95 submission/models/event.py:96
 #: submission/models/submission.py:12 submission/models/submission.py:27
 msgid "Event"
 msgstr ""
@@ -161,7 +161,7 @@ msgid "Fantastic"
 msgstr ""
 
 #: submission/models/review.py:15
-#: submission/templates/submission/review/_render_review.html:4
+#: submission/templates/submission/review/_render.html:6
 msgid "Originality"
 msgstr ""
 
@@ -170,7 +170,7 @@ msgid "Originality observation"
 msgstr ""
 
 #: submission/models/review.py:18
-#: submission/templates/submission/review/_render_review.html:19
+#: submission/templates/submission/review/_render.html:17
 msgid "Technical Merit"
 msgstr ""
 
@@ -179,7 +179,7 @@ msgid "Technical Merit observation"
 msgstr ""
 
 #: submission/models/review.py:21
-#: submission/templates/submission/review/_render_review.html:34
+#: submission/templates/submission/review/_render.html:28
 msgid "Clarity"
 msgstr ""
 
@@ -188,7 +188,7 @@ msgid "Clarity observation"
 msgstr ""
 
 #: submission/models/review.py:24
-#: submission/templates/submission/review/_render_review.html:49
+#: submission/templates/submission/review/_render.html:39
 msgid "Text Quality"
 msgstr ""
 
@@ -197,7 +197,7 @@ msgid "Text Quality Observation"
 msgstr ""
 
 #: submission/models/review.py:27
-#: submission/templates/submission/review/_render_review.html:64
+#: submission/templates/submission/review/_render.html:50
 msgid "Relevance"
 msgstr ""
 
@@ -206,7 +206,7 @@ msgid "Relevance Observation"
 msgstr ""
 
 #: submission/models/review.py:30
-#: submission/templates/submission/review/_render_review.html:79
+#: submission/templates/submission/review/_render.html:61
 msgid "Knowledge Level Revisor"
 msgstr ""
 
@@ -215,7 +215,7 @@ msgid "Knowledge Level Revisor Observation"
 msgstr ""
 
 #: submission/models/review.py:33
-#: submission/templates/submission/review/_render_review.html:94
+#: submission/templates/submission/review/_render.html:72
 msgid "General"
 msgstr ""
 
@@ -223,15 +223,22 @@ msgstr ""
 msgid "General Observation"
 msgstr ""
 
-#: submission/models/review.py:39 submission/models/submission.py:16
+#: submission/models/review.py:39 submission/models/review.py:46
+#: submission/models/submission.py:16
 #: submission/templates/submission/event/_render.html:35
 #: submission/templates/submission/review/detail.html:15
-#: submission/templates/submission/review/detail_to_review.html:15
+#: submission/templates/submission/review/to_review/detail.html:15
 #: submission/templates/submission/submission/list.html:44
 #: submission/templates/submission/submission/list.html:69
-#: submission/templates/submission/submission/list_to_review.html:36
-#: submission/templates/submission/submission/list_to_review.html:82
+#: submission/templates/submission/submission/to_review/_render.html:6
+#: submission/templates/submission/submission/to_review/_render.html:11
+#: submission/templates/submission/submission/to_review/list.html:36
+#: submission/views/submission_view.py:127
 msgid "Review"
+msgstr ""
+
+#: submission/models/review.py:47
+msgid "Reviews"
 msgstr ""
 
 #: submission/models/submission.py:13 submission/models/submission.py:28
@@ -243,7 +250,7 @@ msgid "Publication"
 msgstr ""
 
 #: submission/models/submission.py:15 submission/models/submission.py:30
-#: submission/templates/submission/submission/list_to_review.html:35
+#: submission/templates/submission/submission/to_review/list.html:35
 msgid "Reviser"
 msgstr ""
 
@@ -254,8 +261,9 @@ msgid "Title"
 msgstr ""
 
 #: submission/models/submission.py:60 submission/models/submission.py:61
+#: submission/templates/submission/index.html:15
 #: submission/templates/submission/submission/list.html:41
-#: submission/templates/submission/submission/list_to_review.html:33
+#: submission/templates/submission/submission/to_review/list.html:33
 msgid "Submission"
 msgstr ""
 
@@ -310,13 +318,13 @@ msgid "Confirm delete"
 msgstr ""
 
 #: submission/templates/submission/event/detail.html:23
-#: submission/templates/submission/review/detail_to_review.html:25
+#: submission/templates/submission/review/to_review/detail.html:25
 #: submission/templates/submission/submission/detail.html:23
 msgid "Edit"
 msgstr ""
 
 #: submission/templates/submission/event/detail.html:28
-#: submission/templates/submission/review/detail_to_review.html:30
+#: submission/templates/submission/review/to_review/detail.html:30
 #: submission/templates/submission/submission/detail.html:28
 msgid "Delete"
 msgstr ""
@@ -347,10 +355,6 @@ msgstr ""
 msgid "Stage"
 msgstr ""
 
-#: submission/templates/submission/index.html:15
-msgid "Home"
-msgstr ""
-
 #: submission/templates/submission/index.html:20
 msgid "Welcome"
 msgstr ""
@@ -366,28 +370,23 @@ msgid ""
 "researchers and students."
 msgstr ""
 
-#: submission/templates/submission/review/_render_review.html:10
-#: submission/templates/submission/review/_render_review.html:25
-#: submission/templates/submission/review/_render_review.html:40
-#: submission/templates/submission/review/_render_review.html:55
-#: submission/templates/submission/review/_render_review.html:70
-#: submission/templates/submission/review/_render_review.html:85
-#: submission/templates/submission/review/_render_review.html:100
+#: submission/templates/submission/review/_render.html:3
+#: submission/templates/submission/submission/_render.html:3
+msgid "Empty"
+msgstr ""
+
+#: submission/templates/submission/review/_render.html:12
+#: submission/templates/submission/review/_render.html:23
+#: submission/templates/submission/review/_render.html:34
+#: submission/templates/submission/review/_render.html:45
+#: submission/templates/submission/review/_render.html:56
+#: submission/templates/submission/review/_render.html:67
+#: submission/templates/submission/review/_render.html:78
 msgid "Observation"
 msgstr ""
 
-#: submission/templates/submission/review/_render_review.html:14
-#: submission/templates/submission/review/_render_review.html:29
-#: submission/templates/submission/review/_render_review.html:44
-#: submission/templates/submission/review/_render_review.html:59
-#: submission/templates/submission/review/_render_review.html:74
-#: submission/templates/submission/review/_render_review.html:89
-#: submission/templates/submission/review/_render_review.html:104
-msgid "Without Observation"
-msgstr ""
-
 #: submission/templates/submission/review/detail.html:20
-#: submission/templates/submission/review/detail_to_review.html:20
+#: submission/templates/submission/review/to_review/detail.html:20
 #, python-format
 msgid ""
 "\n"
@@ -400,14 +399,10 @@ msgstr ""
 msgid "Form Review"
 msgstr ""
 
-#: submission/templates/submission/submission/_render.html:3
-msgid "Empty"
-msgstr ""
-
 #: submission/templates/submission/submission/_render.html:12
 #: submission/templates/submission/submission/list.html:42
 #: submission/templates/submission/submission/list_final.html:41
-#: submission/templates/submission/submission/list_to_review.html:34
+#: submission/templates/submission/submission/to_review/list.html:34
 msgid "Authors"
 msgstr ""
 
@@ -424,30 +419,38 @@ msgid "Reference"
 msgstr ""
 
 #: submission/templates/submission/submission/_render.html:43
-msgid "Language"
+msgid "Principal Language"
 msgstr ""
 
 #: submission/templates/submission/submission/_render.html:46
-msgid "Abstract"
+msgid "Principal Abstract"
 msgstr ""
 
 #: submission/templates/submission/submission/_render.html:51
-msgid "Other Abstract"
+msgid "Principal Keywords"
 msgstr ""
 
-#: submission/templates/submission/submission/_render.html:56
-msgid "Keywords"
+#: submission/templates/submission/submission/_render.html:63
+msgid "Secondary Language"
 msgstr ""
 
-#: submission/templates/submission/submission/_render.html:66
+#: submission/templates/submission/submission/_render.html:68
+msgid "Secondary Abstract"
+msgstr ""
+
+#: submission/templates/submission/submission/_render.html:73
+msgid "Secondary Keywords"
+msgstr ""
+
+#: submission/templates/submission/submission/_render.html:85
 msgid "Issue Date"
 msgstr ""
 
-#: submission/templates/submission/submission/_render.html:71
+#: submission/templates/submission/submission/_render.html:90
 msgid "File"
 msgstr ""
 
-#: submission/templates/submission/submission/_render.html:75
+#: submission/templates/submission/submission/_render.html:94
 msgid "Download"
 msgstr ""
 
@@ -472,7 +475,7 @@ msgstr ""
 
 #: submission/templates/submission/submission/list.html:79
 #: submission/templates/submission/submission/list_final.html:63
-#: submission/templates/submission/submission/list_to_review.html:105
+#: submission/templates/submission/submission/to_review/list.html:103
 msgid "No Submission found!"
 msgstr ""
 
@@ -488,36 +491,37 @@ msgid ""
 "\t"
 msgstr ""
 
-#: submission/templates/submission/submission/list_to_review.html:17
-msgid "To Revission"
-msgstr ""
-
-#: submission/templates/submission/submission/list_to_review.html:23
-msgid "List of Submissions to Your Review"
-msgstr ""
-
-#: submission/templates/submission/submission/list_to_review.html:25
-msgid "List of Submissions to Review"
-msgstr ""
-
-#: submission/templates/submission/submission/list_to_review.html:38
-msgid "Final"
-msgstr ""
-
-#: submission/templates/submission/submission/list_to_review.html:69
-msgid "No Reviser"
-msgstr ""
-
-#: submission/templates/submission/submission/list_to_review.html:73
-msgid "Add Reviser"
-msgstr ""
-
-#: submission/templates/submission/submission/list_to_review.html:87
+#: submission/templates/submission/submission/to_review/_render.html:16
 msgid "Add Review"
 msgstr ""
 
-#: submission/templates/submission/submission/list_to_review.html:90
+#: submission/templates/submission/submission/to_review/_render.html:19
+#: submission/templates/submission/submission/to_review/list.html:88
 msgid "Without Review"
+msgstr ""
+
+#: submission/templates/submission/submission/to_review/list.html:17
+msgid "To Revission"
+msgstr ""
+
+#: submission/templates/submission/submission/to_review/list.html:23
+msgid "List of Submissions to Your Review"
+msgstr ""
+
+#: submission/templates/submission/submission/to_review/list.html:25
+msgid "List of Submissions to Review"
+msgstr ""
+
+#: submission/templates/submission/submission/to_review/list.html:38
+msgid "Final"
+msgstr ""
+
+#: submission/templates/submission/submission/to_review/list.html:69
+msgid "No Reviser"
+msgstr ""
+
+#: submission/templates/submission/submission/to_review/list.html:73
+msgid "Add Reviser"
 msgstr ""
 
 #: submission/urls/__init__.py:10
@@ -609,11 +613,17 @@ msgstr ""
 msgid "^submission_final$"
 msgstr ""
 
-#: submission/views/submission_view.py:205
+#: submission/views/submission_view.py:128
+#, python-format
+msgid "You is reviser of: <a href='%(link)s' target='_blank'>%(title)s</a>"
+msgstr ""
+
+#: submission/views/submission_view.py:216
 msgid "Submission publish!"
 msgstr ""
 
-#: submission/views/submission_view.py:206
-#, python-format
-msgid "You publication disponible here: %s"
+#: submission/views/submission_view.py:217
+#, fuzzy, python-format
+#| msgid "You publication disponible here: %s"
+msgid "You publication disponible here: %(link)s"
 msgstr "Sua publicação está disponível aqui: %s"

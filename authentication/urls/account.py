@@ -12,9 +12,21 @@ urlpatterns = [
 	url(_(r'^(?P<pk>[0-9]+)/edit$'), UserUpdateView.as_view(), name="account_update"),
 	url(_(r'^(?P<pk>[0-9]+)/delete$'), UserDeleteView.as_view(), name="account_delete"),
 
+	url(_(r'^password/change$'), auth_views.password_change, 
+	 	{'template_name': 'authentication/account/password_change_form.html',
+	 	'post_change_redirect': reverse_lazy("authentication:account_password_change_done"),
+	 	},
+	 	name='account_password_change', 
+	 ),
+
+	 url(_(r'^password_change/done$'), auth_views.password_change_done, 
+	 	{'template_name': 'authentication/account/password_change_done.html',},
+	 	name='account_password_change_done'
+	 ),
+
 	url(_(r'^password/reset$'), auth_views.password_reset, 
 	 	{'template_name': 'authentication/account/password_reset_form.html',
-	 	'post_reset_redirect': '/authentication/password_reset/done/',
+	 	'post_reset_redirect': reverse_lazy("authentication:account_password_reset_done"),
 	 	'email_template_name': 'authentication/account/password_reset_email.html',},
 	 	name='account_password_reset', 
 	 ),
@@ -25,7 +37,7 @@ urlpatterns = [
 
 	 url(_(r'^password_reset/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>.+)$'), auth_views.password_reset_confirm,
 	 	{'template_name': 'authentication/account/password_reset_confirm.html',
-	 	'post_reset_redirect': '/authentication/password_reset/complete/',}, 
+	 	'post_reset_redirect': reverse_lazy("authentication:account_password_reset_complete"),}, 
 	 	name='account_password_reset_confirm'),
 	 
 	url(_(r'^password_reset/complete$'), auth_views.password_reset_complete,

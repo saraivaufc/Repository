@@ -19,7 +19,7 @@
 {% endblock %}
 
 {%  block page_title %}
-	@{{ object.username }}
+	{{ object.username }}
 	<div class="float-xs-right">
 		{% if request.user.pk == object.pk  %}
 		<a href="{% url 'authentication:account_update' pk=request.user.pk %}" class="btn btn-info" data-toggle="tooltip" title="{% trans "Edit" %}">

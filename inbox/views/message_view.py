@@ -18,16 +18,16 @@ class MessageListView(SearchResponseMixin, ListView):
 	template_name = 'inbox/message/list.html'
 	paginate_by = settings.PAGINATE_BY
 	model = Message
+	query = None
 
 	def get_queryset(self):
 		queryset = super(MessageListView, self).get_queryset()
 		message_manager = MessageManager.objects.get_or_create(user=self.request.user)[0]
-		query = self.kwargs['query']
-		if query == _("receives"):
+		if self.query == "receives":
 			messages = queryset.filter(message_manager_receive=message_manager).exclude(message_manager_send=message_manager)
-		elif query == _("sends"):
+		elif self.query == "sends":
 			messages = queryset.filter(message_manager_send=message_manager).exclude(message_manager_receive=message_manager)			
-		elif query == _("drafts"):
+		elif self.query == "drafts":
 			messages = queryset.filter(message_manager_receive=message_manager, message_manager_send=message_manager)
 		else:
 			messages = []
@@ -35,7 +35,7 @@ class MessageListView(SearchResponseMixin, ListView):
 
 	def get_context_data(self, ** kwargs):
 		context = super(MessageListView, self).get_context_data(** kwargs)
-		context['query'] = self.kwargs['query']
+		context['query'] = self.query
 		context['message_manager'] = MessageManager.objects.get_or_create(user=self.request.user)[0]
 		return context
 
@@ -46,7 +46,14 @@ class MessageCreateView(AjaxableResponseMixin, CreateView):
 
 	def get_success_url(self):
 		message_manager = MessageManager.objects.get_or_create(user=self.request.user)[0]
-		return reverse_lazy('inbox:message_list', kwargs={'query': self.message.get_type(message_manager)})
+		if self.message.get_type(message_manager) == 'receives':
+			return reverse_lazy('inbox:message_list_receives')
+		elif self.message.get_type(message_manager) == 'sends':
+			return reverse_lazy('inbox:message_list_sends')
+		elif self.message.get_type(message_manager) == 'drafts':
+			return reverse_lazy('inbox:message_list_drafts')
+		else:
+			return reverse_lazy('inbox:message_list_receives')
 
 	def form_valid(self, form):
 		self.message = form.save(commit=False)

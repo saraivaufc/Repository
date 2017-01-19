@@ -4,7 +4,7 @@ from django.db import models
 import itertools
 
 class Collection(models.Model):
-	communities = models.ManyToManyField("Community", verbose_name=_("Communities"), null=False, blank=False)
+	communities = models.ManyToManyField("Community", verbose_name=_("Communities"), blank=False)
 	name = models.CharField(verbose_name=_("Name"), max_length=100, unique=True, null=False, blank=False)
 	description = models.TextField(verbose_name=_("description"), null=False, blank=False)
 	slug = models.SlugField(verbose_name=_('slug'), max_length=60, blank=True, unique=True)

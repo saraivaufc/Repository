@@ -10,7 +10,7 @@
 
 {% block breadcrumbs %}
 	{% trans "receives" as receives %}
-	<a href="{% url 'inbox:message_list' query=receives %}" class="breadcrumb-item" >
+	<a href="{% url 'inbox:message_list_receives' %}" class="breadcrumb-item" >
 		<i class="fa fa-inbox"></i>
 		{% trans "Inbox" %}
 	</a>
@@ -25,18 +25,15 @@
 		<div class="row">
 			<div class="list-group sidebar">
 			{% block sidebar %}
-				{% trans "receives" as receives %}
-				<a href="{% url 'inbox:message_list' query=receives %}" class="list-group-item list-group-item-action sidebar-item {% ifequal query receives %}active{% endifequal %}">
+				<a href="{% url 'inbox:message_list_receives' %}" class="list-group-item list-group-item-action sidebar-item {% ifequal query 'receives' %}active{% endifequal %}">
 					<i class="fa fa-envelope"></i>
 					{% trans "Receives" %}
 				</a>
-				{% trans "sends" as sends %}
-				<a href="{% url 'inbox:message_list' query=sends %}" class="list-group-item list-group-item-action sidebar-item {% ifequal query sends %}active{% endifequal %}">
+				<a href="{% url 'inbox:message_list_sends' %}" class="list-group-item list-group-item-action sidebar-item {% ifequal query 'sends' %}active{% endifequal %}">
 					<i class="fa fa-send"></i>
 					{% trans "Sends" %}
 				</a>
-				{% trans "drafts" as drafts %}
-				<a href="{% url 'inbox:message_list' query=drafts %}" class="list-group-item list-group-item-action sidebar-item {% ifequal query drafts %}active{% endifequal %}">
+				<a href="{% url 'inbox:message_list_drafts' %}" class="list-group-item list-group-item-action sidebar-item {% ifequal query 'drafts' %}active{% endifequal %}">
 					<i class="fa fa-file-text"></i>
 					{% trans "Drafts" %}
 				</a>

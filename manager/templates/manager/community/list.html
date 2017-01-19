@@ -42,7 +42,6 @@
 		<thead class="thead-inverse">
 			<tr>
 				<th>{% trans "Name" %}</th>
-				<th>{% trans "Acronym" %}</th>
 				<th>{% trans "Publications" %}</th>
 			</tr>
 		</thead>
@@ -53,7 +52,6 @@
 					<td>
 						<a href="{% url 'manager:community_detail' slug=community.slug %}">{{ community.name }}</a>
 					</td>
-					<td>{{ community.acronym }}</td>
 					<td>
 						<a href="{% url 'manager:community_publications' slug=community.slug %}"  data-toggle="tooltip" title="{% trans "See Publications" %}">
 							<label>

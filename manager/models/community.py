@@ -5,7 +5,6 @@ import itertools
 
 class Community(models.Model):
 	name = models.CharField(verbose_name=_("Name"), max_length=100, unique=True, null=False, blank=False)
-	acronym = models.CharField(verbose_name=_("Acronym"), max_length=100, null=False, blank=False)
 	slug = models.SlugField(_('slug'), max_length=60, blank=True, unique=True)
 	
 	registration_date = models.DateTimeField(verbose_name=_("Registration Date"), auto_now_add=True, auto_now=False)
@@ -13,12 +12,10 @@ class Community(models.Model):
 	def get_search_fields():
 		return (
 			("name", _("Name")), 
-			("acronym", _("Acronym")),
 		)
 	def get_output_fields():
 		return (
-			("name", _("Name")), 
-			("acronym", _("Acronym")),
+			("name", _("Name")),
 		)
 
 	get_search_fields = staticmethod(get_search_fields)

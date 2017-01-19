@@ -1,14 +1,12 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
-#, fuzzy
+# Ciano Saraiva <saraiva.ufc@gmail.com>, 2017.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-01-14 08:02-0300\n"
+"POT-Creation-Date: 2017-01-18 21:21-0300\n"
 "PO-Revision-Date: 2017-01-14 08:03-0234\n"
 "Last-Translator: Ciano Saraiva <admin@email.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,52 +17,46 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Translated-Using: django-rosetta 0.7.8\n"
 
-#: settings.py:145
+#: Repository/settings.py:189
 msgid "Brazilian Portuguese"
 msgstr "Português Brasileiro"
 
-#: settings.py:146
+#: Repository/settings.py:190
 msgid "English"
 msgstr "Inglês"
 
-#: settings.py:147
+#: Repository/settings.py:191
 msgid "Spanish"
 msgstr "Espanhol"
 
-#: urls.py:19
+#: Repository/urls.py:21
 msgid "^manager/"
 msgstr "^repositorio/"
 
-#: urls.py:20
+#: Repository/urls.py:22
 msgid "^authentication/"
 msgstr "^autenticacao/"
 
-#: urls.py:21
+#: Repository/urls.py:23
 msgid "^submission/"
 msgstr "^submissao/"
 
-#: urls.py:22
+#: Repository/urls.py:24
 msgid "^inbox/"
 msgstr "^caixa_de_mensagens/"
 
-#: urls.py:24
+#: Repository/urls.py:26
 msgid "^about$"
 msgstr "^sobre$"
 
-#: urls.py:25
+#: Repository/urls.py:27
 msgid "^terms$"
 msgstr "^termos$"
 
-#: urls.py:26
+#: Repository/urls.py:28
 msgid "^policies$"
 msgstr "^politicas$"
 
-#: urls.py:27
+#: Repository/urls.py:29
 msgid "^contact_us$"
-msgstr "^contate-nos$"
-
-#~ msgid "^media/(?P<path>.*)$"
-#~ msgstr "^midia/(?P<path>.*)$"
-
-#~ msgid "^django_admin/"
-#~ msgstr "^administracao_django/"
+msgstr "^contate_nos$"

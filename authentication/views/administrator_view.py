@@ -36,6 +36,7 @@ class AdministratorCreateView(CreateView):
 			user.set_password(email)
 			user.save()
 		group = Group.objects.get(name="administrator")
+		user.is_moderator = True
 		user.is_staff = True
 		user.groups.add(group)
 		user.save()
@@ -55,6 +56,8 @@ class AdministratorDeleteView(DeleteView):
 	def post(self, request, * args, ** kwargs):
 		group = Group.objects.get(name="administrator")
 		for user in User.objects.filter(pk=self.get_object().pk):
+			user.is_superuser = False
+			user.is_moderator = False
 			user.is_staff = False
 			user.groups.remove(group)
 			user.save()

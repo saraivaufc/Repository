@@ -16,7 +16,7 @@ js_info_dict = {
 	'app_names': ('Repository.manager',),
 }
 
-urlpatterns = [
+urlpatterns = i18n_patterns(
 	url(r'^$', RedirectView.as_view(url=reverse_lazy('manager:home'), permanent=False), name='home'),
 	url(_(r'^manager/'), include('manager.urls', namespace="manager", app_name="manager"), name='manager'),
 	url(_(r'^authentication/'), include('authentication.urls', namespace="authentication", app_name="authentication"), name='authentication'),
@@ -30,8 +30,8 @@ urlpatterns = [
 		
 	url(r'^media/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT,}),
 	url(r'^i18n/', include('django.conf.urls.i18n')),
-	url(r'^django_admin/', include(admin.site.urls)),
+	url(r'^admin/', include(admin.site.urls)),
 	url(r'^rosetta/', include('rosetta.urls')),
 	url(r'^jsreverse/$', cache_page(3600)(urls_js), name='js_reverse'),
 	#url(_(r'^jsi18n/$'), javascript_catalog, js_info_dict, name='javascript-catalog'),
-]
+)
