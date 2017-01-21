@@ -25,6 +25,7 @@ group_permissions = {
 	"reviser": [
 		#submission
 		"list_submission_to_review",
+		"detail_submission_to_review",
 
 		"add_review",
 		"change_review",
@@ -63,8 +64,9 @@ group_permissions = {
 		"add_event",
 		"change_event",
 		"delete_event",
-		#su, inbmission
+		#submission
 		"list_submission_to_review",
+		"detail_submission_to_review",
 		"submit_final",
 		#Reviser
 		"list_reviser",

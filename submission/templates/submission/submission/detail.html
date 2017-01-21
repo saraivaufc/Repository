@@ -12,7 +12,7 @@
 	{{ block.super }}
 	<a href="{% url 'submission:submission_detail' event_slug=event.slug slug=submission.slug %}" class="breadcrumb-item" >
 		<i class="fa fa-book"></i>
-		{{ publication.title|truncatewords:6 }}
+		{{ object.title|truncatewords:6 }}
 	</a>
 {% endblock %}
 
@@ -20,12 +20,12 @@
 	{{ publication.title|truncatewords:"6" }}
 	<div class="float-xs-right">
 		{% if perms.submission.change_submission and event.stage.type == 'submission_open_1' or event.stage.type == 'submission_open_2'  %}
-		<a href="{% url 'submission:submission_update' event_slug=event.slug slug=submission.publication.slug %}" class="btn btn-info" data-toggle="tooltip" title="{% trans "Edit" %}">
+		<a href="{% url 'submission:submission_update' event_slug=event.slug slug=object.slug %}" class="btn btn-info" data-toggle="tooltip" title="{% trans "Edit" %}">
 			<i class="fa fa-edit"></i>
 		</a>
 		{% endif %}
 		{% if perms.submission.delete_submission and  event.stage.type == 'submission_open_1' %}
-		<a href="{% url 'submission:submission_delete' event_slug=event.slug slug=submission.slug %}" class="btn btn-danger" data-toggle="tooltip" title="{% trans "Delete" %}">
+		<a href="{% url 'submission:submission_delete' event_slug=event.slug slug=object.slug %}" class="btn btn-danger" data-toggle="tooltip" title="{% trans "Delete" %}">
 			<i class="fa fa-remove"></i>
 		</a>
 		{% endif %}

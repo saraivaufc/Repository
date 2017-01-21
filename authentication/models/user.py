@@ -73,14 +73,11 @@ class User(AbstractBaseUser, PermissionsMixin):
 		elif self.last_name:
 			return self.last_name
 		else:
-			return self.email[:self.email.find("@")]
-
-	def get_short_name(self):
-		return self.email
+			return self.username
 
 	def save(self, group=None, *args, **kwargs):
 		if not self.username:
-			self.username = self.email
+			self.username = self.email[:self.email.find("@")]
 		user = super(User, self).save()
 		if group:
 			group = Group.objects.get(name=group)

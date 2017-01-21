@@ -46,12 +46,12 @@
 			{% for submission in object_list %}
 				<tr>
 					<td>
-						<a href="{% url 'manager:publication_detail' slug=submission.publication.slug %}" target="_blank">
-							{{ submission.publication.title }}
+						<a href="{% url 'manager:publication_detail' slug=submission.slug %}" target="_blank">
+							{{ submission.title }}
 						</a>
 					</td>
 					<td>
-						{% for author in submission.publication.authors.all %}
+						{% for author in submission.authors.all %}
 							<a href="{% url 'manager:author_detail' slug=author.slug %}" class="tag tag-primary" target="_blank">
 								{{ author.reference_name }}
 							</a>

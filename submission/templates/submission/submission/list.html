@@ -51,11 +51,11 @@
 				<tr>
 					<td>
 						<a href="{% url 'submission:submission_detail' event_slug=submission.event.slug slug=submission.slug %}">
-							{{ submission.publication.title }}
+							{{ submission.title }}
 						</a>
 					</td>
 					<td>
-						{% for author in submission.publication.authors.all %}
+						{% for author in submission.authors.all %}
 							<a href="{% url 'manager:author_detail' slug=author.slug %}" class="tag tag-primary" target="_blank">
 								{{ author.reference_name }}
 							</a>

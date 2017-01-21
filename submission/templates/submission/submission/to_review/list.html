@@ -45,11 +45,11 @@
 				<tr>
 					<td>
 						<a href="{% url 'submission:submission_detail_to_review' event_slug=submission.event.slug slug=submission.slug %}">
-							{{ submission.publication.title }}
+							{{ submission.title }}
 						</a>
 					</td>
 					<td>
-						{% for author in submission.publication.authors.all %}
+						{% for author in submission.authors.all %}
 							<a href="{% url 'manager:author_detail' slug=author.slug %}" class="tag tag-primary" target="_blank">
 								{{ author.reference_name }}
 							</a>
@@ -58,7 +58,7 @@
 					<td>
 						{% if submission.reviser %}
 							<label>
-								{{ submission.reviser }}
+								<a href="{% url 'authentication:account_detail' pk=submission.reviser.pk %}" target="_blank">{{ submission.reviser.get_full_name }}</a>
 							</label>
 							{% if perms.authentication.change_reviser and event.stage.type == 'reviewing' %}
 								<a href="{% url 'submission:submission_change_reviser' event_slug=submission.event.slug slug=submission.slug %}" class="btn btn-link">
@@ -92,7 +92,7 @@
 					<td>
 					<div class="form-check has-success">
 					  <a href="{% url 'submission:submission_submit_final' event_slug=event.slug slug=submission.slug %}" class="form-check-label">
-					    <input type="checkbox" class="form-check-input" {% if submission.publication.is_final %}checked{% endif %}>
+					    <input type="checkbox" class="form-check-input" {% if submission.is_final %}checked{% endif %}>
 					  </a>
 					</div>
 					</td>

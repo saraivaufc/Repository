@@ -4,14 +4,14 @@
 
 <dl class="definition text" itemscope itemtype="http://schema.org/Submission">
 	<dt class="col-sm-3">{% trans "Title" %}:</dt>
-	<dd class="col-sm-9" itemprop="title">{{ publication.title }}</dd>
+	<dd class="col-sm-9" itemprop="title">{{ object.title }}</dd>
 
 	<dt class="col-sm-3">{% trans "Typology" %}:</dt>
-	<dd class="col-sm-9" itemprop="typology">{{ publication.get_typology }}</dd>
+	<dd class="col-sm-9" itemprop="typology">{{ object.get_typology }}</dd>
 
 	<dt class="col-sm-3">{% trans "Authors" %}:</dt>
 	<dd class="col-sm-9" itemprop="authors">
-		{% for author in publication.authors.all %}
+		{% for author in object.authors.all %}
 			<a class="tag tag-primary" href="{% url 'manager:author_detail' slug=author.slug %}" target="_blank">
 				<i class="fa fa-graduation-cap"></i>
 				{{ author.reference_name }}	
@@ -21,7 +21,7 @@
 
 	<dt class="col-sm-3">{% trans "Subjects" %}</dt>
 	<dd class="col-sm-9" itemprop="subjects">
-		{% for subject in publication.subjects.all %}
+		{% for subject in object.subjects.all %}
 			<a class="tag tag-primary" href="{% url 'manager:subject_detail' slug=subject.slug %}" target="_blank">
 				<i class="fa fa-flag"></i>
 				{{ subject.name }}		
@@ -31,26 +31,26 @@
 
 	<dt class="col-sm-3">{% trans "Collection" %}:</dt>
 	<dd class="col-sm-9" itemprop="collection">
-		<a class="tag tag-primary" href="{% url 'manager:collection_detail' slug=publication.collection.slug %}" target="_blank">
+		<a class="tag tag-primary" href="{% url 'manager:collection_detail' slug=object.collection.slug %}" target="_blank">
 			<i class="fa fa-object-group"></i>
-			{{ publication.collection }}		
+			{{ object.collection }}		
 		</a>
 	</dd>
 
 	<dt class="col-sm-3">{% trans "Reference" %}:</dt>
-	<dd class="col-sm-9" itemprop="reference">{{ publication.reference }}</dd>
+	<dd class="col-sm-9" itemprop="reference">{{ object.reference }}</dd>
 
 	<dt class="col-sm-3">{% trans "Principal Language" %}:</dt>
-	<dd class="col-sm-9" itemprop="principal_language">{{ publication.get_principal_language|default:Empty }}</dd>
+	<dd class="col-sm-9" itemprop="principal_language">{{ object.get_principal_language|default:Empty }}</dd>
 
 	<dt class="col-sm-3">{% trans "Principal Abstract" %}:</dt>
 	<dd class="col-sm-9" itemprop="principal_abstract">
-		{{ publication.principal_abstract|default:Empty }}
+		{{ object.principal_abstract|default:Empty }}
 	</dd>
 
 	<dt class="col-sm-3">{% trans "Principal Keywords" %}:</dt>
 	<dd class="col-sm-9" itemprop="principal_keywords">
-		{% for keyword in publication.principal_keywords.all %}
+		{% for keyword in object.principal_keywords.all %}
 		<a class="tag tag-primary" href="{% url 'manager:keyword_detail' slug=keyword.slug %}">
 			<i class="fa fa-tags"></i>
 			{{ keyword }}
@@ -62,17 +62,17 @@
 
 	<dt class="col-sm-3">{% trans "Secondary Language" %}:</dt>
 	<dd class="col-sm-9" itemprop="secondary_language">
-		{{ publication.get_secondary_language|default:Empty }}
+		{{ object.get_secondary_language|default:Empty }}
 	</dd>
 
 	<dt class="col-sm-3">{% trans "Secondary Abstract" %}:</dt>
 	<dd class="col-sm-9" itemprop="secondary_abstract">
-		{{ publication.secondary_abstract|default:Empty }}
+		{{ object.secondary_abstract|default:Empty }}
 	</dd>
 
 	<dt class="col-sm-3">{% trans "Secondary Keywords" %}:</dt>
 	<dd class="col-sm-9" itemprop="secondary_keywords">
-		{% for keyword in publication.secondary_keywords.all %}
+		{% for keyword in object.secondary_keywords.all %}
 		<a class="tag tag-primary" href="{% url 'manager:keyword_detail' slug=keyword.slug %}">
 			<i class="fa fa-tags"></i>
 			{{ keyword }}
@@ -84,12 +84,12 @@
 
 	<dt class="col-sm-3">{% trans "Issue Date" %}:</dt>
 	<dd class="col-sm-9" itemprop="issue_date">
-		{{ publication.issue_date }}
+		{{ object.issue_date }}
 	</dd>
 
 	<dt class="col-sm-3">{% trans "File" %}:</dt>
 	<dd class="col-sm-9" itemprop="file">
-		<a href="{{ publication.file.url }}" target="_blank">
+		<a href="{{ object.file.url }}" target="_blank">
 			<i class="fa fa-download"></i>
 			{% trans "Download" %}
 		</a>

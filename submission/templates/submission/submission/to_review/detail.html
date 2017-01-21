@@ -12,12 +12,12 @@
 	{{ block.super }}
 	<a href="{% url 'submission:submission_detail_to_review' event_slug=event.slug slug=submission.slug %}" class="breadcrumb-item" >
 		<i class="fa fa-upload"></i>
-		{{ publication.title|truncatewords:"6" }}
+		{{ object.title|truncatewords:"6" }}
 	</a>
 {% endblock %}
 
 {%  block page_title %}
-	{{ publication.title|truncatewords:"6" }}
+	{{ object.title|truncatewords:"6" }}
 {% endblock %}
 
 {% block content %}
