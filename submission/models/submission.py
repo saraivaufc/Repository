@@ -1,5 +1,6 @@
 from django.utils.translation import ugettext_lazy as _
 from django.template.defaultfilters import slugify
+from django.core.urlresolvers import reverse_lazy
 from django.db import models
 from django.conf import settings
 import itertools
@@ -35,7 +36,7 @@ class Submission(models.Model):
 
 	def save(self, *args, **kwargs):
 		if not self.id:
-			self.slug = orig = slugify(self.event.name + "-" + self.user.get_short_name())
+			self.slug = orig = slugify("%s-%s" % (self.event.name, self.user.get_short_name(), ))
 			for x in itertools.count(1):
 				if not Submission.objects.filter(slug=self.slug).exists():
 					break
@@ -55,6 +56,9 @@ class Submission(models.Model):
 
 	def verbose_name(self):
 		return self._meta.verbose_name
+
+	def get_absolute_url(self):
+		return reverse_lazy('submission:submission_detail', kwargs={'event_slug': self.event.slug, 'slug': self.slug})
 
 	class Meta:
 		verbose_name = _(u'Submission')

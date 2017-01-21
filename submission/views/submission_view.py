@@ -9,61 +9,70 @@ from django.conf import settings
 from datetime import datetime
 from django.http import HttpResponseRedirect
 
-from authentication.models import User
-from submission.models import Submission, Event
-from manager.models import Publication
-from base.views import  SearchResponseMixin, CSVResponseMixin
-from inbox.views import MessageSendView
+from base.views import  SearchResponseMixin, CSVResponseMixin, HierarchyResponseMixin
 
-class SubmissionListView(CSVResponseMixin, ListView):
+from authentication.models import User
+
+from manager.models import Publication
+
+from submission.models import Submission, Event
+from submission.forms import SubmissionForm
+
+from inbox.views import MessageSendView
+		
+class SubmissionListView(HierarchyResponseMixin, CSVResponseMixin, ListView):
 	template_name = 'submission/submission/list.html'
 	paginate_by = settings.PAGINATE_BY
 	model = Submission
+	hierarchy_fields= [
+		{'name':'event', 'id': 'slug', 'slug':'event_slug', 'model': Event},
+	]
 
 	def get_queryset(self):
 		queryset = super(SubmissionListView, self).get_queryset()
-		event = Event.objects.filter(slug=self.kwargs['event_slug']).first()
-		return queryset.filter(event=event, user=self.request.user)
+		return queryset.filter(user=self.request.user)
 
-	def get_context_data(self, ** kwargs):
-		context = super(SubmissionListView, self).get_context_data( ** kwargs)
-		event = Event.objects.filter(slug=self.kwargs['event_slug']).first()
-		context["event"] = event
-		return context
-
-class SubmissionCreateView(CreateView):
+class SubmissionCreateView(HierarchyResponseMixin, CreateView):
 	template_name = 'submission/submission/form.html'
 	model = Publication
-	fields = ['title', 'typology', 'subjects', 'authors', 'collection', 'reference','principal_language', 'principal_abstract', 'principal_keywords', 'secondary_language', 'secondary_abstract', 'secondary_keywords', 'file']
+	form_class = SubmissionForm
+	hierarchy_fields= [
+		{'name':'event', 'id': 'slug', 'slug':'event_slug', 'model': Event},
+	]
+	event = None
+
+	def get_event(self):
+		if not self.event:
+			self.event = Event.objects.filter(slug=self.kwargs['event_slug']).first()
+		return self.event
+	
+	def get_form(self):
+		form = self.form_class(event=self.get_event())
+		return form
 
 	def get_success_url(self):
-		event = Event.objects.filter(slug=self.kwargs['event_slug']).first()
-		return reverse_lazy('submission:submission_list', kwargs={'event_slug':event.slug})
+		return reverse_lazy('submission:submission_list', kwargs={'event_slug':self.get_event().slug})
 
 	def get(self, request, * args, ** kwargs):
-		event = Event.objects.filter(slug=self.kwargs['event_slug']).first()
+		event = self.get_event()
 		if not event.stage()['type'] == 'submission_open_1':
 			return HttpResponseRedirect(reverse_lazy('submission:submission_list', kwargs={'event_slug':event.slug}))
 		return super(SubmissionCreateView, self).get(request)
-	
 
-	def get_context_data(self, ** kwargs):
-		event = Event.objects.filter(slug=self.kwargs['event_slug']).first()
-		context = super(SubmissionCreateView, self).get_context_data( ** kwargs)
-		context["event"] = event
-		context['publication'] = self.object
-		return context
+	def post(self, request, * args, ** kwargs):
+		form = self.form_class(self.get_event(), request.POST, request.FILES)
+		if form.is_valid():
+			return self.form_valid(form)
+		else:
+			return self.form_invalid(form)
 
 	def form_valid(self, form):
-		event = Event.objects.filter(slug=self.kwargs['event_slug']).first()
 		publication = form.save(commit=False)
 		publication.address = event.address
 		publication.year = event.date.year
-		publication.community = event.community
-		publication.publisher = event.publisher
 		publication.issue_date = datetime.today()
 		publication.save()
-		submission = Submission(event=event,
+		submission = Submission(event=self.get_event(),
 								user=self.request.user, 
 								publication=publication,)
 		submission.save()

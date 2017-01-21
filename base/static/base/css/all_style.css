@@ -63,7 +63,7 @@ dl.definition{
 
 dl.definition > dt, dl.definition > dd{
 	padding: 10px;
-	border-top: 1px solid #333;
+	border-top: 1px solid #eee;
 }
 
 /* CARD */
@@ -78,7 +78,7 @@ ul.errorlist > li{
 
 hr.divider{
 	padding: 0px;
-	margin-bottom: 10px;
+	margin-bottom: 10px solid #eee;
 }
 
 .hide{

@@ -1,10 +1,11 @@
 from django.utils.translation import ugettext_lazy as _
 from django.template.defaultfilters import slugify
+from django.core.urlresolvers import reverse_lazy
 from django.db import models
 import itertools
 import datetime
 
-from manager.models import Community, Collection, Publisher
+from manager.models import Community, Collection, Publisher, Subject
 
 class Event(models.Model):
 	TYPOLOGY_CHOICES = (
@@ -14,12 +15,15 @@ class Event(models.Model):
 	slug = models.SlugField(verbose_name=_('Slug'), max_length=500, blank=True, unique=True)
 	name = models.CharField(verbose_name=_("Name"), max_length=100, null=False, blank=False)
 	description = models.TextField(verbose_name=_("description"), null=False, blank=False)
-	address = models.CharField(verbose_name=_("Address"), max_length=100, null=False, blank=False)
-	image = models.FileField(verbose_name=_(u"Image"), upload_to='documents/event/images/%Y/%m/%d')
 	typology = models.CharField(verbose_name=_("Typology"), choices=TYPOLOGY_CHOICES, max_length=100, null=False, blank=False)
-	community = models.ForeignKey(Community, verbose_name=_("Community"), null=False, blank=False)
-	publisher = models.ForeignKey(Publisher, verbose_name=_("Publisher"), null=False, blank=False)
 	date = models.DateField(verbose_name=_("Date"), null=False, blank=False)
+	address = models.CharField(verbose_name=_("Address"), max_length=100, null=False, blank=False)	
+	image = models.FileField(verbose_name=_(u"Image"), upload_to='documents/event/images/%Y/%m/%d')
+	
+	subjects = models.ManyToManyField(Subject, verbose_name=_("Subjects"), blank=False)
+	communities = models.ManyToManyField(Community, verbose_name=_("Communities"), blank=False)
+	collections = models.ManyToManyField(Collection, verbose_name=_("Collections"), blank=False)
+	publishers = models.ManyToManyField(Publisher, verbose_name=_("Publishers"), blank=False)
 	
 	submission_1_open = models.DateField(verbose_name=_("Submission 1 Open"), null=False, blank=False)
 	submission_1_close = models.DateField(verbose_name=_("Submission 1 Close"), null=False, blank=False)

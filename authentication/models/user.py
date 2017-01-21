@@ -1,4 +1,5 @@
 from django.utils.translation import ugettext_lazy as _
+from django.core.urlresolvers import reverse_lazy
 from django.db import models
 from django.contrib.auth.models import (
 	Group,
@@ -93,6 +94,9 @@ class User(AbstractBaseUser, PermissionsMixin):
 
 	def verbose_name(self):
 		return self._meta.verbose_name
+
+	def get_absolute_url(self):
+		return reverse_lazy('authentication:account_detail', kwargs={'pk': self.pk})
 
 	class Meta:
 		verbose_name = _(u'User')

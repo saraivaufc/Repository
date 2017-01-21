@@ -2,8 +2,8 @@
 
 <div class="btn-group btn-group-md" role="group" aria-label="Large button group">
 	{% if event.stage.type == 'before_period' %}
-		{% blocktrans with submission_open=event.submission_1_open %}
-			Submissions in {{ submission_open }}
+		{% blocktrans with date=event.submission_1_open %}
+			Submissions in {{ date }}
 		{% endblocktrans %}
 	{% else %}
 		<a href="{% url 'submission:submission_list' event_slug=event.slug %}" data-toggle="tooltip" class="btn btn-secondary" title="{% trans "List my submissions" %}">

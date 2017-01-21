@@ -18,8 +18,9 @@ class EventListView(SearchResponseMixin, CSVResponseMixin, ListView):
 class EventCreateView(CreateView):
 	template_name = 'submission/event/form.html'
 	model = Event
-	fields = ['name', 'description', 'address', 'image', 'typology', 'community', 'publisher', 'date', 
-	'submission_1_open', 'submission_1_close', 'review_open', 'review_close', 'submission_2_open', 'submission_2_close']
+	fields = ['name', 'description', 'typology', 'typology', 'date', 'address', 'image', 
+			 'subjects', 'communities', 'collections', 'publishers', 
+			 'submission_1_open', 'submission_1_close', 'review_open', 'review_close', 'submission_2_open', 'submission_2_close']
 
 	def get_success_url(self):
 		return reverse_lazy('submission:event_detail', kwargs={'slug':self.object.slug})
@@ -30,8 +31,9 @@ class EventCreateView(CreateView):
 class EventUpdateView(UpdateView):
 	template_name = 'submission/event/form.html'
 	model = Event
-	fields = ['name', 'description', 'address', 'image', 'typology', 'community', 'publisher', 'date', 
-	'submission_1_open', 'submission_1_close', 'review_open', 'review_close', 'submission_2_open', 'submission_2_close']
+	fields = ['name', 'description', 'typology', 'typology', 'date', 'address', 'image', 
+			 'subjects', 'communities', 'collections', 'publishers', 
+			 'submission_1_open', 'submission_1_close', 'review_open', 'review_close', 'submission_2_open', 'submission_2_close']
 	
 	def get_success_url(self):
 		return reverse_lazy('submission:event_detail', kwargs={'slug':self.object.slug})

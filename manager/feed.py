@@ -16,7 +16,7 @@ class PublicationsLatests(Feed):
 		return item.title
 
 	def item_description(self, item):
-		return item.abstract
+		return item.principal_abstract
 
 	def item_link(self, item):
 		return reverse_lazy('manager:publication_detail', kwargs={'slug':item.slug})

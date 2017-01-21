@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-01-18 22:24-0300\n"
+"POT-Creation-Date: 2017-01-19 08:08-0300\n"
 "PO-Revision-Date: 2017-01-11 12:41-0234\n"
 "Last-Translator: None None <admin@email.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,24 +22,24 @@ msgstr ""
 msgid "Authentication"
 msgstr "Autenticação"
 
-#: authentication/models/user.py:34
+#: authentication/models/user.py:35
 msgid "First Name "
 msgstr "Primeiro Nome"
 
-#: authentication/models/user.py:34
+#: authentication/models/user.py:35
 msgid "Please enter you first name."
 msgstr "Por favor, entre com seu primeiro nome."
 
-#: authentication/models/user.py:35
+#: authentication/models/user.py:36
 msgid "Last Name "
 msgstr "Último Nome"
 
-#: authentication/models/user.py:35
+#: authentication/models/user.py:36
 msgid "Please enter you last name."
 msgstr "Por favor, entre com seu último nome."
 
-#: authentication/models/user.py:36 authentication/models/user.py:53
-#: authentication/models/user.py:60
+#: authentication/models/user.py:37 authentication/models/user.py:54
+#: authentication/models/user.py:61
 #: authentication/templates/authentication/account/_render.html:22
 #: authentication/templates/authentication/administrator/list.html:48
 #: authentication/templates/authentication/participant/list.html:41
@@ -47,12 +47,12 @@ msgstr "Por favor, entre com seu último nome."
 msgid "Username"
 msgstr "Nome de usuário"
 
-#: authentication/models/user.py:36
+#: authentication/models/user.py:37
 msgid "Please enter you username."
 msgstr "Por favor, entre com seu nome de usuário."
 
-#: authentication/models/user.py:37 authentication/models/user.py:54
-#: authentication/models/user.py:61
+#: authentication/models/user.py:38 authentication/models/user.py:55
+#: authentication/models/user.py:62
 #: authentication/templates/authentication/account/_render.html:25
 #: authentication/templates/authentication/administrator/list.html:49
 #: authentication/templates/authentication/participant/list.html:42
@@ -60,51 +60,51 @@ msgstr "Por favor, entre com seu nome de usuário."
 msgid "Email"
 msgstr "Email"
 
-#: authentication/models/user.py:37
+#: authentication/models/user.py:38
 msgid "Please enter you email."
 msgstr "Por favor, entre com seu email."
 
-#: authentication/models/user.py:38
+#: authentication/models/user.py:39
 msgid "Active"
 msgstr "Ativo"
 
-#: authentication/models/user.py:38
+#: authentication/models/user.py:39
 msgid ""
 "Designates whether this user should be treated as active. Unselect this "
 "instead of deleting accounts."
 msgstr ""
 
-#: authentication/models/user.py:39
+#: authentication/models/user.py:40
 msgid "Date joined"
 msgstr "Data de cadastro"
 
-#: authentication/models/user.py:40
+#: authentication/models/user.py:41
 msgid "Moderator Status"
 msgstr "Status de Moderador"
 
-#: authentication/models/user.py:41
+#: authentication/models/user.py:42
 msgid "Staff Status"
 msgstr "Status de Técnico"
 
-#: authentication/models/user.py:42
+#: authentication/models/user.py:43
 msgid "Reviser Status"
 msgstr "Status de Revisor"
 
-#: authentication/models/user.py:51 authentication/models/user.py:58
+#: authentication/models/user.py:52 authentication/models/user.py:59
 #: authentication/templates/authentication/account/_render.html:4
 msgid "First Name"
 msgstr "Primeiro Nome"
 
-#: authentication/models/user.py:52 authentication/models/user.py:59
+#: authentication/models/user.py:53 authentication/models/user.py:60
 #: authentication/templates/authentication/account/_render.html:13
 msgid "Last Name"
 msgstr "Último Nome"
 
-#: authentication/models/user.py:98
+#: authentication/models/user.py:102
 msgid "User"
 msgstr "Usuário"
 
-#: authentication/models/user.py:99
+#: authentication/models/user.py:103
 msgid "Users"
 msgstr "Usuários"
 

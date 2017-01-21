@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-01-18 22:24-0300\n"
+"POT-Creation-Date: 2017-01-19 08:08-0300\n"
 "PO-Revision-Date: 2017-01-13 11:33-0234\n"
 "Last-Translator: Ciano Saraiva <admin@email.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,57 +18,57 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Translated-Using: django-rosetta 0.7.8\n"
 
-#: inbox/models/message.py:9
+#: inbox/models/message.py:10
 msgid "slug"
 msgstr "slug"
 
-#: inbox/models/message.py:10 inbox/templates/inbox/message/_render.html:4
+#: inbox/models/message.py:11 inbox/templates/inbox/message/_render.html:4
 msgid "From"
 msgstr "De"
 
-#: inbox/models/message.py:11 inbox/templates/inbox/message/_render.html:9
+#: inbox/models/message.py:12 inbox/templates/inbox/message/_render.html:9
 msgid "To"
 msgstr "Para"
 
-#: inbox/models/message.py:12 inbox/models/message.py:35
+#: inbox/models/message.py:13 inbox/models/message.py:36
 msgid "Subject"
 msgstr "Assunto"
 
-#: inbox/models/message.py:13 inbox/models/message.py:36
+#: inbox/models/message.py:14 inbox/models/message.py:37
 #: inbox/models/reply.py:9 inbox/templates/inbox/message/_render.html:14
 msgid "Text"
 msgstr "Texto"
 
-#: inbox/models/message.py:14 inbox/models/reply.py:10 inbox/models/reply.py:14
+#: inbox/models/message.py:15 inbox/models/reply.py:10 inbox/models/reply.py:14
 #: inbox/templates/inbox/message/_render.html:19
 msgid "File"
 msgstr "Arquivo"
 
-#: inbox/models/message.py:15
+#: inbox/models/message.py:16
 msgid "Message Read"
 msgstr "Mensagem lida"
 
-#: inbox/models/message.py:16 inbox/models/reply.py:11
+#: inbox/models/message.py:17 inbox/models/reply.py:11
 msgid "Last modification"
 msgstr "Última modificação"
 
-#: inbox/models/message.py:40 inbox/templates/inbox/index.html:12
+#: inbox/models/message.py:41 inbox/templates/inbox/index.html:12
 msgid "receives"
 msgstr "recebidas"
 
-#: inbox/models/message.py:41 inbox/views/message_view.py:75
+#: inbox/models/message.py:42 inbox/views/message_view.py:75
 msgid "sends"
 msgstr "enviadas"
 
-#: inbox/models/message.py:42
+#: inbox/models/message.py:43
 msgid "drafts"
 msgstr "rascunhos"
 
-#: inbox/models/message.py:68 inbox/models/reply.py:6
+#: inbox/models/message.py:72 inbox/models/reply.py:6
 msgid "Message"
 msgstr "Mensagem"
 
-#: inbox/models/message.py:69 inbox/templates/inbox/index.html:48
+#: inbox/models/message.py:73 inbox/templates/inbox/index.html:48
 #: inbox/templates/inbox/message/list.html:28
 msgid "Messages"
 msgstr "Mensagens"
@@ -77,11 +77,11 @@ msgstr "Mensagens"
 msgid "User"
 msgstr "Usuário"
 
-#: inbox/models/message_manager.py:34
+#: inbox/models/message_manager.py:33
 msgid "Message Manager"
 msgstr "Gerenciador de Mensagens"
 
-#: inbox/models/message_manager.py:35
+#: inbox/models/message_manager.py:34
 msgid "Messages Manager"
 msgstr "Gerenciadores de Mensagens"
 

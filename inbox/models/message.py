@@ -1,4 +1,5 @@
 from django.utils.translation import ugettext_lazy as _
+from django.core.urlresolvers import reverse_lazy
 from django.core.exceptions import ValidationError
 from django.template.defaultfilters import slugify
 import itertools
@@ -62,6 +63,9 @@ class Message(models.Model):
 
 	def verbose_name(self):
 		return self._meta.verbose_name
+
+	def get_absolute_url(self):
+		return reverse_lazy('inbox:message_detail', kwargs={'slug': self.slug})
 
 	class Meta:
 		ordering = ['-last_modified']

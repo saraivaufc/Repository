@@ -25,7 +25,6 @@ class MessageManager(models.Model):
 	def get_messages_unread(self):
 		return self.get_messages_receive().filter(read=False)
 
-
 	def __unicode__(self):
 		return unicode(self.user)
 

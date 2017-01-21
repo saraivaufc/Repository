@@ -31,7 +31,7 @@ class Author(models.Model):
 
 	def save(self, *args, **kwargs):
 		if not self.id:
-			self.slug = orig = slugify(self.first_name + self.last_name)
+			self.slug = orig = slugify("%s-%s" % (self.first_name, self.last_name) )
 			for x in itertools.count(1):
 				if not Author.objects.filter(slug=self.slug).exists():
 					break

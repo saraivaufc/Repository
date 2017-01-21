@@ -3,7 +3,7 @@ from django.contrib import admin
 from django.views.generic.base import TemplateView
 from django.views.generic.base import RedirectView
 from django.core.urlresolvers import reverse_lazy
-from django.views.i18n import javascript_catalog
+from django.views.i18n import JavaScriptCatalog
 from django_js_reverse.views import urls_js
 from django.views.decorators.cache import cache_page
 from django.utils.translation import ugettext_lazy as _
@@ -33,5 +33,5 @@ urlpatterns = i18n_patterns(
 	url(r'^admin/', include(admin.site.urls)),
 	url(r'^rosetta/', include('rosetta.urls')),
 	url(r'^jsreverse/$', cache_page(3600)(urls_js), name='js_reverse'),
-	#url(_(r'^jsi18n/$'), javascript_catalog, js_info_dict, name='javascript-catalog'),
+	url(r'^jsi18n/$', JavaScriptCatalog.as_view(packages=['base', 'authentication', 'manager', 'submission', 'inbox', ]), name='javascript-catalog'),
 )

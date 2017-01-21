@@ -1,21 +1,57 @@
 {% load i18n %}
 
+{% trans "Empty" as Empty %}
+
 <div class="col-md-6">
 	<dl class="definition text" itemscope itemtype="http://schema.org/Event">
-		<dt class="col-sm-3">{% trans "Community" %}:</dt>
+	{% comment %}
+		<dt class="col-sm-3">{% trans "Subjects" %}:</dt>
+		<dd class="col-sm-9" itemprop="subject">
+			{% for subject in event.subjects.all %}
+				<a href="{% url 'manager:subject_detail' slug=subject.slug %}" class="tag tag-primary" target="_blank">
+					<i class="fa fa-flag"></i>
+					{{ subject }}		
+				</a>
+			{% empty %}
+				{{ Empty }}	
+			{% endfor %}
+		</dd>
+	{% endcomment %}
+		<dt class="col-sm-3">{% trans "Communities" %}:</dt>
 		<dd class="col-sm-9" itemprop="community">
-			<a href="{% url 'manager:community_detail' slug=event.community.slug %}" class="tag tag-primary" target="_blank">
-				<i class="fa fa-university"></i>
-				{{ event.community }}
-			</a>
+			{% for community in event.communities.all %}
+				<a href="{% url 'manager:community_detail' slug=community.slug %}" class="tag tag-primary" target="_blank">
+					<i class="fa fa-university"></i>
+					{{ community }}
+				</a>
+			{% empty %}
+				{{ Empty }}
+			{% endfor %}
+
 		</dd>
 
-		<dt class="col-sm-3">{% trans "Publisher" %}:</dt>
-		<dd class="col-sm-9" itemprop="publisher">
-			<a href="{% url 'manager:publisher_detail' slug=event.publisher.slug %}" class="tag tag-primary" target="_blank">
-				<i class="fa fa fa-newspaper-o"></i>
-				{{ event.publisher }}
-			</a>
+		<dt class="col-sm-3">{% trans "Collections" %}:</dt>
+		<dd class="col-sm-9" itemprop="collection">
+			{% for collection in event.collections.all %}
+				<a href="{% url 'manager:collection_detail' slug=collection.slug %}" class="tag tag-primary" target="_blank">
+					<i class="fa fa-object-group"></i>
+					{{ collection }}		
+				</a>
+			{% empty %}
+				{{ Empty }}
+			{% endfor %}
+		</dd>
+
+		<dt class="col-sm-3">{% trans "Publishers" %}:</dt>
+		<dd class="col-sm-9" itemprop="publishers">
+			{% for publisher in event.publishers.all %}
+				<a href="{% url 'manager:publisher_detail' slug=publisher.slug %}" class="tag tag-primary" target="_blank">
+					<i class="fa fa fa-newspaper-o"></i>
+					{{ publisher }}
+				</a>
+			{% empty %}
+				{{ Empty }}
+			{% endfor %}
 		</dd>
 
 		<dt class="col-sm-3">{% trans "Date" %}:</dt>

@@ -1,27 +1,27 @@
 from django.utils.translation import ugettext_lazy as _
 from django.template.defaultfilters import slugify
-from django.db import models
 from django.core.urlresolvers import reverse_lazy
+from django.db import models
 import itertools
 
 class Publication(models.Model):
 	TYPOLOGY_CHOICES = (
-	    (u'article', _(u'Article')),
-	    (u'book', _(u'Book')),
-	    (u'booklet', _(u'Booklet')),
-	    (u'conference', _(u'Conference')),
-	    (u'inbook', _(u'Inbook')),
-	    (u'incollection', _(u'Incollection')),
-	    (u'manual', _(u'Manual')),
-	    (u'mastersthesis', _(u'Masters Thesis')),
-	    (u'monography', _(u'Monography')),
-	    (u'dissertation', _(u'Dissertation')),
-	    (u'abstract', _(u'Abstract')),
+		(u'article', _(u'Article')),
+		(u'book', _(u'Book')),
+		(u'booklet', _(u'Booklet')),
+		(u'conference', _(u'Conference')),
+		(u'inbook', _(u'Inbook')),
+		(u'incollection', _(u'Incollection')),
+		(u'manual', _(u'Manual')),
+		(u'mastersthesis', _(u'Masters Thesis')),
+		(u'monography', _(u'Monography')),
+		(u'dissertation', _(u'Dissertation')),
+		(u'abstract', _(u'Abstract')),
 	)
 	LANGUAGE_CHOICES = (
-	    (u'pt_BR', _(u'Brazilian Portuguese')),
-	    (u'en', _(u'English')),
-	 	(u'es', _(u'Spanish')),   
+		(u'pt_BR', _(u'Brazilian Portuguese')),
+		(u'en', _(u'English')),
+		(u'es', _(u'Spanish')),
 	)
 	title = models.CharField(verbose_name=_("Title"), max_length=500, null=False, blank=False)
 	slug = models.SlugField(_('slug'), max_length=1000, blank=True, unique=True)
@@ -119,5 +119,5 @@ def post_save_receiver(sender, instance, created, ** kwargs):
 	if not instance.uri:
 		instance.uri = reverse_lazy("manager:publication_uri", kwargs={"pk": instance.pk})
 		instance.save()
-		
+
 post_save.connect(post_save_receiver, sender=Publication)
